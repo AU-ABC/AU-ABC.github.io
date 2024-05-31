@@ -1,0 +1,198 @@
+[
+  {
+    "objectID": "workshop/workshop_june24.html",
+    "href": "workshop/workshop_june24.html",
+    "title": "\nWelcome to the homepage for our in-person bulk RNAseq workshop. Thank you for joining us!\n",
+    "section": "",
+    "text": "The Health Data Science Sandbox aims to be a training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets. We are an active and developing project seeking interested users (both trainees and educators). All of our open-source materials are available on our Github page and can be used on a computing cluster! We work with both UCloud, GenomeDK and Computerome, the major Danish academic supercomputers. See our HPC Access page for more info on each setup."
+  },
+  {
+    "objectID": "workshop/workshop_june24.html#access-sandbox-resources",
+    "href": "workshop/workshop_june24.html#access-sandbox-resources",
+    "title": "\nWelcome to the homepage for our in-person bulk RNAseq workshop. Thank you for joining us!\n",
+    "section": "Access Sandbox resources",
+    "text": "Access Sandbox resources\nOur first choice is to provide all the training materials, tutorials, and tools as interactive apps on UCloud, the supercomputer located at the University of Southern Denmark. Anyone using these resources needs the following:\n\nDanish university credentials to sign on to UCloud via WAYF1.\n\n \n\n for UCloud Access click here \n\n \n\nBasic ability to navigate in Linux/RStudio/Jupyter. You don’t need to be an expert, but it is beyond our ambitions (and course material) to teach you how to code from zero and how to run analyses simultaneously. We recommend a basic R or Python course before diving in.\nFor workshop participants: Use our invite link to the correct UCloud workspace that will be shared on the day of the workshop. This way, we can provide you with compute resources for the active sessions of the workshop2 Click the link below after your first uCloud access and accept the invite that shows.\n\n \n\n Invite link to uCloud workspace \n\n   \n\n\n\n\n\n\nNote\n\n\n\nOur apps can run on other clusters, simply by pulling a so-called docker container. You only need to have either docker installed on the cluster."
+  },
+  {
+    "objectID": "workshop/workshop_june24.html#our-sandbox-apps",
+    "href": "workshop/workshop_june24.html#our-sandbox-apps",
+    "title": "\nWelcome to the homepage for our in-person bulk RNAseq workshop. Thank you for joining us!\n",
+    "section": "Our Sandbox apps",
+    "text": "Our Sandbox apps\nThe agenda starts with an introduction to High Performance Computing (HPC) and uCloud.\n\nTo get started in our transcriptomics app, click here\n\n\n\n\nTranscriptomics Sandbox : Our sandbox for bulk or single-cell RNA sequencing analysis and visualization - amongst others two regular workshops and provides stand-alone visualization tools. In the next update, we will introduce advanced tutorials for more complex single-cell RNA sequencing analysis from some of our supported courses. - Click here to start setting up the app - To run nf-core RNAseq pipeline follow the instructions here\n\n\n \nWe are developing other apps. If you are interested, explore our modules section on our website!"
+  },
+  {
+    "objectID": "workshop/workshop_june24.html#discussion-and-feedback",
+    "href": "workshop/workshop_june24.html#discussion-and-feedback",
+    "title": "\nWelcome to the homepage for our in-person bulk RNAseq workshop. Thank you for joining us!\n",
+    "section": "Discussion and feedback",
+    "text": "Discussion and feedback\nWe hope you enjoyed the live demo. If you have broader questions, suggestions, or concerns, now is the time to raise them! If you are totally toast for the day, remember that you can check out longer versions of our tutorials as well as other topics and tools in each of the Sandbox modules or join us for a multi-day in-person course (follow our news here).\nAs data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. Please answer these 5 questions for us before you head out for the day 3.\n \n\n\n\n\n\n\n\nNice meeting you and we hope to see you again!"
+  },
+  {
+    "objectID": "workshop/workshop_june24.html#footnotes",
+    "href": "workshop/workshop_june24.html#footnotes",
+    "title": "\nWelcome to the homepage for our in-person bulk RNAseq workshop. Thank you for joining us!\n",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nOther institutions (e.g. hospitals, libraries, …) can log on through WAYF. See all institutions here↩︎\nTo use Sandbox materials outside of the workshop: remember that each new user has hundreds of hours of free computing credit and around 50GB of free storage, which can be used to run any uCloud software. If you run out of credit (which takes a long time) you’ll need to check with the local DeiC office at your university about how to request compute hours on UCloud. Contact us at the Sandbox if you need help or want more information.↩︎\nlink activated on day one of the workshop.↩︎"
+  },
+  {
+    "objectID": "workshop/workshop_april2024.html#access-sandbox-resources",
+    "href": "workshop/workshop_april2024.html#access-sandbox-resources",
+    "title": "Sandbox Workshop",
+    "section": "Access Sandbox resources",
+    "text": "Access Sandbox resources\nOur first choice is to provide all the training materials, tutorials, and tools as interactive apps on UCloud, the supercomputer located at the University of Southern Denmark. Anyone using these resources needs the following:\n\na Danish university ID so you can sign on to UCloud via WAYF1.\n\n \n\n for UCloud Access click here \n\n \n\nbasic ability to navigate in Linux/RStudio/Jupyter. You don’t need to be an expert, but it is beyond our ambitions (and course material) to teach you how to code from zero and how to run analyses simultaneously. We recommend a basic R or Python course before diving in.\nFor workshop participants: Use our invite link to the correct UCloud workspace that will be shared on the day of the workshop. This way, we can provide you with compute resources for the active sessions of the workshop2 Click the link below after your first uCloud access and accept the invite that shows.\n\n \n\n Invite link to uCloud workspace \n\n   \n\n\n\n\n\n\nNote\n\n\n\nOur apps can run on other clusters, simply by pulling a so-called docker container. You only need to have either docker or singularity installed on the cluster. GenomeDK supports singularity and thus can run our learning material as well. Ask us if you want to help the apps out of uCloud. Instructions will soon be available within our HPC access instructions."
+  },
+  {
+    "objectID": "workshop/workshop_april2024.html#our-omics-apps",
+    "href": "workshop/workshop_april2024.html#our-omics-apps",
+    "title": "Sandbox Workshop",
+    "section": "Our OMICS apps",
+    "text": "Our OMICS apps\nThe agenda starts with an introduction to High Performance Computing (HPC) and uCloud. You will try two apps during the workshop, but we are developing others, and have deployed three apps already.\n \n\n\n\nProteomics Sandbox: Our sandbox modern with a suite of proteomics analysis tools, used for example in clinical proteomics. This app is not alone, since our data scientist Jacob has also made the app ColabFold on UCloud, with methods for protein structure prediction.\n\n\n \n\n\n\nTranscriptomics Sandbox : Our sandbox for bulk or single-cell RNA sequencing analysis and visualization - amongst others two regular workshops and provides stand-alone visualization tools. In the next update, we will introduce advanced tutorials for more complex single-cell RNA sequencing analysis from some of our supported courses.\n\n\n \n\n\n\nGenomics Sandbox: Our sandbox NGS data analysis and applications range from genome assembly to variant calling to metagenomics. We have currently a semester-long population genomics course and an NGS course with many applications (alignment, VCF analysis, bulk-RNA data, single-cell RNA sequencing)"
+  },
+  {
+    "objectID": "workshop/workshop_april2024.html#discussion-and-feedback",
+    "href": "workshop/workshop_april2024.html#discussion-and-feedback",
+    "title": "Sandbox Workshop",
+    "section": "Discussion and feedback",
+    "text": "Discussion and feedback\nWe hope you enjoyed the live demo. If you have broader questions, suggestions, or concerns, now is the time to raise them! If you are totally toast for the day, remember that you can check out longer versions of our tutorials as well as other topics and tools in each of the Sandbox modules or join us for a multi-day in-person course (follow our news here).\nAs data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. Please answer these 5 questions for us before you head out for the day 3.\n \n\n\n\n\n\n\n\nNice meeting you and we hope to see you again!"
+  },
+  {
+    "objectID": "workshop/workshop_april2024.html#footnotes",
+    "href": "workshop/workshop_april2024.html#footnotes",
+    "title": "Sandbox Workshop",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nOther institutions (e.g. hospitals, libraries, …) can log on through WAYF. See all institutions here↩︎\nTo use Sandbox materials outside of the workshop: remember that each new user has hundreds of hours of free computing credit and around 50GB of free storage, which can be used to run any uCloud software. If you run out of credit (which takes a long time) you’ll need to check with the local DeiC office at your university about how to request compute hours on UCloud. Contact us at the Sandbox if you need help or want more information.↩︎\nlink activated on day one of the workshop.↩︎"
+  },
+  {
+    "objectID": "about/about.html",
+    "href": "about/about.html",
+    "title": "About the Sandbox",
+    "section": "",
+    "text": "An infrastructure project for health data science training and research in Denmark\nThe National Health Data Science Sandbox project kicked off in 2021 with 5 years of funding via the Data Science Research Infrastructure initiative from the Novo Nordisk Foundation. Health data science experts at five Danish universities are contributing to the Sandbox with coordination from the Center for Health Data Science under lead PI Professor Anders Krogh. Data scientists hosted in the research groups of each PI are building infrastructure and training modules on Computerome and UCloud, the primary academic high performance computing (HPC) platforms in Denmark. If you have any questions or would like to get in touch with one of our data scientists, please contact us here.\n\n\n\n\n\nOur computational ‘sandbox’ allows data scientists to explore datasets, tools and analysis pipelines in the same high performance computing environments where real research projects are conducted. Rather than a single, hefty environment, we’re deploying modularized topical environments tailored for independent use on each HPC platform. We aim to support three key user groups based at Danish universities:\n\ntrainees: use our training modules to learn analysis techniques with some guidance and guardrails - for your data type of interest AND for general good practices for HPC environments\n\nresearchers: prototype your tools and algorithms with an array of good quality datasets that are GDPR compliant and free to access\neducators: develop your next course with computational assignments in the HPC environment your students will use for their research\n\nActivity developing independent training modules and hosting workshops has centered on UCloud, while collaborative construction of a flexible Course Platform has been completed on Computerome for use by the Sandbox and independent educators. Publicly sourced datasets are being used in training modules on UCloud, while generation of synthetic data is an ongoing project at Computerome. Sandbox resources are under active construction, so check out our other pages for the current status on HPC Access, Datasets, and Modules. We run workshops using completed training modules on a regular basis and provide active support for Sandbox-hosted courses through a slack workspace. See our Contact page for more information.\n\n\nPartner with the Sandbox\nThe Sandbox welcomes proposals for new courses, modules, and prototyping projects from researchers and educators. We’d like to partner with lecturers engaged with us in developing needed materials collaboratively - we would love to have input from subject experts or help promote exciting new tools and analysis methods via modules! Please contact us with your ideas at nhds_sandbox@sund.ku.dk.\n\nWe thank the Novo Nordisk Foundation for funding support. If you use the Sandbox for research or reference it in text or presentations, please acknowledge the Health Data Science Sandbox project and its funder the Novo Nordisk Foundation (grant number NNF20OC0063268)."
+  },
+  {
+    "objectID": "cards/SamueleSoraggi.html",
+    "href": "cards/SamueleSoraggi.html",
+    "title": "Samuele Soraggi",
+    "section": "",
+    "text": "Samuele is a Sandbox data scientist based at the university of Aarhus. During his academic activity he has gained experience in population genomics, transcriptomics, single cell multiomics and spans his knowledge across various themes of advanced computational statistics."
+  },
+  {
+    "objectID": "news/past/2024-04-18-sandbox-workshop.html",
+    "href": "news/past/2024-04-18-sandbox-workshop.html",
+    "title": "Workshop: Digging into the Health Data Science Sandbox",
+    "section": "",
+    "text": "This workshop offers an introduction to the training materials and tools of the Health Data Science Sandbox, a national infrastructure project. The Sandbox team is building training resources and guides for learning bioinformatics, predictive modeling in precision medicine, high performance computing and data carpentry that is accessible to all Danish university employees (PhD students and up) via academic supercomputing infrastructure.\nYou will be introduced to our current training set-up, meet our helpful data scientists, be guided through how to use our apps, and can make requests for the next topic we tackle!"
+  },
+  {
+    "objectID": "news/upcoming/2024-07-01-NGS-analysis.html",
+    "href": "news/upcoming/2024-07-01-NGS-analysis.html",
+    "title": "Intro to NGS data analysis - Summer School",
+    "section": "",
+    "text": "This workshop is a regularly hosted summer school to teach NGS data analysis, and is taught by Stig Andersen, Mikkel Schierup, and Samuele Soraggi (supporting via the HDS Sandbox). You can find additional information here."
+  },
+  {
+    "objectID": "news/upcoming/2024-11-15-hpcPipes.html",
+    "href": "news/upcoming/2024-11-15-hpcPipes.html",
+    "title": "HPC Pipes",
+    "section": "",
+    "text": "Sign-up."
+  },
+  {
+    "objectID": "news/upcoming/2024-10-30-hpcLaunch.html",
+    "href": "news/upcoming/2024-10-30-hpcLaunch.html",
+    "title": "HPC launch",
+    "section": "",
+    "text": "Sign-up."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to the Accressible Bioinformatics Cafe",
+    "section": "",
+    "text": "An informal and collaborative cafe to help each other upskilling coding/bioinformatics skills. Hosted by scientists and bioinformaticians of the Health data science sandbox and Bioinformatics core facility at Aarhus University.\n\n \n\n\nWhere do I start to code on a command line?  How do I learn the basic R/python commands?  What the heck is this error?????  Where is the nearest window?????\n\n\n\nDispose of your computer after too much frustration"
+  },
+  {
+    "objectID": "index.html#idea",
+    "href": "index.html#idea",
+    "title": "Welcome to the Accressible Bioinformatics Cafe",
+    "section": "",
+    "text": "Where do I start to code on a command line?  How do I learn the basic R/python commands?  What the heck is this error?????  Where is the nearest window?????\n\n\n\nDispose of your computer after too much frustration"
+  },
+  {
+    "objectID": "cards/AlbaMartinez.html",
+    "href": "cards/AlbaMartinez.html",
+    "title": "Alba Refoyo Martinez",
+    "section": "",
+    "text": "Alba is a Sandbox data scientist based at the University of Copenhagen. During her academic background as a PhD and Postdoc she has developed a solid expertise in large-scale genomics and pipelines development on computing clusters."
+  },
+  {
+    "objectID": "workshop/workshop_Conference2023.html",
+    "href": "workshop/workshop_Conference2023.html",
+    "title": "\nSandbox Workshop\n",
+    "section": "",
+    "text": "Sandbox Workshop"
+  },
+  {
+    "objectID": "workshop/workshop_Conference2023.html#the-sandbox-concept",
+    "href": "workshop/workshop_Conference2023.html#the-sandbox-concept",
+    "title": "\nSandbox Workshop\n",
+    "section": "The Sandbox concept",
+    "text": "The Sandbox concept\nThe Health Data Science Sandbox aims to be a training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets. We are an active and developing project seeking interested users (both trainees and educators). All of our open-source materials are available on our Github page and much more information is available on the rest of the website you are currently visiting! We work with both UCloud and Computerome (major Danish academic supercomputers) - see our HPC Access page for more info on each set up."
+  },
+  {
+    "objectID": "workshop/workshop_Conference2023.html#access-sandbox-resources",
+    "href": "workshop/workshop_Conference2023.html#access-sandbox-resources",
+    "title": "\nSandbox Workshop\n",
+    "section": "Access Sandbox resources",
+    "text": "Access Sandbox resources\nWe currently provide training materials and resources as topical apps on UCloud, the supercomputer located at the University of Southern Denmark. To use these resources, you’ll need the following:\n\na Danish university ID so you can sign on to UCloud via WAYF. See this guide and/or follow along with our live demo.\nthe ability to navigate in linux / RStudio / Jupyter. You don’t need to be an expert, but it is beyond our ambitions (and course material) to teach you how to code and how to run analyses simultaneously. We recommend a basic R or Python course before diving in.\nour invite link to the correct UCloud project that will be shared on the day of the workshop. This way, we can provide you compute resources for the active sessions of the workshop. To use Sandbox materials outside of the workshop, you’ll need to check with the local DeiC office at your university about how to request compute hours on UCloud."
+  },
+  {
+    "objectID": "workshop/workshop_Conference2023.html#try-out-a-module",
+    "href": "workshop/workshop_Conference2023.html#try-out-a-module",
+    "title": "\nSandbox Workshop\n",
+    "section": "Try out a module",
+    "text": "Try out a module\nSo our Sandbox data scientists have finished their intro at the workshop? Great, now it’s time to choose your poison (cough) topic of interest for today. Your options are below:\n ### Genomics If you’re interested in NGS technologies and applications ranging from genome assembly to variant calling to metagenomics, join Sandbox Data Scientist Samuele Soraggi in testing out our Genomics Sandbox app. This app supports a semester-length course on NGS as well as a Population Genomics course run regularly at Aarhus University. Sign into UCloud and then click this invite link.\n ### Transcriptomics If you’re interested in bulk or single cell RNA sequencing analysis and visualization, join Sandbox Data Scientist Jose Alejandro Romero Herrera (Alex) in testing out our Transcriptomics Sandbox app. This app supports regular 3-4 day workshops at University of Copenhagen and provides stand-alone visualisation tools. Sign into UCloud and then click this invite link.\n ### Proteomics Interested in modern methods for protein structure prediction? Join Sandbox Data Scientist Jacob Fredegaard Hansen as he walks you through how to use ColabFold on UCloud. Jacob can also demo our Proteomics Sandbox, which contains a suite of proteomics analysis tools that will support a future course in clinical proteomics but is already available on UCloud for interested users. Sign into UCloud and then click this invite link."
+  },
+  {
+    "objectID": "workshop/workshop_Conference2023.html#discussion-and-feedback",
+    "href": "workshop/workshop_Conference2023.html#discussion-and-feedback",
+    "title": "\nSandbox Workshop\n",
+    "section": "Discussion and feedback",
+    "text": "Discussion and feedback\nWe hope you enjoyed the live demo. If you have broader questions, suggestions, or concerns, now is the time to raise them! If you are totally toast for the day, remember that you can check out longer versions of our tutorials as well as other topics and tools in each of the Sandbox modules or join us for a multi-day in person course.\nAs data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. Please answer these 5 questions for us before you head out for the day (link activated on day of the workshop).\n\nNice meeting you and we hope to see you again!"
+  },
+  {
+    "objectID": "workshop/workshopAAU_2023.html",
+    "href": "workshop/workshopAAU_2023.html",
+    "title": "\nSandbox Workshop\n",
+    "section": "",
+    "text": "Sandbox Workshop\n!!! info “Upcoming Workshop at AAU”  Intro to the Health Data Science Sandbox at Aalborg University"
+  },
+  {
+    "objectID": "workshop/workshopAAU_2023.html#the-sandbox-concept",
+    "href": "workshop/workshopAAU_2023.html#the-sandbox-concept",
+    "title": "\nSandbox Workshop\n",
+    "section": "The Sandbox concept",
+    "text": "The Sandbox concept\nThe Health Data Science Sandbox aims to be a training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets. We are an active and developing project seeking interested users (both trainees and educators). All of our open-source materials are available on our Github page and much more information is available on the rest of the website you are currently visiting! We work with both UCloud and Computerome (major Danish academic supercomputers) - see our HPC Access page for more info on each set up."
+  },
+  {
+    "objectID": "workshop/workshopAAU_2023.html#access-sandbox-resources",
+    "href": "workshop/workshopAAU_2023.html#access-sandbox-resources",
+    "title": "\nSandbox Workshop\n",
+    "section": "Access Sandbox resources",
+    "text": "Access Sandbox resources\nWe currently provide training materials and resources as topical apps on UCloud, the supercomputer located at the University of Southern Denmark. To use these resources, you’ll need the following:\n\nLog onto UCloud at the address http://cloud.sdu.dk using your university credentials.\nthe ability to navigate in linux / RStudio / Jupyter. You don’t need to be an expert, but it is beyond our ambitions (and course material) to teach you how to code and how to run analyses simultaneously. We recommend a basic R or Python course before diving in.\n\nNote:\n\nTo use Sandbox materials outside of the workshop, you can request a project by clicking on apply for resources in your uCloud dashboard.\nIf you are a BSc or MSc student, you need a supervisor to apply on your behalf, or you can try to apply yourself mentioning the supervisor approval in the application.\nRemember, however, that you have 1000Kr of computing credit, and around 50GB of free storage to work on uCLoud."
+  },
+  {
+    "objectID": "workshop/workshopAAU_2023.html#try-out-our-transcriptomics-module",
+    "href": "workshop/workshopAAU_2023.html#try-out-our-transcriptomics-module",
+    "title": "\nSandbox Workshop\n",
+    "section": "Try out our transcriptomics module",
+    "text": "Try out our transcriptomics module\nSo our Sandbox data scientists have finished their intro at the workshop? Great, now the brave ones in the audience can try out one of our apps in a live session. Today we are demoing:\n ### Transcriptomics If you’re interested in bulk or single cell RNA sequencing analysis and visualization, join Sandbox Data Scientist Samuele Soraggi from Aarhus University in testing out our Transcriptomics Sandbox app.\nFollow these instructions to try our app:\n\nClick on the button below to join the project for today: &lt;!DOCTYPE html&gt;\n\n\n\n\n\n&lt;p&gt;Green Button&lt;/p&gt;\n\n\n\n\n\nGo to Link\n\n\nYou should see a message on your browser where you have to accept the invitation to the project. This will add you to a project on uCloud, where we have data and extra computing credit for the course.\nBe sure you have joined the project. Check if you have the project OMICS workshop from the project menu (red circle). Afterwards, click on the App menu (green circle) \n\nFind the app Transcriptomics Sandbox (red circle), which is under the title Featured.\n\n\n\n\nClick on it. You will get into the settings window. Choose any Job Name (Nr 1 in the figure below), how many hours you want to use for the job (Nr 2; choose at least 3 hours, you can increase this later), and how many CPUs (Nr 3, choose at least 4 CPUs). Choose the course RNAseq in RStudio from the drop-down menu (Nr 4). Finally, click on the blue button Add Folder.\n\n\n\nNow, click on the browsing bar that appears (red circle).\n\n\n\nIn the appearing window, you should see already a folder called Intro_to_scRNAseq_R. Click on Use at its right (red circle)\n\n\n\nAfterwards, you should have something like this in the settings page:\n\n\n\nNow, click on Submit to start the app (the button is on the right side of the settings page)\nYou will now enter a waiting queue. When the session starts, the timer begins to count down (red circle), and you should be able to open the interface through the button (green circle). Note the buttons to add time to your session (blue circle) and the button to stop the session when you are done (pink circle)\n\n\n\nOpen the interface by clicking on the button (green circle of figure above). Sometimes you are warned of a missing connection: simply refresh the page. You will enter Rstudio, well-known interface to code in R.\nRun the following command to download the tutorial: download.file(\"https://raw.githubusercontent.com/hds-sandbox/ELIXIR-workshop/main/Notebooks/scRNAseq_Tutorial_R.Rmd\", \"tutorial_scrna.Rmd\")\nOpen the file tutorial_scrnaR.Rmd that should now appear in the file browser of Rstudio. Click now on visual (on the tool bar) if you need to see the tutorial in a more readable format.\nThe executable code is inside chunks (called cells) to be executed in order from the first to the last using the little green arrow appearing on the right side of each code cell.\nRead carefully through the tutorial and execute the code cells. You will see the outputs appearing as you proceed."
+  },
+  {
+    "objectID": "workshop/workshopAAU_2023.html#discussion-and-feedback",
+    "href": "workshop/workshopAAU_2023.html#discussion-and-feedback",
+    "title": "\nSandbox Workshop\n",
+    "section": "Discussion and feedback",
+    "text": "Discussion and feedback\nWe hope you enjoyed the live demo. If you have broader questions, suggestions, or concerns, now is the time to raise them! If you are totally toast for the day, remember that you can check out longer versions of our tutorials as well as other topics and tools in each of the Sandbox modules or join us for a multi-day in person course.\nAs data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. Please answer these 5 questions for us before you head out for the day (link activated on day of the workshop).\n\nNice meeting you and we hope to see you again!"
+  }
+]
