@@ -1,10 +1,38 @@
 [
   {
+    "objectID": "tips/R.html",
+    "href": "tips/R.html",
+    "title": "Useful tips for R",
+    "section": "",
+    "text": "Useful tips for R"
+  },
+  {
+    "objectID": "tips/bash.html",
+    "href": "tips/bash.html",
+    "title": "Useful tips for bash",
+    "section": "",
+    "text": "awk '$2~/^-$/ { next } { print }' file_input &gt; file_output\n\n\n\nawk -F “\",\"” ‘{print $M}’ file.csv\n\n\n\nawk ‘{ $1=““; $2=”“; print}’ filename\n\n\n\n\n\n\necho $a $b $c | tr -s ’ ’ ’\n#Compress one at the time the files in the current folder (and subfolders) not yet in .gz format\nfind . -type f ! -name ’*.gz’ -exec gzip “{}” ;\n#wget on a list of links written on each line of a text file\nwget -i file.txt\n#portable perl sum (or other operations) between numbers/variables\nperl -E “say $a + $b”\n#sort col 1 numerically and count unique occurrences\ncut -f1 20141020.combined_mask.whole_genomeV2.bed | sort -n | uniq -c\n#substitute “string1” into “string2” in the file\nsed -e “s/string1/string2/” myFile\n#sort based on column 3\nsort -k 3,3 myFile\n#show files with extension .genolike and print them without both path and extension\nls *.genolikes | xargs -n 1 basename -s .genolikes\n#get from the 10th to the 20th line of a file\nsed -n ‘10,20p’ myFile\n#get multiple lines of a file\nsed -n -e 1p -e 2p -e ………. myFile\n#From the L-th line, get each M-th subsequent line\nsed -n ‘\\(L~\\)Mp’ myFile\n#remove lines with a specific pattern from a file\ngrep -v -e “pattern” myFile &gt; newFile\n #same but tells you the lines where pattern does not happen (or remove -v to find where it happens)\n grep -v -n -e \"pattern\" myFile | cut -f1 -d\":\"\n grep -v -n -e \"pattern1\\|pattern2\" myFile | cut -f1 -d\":\"\n#Read columns in a file whose separator is |\nawk -F’|’ ‘{print NF; exit}’ myFile\n#list folders and print their name removing the last characther “/” for var in ls -d */; do echo ${var::-1}; done"
+  },
+  {
+    "objectID": "tips/bash.html#text-files-handling",
+    "href": "tips/bash.html#text-files-handling",
+    "title": "Useful tips for bash",
+    "section": "",
+    "text": "awk '$2~/^-$/ { next } { print }' file_input &gt; file_output\n\n\n\nawk -F “\",\"” ‘{print $M}’ file.csv\n\n\n\nawk ‘{ $1=““; $2=”“; print}’ filename"
+  },
+  {
+    "objectID": "tips/bash.html#handling-variables",
+    "href": "tips/bash.html#handling-variables",
+    "title": "Useful tips for bash",
+    "section": "",
+    "text": "echo $a $b $c | tr -s ’ ’ ’\n#Compress one at the time the files in the current folder (and subfolders) not yet in .gz format\nfind . -type f ! -name ’*.gz’ -exec gzip “{}” ;\n#wget on a list of links written on each line of a text file\nwget -i file.txt\n#portable perl sum (or other operations) between numbers/variables\nperl -E “say $a + $b”\n#sort col 1 numerically and count unique occurrences\ncut -f1 20141020.combined_mask.whole_genomeV2.bed | sort -n | uniq -c\n#substitute “string1” into “string2” in the file\nsed -e “s/string1/string2/” myFile\n#sort based on column 3\nsort -k 3,3 myFile\n#show files with extension .genolike and print them without both path and extension\nls *.genolikes | xargs -n 1 basename -s .genolikes\n#get from the 10th to the 20th line of a file\nsed -n ‘10,20p’ myFile\n#get multiple lines of a file\nsed -n -e 1p -e 2p -e ………. myFile\n#From the L-th line, get each M-th subsequent line\nsed -n ‘\\(L~\\)Mp’ myFile\n#remove lines with a specific pattern from a file\ngrep -v -e “pattern” myFile &gt; newFile\n #same but tells you the lines where pattern does not happen (or remove -v to find where it happens)\n grep -v -n -e \"pattern\" myFile | cut -f1 -d\":\"\n grep -v -n -e \"pattern1\\|pattern2\" myFile | cut -f1 -d\":\"\n#Read columns in a file whose separator is |\nawk -F’|’ ‘{print NF; exit}’ myFile\n#list folders and print their name removing the last characther “/” for var in ls -d */; do echo ${var::-1}; done"
+  },
+  {
     "objectID": "news.html",
     "href": "news.html",
     "title": "News",
     "section": "",
-    "text": "The ABC will routinely post new meetings and related workshops/courses of interest here.\n\n\n\n\n\n\n\n\n\n\n\n\nFirst ABC session\n\n\n\nCafe\n\n\nCoding\n\n\nBioinformatics\n\n\n\nCome to the ABC at AIAS\n\n\n\nJun 13, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "The ABC will routinely post new meetings and related workshops/courses of interest here.\n\n\n\n\n\n\n\n\n\n\n\n\nABC.1: First ABC session\n\n\n\nCafe\n\n\nCoding\n\n\nBioinformatics\n\n\n\nCoding and bioinformatics for anyone!\n\n\n\nJun 13, 2024\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Event title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nEvent title\n\n\nDates\n\n\nLocation\n\n\nOrganizers\n\n\n\n\n\n\nExample\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "workshop/workshopAAU_2023.html",
@@ -77,25 +105,67 @@
     "text": "Discussion and feedback\nWe hope you enjoyed the live demo. If you have broader questions, suggestions, or concerns, now is the time to raise them! If you are totally toast for the day, remember that you can check out longer versions of our tutorials as well as other topics and tools in each of the Sandbox modules or join us for a multi-day in person course.\nAs data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. Please answer these 5 questions for us before you head out for the day (link activated on day of the workshop).\n\nNice meeting you and we hope to see you again!"
   },
   {
-    "objectID": "cards/AlbaMartinez.html",
-    "href": "cards/AlbaMartinez.html",
-    "title": "Alba Refoyo Martinez",
+    "objectID": "documentation/2024-06-13-instR.html",
+    "href": "documentation/2024-06-13-instR.html",
+    "title": "ABC.1: Install R, Index reference Genome, and coding problems/solutions",
     "section": "",
-    "text": "Alba is a Sandbox data scientist based at the University of Copenhagen. During her academic background as a PhD and Postdoc she has developed a solid expertise in large-scale genomics and pipelines development on computing clusters."
+    "text": "While it is always worth remembering an event which offers free cake (especially when it recurs with a frequency like the ABC, as you could read here), you might want to read again what has been done and said after the sugar levels drop down."
+  },
+  {
+    "objectID": "cards/SamueleSoraggi.html",
+    "href": "cards/SamueleSoraggi.html",
+    "title": "Samuele Soraggi",
+    "section": "",
+    "text": "Samuele is a Sandbox data scientist based at the university of Aarhus. During his academic activity he has gained experience in population genomics, transcriptomics, single cell multiomics and spans his knowledge across various themes of advanced computational statistics."
+  },
+  {
+    "objectID": "news/past/test.html",
+    "href": "news/past/test.html",
+    "title": "Example",
+    "section": "",
+    "text": "Test post"
+  },
+  {
+    "objectID": "news/upcoming/2024-06-13-session1.html",
+    "href": "news/upcoming/2024-06-13-session1.html",
+    "title": "ABC.1: First ABC session",
+    "section": "",
+    "text": "The very first session of the ABC (Accessible Bioinformatics Cafe) will launch on june 13th, at 13:00 in the hall of AIAS (the Aarhus Institute of Advanced Studies, see below).\nEveryone is welcome to join independently of coding skills and level. In this first meeting we will also distribute a survey, so that participants can give some ideas about expectations and topics of interest."
+  },
+  {
+    "objectID": "news/upcoming/2024-06-13-session1.html#purpose",
+    "href": "news/upcoming/2024-06-13-session1.html#purpose",
+    "title": "ABC.1: First ABC session",
+    "section": "Purpose",
+    "text": "Purpose\nThe ABC aims to:\n\nSupport and guide in using bioinformatics and programming tools.\nProvide support for coding-related issues.\nEnhance the coding skills of participants in fundamental programming languages (R, python, bash command line)."
+  },
+  {
+    "objectID": "news/upcoming/2024-06-13-session1.html#who-can-benefit-from-the-abc",
+    "href": "news/upcoming/2024-06-13-session1.html#who-can-benefit-from-the-abc",
+    "title": "ABC.1: First ABC session",
+    "section": "Who can benefit from the ABC?",
+    "text": "Who can benefit from the ABC?\nEveryone, really. Those that will particularly benefit from the ABC include:\n\nBiologists, bioinformaticians, and health scientists who wish to adopt coding-based solutions.\nScientists and students who wish to accelerate the coding-based analysis of various types of data (such as OMICs data and other large-scale data) in research across Aarhus University and Aarhus University Hospital.\nStudents and researchers who want an open environment where it is easy to get assistance and talk with others encountering similar issues (or maybe who already solved them!)"
+  },
+  {
+    "objectID": "news/upcoming/2024-06-13-session1.html#format",
+    "href": "news/upcoming/2024-06-13-session1.html#format",
+    "title": "ABC.1: First ABC session",
+    "section": "Format",
+    "text": "Format\nEach 2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Welcome to the Accessible Bioinformatics Cafe",
     "section": "",
-    "text": "An informal and collaborative cafe to help each other upskilling coding/bioinformatics skills. Hosted by scientists and bioinformaticians of the Health data science sandbox and Bioinformatics core facility at Aarhus University.\n\n \n\n\n\n\n\n\n\n\nHave you ever ended in a situation involving questions similar to those?\n\nWhere do I start to code on a command line?\n How do I learn the basic R/python commands?\n What the heck is this error?????\n\nDo you feel finding the right tools is like going through a maze of software installations, versions and incompatibilities?\n\n\n\nWhat follows is the natural desire of throwing your computer out of the window. Don’t worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the Kubler-Ross curve, where frustration is the point in which coding becomes challenging and we might feel lost.\nThe idea behind ABC is to bridge you beyond frustration moments, while at the same time offering a relaxed environment and the possibility to learn new things, help and get to know each other\n\n\n\n\n\n\n\n\nEveryone, really. Those that will particularly benefit from the ABC include:\n\nBiologists, bioinformaticians, and health scientists who wish to adopt coding-based solutions.\nScientists and students who wish to accelerate the coding-based analysis of various types of data (such as OMICs data and other large-scale data) in research across Aarhus University and Aarhus University Hospital.\nStudents and researchers who want an open environment where it is easy to get assistance and talk with others encountering similar issues (or maybe who already solved them!)\n\n\n\n\nEach 2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues."
+    "text": "An informal and collaborative cafe to help each other upskilling coding/bioinformatics skills. Hosted by scientists and bioinformaticians of the Health data science sandbox and Bioinformatics core facility at Aarhus University.\n\n \n\n\n\n\n\n\n\n\nHave you ever ended in a situation involving questions similar to those?\n\nWhere do I start to code on a command line?\n How do I learn the basic R/python commands?\n What the heck is this error?????\n\nDo you feel finding the right tools is like going through a maze of software installations, versions and incompatibilities?\n\n\n\nWhat follows is the natural desire of throwing your computer out of the window. Don’t worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the Kubler-Ross curve1, where frustration is the point in which coding becomes challenging and we might feel lost.\nThe idea behind ABC is to bridge you beyond frustration moments, while at the same time offering a relaxed environment and the possibility to learn new things, help and get to know each other:\n\n\n\n\n\n\n\n\nEveryone, really. Those that will particularly benefit from the ABC include:\n\nBiologists, bioinformaticians, and health scientists who wish to adopt coding-based solutions.\nScientists and students who wish to accelerate the coding-based analysis of various types of data (such as OMICs data and other large-scale data) in research across Aarhus University and Aarhus University Hospital.\nStudents and researchers who want an open environment where it is easy to get assistance and talk with others encountering similar issues (or maybe who already solved them!)\n\n\n\n\nEach ~2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues."
   },
   {
     "objectID": "index.html#concept",
     "href": "index.html#concept",
     "title": "Welcome to the Accessible Bioinformatics Cafe",
     "section": "",
-    "text": "Have you ever ended in a situation involving questions similar to those?\n\nWhere do I start to code on a command line?\n How do I learn the basic R/python commands?\n What the heck is this error?????\n\nDo you feel finding the right tools is like going through a maze of software installations, versions and incompatibilities?\n\n\n\nWhat follows is the natural desire of throwing your computer out of the window. Don’t worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the Kubler-Ross curve, where frustration is the point in which coding becomes challenging and we might feel lost.\nThe idea behind ABC is to bridge you beyond frustration moments, while at the same time offering a relaxed environment and the possibility to learn new things, help and get to know each other"
+    "text": "Have you ever ended in a situation involving questions similar to those?\n\nWhere do I start to code on a command line?\n How do I learn the basic R/python commands?\n What the heck is this error?????\n\nDo you feel finding the right tools is like going through a maze of software installations, versions and incompatibilities?\n\n\n\nWhat follows is the natural desire of throwing your computer out of the window. Don’t worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the Kubler-Ross curve1, where frustration is the point in which coding becomes challenging and we might feel lost.\nThe idea behind ABC is to bridge you beyond frustration moments, while at the same time offering a relaxed environment and the possibility to learn new things, help and get to know each other:"
   },
   {
     "objectID": "index.html#who-can-benefit-from-the-abc",
@@ -109,42 +179,21 @@
     "href": "index.html#format",
     "title": "Welcome to the Accessible Bioinformatics Cafe",
     "section": "",
-    "text": "Each 2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues."
+    "text": "Each ~2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues."
   },
   {
-    "objectID": "news/upcoming/2024-06-13-session1.html",
-    "href": "news/upcoming/2024-06-13-session1.html",
-    "title": "First ABC session",
+    "objectID": "index.html#footnotes",
+    "href": "index.html#footnotes",
+    "title": "Welcome to the Accessible Bioinformatics Cafe",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nSomeone prefers to refer to the Dunning-Kruger effect instead, but this is for people overestimating their abilities. It is not the case of coders: we know that we cannot do something when we get stuck!↩︎"
+  },
+  {
+    "objectID": "cards/AlbaMartinez.html",
+    "href": "cards/AlbaMartinez.html",
+    "title": "Alba Refoyo Martinez",
     "section": "",
-    "text": "The very first session of the ABC (Accessible Bioinformatics Cafe) will launch on june 13th, at 13:00 in the hall of AIAS (the Aarhus Institute of Advanced Studies).\nEveryone is welcome to join independently of coding skills and level. In this first meeting we will also distribute a survey, so that participants can give some ideas about expectations and topics of interest."
-  },
-  {
-    "objectID": "news/upcoming/2024-06-13-session1.html#purpose",
-    "href": "news/upcoming/2024-06-13-session1.html#purpose",
-    "title": "First ABC session",
-    "section": "Purpose",
-    "text": "Purpose\nThe ABC aims to:\n\nSupport and guide in using bioinformatics and programming tools.\nProvide support for coding-related issues.\nEnhance the coding skills of participants in fundamental programming languages (R, python, bash command line)."
-  },
-  {
-    "objectID": "news/upcoming/2024-06-13-session1.html#who-can-benefit-from-the-abc",
-    "href": "news/upcoming/2024-06-13-session1.html#who-can-benefit-from-the-abc",
-    "title": "First ABC session",
-    "section": "Who can benefit from the ABC?",
-    "text": "Who can benefit from the ABC?\nEveryone, really. Those that will particularly benefit from the ABC include:\n\nBiologists, bioinformaticians, and health scientists who wish to adopt coding-based solutions.\nScientists and students who wish to accelerate the coding-based analysis of various types of data (such as OMICs data and other large-scale data) in research across Aarhus University and Aarhus University Hospital.\nStudents and researchers who want an open environment where it is easy to get assistance and talk with others encountering similar issues (or maybe who already solved them!)"
-  },
-  {
-    "objectID": "news/upcoming/2024-06-13-session1.html#format",
-    "href": "news/upcoming/2024-06-13-session1.html#format",
-    "title": "First ABC session",
-    "section": "Format",
-    "text": "Format\nEach 2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues."
-  },
-  {
-    "objectID": "cards/SamueleSoraggi.html",
-    "href": "cards/SamueleSoraggi.html",
-    "title": "Samuele Soraggi",
-    "section": "",
-    "text": "Samuele is a Sandbox data scientist based at the university of Aarhus. During his academic activity he has gained experience in population genomics, transcriptomics, single cell multiomics and spans his knowledge across various themes of advanced computational statistics."
+    "text": "Alba is a Sandbox data scientist based at the University of Copenhagen. During her academic background as a PhD and Postdoc she has developed a solid expertise in large-scale genomics and pipelines development on computing clusters."
   },
   {
     "objectID": "about/about.html",
@@ -215,5 +264,19 @@
     "title": "\nWelcome to the homepage for our in-person bulk RNAseq workshop. Thank you for joining us!\n",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nOther institutions (e.g. hospitals, libraries, …) can log on through WAYF. See all institutions here↩︎\nTo use Sandbox materials outside of the workshop: remember that each new user has hundreds of hours of free computing credit and around 50GB of free storage, which can be used to run any uCloud software. If you run out of credit (which takes a long time) you’ll need to check with the local DeiC office at your university about how to request compute hours on UCloud. Contact us at the Sandbox if you need help or want more information.↩︎\nlink activated on day one of the workshop.↩︎"
+  },
+  {
+    "objectID": "Documentation.html",
+    "href": "Documentation.html",
+    "title": "Documentation",
+    "section": "",
+    "text": "In this page we will post things we talked about in the various sessions of the cafe, so that all the material and code is documented session by session. This is useful for anyone, also people not attending a session.\n\n\n\n\n\n\n\n\n\n\n\n\nABC.1: Install R, Index reference Genome, and coding problems/solutions\n\n\n\nR\n\n\nReference\n\n\nIndex\n\n\nSolutions\n\n\n\nThings worth remembering from the ABC.1\n\n\n\nJun 13, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "tips/python.html",
+    "href": "tips/python.html",
+    "title": "Useful tips for python",
+    "section": "",
+    "text": "Useful tips for python"
   }
 ]

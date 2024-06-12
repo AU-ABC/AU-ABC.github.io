@@ -98,6 +98,34 @@ ul.task-list li input[type="checkbox"] {
       window['quarto-listing-loaded']();
     }
   })
+  
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-past_event .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-title','listing-Dates','listing-Location','listing-Organizers',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-past_event'] = new List('listing-past_event', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
   </script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -160,6 +188,25 @@ window.Quarto = {
     <a class="nav-link active" href="./news.html" aria-current="page"> 
 <span class="menu-text">News</span></a>
   </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-tips" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Tips</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-tips">    
+        <li>
+    <a class="dropdown-item" href="./tips/bash.html">
+ <span class="dropdown-text">Useful tips for bash</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./tips/R.html">
+ <span class="dropdown-text">Useful tips for R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./tips/python.html">
+ <span class="dropdown-text">Useful tips for python</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
@@ -211,13 +258,13 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-grid" id="listing-upcoming_event">
 <div class="list grid quarto-listing-cols-4">
-<div class="g-col-1" data-index="0" data-categories="Cafe,Coding,Bioinformatics" data-listing-date-sort="1718236800000" data-listing-file-modified-sort="1718179783026" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="235">
+<div class="g-col-1" data-index="0" data-categories="Cafe,Coding,Bioinformatics" data-listing-date-sort="1718236800000" data-listing-file-modified-sort="1718186811101" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="237">
 <a href="./news/upcoming/2024-06-13-session1.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top"><img src="img/news/number1.png" style="height: 300px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
-First ABC session
+ABC.1: First ABC session
 </h5>
 <div class="listing-categories">
 <div class="listing-category" onclick="window.quartoListingCategory('Cafe'); return false;">
@@ -231,7 +278,7 @@ Bioinformatics
 </div>
 </div>
 <div class="card-text listing-description">
-Come to the ABC at AIAS
+Coding and bioinformatics for anyone!
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
@@ -243,6 +290,60 @@ Jun 13, 2024
 </a>
 </div>
 </div>
+<div class="listing-no-matching d-none">
+No matching items
+</div>
+</div><div class="quarto-listing quarto-listing-container-table" id="listing-past_event">
+<div class="listing-actions-group">
+   <div class="input-group input-group-sm quarto-listing-sort">
+     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
+     <select id="listing-past_event-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-past_event'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
+       <option value="" disabled="" selected="" hidden="">Order By</option>
+       <option value="index" data-direction="asc">Default</option>
+         <option value="listing-title-sort" data-direction="asc">
+          Event title
+        </option>
+     </select>
+  </div>
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<table class="quarto-listing-table table">
+<thead>
+<tr>
+<th>
+<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Event title</a>
+</th>
+<th>
+Dates
+</th>
+<th>
+Location
+</th>
+<th>
+Organizers
+</th>
+</tr>
+</thead>
+<tbody class="list">
+<tr data-index="0" data-categories="Cafe,Coding,Bioinformatics" data-listing-date-sort="1718236800000" data-listing-file-modified-sort="1718186811101" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="2" data-listing-title-sort="Example" data-listing-filename-sort="test.qmd">
+<td>
+<a href="./news/past/test.html" class="title listing-title">Example</a>
+</td>
+<td>
+<span class="listing-Dates">&nbsp;</span>
+</td>
+<td>
+<span class="listing-Location">&nbsp;</span>
+</td>
+<td>
+<span class="listing-Organizers">HDS Sandbox, Bioinf Core facility</span>
+</td>
+</tr>
+</tbody>
+</table>
 <div class="listing-no-matching d-none">
 No matching items
 </div>
@@ -472,7 +573,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/AU-ABC\.github\.io\/");
+      var filterRegex = new RegExp("https:\/\/abc\.au\.dk");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
