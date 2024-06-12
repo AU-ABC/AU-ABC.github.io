@@ -9,30 +9,44 @@
   {
     "objectID": "tips/bash.html",
     "href": "tips/bash.html",
-    "title": "Useful tips for bash",
+    "title": "Useful tips for day-to-day bash",
     "section": "",
-    "text": "awk '$2~/^-$/ { next } { print }' file_input &gt; file_output\n\n\n\nawk -F “\",\"” ‘{print $M}’ file.csv\n\n\n\nawk ‘{ $1=““; $2=”“; print}’ filename\n\n\n\n\n\n\necho $a $b $c | tr -s ’ ’ ’\n#Compress one at the time the files in the current folder (and subfolders) not yet in .gz format\nfind . -type f ! -name ’*.gz’ -exec gzip “{}” ;\n#wget on a list of links written on each line of a text file\nwget -i file.txt\n#portable perl sum (or other operations) between numbers/variables\nperl -E “say $a + $b”\n#sort col 1 numerically and count unique occurrences\ncut -f1 20141020.combined_mask.whole_genomeV2.bed | sort -n | uniq -c\n#substitute “string1” into “string2” in the file\nsed -e “s/string1/string2/” myFile\n#sort based on column 3\nsort -k 3,3 myFile\n#show files with extension .genolike and print them without both path and extension\nls *.genolikes | xargs -n 1 basename -s .genolikes\n#get from the 10th to the 20th line of a file\nsed -n ‘10,20p’ myFile\n#get multiple lines of a file\nsed -n -e 1p -e 2p -e ………. myFile\n#From the L-th line, get each M-th subsequent line\nsed -n ‘\\(L~\\)Mp’ myFile\n#remove lines with a specific pattern from a file\ngrep -v -e “pattern” myFile &gt; newFile\n #same but tells you the lines where pattern does not happen (or remove -v to find where it happens)\n grep -v -n -e \"pattern\" myFile | cut -f1 -d\":\"\n grep -v -n -e \"pattern1\\|pattern2\" myFile | cut -f1 -d\":\"\n#Read columns in a file whose separator is |\nawk -F’|’ ‘{print NF; exit}’ myFile\n#list folders and print their name removing the last characther “/” for var in ls -d */; do echo ${var::-1}; done"
+    "text": "awk '$2~/^-$/ { next } { print }' file_input &gt; file_output\n\n\n\nawk -F \"\\\"*,\\\"*\" '{print $M}' file.csv\n\n\n\nawk '{ $1=\"\"; $2=\"\"; print}' filename\n\n\n\nsed -n '10,20p' myFile\n\n\n\nsed -n -e 1p -e 2p  myFile\n\n\n\n sed -n '$L~$Mp' myFile\n\n\n\ncut -f1 20141020.combined_mask.whole_genomeV2.bed | sort -n | uniq -c\n\n\n\nsed -e \"s/string1/string2/\" myFile \n\n\n\nsort -k 3,3 myFile\n\n\n\ngrep -v -e \"pattern\" myFile &gt; newFile\n\n\ngrep -v -n -e \"pattern\" myFile | cut -f1 -d\":\"\n\ngrep -v -e \"pattern1\\|pattern2\" myFile &gt; newFile\n\n\n\n\n\n\n\necho $a $b $c | tr -s ' ' '\\t'\n\n\n\nperl -E \"say $a + $b\"\n\n\n\n\n\n\nls *.zip | xargs -n 1 basename -s .zip\n\n\n\nfind . -type f ! -name '*.gz' -exec gzip \"{}\" \\;\n\n\n\n\n\n\nwget -i file.txt\n\n\n\nfor var in `ls -d */`; do echo ${var::-1}; done"
   },
   {
-    "objectID": "tips/bash.html#text-files-handling",
-    "href": "tips/bash.html#text-files-handling",
-    "title": "Useful tips for bash",
+    "objectID": "tips/bash.html#handling-text-files",
+    "href": "tips/bash.html#handling-text-files",
+    "title": "Useful tips for day-to-day bash",
     "section": "",
-    "text": "awk '$2~/^-$/ { next } { print }' file_input &gt; file_output\n\n\n\nawk -F “\",\"” ‘{print $M}’ file.csv\n\n\n\nawk ‘{ $1=““; $2=”“; print}’ filename"
+    "text": "awk '$2~/^-$/ { next } { print }' file_input &gt; file_output\n\n\n\nawk -F \"\\\"*,\\\"*\" '{print $M}' file.csv\n\n\n\nawk '{ $1=\"\"; $2=\"\"; print}' filename\n\n\n\nsed -n '10,20p' myFile\n\n\n\nsed -n -e 1p -e 2p  myFile\n\n\n\n sed -n '$L~$Mp' myFile\n\n\n\ncut -f1 20141020.combined_mask.whole_genomeV2.bed | sort -n | uniq -c\n\n\n\nsed -e \"s/string1/string2/\" myFile \n\n\n\nsort -k 3,3 myFile\n\n\n\ngrep -v -e \"pattern\" myFile &gt; newFile\n\n\ngrep -v -n -e \"pattern\" myFile | cut -f1 -d\":\"\n\ngrep -v -e \"pattern1\\|pattern2\" myFile &gt; newFile"
   },
   {
     "objectID": "tips/bash.html#handling-variables",
     "href": "tips/bash.html#handling-variables",
-    "title": "Useful tips for bash",
+    "title": "Useful tips for day-to-day bash",
     "section": "",
-    "text": "echo $a $b $c | tr -s ’ ’ ’\n#Compress one at the time the files in the current folder (and subfolders) not yet in .gz format\nfind . -type f ! -name ’*.gz’ -exec gzip “{}” ;\n#wget on a list of links written on each line of a text file\nwget -i file.txt\n#portable perl sum (or other operations) between numbers/variables\nperl -E “say $a + $b”\n#sort col 1 numerically and count unique occurrences\ncut -f1 20141020.combined_mask.whole_genomeV2.bed | sort -n | uniq -c\n#substitute “string1” into “string2” in the file\nsed -e “s/string1/string2/” myFile\n#sort based on column 3\nsort -k 3,3 myFile\n#show files with extension .genolike and print them without both path and extension\nls *.genolikes | xargs -n 1 basename -s .genolikes\n#get from the 10th to the 20th line of a file\nsed -n ‘10,20p’ myFile\n#get multiple lines of a file\nsed -n -e 1p -e 2p -e ………. myFile\n#From the L-th line, get each M-th subsequent line\nsed -n ‘\\(L~\\)Mp’ myFile\n#remove lines with a specific pattern from a file\ngrep -v -e “pattern” myFile &gt; newFile\n #same but tells you the lines where pattern does not happen (or remove -v to find where it happens)\n grep -v -n -e \"pattern\" myFile | cut -f1 -d\":\"\n grep -v -n -e \"pattern1\\|pattern2\" myFile | cut -f1 -d\":\"\n#Read columns in a file whose separator is |\nawk -F’|’ ‘{print NF; exit}’ myFile\n#list folders and print their name removing the last characther “/” for var in ls -d */; do echo ${var::-1}; done"
+    "text": "echo $a $b $c | tr -s ' ' '\\t'\n\n\n\nperl -E \"say $a + $b\""
+  },
+  {
+    "objectID": "tips/bash.html#managing-files",
+    "href": "tips/bash.html#managing-files",
+    "title": "Useful tips for day-to-day bash",
+    "section": "",
+    "text": "ls *.zip | xargs -n 1 basename -s .zip\n\n\n\nfind . -type f ! -name '*.gz' -exec gzip \"{}\" \\;"
+  },
+  {
+    "objectID": "tips/bash.html#transfering-files",
+    "href": "tips/bash.html#transfering-files",
+    "title": "Useful tips for day-to-day bash",
+    "section": "",
+    "text": "wget -i file.txt\n\n\n\nfor var in `ls -d */`; do echo ${var::-1}; done"
   },
   {
     "objectID": "news.html",
     "href": "news.html",
     "title": "News",
     "section": "",
-    "text": "The ABC will routinely post new meetings and related workshops/courses of interest here.\n\n\n\n\n\n\n\n\n\n\n\n\nABC.1: First ABC session\n\n\n\nCafe\n\n\nCoding\n\n\nBioinformatics\n\n\n\nCoding and bioinformatics for anyone!\n\n\n\nJun 13, 2024\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Event title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nEvent title\n\n\nDates\n\n\nLocation\n\n\nOrganizers\n\n\n\n\n\n\nExample\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\n\nNo matching items"
+    "text": "The ABC will routinely post new meetings and related workshops/courses of interest here.\n\n\n\n\n\n\n\n\n\n\n\n\nABC.1: First ABC session\n\n\n\nCafe\n\n\nCoding\n\n\nBioinformatics\n\n\n\nCoding and bioinformatics for anyone!\n\n\n\nJun 13, 2024\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Event title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nEvent title\n\n\nDates\n\n\nLocation\n\n\nOrganizers\n\n\n\n\n\n\nExample\n\n\n2024-06-13\n\n\nAIAS hall, AU campus\n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "workshop/workshopAAU_2023.html",
@@ -158,7 +172,7 @@
     "href": "index.html",
     "title": "Welcome to the Accessible Bioinformatics Cafe",
     "section": "",
-    "text": "An informal and collaborative cafe to help each other upskilling coding/bioinformatics skills. Hosted by scientists and bioinformaticians of the Health data science sandbox and Bioinformatics core facility at Aarhus University.\n\n \n\n\n\n\n\n\n\n\nHave you ever ended in a situation involving questions similar to those?\n\nWhere do I start to code on a command line?\n How do I learn the basic R/python commands?\n What the heck is this error?????\n\nDo you feel finding the right tools is like going through a maze of software installations, versions and incompatibilities?\n\n\n\nWhat follows is the natural desire of throwing your computer out of the window. Don’t worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the Kubler-Ross curve1, where frustration is the point in which coding becomes challenging and we might feel lost.\nThe idea behind ABC is to bridge you beyond frustration moments, while at the same time offering a relaxed environment and the possibility to learn new things, help and get to know each other:\n\n\n\n\n\n\n\n\nEveryone, really. Those that will particularly benefit from the ABC include:\n\nBiologists, bioinformaticians, and health scientists who wish to adopt coding-based solutions.\nScientists and students who wish to accelerate the coding-based analysis of various types of data (such as OMICs data and other large-scale data) in research across Aarhus University and Aarhus University Hospital.\nStudents and researchers who want an open environment where it is easy to get assistance and talk with others encountering similar issues (or maybe who already solved them!)\n\n\n\n\nEach ~2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues."
+    "text": "An informal and collaborative cafe to help each other upskilling coding/bioinformatics skills. Hosted by scientists and bioinformaticians of the Health data science sandbox and Bioinformatics core facility at Aarhus University.\n\n \n\n\n\n\n\n\n\n\nHave you ever ended in a situation involving questions similar to those?\n\nWhere do I start to code on a command line?\n How do I learn the basic R/python commands?\n What the heck is this error?????\n\nDo you feel finding the right tools is like going through a maze of software installations, versions and incompatibilities?\n\n\n\nWhat follows is the natural desire of throwing your computer out of the window. Don’t worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the Kubler-Ross curve1, where frustration is the point in which coding becomes challenging and we might feel lost.\nThe idea behind ABC is to bridge you beyond frustration moments, while at the same time offering a relaxed environment and the possibility to learn new things, help and get to know each other:\n\n\n\n\n\n\n\n\nEveryone, really. Those that will particularly benefit from the ABC include:\n\nBiologists, bioinformaticians, and health scientists who wish to adopt coding-based solutions.\nScientists and students who wish to accelerate the coding-based analysis of various types of data (such as OMICs data and other large-scale data) in research across Aarhus University and Aarhus University Hospital.\nStudents and researchers who want an open environment where it is easy to get assistance and talk with others encountering similar issues (or maybe who already solved them!)\n\n\n\n\nEach ~2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues.\n\n\n\n\n\nEvents Calendar. Look at our News for more information\n\n\nWhat\nWhen\nWhere\nTopics\n\n\n\n\nABC.1\n13.june 2024\nAIAS hall\nInstall R, R basics, Open cafe\n\n\nABC.2\n27.june 2024\nTBA\nTBA"
   },
   {
     "objectID": "index.html#concept",
@@ -180,6 +194,13 @@
     "title": "Welcome to the Accessible Bioinformatics Cafe",
     "section": "",
     "text": "Each ~2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues."
+  },
+  {
+    "objectID": "index.html#calendar",
+    "href": "index.html#calendar",
+    "title": "Welcome to the Accessible Bioinformatics Cafe",
+    "section": "",
+    "text": "Events Calendar. Look at our News for more information\n\n\nWhat\nWhen\nWhere\nTopics\n\n\n\n\nABC.1\n13.june 2024\nAIAS hall\nInstall R, R basics, Open cafe\n\n\nABC.2\n27.june 2024\nTBA\nTBA"
   },
   {
     "objectID": "index.html#footnotes",
