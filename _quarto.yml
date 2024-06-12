@@ -16,8 +16,11 @@ website:
       - text: Tips
         menu:
           - href: tips/bash.qmd
+            text: Bash
           - href: tips/R.qmd
+            text: R
           - href: tips/python.qmd
+            text: Python
     right: 
       - icon: github
         href: https://github.com/AU-ABC

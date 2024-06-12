@@ -5,9 +5,9 @@ format:
         page-layout: full
 ---
 
-# Useful tips for bash
+# Useful tips for day-to-day bash
 
-## text files handling
+## Handling text files
 
 ### Check if column 2 is different from some text (in this case -) and print it out
 
@@ -17,104 +17,113 @@ awk '$2~/^-$/ { next } { print }' file_input > file_output
 
 ### Extract M-th column of a .csv file
 
-
+```{.bash}
 awk -F "\"*,\"*" '{print $M}' file.csv
+```
 
-### print a file except first two columns
+### Print a file except first two columns
 
-
+```{.bash}
 awk '{ $1=""; $2=""; print}' filename
+```
+
+### Get from the 10th to the 20th line of a file
+
+```{.bash}
+sed -n '10,20p' myFile
+```
+
+
+### Get multiple lines of a file (here line 1 and line 2)
+
+```{.bash}
+sed -n -e 1p -e 2p  myFile
+```
+
+
+### From the L-th line, get each M-th subsequent line
+
+```{.bash}
+ sed -n '$L~$Mp' myFile
+ ```
+
+### Sort col 1 numerically and count unique occurrences
+
+```{.bash}
+cut -f1 20141020.combined_mask.whole_genomeV2.bed | sort -n | uniq -c
+```
+
+
+### Substitute "string1" into "string2" in the file 
+
+```{.bash}
+sed -e "s/string1/string2/" myFile 
+```
+
+
+### Sort based on column 3
+
+```{.bash}
+sort -k 3,3 myFile
+```
+
+### remove lines with a specific pattern from a file
+
+```{.bash}
+grep -v -e "pattern" myFile > newFile
+```
+     
+- #### same but tells you the lines where pattern does not happen (or remove -v to find where it happens)
+
+    ```{.bash}
+    grep -v -n -e "pattern" myFile | cut -f1 -d":"
+    ```
+- #### same but looks at one or both of two patterns
+
+    ```{.bash}
+    grep -v -e "pattern1\|pattern2" myFile > newFile
+    ```
 
 ## Handling variables
 
 ### echo some values and substitute space with tab delimiter
 
-
+```{.bash}
 echo $a $b $c | tr -s ' ' '\t'
+```
 
 
+### portable perl sum (or other operations) between numbers/variables
 
-
-
-
-#Compress one at the time the files in the current folder (and subfolders) not yet in .gz format
-
-
-find . -type f ! -name '*.gz' -exec gzip "{}" \;
-
-
-
-#wget on a list of links written on each line of a text file
-
-
-wget -i file.txt
-
-
-
-
-
-#portable perl sum (or other operations) between numbers/variables
-
-
+```{.bash}
 perl -E "say $a + $b"
+```
 
 
-#sort col 1 numerically and count unique occurrences
+## Managing files
 
+### show files with extension .zip and print them without both path and extension
 
-cut -f1 20141020.combined_mask.whole_genomeV2.bed | sort -n | uniq -c
+```{.bash}
+ls *.zip | xargs -n 1 basename -s .zip
+```
 
+### Compress one at the time the files in the current folder (and subfolders) not yet in .gz format
 
-#substitute "string1" into "string2" in the file 
+```{.bash}
+find . -type f ! -name '*.gz' -exec gzip "{}" \;
+```
 
+## Transfering files
 
-sed -e "s/string1/string2/" myFile 
+### Download with wget using a list of download links written on each line of file.txt
 
+```{.bash}
+wget -i file.txt
+```
 
-#sort based on column 3
+### List folders and print their name removing the last characther "/"
 
-
-sort -k 3,3 myFile
-
-
-#show files with extension .genolike and print them without both path and extension
-
-
-ls *.genolikes | xargs -n 1 basename -s .genolikes
-
-
-#get from the 10th to the 20th line of a file
-
-
-sed -n '10,20p' myFile
-
-
-#get multiple lines of a file
-
-
-sed -n -e 1p -e 2p -e ..........  myFile
-
-
-#From the L-th line, get each M-th subsequent line
-
-
- sed -n '$L~$Mp' myFile
-
-
-#remove lines with a specific pattern from a file
-
-
-grep -v -e "pattern" myFile > newFile
-     
-     #same but tells you the lines where pattern does not happen (or remove -v to find where it happens)
-     grep -v -n -e "pattern" myFile | cut -f1 -d":"
-     grep -v -n -e "pattern1\|pattern2" myFile | cut -f1 -d":"
-
-
-#Read columns in a file whose separator is |
-
-
-awk -F'|' '{print NF; exit}' myFile
-
-#list folders and print their name removing the last characther "/"
+```{.bash}
 for var in `ls -d */`; do echo ${var::-1}; done
+```

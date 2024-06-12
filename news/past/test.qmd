@@ -2,6 +2,8 @@
 title: "Example"
 author: "Samuele Soraggi"
 Organizers: HDS Sandbox, Bioinf Core facility
+Location: AIAS hall, AU campus
+Dates: 2024-06-13 
 date: 2024-06-13
 categories: [Cafe, Coding, Bioinformatics]
 description: "Test!"

@@ -11,7 +11,7 @@ description: "Coding and bioinformatics for anyone!"
 
 The very first session of the ABC (Accessible Bioinformatics Cafe) will launch **on june 13th, at 13:00 in the hall of AIAS** (the Aarhus Institute of Advanced Studies, see below).
 
-![](../../img/news/AIAS.png)
+![](../../img/news/AIAS.png){fig-align="center" width=800px}
 
 Everyone is welcome to **join independently of coding skills and level**. In this first meeting we will also distribute a survey, so that participants can give some ideas about expectations and topics of interest.
 

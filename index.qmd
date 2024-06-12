@@ -49,3 +49,12 @@ Each ~2 hour session of the ABC will feature:
 
 - Topic Presentation: Insightful presentations on various bioinformatics and coding topics.
 - Open Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues.
+
+## Calendar
+
+| What  | When  | Where |
+|--------|--------|--------|
+| ABC.1  | 13.june 2024 | [AIAS hall](https://maps.app.goo.gl/ns3c3PpTyNVqhaENA) | 
+| ABC.2  | 27.june 2024 | TBA |
+
+: Events Calendar. Look at our [News](./news.qmd) for more information {.striped .hover}
