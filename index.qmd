@@ -6,7 +6,7 @@ format:
 bibliography: resources/references.bib
 ---
 
-# Welcome to the Accressible Bioinformatics Cafe {.centered}
+# Welcome to the Accessible Bioinformatics Cafe {.centered}
 
 <div style="text-align: center;">
 An informal and collaborative cafe to help each other upskilling coding/bioinformatics skills. Hosted by scientists and bioinformaticians of the [Health data science sandbox](https://hds-sandbox.github.io) and [Bioinformatics core facility](https://biomed.au.dk/bioinformatics-core-facility) at Aarhus University.
@@ -14,12 +14,38 @@ An informal and collaborative cafe to help each other upskilling coding/bioinfor
 
 &nbsp;
 
-## Idea {.centered}
+## Concept
 
-<span style="font-size:0.8em;">Where do I start to code on a command line?</span>
-<span style="font-size:1.1em;"> How do I learn the basic R/python commands?</span>
-<span style="font-size:1.3em;"> What the heck is this error?????</span>
-<span style="font-size:1.6em;"> Where is the nearest window?????</span>
+::: {.callout-note appearance="simple" icon="false"}
 
-![Dispose of your computer after too much frustration](img/homepage/disposepc.jpg){fig-align=center width=600px}
+Have you ever ended in a situation involving questions similar to those?
 
+- <span style="font-size:1em;">Where do I start to code on a command line?</span>
+- <span style="font-size:1.2em;"> How do I learn the basic R/python commands?</span>
+- <span style="font-size:1.4em;"> What the heck is this error?????</span>
+
+Do you feel finding the right tools is like going through a maze of software installations, versions and incompatibilities?
+
+:::
+
+What follows is the natural desire of throwing your computer out of the window. Don't worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the [Kubler-Ross curve](https://en.wikipedia.org/wiki/Five_stages_of_grief), where frustration is the point in which coding becomes challenging and we might feel lost.
+
+The idea behind ABC is to bridge you beyond frustration moments, while at the same time offering a relaxed environment and the possibility to learn new things, help and get to know each other
+
+![](img/homepage/gifABC.gif){fig-align=center width=800px}
+
+
+## Who can benefit from the ABC?
+ 
+Everyone, really. Those that will particularly benefit from the ABC include:
+
+- Biologists, bioinformaticians, and health scientists who wish to adopt coding-based solutions.
+- Scientists and students who wish to accelerate the coding-based analysis of various types of data (such as OMICs data and other large-scale data) in research across Aarhus University and Aarhus University Hospital.
+- Students and researchers who want an open environment where it is easy to get assistance and talk with others encountering similar issues (or maybe who already solved them!)
+
+## Format
+ 
+Each 2 hour session of the ABC will feature:
+
+- Topic Presentation: Insightful presentations on various bioinformatics and coding topics.
+- Open Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues.

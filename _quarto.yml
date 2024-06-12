@@ -8,8 +8,8 @@ website:
     left:
       - href: index.qmd
         text: Home
-#      - href: news.qmd
-#        text: News
+      - href: news.qmd
+        text: News
 #      - text: Datasets
 #        menu:
 #          - href: datasets/datapolicy.qmd

@@ -1,0 +1,37 @@
+---
+title: "First ABC session"
+author: "Samuele Soraggi"
+Organizers: HDS Sandbox, Bioinf Core facility
+date: 2024-06-13
+categories: [Cafe, Coding, Bioinformatics]
+description: "Come to the ABC at AIAS"
+---
+
+![](../../img/news/number1.png){fig-align="center" width=400px}
+
+The very first session of the ABC (Accessible Bioinformatics Cafe) will launch **on june 13th, at 13:00 in the hall of AIAS** (the Aarhus Institute of Advanced Studies).
+
+Everyone is welcome to **join independently of coding skills and level**. In this first meeting we will also distribute a survey, so that participants can give some ideas about expectations and topics of interest.
+
+## Purpose
+ 
+The ABC aims to:
+
+- **Support and guide** in  using bioinformatics and programming tools.
+- Provide support for **coding-related issues**.
+- **Enhance** the coding skills of participants in fundamental programming languages (R, python, bash command line).
+ 
+## Who can benefit from the ABC?
+ 
+Everyone, really. Those that will particularly benefit from the ABC include:
+
+- Biologists, bioinformaticians, and health scientists who wish to adopt coding-based solutions.
+- Scientists and students who wish to accelerate the coding-based analysis of various types of data (such as OMICs data and other large-scale data) in research across Aarhus University and Aarhus University Hospital.
+- Students and researchers who want an open environment where it is easy to get assistance and talk with others encountering similar issues (or maybe who already solved them!)
+
+## Format
+ 
+Each 2 hour session of the ABC will feature:
+
+- Topic Presentation: Insightful presentations on various bioinformatics and coding topics.
+- Open Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues.
