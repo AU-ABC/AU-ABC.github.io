@@ -13,14 +13,14 @@ listing:
     type: grid
     sort:
       - "date asc"
-#  - id: "past_event"
-#    fields: [title, Dates, Location, Organizers]
-#    field-display-names:
-#      title: "Event title"
-#    contents: news/past/*.qmd
-#    type: table
-#    sort:
-#      - "date desc"  
+  - id: "past_event"
+    fields: [title, Dates, Location, Organizers]
+    field-display-names:
+      title: "Event title"
+    contents: news/past/*.qmd
+    type: table
+    sort:
+      - "date desc"  
 ---
 
 

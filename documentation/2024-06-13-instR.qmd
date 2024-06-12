@@ -1,0 +1,9 @@
+---
+title: "ABC.1: Install R, Index reference Genome, and coding problems/solutions"
+author: "Samuele Soraggi"
+date: 2024-06-13
+categories: [R, Reference, Index, Solutions]
+description: "Things worth remembering from the ABC.1"
+---
+
+While it is always worth remembering an event which offers free cake ([especially when it recurs with a frequency like the ABC, as you could read here](https://louwalker.com/wp-content/uploads/2020/01/Its-time-to-rethink-office-cake-Jan-2018.pdf)), you might want to read again what has been done and said after the sugar levels drop down. 

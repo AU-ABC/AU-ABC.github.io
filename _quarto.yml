@@ -1,6 +1,9 @@
 project:
   type: website
 
+resources:
+  - CNAME
+
 website:
   title: 'ABC - Accessible Bioinformatics Cafe'
   navbar:
@@ -10,10 +13,11 @@ website:
         text: Home
       - href: news.qmd
         text: News
-#      - text: Datasets
-#        menu:
-#          - href: datasets/datapolicy.qmd
-#          - href: datasets/synthdata.qmd
+      - text: Tips
+        menu:
+          - href: tips/bash.qmd
+          - href: tips/R.qmd
+          - href: tips/python.qmd
     right: 
       - icon: github
         href: https://github.com/AU-ABC

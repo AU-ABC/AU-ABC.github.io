@@ -28,9 +28,9 @@ Do you feel finding the right tools is like going through a maze of software ins
 
 :::
 
-What follows is the natural desire of throwing your computer out of the window. Don't worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the [Kubler-Ross curve](https://en.wikipedia.org/wiki/Five_stages_of_grief), where frustration is the point in which coding becomes challenging and we might feel lost.
+What follows is the natural desire of throwing your computer out of the window. Don't worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the [Kubler-Ross curve](https://en.wikipedia.org/wiki/Five_stages_of_grief)^[Someone prefers to refer to the [Dunning-Kruger effect](https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect) instead, but this is for people overestimating their abilities. It is not the case of coders: we know that we cannot do something when we get stuck!], where frustration is the point in which coding becomes challenging and we might feel lost.
 
-The idea behind ABC is to bridge you beyond frustration moments, while at the same time offering a relaxed environment and the possibility to learn new things, help and get to know each other
+The idea behind ABC is to bridge you beyond frustration moments, while at the same time offering a relaxed environment and the possibility to learn new things, help and get to know each other:
 
 ![](img/homepage/gifABC.gif){fig-align=center width=800px}
 
@@ -45,7 +45,7 @@ Everyone, really. Those that will particularly benefit from the ABC include:
 
 ## Format
  
-Each 2 hour session of the ABC will feature:
+Each ~2 hour session of the ABC will feature:
 
 - Topic Presentation: Insightful presentations on various bioinformatics and coding topics.
 - Open Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues.

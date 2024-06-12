@@ -1,0 +1,27 @@
+---
+title: "Documentation"
+format:
+  html:
+    page-layout: full
+listing:
+  - id: "upcoming_event"
+    image-height: 300px
+    grid-columns: 4
+    image-placeholder: "./img/ABClogo.png"
+    fields: [image,title, description,categories, date]
+    contents: documentation/*.qmd
+    type: grid
+    sort:
+      - "date asc"
+#  - id: "past_event"
+#    fields: [title, Dates, Location, Organizers]
+#    field-display-names:
+#      title: "Event title"
+#    contents: news/past/*.qmd
+#    type: table
+#    sort:
+#      - "date desc"  
+---
+
+
+In this page we will post things we talked about in the various sessions of the cafe, so that all the material and code is documented session by session. This is useful for anyone, also people not attending a session.

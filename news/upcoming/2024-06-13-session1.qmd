@@ -1,15 +1,17 @@
 ---
-title: "First ABC session"
+title: "ABC.1: First ABC session"
 author: "Samuele Soraggi"
 Organizers: HDS Sandbox, Bioinf Core facility
 date: 2024-06-13
 categories: [Cafe, Coding, Bioinformatics]
-description: "Come to the ABC at AIAS"
+description: "Coding and bioinformatics for anyone!"
 ---
 
 ![](../../img/news/number1.png){fig-align="center" width=400px}
 
-The very first session of the ABC (Accessible Bioinformatics Cafe) will launch **on june 13th, at 13:00 in the hall of AIAS** (the Aarhus Institute of Advanced Studies).
+The very first session of the ABC (Accessible Bioinformatics Cafe) will launch **on june 13th, at 13:00 in the hall of AIAS** (the Aarhus Institute of Advanced Studies, see below).
+
+![](../../img/news/AIAS.png)
 
 Everyone is welcome to **join independently of coding skills and level**. In this first meeting we will also distribute a survey, so that participants can give some ideas about expectations and topics of interest.
 
