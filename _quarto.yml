@@ -7,6 +7,9 @@ resources:
 website:
   title: 'ABC - Accessible Bioinformatics Cafe'
   google-analytics: "UA-WG01Z2LJ1J"
+  open-graph:
+    locale: en_US
+    site-name: ABC - Accessible Bioinformatics Cafe
   navbar:
     logo: /img/ABClogo.png
     left:
