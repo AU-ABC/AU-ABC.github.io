@@ -1,51 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://AU-ABC.github.io/workshop/workshop_june24.html</loc>
-    <lastmod>2024-05-31T10:23:50.057Z</lastmod>
-  </url>
-  <url>
-    <loc>https://AU-ABC.github.io/workshop/workshop_april2024.html</loc>
-    <lastmod>2024-05-31T10:23:50.053Z</lastmod>
-  </url>
-  <url>
-    <loc>https://AU-ABC.github.io/about/about.html</loc>
-    <lastmod>2024-05-31T10:23:49.969Z</lastmod>
-  </url>
-  <url>
-    <loc>https://AU-ABC.github.io/cards/SamueleSoraggi.html</loc>
-    <lastmod>2024-05-31T10:23:49.969Z</lastmod>
-  </url>
-  <url>
-    <loc>https://AU-ABC.github.io/news/past/2024-04-18-sandbox-workshop.html</loc>
-    <lastmod>2024-05-31T10:23:50.041Z</lastmod>
-  </url>
-  <url>
-    <loc>https://AU-ABC.github.io/news/upcoming/2024-07-01-NGS-analysis.html</loc>
-    <lastmod>2024-05-31T10:23:50.041Z</lastmod>
-  </url>
-  <url>
-    <loc>https://AU-ABC.github.io/news/upcoming/2024-11-15-hpcPipes.html</loc>
-    <lastmod>2024-05-31T10:23:50.041Z</lastmod>
-  </url>
-  <url>
-    <loc>https://AU-ABC.github.io/news/upcoming/2024-10-30-hpcLaunch.html</loc>
-    <lastmod>2024-05-31T10:23:50.041Z</lastmod>
-  </url>
-  <url>
-    <loc>https://AU-ABC.github.io/index.html</loc>
-    <lastmod>2024-05-31T10:23:50.041Z</lastmod>
-  </url>
-  <url>
-    <loc>https://AU-ABC.github.io/cards/AlbaMartinez.html</loc>
-    <lastmod>2024-05-31T10:23:49.969Z</lastmod>
-  </url>
-  <url>
-    <loc>https://AU-ABC.github.io/workshop/workshop_Conference2023.html</loc>
-    <lastmod>2024-05-31T10:23:50.053Z</lastmod>
+    <loc>https://AU-ABC.github.io/news.html</loc>
+    <lastmod>2024-06-12T08:09:43.026Z</lastmod>
   </url>
   <url>
     <loc>https://AU-ABC.github.io/workshop/workshopAAU_2023.html</loc>
-    <lastmod>2024-05-31T10:23:50.053Z</lastmod>
+    <lastmod>2024-06-12T08:09:43.038Z</lastmod>
+  </url>
+  <url>
+    <loc>https://AU-ABC.github.io/workshop/workshop_Conference2023.html</loc>
+    <lastmod>2024-06-12T08:09:43.038Z</lastmod>
+  </url>
+  <url>
+    <loc>https://AU-ABC.github.io/cards/AlbaMartinez.html</loc>
+    <lastmod>2024-06-12T08:09:42.954Z</lastmod>
+  </url>
+  <url>
+    <loc>https://AU-ABC.github.io/index.html</loc>
+    <lastmod>2024-06-12T08:09:43.026Z</lastmod>
+  </url>
+  <url>
+    <loc>https://AU-ABC.github.io/news/upcoming/2024-06-13-session1.html</loc>
+    <lastmod>2024-06-12T08:09:43.026Z</lastmod>
+  </url>
+  <url>
+    <loc>https://AU-ABC.github.io/cards/SamueleSoraggi.html</loc>
+    <lastmod>2024-06-12T08:09:42.954Z</lastmod>
+  </url>
+  <url>
+    <loc>https://AU-ABC.github.io/about/about.html</loc>
+    <lastmod>2024-06-12T08:09:42.954Z</lastmod>
+  </url>
+  <url>
+    <loc>https://AU-ABC.github.io/workshop/workshop_april2024.html</loc>
+    <lastmod>2024-06-12T08:09:43.038Z</lastmod>
+  </url>
+  <url>
+    <loc>https://AU-ABC.github.io/workshop/workshop_june24.html</loc>
+    <lastmod>2024-06-12T08:09:43.042Z</lastmod>
   </url>
 </urlset>
