@@ -6,7 +6,12 @@ resources:
 
 website:
   title: 'ABC - Accessible Bioinformatics Cafe'
-  google-analytics: "UA-WG01Z2LJ1J"
+  google-analytics: 
+    tracking-id: "G-WG01Z2LJ1J"
+    anonymize-ip: true
+  cookie-consent:
+    type: express
+    style: simple
   open-graph:
     locale: en_US
     site-name: ABC - Accessible Bioinformatics Cafe
