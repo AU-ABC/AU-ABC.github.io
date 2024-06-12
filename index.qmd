@@ -53,7 +53,7 @@ Each ~2 hour session of the ABC will feature:
 ## Calendar
 
 | What  | When  | Where | Topics |
-|--------|--------|--------|
+|--------|--------|--------|--------|
 | ABC.1  | 13.june 2024 | [AIAS hall](https://maps.app.goo.gl/ns3c3PpTyNVqhaENA) | Install R, R basics, Open cafe |
 | ABC.2  | 27.june 2024 | TBA | TBA |
 
