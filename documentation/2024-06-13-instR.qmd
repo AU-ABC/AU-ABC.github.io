@@ -3,7 +3,7 @@ title: "ABC.1: Install R+Rstudio, first R coding problems/solutions"
 author: "Dimitrios Maniatis"
 image: ../img/Rlogo.png
 date: 2024-06-13
-categories: [R, Reference, Index, Solutions]
+categories: [R, RStudio, Dataframe]
 description: "Things worth remembering from the ABC.1"
 eval: true
 ---
