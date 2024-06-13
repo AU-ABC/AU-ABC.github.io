@@ -1,13 +1,11 @@
 ---
-title: "ABC.1: Install R+Rstudio, Index reference Genome, and coding problems/solutions"
+title: "ABC.1: Install R+Rstudio, first R coding problems/solutions"
 author: "Samuele Soraggi"
 date: 2024-06-13
 categories: [R, Reference, Index, Solutions]
 description: "Things worth remembering from the ABC.1"
 eval: true
 ---
-
-While it is always worth remembering an event which offers free cake ([especially when it recurs with a frequency like the ABC, as you could read here](https://louwalker.com/wp-content/uploads/2020/01/Its-time-to-rethink-office-cake-Jan-2018.pdf)), you might want to read again what has been done and said after the sugar levels drop down. 
 
 # Install R
 
@@ -289,7 +287,7 @@ write.table(geneExpr,
 where we remove the labels for the rows and use the tab separator instead of the comma. To read the file again, simply use
 
 ```{r}
-df2 <- read.csv("./myfirstdataframe.csv" , sep="\t")
+df2 <- read.csv("./myFirstDataFrame.csv" , sep="\t")
 df2
 ```
 

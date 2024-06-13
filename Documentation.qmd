@@ -23,5 +23,6 @@ listing:
 #      - "date desc"  
 ---
 
+While it is always worth remembering an event which offers free cake ([especially when it recurs with a frequency like the ABC, as you could read here](https://louwalker.com/wp-content/uploads/2020/01/Its-time-to-rethink-office-cake-Jan-2018.pdf)), you might want to read again what has been done and said after the sugar levels drop down. 
 
-In this page we will post things we talked about in the various sessions of the cafe, so that all the material and code is documented session by session. This is useful for anyone, also people not attending a session.
+Our tutorials and instructions are self contained, thus useful for anyone, also people not attending a session.
