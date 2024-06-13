@@ -28,7 +28,7 @@ jobs:
 
       - name: Install libcurl on Linux
         if: runner.os == 'Linux'
-        run: R -e "install.packages('readxl')"
+        run: R -e "install.packages( c('openxlsx','knitr','rmarkdown') )"
 
 #      - name: Install R Dependencies
 #        uses: r-lib/actions/setup-renv@v2

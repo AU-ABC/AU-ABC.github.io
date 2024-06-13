@@ -13,11 +13,11 @@ While it is always worth remembering an event which offers free cake ([especiall
 
 A short guide on how to install a specific version of `R` on your computer.
 
- :::{.callout-warning}
+:::{.callout-warning}
 
 We show screenshots for windows, but the procedure is analogous for other systems.
 
- :::
+:::
 
 
 - Go to the **[Cran Website](https://cran.r-project.org/)**
@@ -26,13 +26,13 @@ We show screenshots for windows, but the procedure is analogous for other system
 
 - Click on "base" to download the base R. This is R with its basic functions.
 
-![Follow these steps](./2024-06-13-instR/images/guideR.gif)
+<img src="./2024-06-13-instR/images/guideR.gif" width="800">
 
 - Run the downloaded installer file and follow the default instructions. 
 
 - Now R is installed in your system. In windows it looks like this:
 
-<img src="./2024-06-13-instR/images/" alt="R isntallation folders" width="800">
+<img src="./2024-06-13-instR/images/folders.png" width="800">
 
 You can see that because I had previously installed another version of R, there are **two installations in separate folders**. It is a good idea to stick with one version for the duration of a project. Always check the R version when you launch R - this can be done easily with the command `R.Version()`. 
 
@@ -55,7 +55,7 @@ Rstudio is technically called an IDE (Integrated Development Environment) for th
 
 - Download RStudio and start the installer
 
-<img src="./2024-06-13-instR/images/rstudio.png" alt="RStudio Installer" width="600">
+<img src="./2024-06-13-instR/images/rstudio.png" width="800">
 
 - Follow the default options for installation
 
@@ -258,37 +258,43 @@ simpleSumPlot(arg1=geneExpr$Control,
 
 
 Many times we want to read files from excel or other formats. R has many ways to do this and if not there are always packages out there to help you read the format you have.
-For reading an excel file a great package is the `readxl`.
+For reading an excel file a great package is the `readxl`. To read a `csv` file there is already the `R` function `read.csv()`.
 
 
 :::{.callout-note}
 
-**But wait. what are packages?** Each package consist of a set of `R` and other scripts that meet specific needs for the users of `R`. For example `readxl` reads from Excel files, which `R` cannot do on its own. There are thousands of packages out there, ranging all fields of science, and some have become very popular.
+**But wait. what are packages?** Each package consist of a set of `R` and other scripts that meet specific needs for the users of `R`. For example `openxlsx` reads from Excel files, which `R` cannot do on its own. There are thousands of packages out there, ranging all fields of science, and some have become very popular.
 
 :::
 
-Try to install the package `readxl`. You can use the command `install.packages("openxlsx")` in your RStudio console. Otherwise, go on the bottom right panel and click `Packages` and `Install` like this
+Try to install the package `openxlsx`. You can use the command `install.packages("openxlsx")` in your RStudio console. Otherwise, go on the bottom right panel and click `Packages` and `Install` like this
 
 <img src="./2024-06-13-instR/images/installpackage.png" alt="Installing Packages" width="1000">
 
-Now you are ready to import an Excel file. To use the package, we can load it with `library(readxl)`. Otherwise we need to write the package name before the command to use from it (as done below). You can get a file locally on your computer or from an URL as done in this example.
+Now you are ready to import an Excel file. To use the package, we can load it with `library(openxlsx)`. Otherwise we need to write the package name before the command to use from it (as done below). You can get a file locally on your computer or from an URL as done in this example.
 
 ```{r}
-df <- openxlsx::read.xlsx("https://github.com/AU-ABC/AU-ABC.github.io/blob/681bb4eda678bc8920cbd9218bebc92e22955093/documentation/2024-06-13-instR/data/data.xlsx", sheet=1)
+df <- openxlsx::read.xlsx("https://github.com/AU-ABC/AU-ABC.github.io/raw/main/documentation/2024-06-13-instR/data/data.xlsx", sheet=1)
 df
 ```
 
+Once you have a data frame, you can always save it. Remember, the path of the saved file is related to your current working directory! To save your data frame as a `csv` file, use
 
-We can also save our files. For example we can save our gene expression data frame from before as a tab separated csv like this:
-
-```{.r}
-write.table(gene_expr,file = "data/myfirstdataframe.csv", row.names = FALSE , sep="\t")
+```{r}
+write.table(geneExpr, 
+            file = "./myFirstDataFrame.csv", 
+            row.names = FALSE , 
+            sep="\t")
 ```
+where we remove the labels for the rows and use the tab separator instead of the comma. To read the file again, simply use
 
-and we can read it back:
-
-```{.r}
-# hint: you can use the tab of your keyboard to see a list of the available paths
-df2 <- read.csv("data/myfirstdataframe.csv" , sep="\t")
+```{r}
+df2 <- read.csv("./myfirstdataframe.csv" , sep="\t")
 df2
 ```
+
+:::{.callout-tip}
+
+You can use the tab key of your keyboard to see a list of the available paths 
+
+:::
