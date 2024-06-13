@@ -267,14 +267,14 @@ For reading an excel file a great package is the `readxl`.
 
 :::
 
-Try to install the package `readxl`. You can use the command `install.packages("readxl")` in your RStudio console. Otherwise, go on the bottom right panel and click `Packages` and `Install` like this
+Try to install the package `readxl`. You can use the command `install.packages("openxlsx")` in your RStudio console. Otherwise, go on the bottom right panel and click `Packages` and `Install` like this
 
 <img src="./2024-06-13-instR/images/installpackage.png" alt="Installing Packages" width="1000">
 
 Now you are ready to import an Excel file. To use the package, we can load it with `library(readxl)`. Otherwise we need to write the package name before the command to use from it (as done below). You can get a file locally on your computer or from an URL as done in this example.
 
 ```{r}
-df <- readxl::read_excel("https://github.com/AU-ABC/AU-ABC.github.io/blob/681bb4eda678bc8920cbd9218bebc92e22955093/documentation/2024-06-13-instR/data/example_df1.xlsx")
+df <- openxlsx::read.xlsx("https://github.com/AU-ABC/AU-ABC.github.io/blob/681bb4eda678bc8920cbd9218bebc92e22955093/documentation/2024-06-13-instR/data/data.xlsx", sheet=1)
 df
 ```
 
