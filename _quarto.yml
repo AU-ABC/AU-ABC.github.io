@@ -30,6 +30,8 @@ website:
             text: R
           - href: tips/python.qmd
             text: Python
+      - href: Documentation.qmd
+        text: Documentation
     right: 
       - icon: github
         href: https://github.com/AU-ABC
