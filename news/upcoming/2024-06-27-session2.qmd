@@ -1,0 +1,41 @@
+---
+title: "ABC.2: Second ABC session"
+author: "Samuele Soraggi"
+Organizers: HDS Sandbox, Bioinf Core facility
+date: 2024-06-27
+categories: [Cafe, Coding, Bioinformatics]
+description: "Coding and bioinformatics (and cake) for anyone!"
+---
+
+![](../../img/news/number2.png){fig-align="center" width=400px}
+
+The second session of the ABC (Accessible Bioinformatics Cafe) will be **on june 27th, at 13:00 in the hall of AIAS** (the Aarhus Institute of Advanced Studies, see below).
+
+![](../../img/news/AIAS.png){fig-align="center" width=800px}
+
+Everyone is welcome to **join independently of coding skills and level**. 
+
+## Agenda
+ 
+We have a very minimalistic agenda consisting of
+
+- What's new
+- Accessible topic presentation
+- Tutorials and Open Coding
+
+The tutorials we propose are of increasing difficulty (and documented) at each meeting. This time we have a choice of
+
+- A small dplyr project managed with RStudio
+- Install Anaconda and python basics
+ 
+## Signing up
+
+No signup is really necessary, but if you just want to ensure there is enough cake, click on the button below to give us a heads up of your presence. Don't do it multiple times to cheat for extra cake!
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdBlUCqiO3uAq5jSZCSlzJmKDN-vEVRDstlzsRhe7I4_sJHFA/viewform?usp=pp_url&entry.1204655311=Yes" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Sign up for cake
+  </a>
+</p>
