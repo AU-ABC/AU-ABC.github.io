@@ -3,6 +3,7 @@ project:
 
 resources:
   - CNAME
+  - documentation/slides/*.zip
 
 website:
   title: 'ABC - Accessible Bioinformatics Cafe'

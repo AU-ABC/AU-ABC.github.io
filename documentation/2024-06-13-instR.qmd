@@ -8,7 +8,21 @@ description: "Things worth remembering from the ABC.1"
 eval: true
 ---
 
-# Install R
+# Slides
+
+Introductory slides about the ABC, and who is behind the Health Data Science Sandbox and the Core Bioinformatics Facility
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://abc.au.dk/documentation/slides/20240613-intro.zip" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Download Slides
+  </a>
+</p>
+
+&nbsp;
+
+# Tutorial: Install R
 
 A short guide on how to install a specific version of `R` on your computer.
 
