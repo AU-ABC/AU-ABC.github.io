@@ -1,15 +1,15 @@
 [
   {
+    "listing": "/Documentation.html",
+    "items": [
+      "/documentation/2024-06-13-instR.html"
+    ]
+  },
+  {
     "listing": "/news.html",
     "items": [
       "/news/upcoming/2024-06-13-session1.html",
       "/news/past/test.html"
-    ]
-  },
-  {
-    "listing": "/Documentation.html",
-    "items": [
-      "/documentation/2024-06-13-instR.html"
     ]
   }
 ]
