@@ -6,9 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Data Scientist, Copenhagen University">
+<meta name="author" content="Marie Sønderstrup-Jensen, Samuele Soraggi">
+<meta name="dcterms.date" content="2024-06-27">
+<meta name="description" content="Things worth remembering from the ABC.2">
 
-<title>ABC - Accessible Bioinformatics Cafe - Alba Refoyo Martinez</title>
+<title>ABC - Accessible Bioinformatics Cafe - ABC.2: RStudio projects and Anaconda+Python</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -100,10 +102,13 @@ cookieconsent.run({
   
 
 
-<meta property="og:title" content="ABC - Accessible Bioinformatics Cafe - Alba Refoyo Martinez">
-<meta property="og:description" content="Data Scientist, Copenhagen University">
+<meta property="og:title" content="ABC - Accessible Bioinformatics Cafe - ABC.2: RStudio projects and Anaconda+Python">
+<meta property="og:description" content="Things worth remembering from the ABC.2">
+<meta property="og:image" content="https://abc.au.dk/documentation/2024-06-27-ABC2/Anaconda.png">
 <meta property="og:site_name" content="ABC - Accessible Bioinformatics Cafe">
 <meta property="og:locale" content="en_US">
+<meta property="og:image:height" content="512">
+<meta property="og:image:width" content="512">
 </head>
 
 <body class="nav-fixed">
@@ -177,26 +182,55 @@ cookieconsent.run({
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#r-tutorial" id="toc-r-tutorial" class="nav-link active" data-scroll-target="#r-tutorial">R Tutorial</a></li>
+  <li><a href="#python-tutorial" id="toc-python-tutorial" class="nav-link" data-scroll-target="#python-tutorial">Python Tutorial</a>
+  <ul class="collapse">
+  <li><a href="#install-anaconda-and-create-an-environment" id="toc-install-anaconda-and-create-an-environment" class="nav-link" data-scroll-target="#install-anaconda-and-create-an-environment">Install Anaconda and create an environment</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Alba Refoyo Martinez</h1>
-</div>
+<h1 class="title">ABC.2: RStudio projects and Anaconda+Python</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">RStudio</div>
+    <div class="quarto-category">Anaconda</div>
+    <div class="quarto-category">Python</div>
+    <div class="quarto-category">environments</div>
+  </div>
+  </div>
 
 <div>
   <div class="description">
-    Data Scientist, Copenhagen University
+    Things worth remembering from the ABC.2
   </div>
 </div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Marie Sønderstrup-Jensen, Samuele Soraggi </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 27, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -206,11 +240,56 @@ cookieconsent.run({
 </header>
 
 
-<p><img src="alba.jpg" class="img-fluid" width="300"></p>
-<p><a href="https://dk.linkedin.com/in/albarefoyo"><img src="LinkedIN.png" class="img-fluid" width="50"></a> <a href="https://github.com/albarema"><img src="Github_black.png" class="img-fluid" width="50"></a> <a href="alba.martinez@sund.ku.dk?subject=Test"><img src="Outlook.png" class="img-fluid" width="50"></a> <a href="https:heads.ku.dk"><img src="mapPin.png" class="img-fluid" width="50"></a> <a href="https://albarema.github.io"><img src="www.png" class="img-fluid" width="50"></a></p>
-<p>Alba is a Sandbox data scientist based at the University of Copenhagen. During her academic background as a PhD and Postdoc she has developed a solid expertise in large-scale genomics and pipelines development on computing clusters.</p>
+<section id="r-tutorial" class="level1">
+<h1>R Tutorial</h1>
+</section>
+<section id="python-tutorial" class="level1">
+<h1>Python Tutorial</h1>
+<p>We will first install <code>Anaconda</code>, which allows you to create environments (isolated group of packages to run a project and ensure reproducibility), and run softwares to code interactively (we will use one called jupyterlab).</p>
+<section id="install-anaconda-and-create-an-environment" class="level2">
+<h2 class="anchored" data-anchor-id="install-anaconda-and-create-an-environment">Install Anaconda and create an environment</h2>
+<p><strong>1.</strong> Download Anaconda from <a href="https://www.anaconda.com/download">the download page</a>. Uso also the <code>Sign In</code> button of the webpage to create an account: this will enable you to use an AI-chat showing up while you code, and which can help you doing a lot of things.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This guide has been made with Windows, and works similarly with MacOS. For Linux, you will download a file with <code>.sh</code> extension, which you can execute in the command line with <code>bash installer.sh</code>.</p>
+</div>
+</div>
+<p><strong>2.</strong> Once Anaconda is installed, open <strong>Anaconda Navigator</strong>. Log into Anaconda Cloud from the software, and eventually update Anaconda Navigator if asked.</p>
+<p><strong>3.</strong> Your initial window would look similarly as below. What you can see is a suite of softwares. Some of those are installed and they are found in the anaconda <strong>environment</strong> called <code>base (root)</code>, as shown in the red circle. It is good advice not to modify the base environment, because Anaconda itself is installed into it!</p>
+<p><img src="./2024-06-27-ABC2/landing.png" class="img-fluid"></p>
+<p><strong>4.</strong> We create a new environment with only few needed packages for our tutorial. Click on <code>Environments</code> on the toolbar (red circle). You can see the base (root) environment and a long list of packages it contains. Click on <code>Create</code> (blue circle).</p>
+<p><img src="./2024-06-27-ABC2/envlist.png" class="img-fluid"></p>
+<p><strong>5.</strong> In the appearing window choose a name for the environment and select <code>Python</code>. Then click on <code>Create</code>. It takes a bit of time to create the environment.</p>
+<p><img src="./2024-06-27-ABC2/options.png" class="img-fluid"></p>
+<p><strong>6.</strong> Select the environment. It will load a few packages (just Python and its essential dependencies), but we want to install new ones. Open the filtering menu (green circle above) and choose <code>All</code> to view all existing packages. Select the following packages: <code>pandas</code>, <code>numpy</code>, <code>jupyterlab</code>, <code>anaconda-toolbox</code> and click <code>Apply</code>. A list of dependencies will be shown, and you have to accept that to continue. Wait for the installations to go through.</p>
+<p><strong>7.</strong> Now select the environment again. There are much more packages installed and ready to use. Click on <code>Home</code> in the toolbar: you will see the softwares installed in your environment (choose <code>Installed Application</code> from the dropdown menu to see only the installed ones).</p>
+<div class="callout callout-style-default callout-note callout-titled" title="wrap up">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+wrap up
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can create various environments to keep specific versions of packages constant in separate data science projects. This ensures a high degree of reproducibility in your projects.</p>
+<p>An environment can include the softwares needed to code (RStudio, jupyterLab are the most famous, but also others can be installed).</p>
+<p>We will use the created environment to run some basic commands in python.</p>
+</div>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

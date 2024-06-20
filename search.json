@@ -42,11 +42,242 @@
     "text": "wget -i file.txt\n\n\n\nfor var in `ls -d */`; do echo ${var::-1}; done"
   },
   {
-    "objectID": "Documentation.html",
-    "href": "Documentation.html",
-    "title": "Documentation",
+    "objectID": "documentation/2024-06-13-instR.html",
+    "href": "documentation/2024-06-13-instR.html",
+    "title": "ABC.1: Install R+Rstudio, first R coding problems/solutions",
     "section": "",
-    "text": "While it is always worth remembering an event which offers free cake (especially when it recurs with a frequency like the ABC, as you could read here), you might want to read again what has been done and said after the sugar levels drop down.\nOur tutorials and instructions are self contained, thus useful for anyone, also people not attending a session.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.1: Install R+Rstudio, first R coding problems/solutions\n\n\n\nR\n\n\nRStudio\n\n\nDataframe\n\n\n\nThings worth remembering from the ABC.1\n\n\n\nJun 13, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Introductory slides about the ABC, and who is behind the Health Data Science Sandbox and the Core Bioinformatics Facility\n \n\n Download Slides"
+  },
+  {
+    "objectID": "documentation/2024-06-13-instR.html#rstudio-layout",
+    "href": "documentation/2024-06-13-instR.html#rstudio-layout",
+    "title": "ABC.1: Install R+Rstudio, first R coding problems/solutions",
+    "section": "Rstudio Layout",
+    "text": "Rstudio Layout\n\nLaunch RStudio.\nFamiliarize yourself with the RStudio interface, which consists of:\n\nSource Pane: Where you write and edit scripts.\nConsole Pane: Where you run commands and see output.\nEnvironment/History Pane: Shows your workspace and command history.\nFiles/Plots/Packages/Help/Viewer Pane: Access your files, view plots, manage packages, get help, and view HTML output."
+  },
+  {
+    "objectID": "documentation/2024-06-13-instR.html#make-a-simple-script",
+    "href": "documentation/2024-06-13-instR.html#make-a-simple-script",
+    "title": "ABC.1: Install R+Rstudio, first R coding problems/solutions",
+    "section": "Make a simple script",
+    "text": "Make a simple script\n\nClick on File &gt; New File &gt; R Script to open a new script editor.\nInside the file you created, Write a simple script. Copy for example the script below:\n\nprint(\"Hello ABC\")\nx &lt;- 1:10\ny &lt;- x^2\nplot(x, y, type=\"b\", col=\"blue\")\n\nTry to run the script (The small Run button). Two things should happen:\n\nAn output is shown in the console (bottom left)\nA plot is created and shown in the plotting window (bottom right)\nthe variables x and y are saved in your environment and can be seen in the variable explorer (top right). These variables can be used again since they exist in your computer’s memory.\n\n\n\n\n\n\n\n\nWorking directory\n\n\n\nEvery time you start working in R, this will be considering a working directory. Such directory is the reference point you are working in. For example, if you want to open a file, you need to know where it is in relation to your working directory, so that you can correctly write where it is. Write the command getwd() in the console and press Enter to see your current working directory."
+  },
+  {
+    "objectID": "documentation/2024-06-13-instR.html#some-basic-operations",
+    "href": "documentation/2024-06-13-instR.html#some-basic-operations",
+    "title": "ABC.1: Install R+Rstudio, first R coding problems/solutions",
+    "section": "Some basic operations",
+    "text": "Some basic operations\nIn R you can perform basic math operations by using the appropriate symbol. For example\n2+3\n9*2\n5^2\nYou can assign variables (“objects”) using the symbol &lt;-. For example\n\nx &lt;- 5\nanothername &lt;- 3\nitCanBeAnything &lt;- \"It can be text\""
+  },
+  {
+    "objectID": "documentation/2024-06-13-instR.html#lets-try-some-exercises",
+    "href": "documentation/2024-06-13-instR.html#lets-try-some-exercises",
+    "title": "ABC.1: Install R+Rstudio, first R coding problems/solutions",
+    "section": "Lets try some exercises!",
+    "text": "Lets try some exercises!\nCreate a new script file or use the console to test some exercises below.\n\n1. Create a data frame\nWe will create a simple data frame. A data frame is nothing more than a table, where both rows and columns have labels, and can be easily accessed and manipulated. To create a small data frame, we can define its columns. We define each column through a vector with the function c(), where we can write values inside separated by a comma. Then we provide all vectors to the function data.frame, where we assign column names (Gene, Control, Treatment1, Treatment2).\n\n\n\n\n\n\nNote\n\n\n\nMake sure your vectors are all of the same length! Also, each vector usually contains values of the same type (for example only numbers or only text)\n\n\n\ngeneExpr &lt;- data.frame(\n  Gene = c(\"GeneA\", \"GeneB\", \"GeneC\"),\n  Control = c(10, 20, 30),\n  Treatment1 = c(15, 25, 35),\n  Treatment2 = c(100, 0, 250)\n)\n\ngeneExpr\n\n   Gene Control Treatment1 Treatment2\n1 GeneA      10         15        100\n2 GeneB      20         25          0\n3 GeneC      30         35        250\n\n\nYou should be able to see the small data frame printed in output and also shown in the variable explorer.\n\n\n2. Plot from a data frame\nNow lets try to plot it Treatment 1 versus Treatment 2. The basic function for plotting in R is called plot. It takes as arguments the x axis and the y axis. It has other options which are not mandatory, such as style and color of the plot. Notice how we access the values in the columns using the $ sign.\n\nplot( x = geneExpr$Treatment1, \n      y = geneExpr$Treatment2 , \n      main=\"Expression per Treatment group\", \n      xlab = \"Treatment 1\", \n      ylab = \"Treatment 2\" , \n      col =\"blue\" , \n      type =\"b\")\n\n\n\n\n\n\n\n\nYou should be able to see a plot in the plotting window. In the command above we used many options beyond x and y. Can you see what they match in the plot?\n\n\n3. Summary statistics\nThere are lots of summary statistics already implemented in R. Below we calculate mean, median and standard deviation for the column Treatment1 of the data frame and then we print them.\n\nx &lt;- geneExpr$Treatment1\nmeanTr1 &lt;- mean(x)\nmedianTr1 &lt;- median(x)\nsdTr1 &lt;- sd(x)\n\nprint(\"mean, median and sd:\")\n\n[1] \"mean, median and sd:\"\n\nprint(c(meanTr1, medianTr1, sdTr1))\n\n[1] 25 25 10\n\n\nThis was neat! Can you try to calculate the cumulative sum of the difference between Treatment 1 and Treatment 2?\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nx &lt;- geneExpr$Treatment1 - geneExpr$Treatment2\ncsum &lt;- cumsum(x)\nprint(\"cumulative sum of Tr1 - Tr2:\")\n\n[1] \"cumulative sum of Tr1 - Tr2:\"\n\nprint(csum)\n\n[1]  -85  -60 -275\n\n\n\n\n\n\n\n4. Define your own function!\nAlthough R and the packages you can find have almost everything you will need, sometimes you might need to define your own function. The syntax to do it is very easy: you assign a function to a name, which then you will be able to use. Below, there is a function taking an argument (arg1) and multiplying it by 5. The function commands need to be between the curly brackets, and what we want as output need to be explicit through the return() function.\n\nmyFunction &lt;- function(arg1){\n  \n  # Now arg1 is a variable of the function. \n  # You can write comments inside code blocks with #\n  output &lt;- arg1 * 5\n  return (output)\n\n}\n\nSuch a function works if the argument is a number, but also if it is a vector!\n\nprint(\"with a number only\")\n\n[1] \"with a number only\"\n\nmyFunction(5)\n\n[1] 25\n\nprint(\"with a vector\")\n\n[1] \"with a vector\"\n\nmyFunction(geneExpr$Treatment1)\n\n[1]  75 125 175\n\n\nTry to make a function that takes three vectors, plots the first against the sum of the second and third, and returns the sum of all three vectors. Use the plot command we applied previously for help.\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nsimpleSumPlot &lt;- function (arg1, arg2, arg3){\n  \n  arg23 &lt;- arg2 + arg3\n  arg123 &lt;- arg1 + arg2 + arg3\n\n  #plotting\n  plot( x = arg1, \n      y = arg23, \n      main=\"Plot with my own function\", \n      xlab = \"arg1\", \n      ylab = \"arg2+arg3\" , \n      col =\"red\", \n      type =\"o\" )\n\n  return (arg123)\n  \n}\n\nNow you can try this on vectors of the same length. We can use the ones in our data frame!\n\nsimpleSumPlot(arg1=geneExpr$Control, \n              arg2=geneExpr$Treatment1, \n              arg3=geneExpr$Treatment2)\n\n\n\n\n\n\n\n\n[1] 125  45 315\n\n\n\n\n\n\n\n5. Read files\nMany times we want to read files from excel or other formats. R has many ways to do this and if not there are always packages out there to help you read the format you have. For reading an excel file a great package is the readxl. To read a csv file there is already the R function read.csv().\n\n\n\n\n\n\nNote\n\n\n\nBut wait. what are packages? Each package consist of a set of R and other scripts that meet specific needs for the users of R. For example openxlsx reads from Excel files, which R cannot do on its own. There are thousands of packages out there, ranging all fields of science, and some have become very popular.\n\n\nTry to install the package openxlsx. You can use the command install.packages(\"openxlsx\") in your RStudio console. Otherwise, go on the bottom right panel and click Packages and Install like this\n\nNow you are ready to import an Excel file. To use the package, we can load it with library(openxlsx). Otherwise we need to write the package name before the command to use from it (as done below). You can get a file locally on your computer or from an URL as done in this example.\n\ndf &lt;- openxlsx::read.xlsx(\"https://github.com/AU-ABC/AU-ABC.github.io/raw/main/documentation/2024-06-13-instR/data/data.xlsx\", sheet=1)\ndf\n\n   x  y  z\n1 10 30 -1\n2 20 20  0\n3 30 10  1\n\n\nOnce you have a data frame, you can always save it. Remember, the path of the saved file is related to your current working directory! To save your data frame as a csv file, use\n\nwrite.table(geneExpr, \n            file = \"./myFirstDataFrame.csv\", \n            row.names = FALSE , \n            sep=\"\\t\")\n\nwhere we remove the labels for the rows and use the tab separator instead of the comma. To read the file again, simply use\n\ndf2 &lt;- read.csv(\"./myFirstDataFrame.csv\" , sep=\"\\t\")\ndf2\n\n   Gene Control Treatment1 Treatment2\n1 GeneA      10         15        100\n2 GeneB      20         25          0\n3 GeneC      30         35        250\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can use the tab key of your keyboard to see a list of the available paths"
+  },
+  {
+    "objectID": "about/about.html",
+    "href": "about/about.html",
+    "title": "About the Sandbox",
+    "section": "",
+    "text": "An infrastructure project for health data science training and research in Denmark\nThe National Health Data Science Sandbox project kicked off in 2021 with 5 years of funding via the Data Science Research Infrastructure initiative from the Novo Nordisk Foundation. Health data science experts at five Danish universities are contributing to the Sandbox with coordination from the Center for Health Data Science under lead PI Professor Anders Krogh. Data scientists hosted in the research groups of each PI are building infrastructure and training modules on Computerome and UCloud, the primary academic high performance computing (HPC) platforms in Denmark. If you have any questions or would like to get in touch with one of our data scientists, please contact us here.\n\n\n\n\n\nOur computational ‘sandbox’ allows data scientists to explore datasets, tools and analysis pipelines in the same high performance computing environments where real research projects are conducted. Rather than a single, hefty environment, we’re deploying modularized topical environments tailored for independent use on each HPC platform. We aim to support three key user groups based at Danish universities:\n\ntrainees: use our training modules to learn analysis techniques with some guidance and guardrails - for your data type of interest AND for general good practices for HPC environments\n\nresearchers: prototype your tools and algorithms with an array of good quality datasets that are GDPR compliant and free to access\neducators: develop your next course with computational assignments in the HPC environment your students will use for their research\n\nActivity developing independent training modules and hosting workshops has centered on UCloud, while collaborative construction of a flexible Course Platform has been completed on Computerome for use by the Sandbox and independent educators. Publicly sourced datasets are being used in training modules on UCloud, while generation of synthetic data is an ongoing project at Computerome. Sandbox resources are under active construction, so check out our other pages for the current status on HPC Access, Datasets, and Modules. We run workshops using completed training modules on a regular basis and provide active support for Sandbox-hosted courses through a slack workspace. See our Contact page for more information.\n\n\nPartner with the Sandbox\nThe Sandbox welcomes proposals for new courses, modules, and prototyping projects from researchers and educators. We’d like to partner with lecturers engaged with us in developing needed materials collaboratively - we would love to have input from subject experts or help promote exciting new tools and analysis methods via modules! Please contact us with your ideas at nhds_sandbox@sund.ku.dk.\n\nWe thank the Novo Nordisk Foundation for funding support. If you use the Sandbox for research or reference it in text or presentations, please acknowledge the Health Data Science Sandbox project and its funder the Novo Nordisk Foundation (grant number NNF20OC0063268)."
+  },
+  {
+    "objectID": "news/upcoming/2024-06-27-session2.html",
+    "href": "news/upcoming/2024-06-27-session2.html",
+    "title": "ABC.2: Second ABC session",
+    "section": "",
+    "text": "The second session of the ABC (Accessible Bioinformatics Cafe) will be on june 27th, at 13:00 in the hall of AIAS (the Aarhus Institute of Advanced Studies, see below).\nEveryone is welcome to join independently of coding skills and level."
+  },
+  {
+    "objectID": "news/upcoming/2024-06-27-session2.html#agenda",
+    "href": "news/upcoming/2024-06-27-session2.html#agenda",
+    "title": "ABC.2: Second ABC session",
+    "section": "Agenda",
+    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented) at each meeting. This time we have a choice of\n\nA small dplyr project managed with RStudio\nInstall Anaconda and python basics"
+  },
+  {
+    "objectID": "news/upcoming/2024-06-27-session2.html#signing-up",
+    "href": "news/upcoming/2024-06-27-session2.html#signing-up",
+    "title": "ABC.2: Second ABC session",
+    "section": "Signing up",
+    "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake, click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign up for cake"
+  },
+  {
+    "objectID": "news/past/test.html",
+    "href": "news/past/test.html",
+    "title": "Example",
+    "section": "",
+    "text": "Test post"
+  },
+  {
+    "objectID": "workshop/workshop_april2024.html#access-sandbox-resources",
+    "href": "workshop/workshop_april2024.html#access-sandbox-resources",
+    "title": "Sandbox Workshop",
+    "section": "Access Sandbox resources",
+    "text": "Access Sandbox resources\nOur first choice is to provide all the training materials, tutorials, and tools as interactive apps on UCloud, the supercomputer located at the University of Southern Denmark. Anyone using these resources needs the following:\n\na Danish university ID so you can sign on to UCloud via WAYF1.\n\n \n\n for UCloud Access click here \n\n \n\nbasic ability to navigate in Linux/RStudio/Jupyter. You don’t need to be an expert, but it is beyond our ambitions (and course material) to teach you how to code from zero and how to run analyses simultaneously. We recommend a basic R or Python course before diving in.\nFor workshop participants: Use our invite link to the correct UCloud workspace that will be shared on the day of the workshop. This way, we can provide you with compute resources for the active sessions of the workshop2 Click the link below after your first uCloud access and accept the invite that shows.\n\n \n\n Invite link to uCloud workspace \n\n   \n\n\n\n\n\n\nNote\n\n\n\nOur apps can run on other clusters, simply by pulling a so-called docker container. You only need to have either docker or singularity installed on the cluster. GenomeDK supports singularity and thus can run our learning material as well. Ask us if you want to help the apps out of uCloud. Instructions will soon be available within our HPC access instructions."
+  },
+  {
+    "objectID": "workshop/workshop_april2024.html#our-omics-apps",
+    "href": "workshop/workshop_april2024.html#our-omics-apps",
+    "title": "Sandbox Workshop",
+    "section": "Our OMICS apps",
+    "text": "Our OMICS apps\nThe agenda starts with an introduction to High Performance Computing (HPC) and uCloud. You will try two apps during the workshop, but we are developing others, and have deployed three apps already.\n \n\n\n\nProteomics Sandbox: Our sandbox modern with a suite of proteomics analysis tools, used for example in clinical proteomics. This app is not alone, since our data scientist Jacob has also made the app ColabFold on UCloud, with methods for protein structure prediction.\n\n\n \n\n\n\nTranscriptomics Sandbox : Our sandbox for bulk or single-cell RNA sequencing analysis and visualization - amongst others two regular workshops and provides stand-alone visualization tools. In the next update, we will introduce advanced tutorials for more complex single-cell RNA sequencing analysis from some of our supported courses.\n\n\n \n\n\n\nGenomics Sandbox: Our sandbox NGS data analysis and applications range from genome assembly to variant calling to metagenomics. We have currently a semester-long population genomics course and an NGS course with many applications (alignment, VCF analysis, bulk-RNA data, single-cell RNA sequencing)"
+  },
+  {
+    "objectID": "workshop/workshop_april2024.html#discussion-and-feedback",
+    "href": "workshop/workshop_april2024.html#discussion-and-feedback",
+    "title": "Sandbox Workshop",
+    "section": "Discussion and feedback",
+    "text": "Discussion and feedback\nWe hope you enjoyed the live demo. If you have broader questions, suggestions, or concerns, now is the time to raise them! If you are totally toast for the day, remember that you can check out longer versions of our tutorials as well as other topics and tools in each of the Sandbox modules or join us for a multi-day in-person course (follow our news here).\nAs data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. Please answer these 5 questions for us before you head out for the day 3.\n \n\n\n\n\n\n\n\nNice meeting you and we hope to see you again!"
+  },
+  {
+    "objectID": "workshop/workshop_april2024.html#footnotes",
+    "href": "workshop/workshop_april2024.html#footnotes",
+    "title": "Sandbox Workshop",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nOther institutions (e.g. hospitals, libraries, …) can log on through WAYF. See all institutions here↩︎\nTo use Sandbox materials outside of the workshop: remember that each new user has hundreds of hours of free computing credit and around 50GB of free storage, which can be used to run any uCloud software. If you run out of credit (which takes a long time) you’ll need to check with the local DeiC office at your university about how to request compute hours on UCloud. Contact us at the Sandbox if you need help or want more information.↩︎\nlink activated on day one of the workshop.↩︎"
+  },
+  {
+    "objectID": "workshop/workshopAAU_2023.html",
+    "href": "workshop/workshopAAU_2023.html",
+    "title": "\nSandbox Workshop\n",
+    "section": "",
+    "text": "Sandbox Workshop\n!!! info “Upcoming Workshop at AAU”  Intro to the Health Data Science Sandbox at Aalborg University"
+  },
+  {
+    "objectID": "workshop/workshopAAU_2023.html#the-sandbox-concept",
+    "href": "workshop/workshopAAU_2023.html#the-sandbox-concept",
+    "title": "\nSandbox Workshop\n",
+    "section": "The Sandbox concept",
+    "text": "The Sandbox concept\nThe Health Data Science Sandbox aims to be a training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets. We are an active and developing project seeking interested users (both trainees and educators). All of our open-source materials are available on our Github page and much more information is available on the rest of the website you are currently visiting! We work with both UCloud and Computerome (major Danish academic supercomputers) - see our HPC Access page for more info on each set up."
+  },
+  {
+    "objectID": "workshop/workshopAAU_2023.html#access-sandbox-resources",
+    "href": "workshop/workshopAAU_2023.html#access-sandbox-resources",
+    "title": "\nSandbox Workshop\n",
+    "section": "Access Sandbox resources",
+    "text": "Access Sandbox resources\nWe currently provide training materials and resources as topical apps on UCloud, the supercomputer located at the University of Southern Denmark. To use these resources, you’ll need the following:\n\nLog onto UCloud at the address http://cloud.sdu.dk using your university credentials.\nthe ability to navigate in linux / RStudio / Jupyter. You don’t need to be an expert, but it is beyond our ambitions (and course material) to teach you how to code and how to run analyses simultaneously. We recommend a basic R or Python course before diving in.\n\nNote:\n\nTo use Sandbox materials outside of the workshop, you can request a project by clicking on apply for resources in your uCloud dashboard.\nIf you are a BSc or MSc student, you need a supervisor to apply on your behalf, or you can try to apply yourself mentioning the supervisor approval in the application.\nRemember, however, that you have 1000Kr of computing credit, and around 50GB of free storage to work on uCLoud."
+  },
+  {
+    "objectID": "workshop/workshopAAU_2023.html#try-out-our-transcriptomics-module",
+    "href": "workshop/workshopAAU_2023.html#try-out-our-transcriptomics-module",
+    "title": "\nSandbox Workshop\n",
+    "section": "Try out our transcriptomics module",
+    "text": "Try out our transcriptomics module\nSo our Sandbox data scientists have finished their intro at the workshop? Great, now the brave ones in the audience can try out one of our apps in a live session. Today we are demoing:\n ### Transcriptomics If you’re interested in bulk or single cell RNA sequencing analysis and visualization, join Sandbox Data Scientist Samuele Soraggi from Aarhus University in testing out our Transcriptomics Sandbox app.\nFollow these instructions to try our app:\n\nClick on the button below to join the project for today: &lt;!DOCTYPE html&gt;\n\n\n\n\n\n&lt;p&gt;Green Button&lt;/p&gt;\n\n\n\n\n\nGo to Link\n\n\nYou should see a message on your browser where you have to accept the invitation to the project. This will add you to a project on uCloud, where we have data and extra computing credit for the course.\nBe sure you have joined the project. Check if you have the project OMICS workshop from the project menu (red circle). Afterwards, click on the App menu (green circle) \n\nFind the app Transcriptomics Sandbox (red circle), which is under the title Featured.\n\n\n\n\nClick on it. You will get into the settings window. Choose any Job Name (Nr 1 in the figure below), how many hours you want to use for the job (Nr 2; choose at least 3 hours, you can increase this later), and how many CPUs (Nr 3, choose at least 4 CPUs). Choose the course RNAseq in RStudio from the drop-down menu (Nr 4). Finally, click on the blue button Add Folder.\n\n\n\nNow, click on the browsing bar that appears (red circle).\n\n\n\nIn the appearing window, you should see already a folder called Intro_to_scRNAseq_R. Click on Use at its right (red circle)\n\n\n\nAfterwards, you should have something like this in the settings page:\n\n\n\nNow, click on Submit to start the app (the button is on the right side of the settings page)\nYou will now enter a waiting queue. When the session starts, the timer begins to count down (red circle), and you should be able to open the interface through the button (green circle). Note the buttons to add time to your session (blue circle) and the button to stop the session when you are done (pink circle)\n\n\n\nOpen the interface by clicking on the button (green circle of figure above). Sometimes you are warned of a missing connection: simply refresh the page. You will enter Rstudio, well-known interface to code in R.\nRun the following command to download the tutorial: download.file(\"https://raw.githubusercontent.com/hds-sandbox/ELIXIR-workshop/main/Notebooks/scRNAseq_Tutorial_R.Rmd\", \"tutorial_scrna.Rmd\")\nOpen the file tutorial_scrnaR.Rmd that should now appear in the file browser of Rstudio. Click now on visual (on the tool bar) if you need to see the tutorial in a more readable format.\nThe executable code is inside chunks (called cells) to be executed in order from the first to the last using the little green arrow appearing on the right side of each code cell.\nRead carefully through the tutorial and execute the code cells. You will see the outputs appearing as you proceed."
+  },
+  {
+    "objectID": "workshop/workshopAAU_2023.html#discussion-and-feedback",
+    "href": "workshop/workshopAAU_2023.html#discussion-and-feedback",
+    "title": "\nSandbox Workshop\n",
+    "section": "Discussion and feedback",
+    "text": "Discussion and feedback\nWe hope you enjoyed the live demo. If you have broader questions, suggestions, or concerns, now is the time to raise them! If you are totally toast for the day, remember that you can check out longer versions of our tutorials as well as other topics and tools in each of the Sandbox modules or join us for a multi-day in person course.\nAs data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. Please answer these 5 questions for us before you head out for the day (link activated on day of the workshop).\n\nNice meeting you and we hope to see you again!"
+  },
+  {
+    "objectID": "news.html",
+    "href": "news.html",
+    "title": "News",
+    "section": "",
+    "text": "The ABC will routinely post new meetings and related workshops/courses of interest here.\n\n\n\n\n\n\n\n\n\n\n\n\nABC.1: First ABC session\n\n\n\nCafe\n\n\nCoding\n\n\nBioinformatics\n\n\n\nCoding and bioinformatics for anyone!\n\n\n\nJun 13, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nABC.2: Second ABC session\n\n\n\nCafe\n\n\nCoding\n\n\nBioinformatics\n\n\n\nCoding and bioinformatics (and cake) for anyone!\n\n\n\nJun 27, 2024\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Event title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nEvent title\n\n\nDates\n\n\nLocation\n\n\nOrganizers\n\n\n\n\n\n\nExample\n\n\n2024-06-13\n\n\nAIAS hall, AU campus\n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "workshop/workshop_june24.html",
+    "href": "workshop/workshop_june24.html",
+    "title": "\nWelcome to the homepage for our in-person bulk RNAseq workshop. Thank you for joining us!\n",
+    "section": "",
+    "text": "The Health Data Science Sandbox aims to be a training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets. We are an active and developing project seeking interested users (both trainees and educators). All of our open-source materials are available on our Github page and can be used on a computing cluster! We work with both UCloud, GenomeDK and Computerome, the major Danish academic supercomputers. See our HPC Access page for more info on each setup."
+  },
+  {
+    "objectID": "workshop/workshop_june24.html#access-sandbox-resources",
+    "href": "workshop/workshop_june24.html#access-sandbox-resources",
+    "title": "\nWelcome to the homepage for our in-person bulk RNAseq workshop. Thank you for joining us!\n",
+    "section": "Access Sandbox resources",
+    "text": "Access Sandbox resources\nOur first choice is to provide all the training materials, tutorials, and tools as interactive apps on UCloud, the supercomputer located at the University of Southern Denmark. Anyone using these resources needs the following:\n\nDanish university credentials to sign on to UCloud via WAYF1.\n\n \n\n for UCloud Access click here \n\n \n\nBasic ability to navigate in Linux/RStudio/Jupyter. You don’t need to be an expert, but it is beyond our ambitions (and course material) to teach you how to code from zero and how to run analyses simultaneously. We recommend a basic R or Python course before diving in.\nFor workshop participants: Use our invite link to the correct UCloud workspace that will be shared on the day of the workshop. This way, we can provide you with compute resources for the active sessions of the workshop2 Click the link below after your first uCloud access and accept the invite that shows.\n\n \n\n Invite link to uCloud workspace \n\n   \n\n\n\n\n\n\nNote\n\n\n\nOur apps can run on other clusters, simply by pulling a so-called docker container. You only need to have either docker installed on the cluster."
+  },
+  {
+    "objectID": "workshop/workshop_june24.html#our-sandbox-apps",
+    "href": "workshop/workshop_june24.html#our-sandbox-apps",
+    "title": "\nWelcome to the homepage for our in-person bulk RNAseq workshop. Thank you for joining us!\n",
+    "section": "Our Sandbox apps",
+    "text": "Our Sandbox apps\nThe agenda starts with an introduction to High Performance Computing (HPC) and uCloud.\n\nTo get started in our transcriptomics app, click here\n\n\n\n\nTranscriptomics Sandbox : Our sandbox for bulk or single-cell RNA sequencing analysis and visualization - amongst others two regular workshops and provides stand-alone visualization tools. In the next update, we will introduce advanced tutorials for more complex single-cell RNA sequencing analysis from some of our supported courses. - Click here to start setting up the app - To run nf-core RNAseq pipeline follow the instructions here\n\n\n \nWe are developing other apps. If you are interested, explore our modules section on our website!"
+  },
+  {
+    "objectID": "workshop/workshop_june24.html#discussion-and-feedback",
+    "href": "workshop/workshop_june24.html#discussion-and-feedback",
+    "title": "\nWelcome to the homepage for our in-person bulk RNAseq workshop. Thank you for joining us!\n",
+    "section": "Discussion and feedback",
+    "text": "Discussion and feedback\nWe hope you enjoyed the live demo. If you have broader questions, suggestions, or concerns, now is the time to raise them! If you are totally toast for the day, remember that you can check out longer versions of our tutorials as well as other topics and tools in each of the Sandbox modules or join us for a multi-day in-person course (follow our news here).\nAs data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. Please answer these 5 questions for us before you head out for the day 3.\n \n\n\n\n\n\n\n\nNice meeting you and we hope to see you again!"
+  },
+  {
+    "objectID": "workshop/workshop_june24.html#footnotes",
+    "href": "workshop/workshop_june24.html#footnotes",
+    "title": "\nWelcome to the homepage for our in-person bulk RNAseq workshop. Thank you for joining us!\n",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nOther institutions (e.g. hospitals, libraries, …) can log on through WAYF. See all institutions here↩︎\nTo use Sandbox materials outside of the workshop: remember that each new user has hundreds of hours of free computing credit and around 50GB of free storage, which can be used to run any uCloud software. If you run out of credit (which takes a long time) you’ll need to check with the local DeiC office at your university about how to request compute hours on UCloud. Contact us at the Sandbox if you need help or want more information.↩︎\nlink activated on day one of the workshop.↩︎"
+  },
+  {
+    "objectID": "workshop/workshop_Conference2023.html",
+    "href": "workshop/workshop_Conference2023.html",
+    "title": "\nSandbox Workshop\n",
+    "section": "",
+    "text": "Sandbox Workshop"
+  },
+  {
+    "objectID": "workshop/workshop_Conference2023.html#the-sandbox-concept",
+    "href": "workshop/workshop_Conference2023.html#the-sandbox-concept",
+    "title": "\nSandbox Workshop\n",
+    "section": "The Sandbox concept",
+    "text": "The Sandbox concept\nThe Health Data Science Sandbox aims to be a training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets. We are an active and developing project seeking interested users (both trainees and educators). All of our open-source materials are available on our Github page and much more information is available on the rest of the website you are currently visiting! We work with both UCloud and Computerome (major Danish academic supercomputers) - see our HPC Access page for more info on each set up."
+  },
+  {
+    "objectID": "workshop/workshop_Conference2023.html#access-sandbox-resources",
+    "href": "workshop/workshop_Conference2023.html#access-sandbox-resources",
+    "title": "\nSandbox Workshop\n",
+    "section": "Access Sandbox resources",
+    "text": "Access Sandbox resources\nWe currently provide training materials and resources as topical apps on UCloud, the supercomputer located at the University of Southern Denmark. To use these resources, you’ll need the following:\n\na Danish university ID so you can sign on to UCloud via WAYF. See this guide and/or follow along with our live demo.\nthe ability to navigate in linux / RStudio / Jupyter. You don’t need to be an expert, but it is beyond our ambitions (and course material) to teach you how to code and how to run analyses simultaneously. We recommend a basic R or Python course before diving in.\nour invite link to the correct UCloud project that will be shared on the day of the workshop. This way, we can provide you compute resources for the active sessions of the workshop. To use Sandbox materials outside of the workshop, you’ll need to check with the local DeiC office at your university about how to request compute hours on UCloud."
+  },
+  {
+    "objectID": "workshop/workshop_Conference2023.html#try-out-a-module",
+    "href": "workshop/workshop_Conference2023.html#try-out-a-module",
+    "title": "\nSandbox Workshop\n",
+    "section": "Try out a module",
+    "text": "Try out a module\nSo our Sandbox data scientists have finished their intro at the workshop? Great, now it’s time to choose your poison (cough) topic of interest for today. Your options are below:\n ### Genomics If you’re interested in NGS technologies and applications ranging from genome assembly to variant calling to metagenomics, join Sandbox Data Scientist Samuele Soraggi in testing out our Genomics Sandbox app. This app supports a semester-length course on NGS as well as a Population Genomics course run regularly at Aarhus University. Sign into UCloud and then click this invite link.\n ### Transcriptomics If you’re interested in bulk or single cell RNA sequencing analysis and visualization, join Sandbox Data Scientist Jose Alejandro Romero Herrera (Alex) in testing out our Transcriptomics Sandbox app. This app supports regular 3-4 day workshops at University of Copenhagen and provides stand-alone visualisation tools. Sign into UCloud and then click this invite link.\n ### Proteomics Interested in modern methods for protein structure prediction? Join Sandbox Data Scientist Jacob Fredegaard Hansen as he walks you through how to use ColabFold on UCloud. Jacob can also demo our Proteomics Sandbox, which contains a suite of proteomics analysis tools that will support a future course in clinical proteomics but is already available on UCloud for interested users. Sign into UCloud and then click this invite link."
+  },
+  {
+    "objectID": "workshop/workshop_Conference2023.html#discussion-and-feedback",
+    "href": "workshop/workshop_Conference2023.html#discussion-and-feedback",
+    "title": "\nSandbox Workshop\n",
+    "section": "Discussion and feedback",
+    "text": "Discussion and feedback\nWe hope you enjoyed the live demo. If you have broader questions, suggestions, or concerns, now is the time to raise them! If you are totally toast for the day, remember that you can check out longer versions of our tutorials as well as other topics and tools in each of the Sandbox modules or join us for a multi-day in person course.\nAs data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. Please answer these 5 questions for us before you head out for the day (link activated on day of the workshop).\n\nNice meeting you and we hope to see you again!"
+  },
+  {
+    "objectID": "news/upcoming/2024-06-13-session1.html",
+    "href": "news/upcoming/2024-06-13-session1.html",
+    "title": "ABC.1: First ABC session",
+    "section": "",
+    "text": "The very first session of the ABC (Accessible Bioinformatics Cafe) will launch on june 13th, at 13:00 in the hall of AIAS (the Aarhus Institute of Advanced Studies, see below).\nEveryone is welcome to join independently of coding skills and level. In this first meeting we will also distribute a survey, so that participants can give some ideas about expectations and topics of interest."
+  },
+  {
+    "objectID": "news/upcoming/2024-06-13-session1.html#purpose",
+    "href": "news/upcoming/2024-06-13-session1.html#purpose",
+    "title": "ABC.1: First ABC session",
+    "section": "Purpose",
+    "text": "Purpose\nThe ABC aims to:\n\nSupport and guide in using bioinformatics and programming tools.\nProvide support for coding-related issues.\nEnhance the coding skills of participants in fundamental programming languages (R, python, bash command line)."
+  },
+  {
+    "objectID": "news/upcoming/2024-06-13-session1.html#who-can-benefit-from-the-abc",
+    "href": "news/upcoming/2024-06-13-session1.html#who-can-benefit-from-the-abc",
+    "title": "ABC.1: First ABC session",
+    "section": "Who can benefit from the ABC?",
+    "text": "Who can benefit from the ABC?\nEveryone, really. Those that will particularly benefit from the ABC include:\n\nBiologists, bioinformaticians, and health scientists who wish to adopt coding-based solutions.\nScientists and students who wish to accelerate the coding-based analysis of various types of data (such as OMICs data and other large-scale data) in research across Aarhus University and Aarhus University Hospital.\nStudents and researchers who want an open environment where it is easy to get assistance and talk with others encountering similar issues (or maybe who already solved them!)"
+  },
+  {
+    "objectID": "news/upcoming/2024-06-13-session1.html#format",
+    "href": "news/upcoming/2024-06-13-session1.html#format",
+    "title": "ABC.1: First ABC session",
+    "section": "Format",
+    "text": "Format\nEach 2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues."
   },
   {
     "objectID": "index.html",
@@ -91,256 +322,18 @@
     "text": "Footnotes\n\n\nSomeone prefers to refer to the Dunning-Kruger effect instead, but this is for people overestimating their abilities. It is not the case of coders: we know that we cannot do something when we get stuck!↩︎"
   },
   {
-    "objectID": "cards/AlbaMartinez.html",
-    "href": "cards/AlbaMartinez.html",
-    "title": "Alba Refoyo Martinez",
+    "objectID": "Documentation.html",
+    "href": "Documentation.html",
+    "title": "Documentation",
     "section": "",
-    "text": "Alba is a Sandbox data scientist based at the University of Copenhagen. During her academic background as a PhD and Postdoc she has developed a solid expertise in large-scale genomics and pipelines development on computing clusters."
+    "text": "While it is always worth remembering an event which offers free cake (especially when it recurs with a frequency like the ABC, as you could read here), you might want to read again what has been done and said after the sugar levels drop down.\nOur tutorials and instructions are self contained, thus useful for anyone, also people not attending a session.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.1: Install R+Rstudio, first R coding problems/solutions\n\n\n\nR\n\n\nRStudio\n\n\nDataframe\n\n\n\nThings worth remembering from the ABC.1\n\n\n\nJun 13, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.2: RStudio projects and Anaconda+Python\n\n\n\nR\n\n\nRStudio\n\n\nAnaconda\n\n\nPython\n\n\nenvironments\n\n\n\nThings worth remembering from the ABC.2\n\n\n\nJun 27, 2024\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "news/upcoming/2024-06-13-session1.html",
-    "href": "news/upcoming/2024-06-13-session1.html",
-    "title": "ABC.1: First ABC session",
-    "section": "",
-    "text": "The very first session of the ABC (Accessible Bioinformatics Cafe) will launch on june 13th, at 13:00 in the hall of AIAS (the Aarhus Institute of Advanced Studies, see below).\nEveryone is welcome to join independently of coding skills and level. In this first meeting we will also distribute a survey, so that participants can give some ideas about expectations and topics of interest."
-  },
-  {
-    "objectID": "news/upcoming/2024-06-13-session1.html#purpose",
-    "href": "news/upcoming/2024-06-13-session1.html#purpose",
-    "title": "ABC.1: First ABC session",
-    "section": "Purpose",
-    "text": "Purpose\nThe ABC aims to:\n\nSupport and guide in using bioinformatics and programming tools.\nProvide support for coding-related issues.\nEnhance the coding skills of participants in fundamental programming languages (R, python, bash command line)."
-  },
-  {
-    "objectID": "news/upcoming/2024-06-13-session1.html#who-can-benefit-from-the-abc",
-    "href": "news/upcoming/2024-06-13-session1.html#who-can-benefit-from-the-abc",
-    "title": "ABC.1: First ABC session",
-    "section": "Who can benefit from the ABC?",
-    "text": "Who can benefit from the ABC?\nEveryone, really. Those that will particularly benefit from the ABC include:\n\nBiologists, bioinformaticians, and health scientists who wish to adopt coding-based solutions.\nScientists and students who wish to accelerate the coding-based analysis of various types of data (such as OMICs data and other large-scale data) in research across Aarhus University and Aarhus University Hospital.\nStudents and researchers who want an open environment where it is easy to get assistance and talk with others encountering similar issues (or maybe who already solved them!)"
-  },
-  {
-    "objectID": "news/upcoming/2024-06-13-session1.html#format",
-    "href": "news/upcoming/2024-06-13-session1.html#format",
-    "title": "ABC.1: First ABC session",
-    "section": "Format",
-    "text": "Format\nEach 2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues."
-  },
-  {
-    "objectID": "workshop/workshop_Conference2023.html",
-    "href": "workshop/workshop_Conference2023.html",
-    "title": "\nSandbox Workshop\n",
-    "section": "",
-    "text": "Sandbox Workshop"
-  },
-  {
-    "objectID": "workshop/workshop_Conference2023.html#the-sandbox-concept",
-    "href": "workshop/workshop_Conference2023.html#the-sandbox-concept",
-    "title": "\nSandbox Workshop\n",
-    "section": "The Sandbox concept",
-    "text": "The Sandbox concept\nThe Health Data Science Sandbox aims to be a training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets. We are an active and developing project seeking interested users (both trainees and educators). All of our open-source materials are available on our Github page and much more information is available on the rest of the website you are currently visiting! We work with both UCloud and Computerome (major Danish academic supercomputers) - see our HPC Access page for more info on each set up."
-  },
-  {
-    "objectID": "workshop/workshop_Conference2023.html#access-sandbox-resources",
-    "href": "workshop/workshop_Conference2023.html#access-sandbox-resources",
-    "title": "\nSandbox Workshop\n",
-    "section": "Access Sandbox resources",
-    "text": "Access Sandbox resources\nWe currently provide training materials and resources as topical apps on UCloud, the supercomputer located at the University of Southern Denmark. To use these resources, you’ll need the following:\n\na Danish university ID so you can sign on to UCloud via WAYF. See this guide and/or follow along with our live demo.\nthe ability to navigate in linux / RStudio / Jupyter. You don’t need to be an expert, but it is beyond our ambitions (and course material) to teach you how to code and how to run analyses simultaneously. We recommend a basic R or Python course before diving in.\nour invite link to the correct UCloud project that will be shared on the day of the workshop. This way, we can provide you compute resources for the active sessions of the workshop. To use Sandbox materials outside of the workshop, you’ll need to check with the local DeiC office at your university about how to request compute hours on UCloud."
-  },
-  {
-    "objectID": "workshop/workshop_Conference2023.html#try-out-a-module",
-    "href": "workshop/workshop_Conference2023.html#try-out-a-module",
-    "title": "\nSandbox Workshop\n",
-    "section": "Try out a module",
-    "text": "Try out a module\nSo our Sandbox data scientists have finished their intro at the workshop? Great, now it’s time to choose your poison (cough) topic of interest for today. Your options are below:\n ### Genomics If you’re interested in NGS technologies and applications ranging from genome assembly to variant calling to metagenomics, join Sandbox Data Scientist Samuele Soraggi in testing out our Genomics Sandbox app. This app supports a semester-length course on NGS as well as a Population Genomics course run regularly at Aarhus University. Sign into UCloud and then click this invite link.\n ### Transcriptomics If you’re interested in bulk or single cell RNA sequencing analysis and visualization, join Sandbox Data Scientist Jose Alejandro Romero Herrera (Alex) in testing out our Transcriptomics Sandbox app. This app supports regular 3-4 day workshops at University of Copenhagen and provides stand-alone visualisation tools. Sign into UCloud and then click this invite link.\n ### Proteomics Interested in modern methods for protein structure prediction? Join Sandbox Data Scientist Jacob Fredegaard Hansen as he walks you through how to use ColabFold on UCloud. Jacob can also demo our Proteomics Sandbox, which contains a suite of proteomics analysis tools that will support a future course in clinical proteomics but is already available on UCloud for interested users. Sign into UCloud and then click this invite link."
-  },
-  {
-    "objectID": "workshop/workshop_Conference2023.html#discussion-and-feedback",
-    "href": "workshop/workshop_Conference2023.html#discussion-and-feedback",
-    "title": "\nSandbox Workshop\n",
-    "section": "Discussion and feedback",
-    "text": "Discussion and feedback\nWe hope you enjoyed the live demo. If you have broader questions, suggestions, or concerns, now is the time to raise them! If you are totally toast for the day, remember that you can check out longer versions of our tutorials as well as other topics and tools in each of the Sandbox modules or join us for a multi-day in person course.\nAs data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. Please answer these 5 questions for us before you head out for the day (link activated on day of the workshop).\n\nNice meeting you and we hope to see you again!"
-  },
-  {
-    "objectID": "workshop/workshop_june24.html",
-    "href": "workshop/workshop_june24.html",
-    "title": "\nWelcome to the homepage for our in-person bulk RNAseq workshop. Thank you for joining us!\n",
-    "section": "",
-    "text": "The Health Data Science Sandbox aims to be a training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets. We are an active and developing project seeking interested users (both trainees and educators). All of our open-source materials are available on our Github page and can be used on a computing cluster! We work with both UCloud, GenomeDK and Computerome, the major Danish academic supercomputers. See our HPC Access page for more info on each setup."
-  },
-  {
-    "objectID": "workshop/workshop_june24.html#access-sandbox-resources",
-    "href": "workshop/workshop_june24.html#access-sandbox-resources",
-    "title": "\nWelcome to the homepage for our in-person bulk RNAseq workshop. Thank you for joining us!\n",
-    "section": "Access Sandbox resources",
-    "text": "Access Sandbox resources\nOur first choice is to provide all the training materials, tutorials, and tools as interactive apps on UCloud, the supercomputer located at the University of Southern Denmark. Anyone using these resources needs the following:\n\nDanish university credentials to sign on to UCloud via WAYF1.\n\n \n\n for UCloud Access click here \n\n \n\nBasic ability to navigate in Linux/RStudio/Jupyter. You don’t need to be an expert, but it is beyond our ambitions (and course material) to teach you how to code from zero and how to run analyses simultaneously. We recommend a basic R or Python course before diving in.\nFor workshop participants: Use our invite link to the correct UCloud workspace that will be shared on the day of the workshop. This way, we can provide you with compute resources for the active sessions of the workshop2 Click the link below after your first uCloud access and accept the invite that shows.\n\n \n\n Invite link to uCloud workspace \n\n   \n\n\n\n\n\n\nNote\n\n\n\nOur apps can run on other clusters, simply by pulling a so-called docker container. You only need to have either docker installed on the cluster."
-  },
-  {
-    "objectID": "workshop/workshop_june24.html#our-sandbox-apps",
-    "href": "workshop/workshop_june24.html#our-sandbox-apps",
-    "title": "\nWelcome to the homepage for our in-person bulk RNAseq workshop. Thank you for joining us!\n",
-    "section": "Our Sandbox apps",
-    "text": "Our Sandbox apps\nThe agenda starts with an introduction to High Performance Computing (HPC) and uCloud.\n\nTo get started in our transcriptomics app, click here\n\n\n\n\nTranscriptomics Sandbox : Our sandbox for bulk or single-cell RNA sequencing analysis and visualization - amongst others two regular workshops and provides stand-alone visualization tools. In the next update, we will introduce advanced tutorials for more complex single-cell RNA sequencing analysis from some of our supported courses. - Click here to start setting up the app - To run nf-core RNAseq pipeline follow the instructions here\n\n\n \nWe are developing other apps. If you are interested, explore our modules section on our website!"
-  },
-  {
-    "objectID": "workshop/workshop_june24.html#discussion-and-feedback",
-    "href": "workshop/workshop_june24.html#discussion-and-feedback",
-    "title": "\nWelcome to the homepage for our in-person bulk RNAseq workshop. Thank you for joining us!\n",
-    "section": "Discussion and feedback",
-    "text": "Discussion and feedback\nWe hope you enjoyed the live demo. If you have broader questions, suggestions, or concerns, now is the time to raise them! If you are totally toast for the day, remember that you can check out longer versions of our tutorials as well as other topics and tools in each of the Sandbox modules or join us for a multi-day in-person course (follow our news here).\nAs data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. Please answer these 5 questions for us before you head out for the day 3.\n \n\n\n\n\n\n\n\nNice meeting you and we hope to see you again!"
-  },
-  {
-    "objectID": "workshop/workshop_june24.html#footnotes",
-    "href": "workshop/workshop_june24.html#footnotes",
-    "title": "\nWelcome to the homepage for our in-person bulk RNAseq workshop. Thank you for joining us!\n",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nOther institutions (e.g. hospitals, libraries, …) can log on through WAYF. See all institutions here↩︎\nTo use Sandbox materials outside of the workshop: remember that each new user has hundreds of hours of free computing credit and around 50GB of free storage, which can be used to run any uCloud software. If you run out of credit (which takes a long time) you’ll need to check with the local DeiC office at your university about how to request compute hours on UCloud. Contact us at the Sandbox if you need help or want more information.↩︎\nlink activated on day one of the workshop.↩︎"
-  },
-  {
-    "objectID": "news.html",
-    "href": "news.html",
-    "title": "News",
-    "section": "",
-    "text": "The ABC will routinely post new meetings and related workshops/courses of interest here.\n\n\n\n\n\n\n\n\n\n\n\n\nABC.1: First ABC session\n\n\n\nCafe\n\n\nCoding\n\n\nBioinformatics\n\n\n\nCoding and bioinformatics for anyone!\n\n\n\nJun 13, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nABC.2: Second ABC session\n\n\n\nCafe\n\n\nCoding\n\n\nBioinformatics\n\n\n\nCoding and bioinformatics (and cake) for anyone!\n\n\n\nJun 27, 2024\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Event title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nEvent title\n\n\nDates\n\n\nLocation\n\n\nOrganizers\n\n\n\n\n\n\nExample\n\n\n2024-06-13\n\n\nAIAS hall, AU campus\n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "workshop/workshopAAU_2023.html",
-    "href": "workshop/workshopAAU_2023.html",
-    "title": "\nSandbox Workshop\n",
-    "section": "",
-    "text": "Sandbox Workshop\n!!! info “Upcoming Workshop at AAU”  Intro to the Health Data Science Sandbox at Aalborg University"
-  },
-  {
-    "objectID": "workshop/workshopAAU_2023.html#the-sandbox-concept",
-    "href": "workshop/workshopAAU_2023.html#the-sandbox-concept",
-    "title": "\nSandbox Workshop\n",
-    "section": "The Sandbox concept",
-    "text": "The Sandbox concept\nThe Health Data Science Sandbox aims to be a training resource for bioinformaticians, data scientists, and those generally curious about how to investigate large biomedical datasets. We are an active and developing project seeking interested users (both trainees and educators). All of our open-source materials are available on our Github page and much more information is available on the rest of the website you are currently visiting! We work with both UCloud and Computerome (major Danish academic supercomputers) - see our HPC Access page for more info on each set up."
-  },
-  {
-    "objectID": "workshop/workshopAAU_2023.html#access-sandbox-resources",
-    "href": "workshop/workshopAAU_2023.html#access-sandbox-resources",
-    "title": "\nSandbox Workshop\n",
-    "section": "Access Sandbox resources",
-    "text": "Access Sandbox resources\nWe currently provide training materials and resources as topical apps on UCloud, the supercomputer located at the University of Southern Denmark. To use these resources, you’ll need the following:\n\nLog onto UCloud at the address http://cloud.sdu.dk using your university credentials.\nthe ability to navigate in linux / RStudio / Jupyter. You don’t need to be an expert, but it is beyond our ambitions (and course material) to teach you how to code and how to run analyses simultaneously. We recommend a basic R or Python course before diving in.\n\nNote:\n\nTo use Sandbox materials outside of the workshop, you can request a project by clicking on apply for resources in your uCloud dashboard.\nIf you are a BSc or MSc student, you need a supervisor to apply on your behalf, or you can try to apply yourself mentioning the supervisor approval in the application.\nRemember, however, that you have 1000Kr of computing credit, and around 50GB of free storage to work on uCLoud."
-  },
-  {
-    "objectID": "workshop/workshopAAU_2023.html#try-out-our-transcriptomics-module",
-    "href": "workshop/workshopAAU_2023.html#try-out-our-transcriptomics-module",
-    "title": "\nSandbox Workshop\n",
-    "section": "Try out our transcriptomics module",
-    "text": "Try out our transcriptomics module\nSo our Sandbox data scientists have finished their intro at the workshop? Great, now the brave ones in the audience can try out one of our apps in a live session. Today we are demoing:\n ### Transcriptomics If you’re interested in bulk or single cell RNA sequencing analysis and visualization, join Sandbox Data Scientist Samuele Soraggi from Aarhus University in testing out our Transcriptomics Sandbox app.\nFollow these instructions to try our app:\n\nClick on the button below to join the project for today: &lt;!DOCTYPE html&gt;\n\n\n\n\n\n&lt;p&gt;Green Button&lt;/p&gt;\n\n\n\n\n\nGo to Link\n\n\nYou should see a message on your browser where you have to accept the invitation to the project. This will add you to a project on uCloud, where we have data and extra computing credit for the course.\nBe sure you have joined the project. Check if you have the project OMICS workshop from the project menu (red circle). Afterwards, click on the App menu (green circle) \n\nFind the app Transcriptomics Sandbox (red circle), which is under the title Featured.\n\n\n\n\nClick on it. You will get into the settings window. Choose any Job Name (Nr 1 in the figure below), how many hours you want to use for the job (Nr 2; choose at least 3 hours, you can increase this later), and how many CPUs (Nr 3, choose at least 4 CPUs). Choose the course RNAseq in RStudio from the drop-down menu (Nr 4). Finally, click on the blue button Add Folder.\n\n\n\nNow, click on the browsing bar that appears (red circle).\n\n\n\nIn the appearing window, you should see already a folder called Intro_to_scRNAseq_R. Click on Use at its right (red circle)\n\n\n\nAfterwards, you should have something like this in the settings page:\n\n\n\nNow, click on Submit to start the app (the button is on the right side of the settings page)\nYou will now enter a waiting queue. When the session starts, the timer begins to count down (red circle), and you should be able to open the interface through the button (green circle). Note the buttons to add time to your session (blue circle) and the button to stop the session when you are done (pink circle)\n\n\n\nOpen the interface by clicking on the button (green circle of figure above). Sometimes you are warned of a missing connection: simply refresh the page. You will enter Rstudio, well-known interface to code in R.\nRun the following command to download the tutorial: download.file(\"https://raw.githubusercontent.com/hds-sandbox/ELIXIR-workshop/main/Notebooks/scRNAseq_Tutorial_R.Rmd\", \"tutorial_scrna.Rmd\")\nOpen the file tutorial_scrnaR.Rmd that should now appear in the file browser of Rstudio. Click now on visual (on the tool bar) if you need to see the tutorial in a more readable format.\nThe executable code is inside chunks (called cells) to be executed in order from the first to the last using the little green arrow appearing on the right side of each code cell.\nRead carefully through the tutorial and execute the code cells. You will see the outputs appearing as you proceed."
-  },
-  {
-    "objectID": "workshop/workshopAAU_2023.html#discussion-and-feedback",
-    "href": "workshop/workshopAAU_2023.html#discussion-and-feedback",
-    "title": "\nSandbox Workshop\n",
-    "section": "Discussion and feedback",
-    "text": "Discussion and feedback\nWe hope you enjoyed the live demo. If you have broader questions, suggestions, or concerns, now is the time to raise them! If you are totally toast for the day, remember that you can check out longer versions of our tutorials as well as other topics and tools in each of the Sandbox modules or join us for a multi-day in person course.\nAs data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. Please answer these 5 questions for us before you head out for the day (link activated on day of the workshop).\n\nNice meeting you and we hope to see you again!"
-  },
-  {
-    "objectID": "workshop/workshop_april2024.html#access-sandbox-resources",
-    "href": "workshop/workshop_april2024.html#access-sandbox-resources",
-    "title": "Sandbox Workshop",
-    "section": "Access Sandbox resources",
-    "text": "Access Sandbox resources\nOur first choice is to provide all the training materials, tutorials, and tools as interactive apps on UCloud, the supercomputer located at the University of Southern Denmark. Anyone using these resources needs the following:\n\na Danish university ID so you can sign on to UCloud via WAYF1.\n\n \n\n for UCloud Access click here \n\n \n\nbasic ability to navigate in Linux/RStudio/Jupyter. You don’t need to be an expert, but it is beyond our ambitions (and course material) to teach you how to code from zero and how to run analyses simultaneously. We recommend a basic R or Python course before diving in.\nFor workshop participants: Use our invite link to the correct UCloud workspace that will be shared on the day of the workshop. This way, we can provide you with compute resources for the active sessions of the workshop2 Click the link below after your first uCloud access and accept the invite that shows.\n\n \n\n Invite link to uCloud workspace \n\n   \n\n\n\n\n\n\nNote\n\n\n\nOur apps can run on other clusters, simply by pulling a so-called docker container. You only need to have either docker or singularity installed on the cluster. GenomeDK supports singularity and thus can run our learning material as well. Ask us if you want to help the apps out of uCloud. Instructions will soon be available within our HPC access instructions."
-  },
-  {
-    "objectID": "workshop/workshop_april2024.html#our-omics-apps",
-    "href": "workshop/workshop_april2024.html#our-omics-apps",
-    "title": "Sandbox Workshop",
-    "section": "Our OMICS apps",
-    "text": "Our OMICS apps\nThe agenda starts with an introduction to High Performance Computing (HPC) and uCloud. You will try two apps during the workshop, but we are developing others, and have deployed three apps already.\n \n\n\n\nProteomics Sandbox: Our sandbox modern with a suite of proteomics analysis tools, used for example in clinical proteomics. This app is not alone, since our data scientist Jacob has also made the app ColabFold on UCloud, with methods for protein structure prediction.\n\n\n \n\n\n\nTranscriptomics Sandbox : Our sandbox for bulk or single-cell RNA sequencing analysis and visualization - amongst others two regular workshops and provides stand-alone visualization tools. In the next update, we will introduce advanced tutorials for more complex single-cell RNA sequencing analysis from some of our supported courses.\n\n\n \n\n\n\nGenomics Sandbox: Our sandbox NGS data analysis and applications range from genome assembly to variant calling to metagenomics. We have currently a semester-long population genomics course and an NGS course with many applications (alignment, VCF analysis, bulk-RNA data, single-cell RNA sequencing)"
-  },
-  {
-    "objectID": "workshop/workshop_april2024.html#discussion-and-feedback",
-    "href": "workshop/workshop_april2024.html#discussion-and-feedback",
-    "title": "Sandbox Workshop",
-    "section": "Discussion and feedback",
-    "text": "Discussion and feedback\nWe hope you enjoyed the live demo. If you have broader questions, suggestions, or concerns, now is the time to raise them! If you are totally toast for the day, remember that you can check out longer versions of our tutorials as well as other topics and tools in each of the Sandbox modules or join us for a multi-day in-person course (follow our news here).\nAs data scientists, we also would be really happy for some quantifiable info and feedback - we want to build things that the Danish health data science community is excited to use. Please answer these 5 questions for us before you head out for the day 3.\n \n\n\n\n\n\n\n\nNice meeting you and we hope to see you again!"
-  },
-  {
-    "objectID": "workshop/workshop_april2024.html#footnotes",
-    "href": "workshop/workshop_april2024.html#footnotes",
-    "title": "Sandbox Workshop",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nOther institutions (e.g. hospitals, libraries, …) can log on through WAYF. See all institutions here↩︎\nTo use Sandbox materials outside of the workshop: remember that each new user has hundreds of hours of free computing credit and around 50GB of free storage, which can be used to run any uCloud software. If you run out of credit (which takes a long time) you’ll need to check with the local DeiC office at your university about how to request compute hours on UCloud. Contact us at the Sandbox if you need help or want more information.↩︎\nlink activated on day one of the workshop.↩︎"
-  },
-  {
-    "objectID": "news/past/test.html",
-    "href": "news/past/test.html",
-    "title": "Example",
-    "section": "",
-    "text": "Test post"
-  },
-  {
-    "objectID": "news/upcoming/2024-06-27-session2.html",
-    "href": "news/upcoming/2024-06-27-session2.html",
-    "title": "ABC.2: Second ABC session",
-    "section": "",
-    "text": "The second session of the ABC (Accessible Bioinformatics Cafe) will be on june 27th, at 13:00 in the hall of AIAS (the Aarhus Institute of Advanced Studies, see below).\nEveryone is welcome to join independently of coding skills and level."
-  },
-  {
-    "objectID": "news/upcoming/2024-06-27-session2.html#agenda",
-    "href": "news/upcoming/2024-06-27-session2.html#agenda",
-    "title": "ABC.2: Second ABC session",
-    "section": "Agenda",
-    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented) at each meeting. This time we have a choice of\n\nA small dplyr project managed with RStudio\nInstall Anaconda and python basics"
-  },
-  {
-    "objectID": "news/upcoming/2024-06-27-session2.html#signing-up",
-    "href": "news/upcoming/2024-06-27-session2.html#signing-up",
-    "title": "ABC.2: Second ABC session",
-    "section": "Signing up",
-    "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake, click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign up for cake"
-  },
-  {
-    "objectID": "cards/SamueleSoraggi.html",
-    "href": "cards/SamueleSoraggi.html",
-    "title": "Samuele Soraggi",
-    "section": "",
-    "text": "Samuele is a Sandbox data scientist based at the university of Aarhus. During his academic activity he has gained experience in population genomics, transcriptomics, single cell multiomics and spans his knowledge across various themes of advanced computational statistics."
-  },
-  {
-    "objectID": "about/about.html",
-    "href": "about/about.html",
-    "title": "About the Sandbox",
-    "section": "",
-    "text": "An infrastructure project for health data science training and research in Denmark\nThe National Health Data Science Sandbox project kicked off in 2021 with 5 years of funding via the Data Science Research Infrastructure initiative from the Novo Nordisk Foundation. Health data science experts at five Danish universities are contributing to the Sandbox with coordination from the Center for Health Data Science under lead PI Professor Anders Krogh. Data scientists hosted in the research groups of each PI are building infrastructure and training modules on Computerome and UCloud, the primary academic high performance computing (HPC) platforms in Denmark. If you have any questions or would like to get in touch with one of our data scientists, please contact us here.\n\n\n\n\n\nOur computational ‘sandbox’ allows data scientists to explore datasets, tools and analysis pipelines in the same high performance computing environments where real research projects are conducted. Rather than a single, hefty environment, we’re deploying modularized topical environments tailored for independent use on each HPC platform. We aim to support three key user groups based at Danish universities:\n\ntrainees: use our training modules to learn analysis techniques with some guidance and guardrails - for your data type of interest AND for general good practices for HPC environments\n\nresearchers: prototype your tools and algorithms with an array of good quality datasets that are GDPR compliant and free to access\neducators: develop your next course with computational assignments in the HPC environment your students will use for their research\n\nActivity developing independent training modules and hosting workshops has centered on UCloud, while collaborative construction of a flexible Course Platform has been completed on Computerome for use by the Sandbox and independent educators. Publicly sourced datasets are being used in training modules on UCloud, while generation of synthetic data is an ongoing project at Computerome. Sandbox resources are under active construction, so check out our other pages for the current status on HPC Access, Datasets, and Modules. We run workshops using completed training modules on a regular basis and provide active support for Sandbox-hosted courses through a slack workspace. See our Contact page for more information.\n\n\nPartner with the Sandbox\nThe Sandbox welcomes proposals for new courses, modules, and prototyping projects from researchers and educators. We’d like to partner with lecturers engaged with us in developing needed materials collaboratively - we would love to have input from subject experts or help promote exciting new tools and analysis methods via modules! Please contact us with your ideas at nhds_sandbox@sund.ku.dk.\n\nWe thank the Novo Nordisk Foundation for funding support. If you use the Sandbox for research or reference it in text or presentations, please acknowledge the Health Data Science Sandbox project and its funder the Novo Nordisk Foundation (grant number NNF20OC0063268)."
-  },
-  {
-    "objectID": "documentation/2024-06-13-instR.html",
-    "href": "documentation/2024-06-13-instR.html",
-    "title": "ABC.1: Install R+Rstudio, first R coding problems/solutions",
-    "section": "",
-    "text": "Introductory slides about the ABC, and who is behind the Health Data Science Sandbox and the Core Bioinformatics Facility\n \n\n Download Slides"
-  },
-  {
-    "objectID": "documentation/2024-06-13-instR.html#rstudio-layout",
-    "href": "documentation/2024-06-13-instR.html#rstudio-layout",
-    "title": "ABC.1: Install R+Rstudio, first R coding problems/solutions",
-    "section": "Rstudio Layout",
-    "text": "Rstudio Layout\n\nLaunch RStudio.\nFamiliarize yourself with the RStudio interface, which consists of:\n\nSource Pane: Where you write and edit scripts.\nConsole Pane: Where you run commands and see output.\nEnvironment/History Pane: Shows your workspace and command history.\nFiles/Plots/Packages/Help/Viewer Pane: Access your files, view plots, manage packages, get help, and view HTML output."
-  },
-  {
-    "objectID": "documentation/2024-06-13-instR.html#make-a-simple-script",
-    "href": "documentation/2024-06-13-instR.html#make-a-simple-script",
-    "title": "ABC.1: Install R+Rstudio, first R coding problems/solutions",
-    "section": "Make a simple script",
-    "text": "Make a simple script\n\nClick on File &gt; New File &gt; R Script to open a new script editor.\nInside the file you created, Write a simple script. Copy for example the script below:\n\nprint(\"Hello ABC\")\nx &lt;- 1:10\ny &lt;- x^2\nplot(x, y, type=\"b\", col=\"blue\")\n\nTry to run the script (The small Run button). Two things should happen:\n\nAn output is shown in the console (bottom left)\nA plot is created and shown in the plotting window (bottom right)\nthe variables x and y are saved in your environment and can be seen in the variable explorer (top right). These variables can be used again since they exist in your computer’s memory.\n\n\n\n\n\n\n\n\nWorking directory\n\n\n\nEvery time you start working in R, this will be considering a working directory. Such directory is the reference point you are working in. For example, if you want to open a file, you need to know where it is in relation to your working directory, so that you can correctly write where it is. Write the command getwd() in the console and press Enter to see your current working directory."
-  },
-  {
-    "objectID": "documentation/2024-06-13-instR.html#some-basic-operations",
-    "href": "documentation/2024-06-13-instR.html#some-basic-operations",
-    "title": "ABC.1: Install R+Rstudio, first R coding problems/solutions",
-    "section": "Some basic operations",
-    "text": "Some basic operations\nIn R you can perform basic math operations by using the appropriate symbol. For example\n2+3\n9*2\n5^2\nYou can assign variables (“objects”) using the symbol &lt;-. For example\n\nx &lt;- 5\nanothername &lt;- 3\nitCanBeAnything &lt;- \"It can be text\""
-  },
-  {
-    "objectID": "documentation/2024-06-13-instR.html#lets-try-some-exercises",
-    "href": "documentation/2024-06-13-instR.html#lets-try-some-exercises",
-    "title": "ABC.1: Install R+Rstudio, first R coding problems/solutions",
-    "section": "Lets try some exercises!",
-    "text": "Lets try some exercises!\nCreate a new script file or use the console to test some exercises below.\n\n1. Create a data frame\nWe will create a simple data frame. A data frame is nothing more than a table, where both rows and columns have labels, and can be easily accessed and manipulated. To create a small data frame, we can define its columns. We define each column through a vector with the function c(), where we can write values inside separated by a comma. Then we provide all vectors to the function data.frame, where we assign column names (Gene, Control, Treatment1, Treatment2).\n\n\n\n\n\n\nNote\n\n\n\nMake sure your vectors are all of the same length! Also, each vector usually contains values of the same type (for example only numbers or only text)\n\n\n\ngeneExpr &lt;- data.frame(\n  Gene = c(\"GeneA\", \"GeneB\", \"GeneC\"),\n  Control = c(10, 20, 30),\n  Treatment1 = c(15, 25, 35),\n  Treatment2 = c(100, 0, 250)\n)\n\ngeneExpr\n\n   Gene Control Treatment1 Treatment2\n1 GeneA      10         15        100\n2 GeneB      20         25          0\n3 GeneC      30         35        250\n\n\nYou should be able to see the small data frame printed in output and also shown in the variable explorer.\n\n\n2. Plot from a data frame\nNow lets try to plot it Treatment 1 versus Treatment 2. The basic function for plotting in R is called plot. It takes as arguments the x axis and the y axis. It has other options which are not mandatory, such as style and color of the plot. Notice how we access the values in the columns using the $ sign.\n\nplot( x = geneExpr$Treatment1, \n      y = geneExpr$Treatment2 , \n      main=\"Expression per Treatment group\", \n      xlab = \"Treatment 1\", \n      ylab = \"Treatment 2\" , \n      col =\"blue\" , \n      type =\"b\")\n\n\n\n\n\n\n\n\nYou should be able to see a plot in the plotting window. In the command above we used many options beyond x and y. Can you see what they match in the plot?\n\n\n3. Summary statistics\nThere are lots of summary statistics already implemented in R. Below we calculate mean, median and standard deviation for the column Treatment1 of the data frame and then we print them.\n\nx &lt;- geneExpr$Treatment1\nmeanTr1 &lt;- mean(x)\nmedianTr1 &lt;- median(x)\nsdTr1 &lt;- sd(x)\n\nprint(\"mean, median and sd:\")\n\n[1] \"mean, median and sd:\"\n\nprint(c(meanTr1, medianTr1, sdTr1))\n\n[1] 25 25 10\n\n\nThis was neat! Can you try to calculate the cumulative sum of the difference between Treatment 1 and Treatment 2?\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nx &lt;- geneExpr$Treatment1 - geneExpr$Treatment2\ncsum &lt;- cumsum(x)\nprint(\"cumulative sum of Tr1 - Tr2:\")\n\n[1] \"cumulative sum of Tr1 - Tr2:\"\n\nprint(csum)\n\n[1]  -85  -60 -275\n\n\n\n\n\n\n\n4. Define your own function!\nAlthough R and the packages you can find have almost everything you will need, sometimes you might need to define your own function. The syntax to do it is very easy: you assign a function to a name, which then you will be able to use. Below, there is a function taking an argument (arg1) and multiplying it by 5. The function commands need to be between the curly brackets, and what we want as output need to be explicit through the return() function.\n\nmyFunction &lt;- function(arg1){\n  \n  # Now arg1 is a variable of the function. \n  # You can write comments inside code blocks with #\n  output &lt;- arg1 * 5\n  return (output)\n\n}\n\nSuch a function works if the argument is a number, but also if it is a vector!\n\nprint(\"with a number only\")\n\n[1] \"with a number only\"\n\nmyFunction(5)\n\n[1] 25\n\nprint(\"with a vector\")\n\n[1] \"with a vector\"\n\nmyFunction(geneExpr$Treatment1)\n\n[1]  75 125 175\n\n\nTry to make a function that takes three vectors, plots the first against the sum of the second and third, and returns the sum of all three vectors. Use the plot command we applied previously for help.\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nsimpleSumPlot &lt;- function (arg1, arg2, arg3){\n  \n  arg23 &lt;- arg2 + arg3\n  arg123 &lt;- arg1 + arg2 + arg3\n\n  #plotting\n  plot( x = arg1, \n      y = arg23, \n      main=\"Plot with my own function\", \n      xlab = \"arg1\", \n      ylab = \"arg2+arg3\" , \n      col =\"red\", \n      type =\"o\" )\n\n  return (arg123)\n  \n}\n\nNow you can try this on vectors of the same length. We can use the ones in our data frame!\n\nsimpleSumPlot(arg1=geneExpr$Control, \n              arg2=geneExpr$Treatment1, \n              arg3=geneExpr$Treatment2)\n\n\n\n\n\n\n\n\n[1] 125  45 315\n\n\n\n\n\n\n\n5. Read files\nMany times we want to read files from excel or other formats. R has many ways to do this and if not there are always packages out there to help you read the format you have. For reading an excel file a great package is the readxl. To read a csv file there is already the R function read.csv().\n\n\n\n\n\n\nNote\n\n\n\nBut wait. what are packages? Each package consist of a set of R and other scripts that meet specific needs for the users of R. For example openxlsx reads from Excel files, which R cannot do on its own. There are thousands of packages out there, ranging all fields of science, and some have become very popular.\n\n\nTry to install the package openxlsx. You can use the command install.packages(\"openxlsx\") in your RStudio console. Otherwise, go on the bottom right panel and click Packages and Install like this\n\nNow you are ready to import an Excel file. To use the package, we can load it with library(openxlsx). Otherwise we need to write the package name before the command to use from it (as done below). You can get a file locally on your computer or from an URL as done in this example.\n\ndf &lt;- openxlsx::read.xlsx(\"https://github.com/AU-ABC/AU-ABC.github.io/raw/main/documentation/2024-06-13-instR/data/data.xlsx\", sheet=1)\ndf\n\n   x  y  z\n1 10 30 -1\n2 20 20  0\n3 30 10  1\n\n\nOnce you have a data frame, you can always save it. Remember, the path of the saved file is related to your current working directory! To save your data frame as a csv file, use\n\nwrite.table(geneExpr, \n            file = \"./myFirstDataFrame.csv\", \n            row.names = FALSE , \n            sep=\"\\t\")\n\nwhere we remove the labels for the rows and use the tab separator instead of the comma. To read the file again, simply use\n\ndf2 &lt;- read.csv(\"./myFirstDataFrame.csv\" , sep=\"\\t\")\ndf2\n\n   Gene Control Treatment1 Treatment2\n1 GeneA      10         15        100\n2 GeneB      20         25          0\n3 GeneC      30         35        250\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can use the tab key of your keyboard to see a list of the available paths"
+    "objectID": "documentation/2024-06-27-ABC2.html#install-anaconda-and-create-an-environment",
+    "href": "documentation/2024-06-27-ABC2.html#install-anaconda-and-create-an-environment",
+    "title": "ABC.2: RStudio projects and Anaconda+Python",
+    "section": "Install Anaconda and create an environment",
+    "text": "Install Anaconda and create an environment\n1. Download Anaconda from the download page. Uso also the Sign In button of the webpage to create an account: this will enable you to use an AI-chat showing up while you code, and which can help you doing a lot of things.\n\n\n\n\n\n\nNote\n\n\n\nThis guide has been made with Windows, and works similarly with MacOS. For Linux, you will download a file with .sh extension, which you can execute in the command line with bash installer.sh.\n\n\n2. Once Anaconda is installed, open Anaconda Navigator. Log into Anaconda Cloud from the software, and eventually update Anaconda Navigator if asked.\n3. Your initial window would look similarly as below. What you can see is a suite of softwares. Some of those are installed and they are found in the anaconda environment called base (root), as shown in the red circle. It is good advice not to modify the base environment, because Anaconda itself is installed into it!\n\n4. We create a new environment with only few needed packages for our tutorial. Click on Environments on the toolbar (red circle). You can see the base (root) environment and a long list of packages it contains. Click on Create (blue circle).\n\n5. In the appearing window choose a name for the environment and select Python. Then click on Create. It takes a bit of time to create the environment.\n\n6. Select the environment. It will load a few packages (just Python and its essential dependencies), but we want to install new ones. Open the filtering menu (green circle above) and choose All to view all existing packages. Select the following packages: pandas, numpy, jupyterlab, anaconda-toolbox and click Apply. A list of dependencies will be shown, and you have to accept that to continue. Wait for the installations to go through.\n7. Now select the environment again. There are much more packages installed and ready to use. Click on Home in the toolbar: you will see the softwares installed in your environment (choose Installed Application from the dropdown menu to see only the installed ones).\n\n\n\n\n\n\nwrap up\n\n\n\nYou can create various environments to keep specific versions of packages constant in separate data science projects. This ensures a high degree of reproducibility in your projects.\nAn environment can include the softwares needed to code (RStudio, jupyterLab are the most famous, but also others can be installed).\nWe will use the created environment to run some basic commands in python."
   },
   {
     "objectID": "tips/python.html",
