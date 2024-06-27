@@ -9,7 +9,9 @@ listing:
     grid-columns: 4
     image-placeholder: "./img/ABClogo.png"
     fields: [image,title, description,categories, date]
-    contents: documentation/*.qmd
+    contents: 
+      - documentation/*.qmd
+      - documentation/*.ipynb
     type: grid
     sort:
       - "date asc"
