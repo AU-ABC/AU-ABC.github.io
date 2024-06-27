@@ -46,7 +46,7 @@
     "href": "documentation/2024-06-27-ABC2.html",
     "title": "ABC.2: RStudio projects and Anaconda+Python",
     "section": "",
-    "text": "The following tutorials show how to create a package environment and do some basic analysis in both R and python."
+    "text": "Conferences in the second half of 2024, introduction to Integrated Development Environments and Virtual Environments.\n \n\n Download Slides \n\n \nThe following tutorials show how to create a package environment and do some basic analysis in both R and python."
   },
   {
     "objectID": "documentation/2024-06-27-ABC2.html#project-creation-and-management-in-rstudio",
