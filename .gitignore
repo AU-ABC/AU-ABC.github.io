@@ -43,4 +43,4 @@ vignettes/*.pdf
 /.quarto/
 _site
 site_libs
-.ipynb-checkpoints
+.ipynb_checkpoints
