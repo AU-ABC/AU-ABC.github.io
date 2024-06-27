@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.4.556">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -23,10 +23,44 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -100,6 +134,9 @@ cookieconsent.run({
 });
 </script> 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <meta property="og:title" content="ABC - Accessible Bioinformatics Cafe - ABC.2: RStudio projects and Anaconda+Python">
@@ -186,10 +223,28 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#r-tutorial" id="toc-r-tutorial" class="nav-link active" data-scroll-target="#r-tutorial">R Tutorial</a></li>
+  <li><a href="#r-tutorial" id="toc-r-tutorial" class="nav-link active" data-scroll-target="#r-tutorial">R Tutorial</a>
+  <ul class="collapse">
+  <li><a href="#project-creation-and-management-in-rstudio" id="toc-project-creation-and-management-in-rstudio" class="nav-link" data-scroll-target="#project-creation-and-management-in-rstudio">Project creation and management in RStudio</a>
+  <ul class="collapse">
+  <li><a href="#project-structure" id="toc-project-structure" class="nav-link" data-scroll-target="#project-structure">Project structure</a></li>
+  </ul></li>
+  <li><a href="#using-the-renv-package-to-manage-a-projects-environment" id="toc-using-the-renv-package-to-manage-a-projects-environment" class="nav-link" data-scroll-target="#using-the-renv-package-to-manage-a-projects-environment">Using the <code>renv</code> package to manage a project’s environment</a>
+  <ul class="collapse">
+  <li><a href="#tracking-installed-packages-with-renv" id="toc-tracking-installed-packages-with-renv" class="nav-link" data-scroll-target="#tracking-installed-packages-with-renv">tracking installed packages with renv</a></li>
+  </ul></li>
+  <li><a href="#kickstart-dplyr-analysis" id="toc-kickstart-dplyr-analysis" class="nav-link" data-scroll-target="#kickstart-dplyr-analysis">Kickstart dplyr analysis</a></li>
+  </ul></li>
   <li><a href="#python-tutorial" id="toc-python-tutorial" class="nav-link" data-scroll-target="#python-tutorial">Python Tutorial</a>
   <ul class="collapse">
   <li><a href="#install-anaconda-and-create-an-environment" id="toc-install-anaconda-and-create-an-environment" class="nav-link" data-scroll-target="#install-anaconda-and-create-an-environment">Install Anaconda and create an environment</a></li>
+  <li><a href="#python-basics" id="toc-python-basics" class="nav-link" data-scroll-target="#python-basics">Python basics</a>
+  <ul class="collapse">
+  <li><a href="#jupyterlab" id="toc-jupyterlab" class="nav-link" data-scroll-target="#jupyterlab">JupyterLab</a></li>
+  <li><a href="#pandas-dataframes" id="toc-pandas-dataframes" class="nav-link" data-scroll-target="#pandas-dataframes">Pandas dataframes</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
+  <li><a href="#read-and-write-files" id="toc-read-and-write-files" class="nav-link" data-scroll-target="#read-and-write-files">Read and write files</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -240,8 +295,428 @@ cookieconsent.run({
 </header>
 
 
+<p>The following tutorials show how to create a package environment and do some basic analysis in both R and python.</p>
 <section id="r-tutorial" class="level1">
 <h1>R Tutorial</h1>
+<p>In this tutorial we show how to create a project in RStudio and to manage all the necessary packages within a package environment created with <code>renv</code>. Using a package environment ensures you always use the same packages at specific versions inside the project, making the analysis reproducible.</p>
+<p>Using project management in RStudio offers several advantages in terms of organisation and collaboration (to mention a few). Each project <strong>has its own working directory, Rstudio settings for the workspace, command history, and files with code</strong>. <a href="https://support.posit.co/hc/en-us/articles/200526207-Using-RStudio-Projects">Read more here</a></p>
+<p>Another advantage is that a project facilitates collaboration by maintaining a consistent environment across different team members (and remember that it’s good practice to use the same version of R throughout a project, check your version using the <code>R.version()</code>-function)</p>
+<section id="project-creation-and-management-in-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="project-creation-and-management-in-rstudio">Project creation and management in RStudio</h2>
+<p><strong>1.</strong> Open RStudioo, go to the menu and select <code>File</code> –&gt; <code>New Project...</code></p>
+<p><strong>2.</strong> Choose <code>New Directory</code> –&gt; <code>New Project</code> (similarly you can create a project in an existing folder). Note that there is a third version including version control: here you can also control the history of all changes in the project files using version control tools (such as Git), but we are not talking about this for now.</p>
+<p><img src="./2024-06-27-ABC2/newProject.png" class="img-fluid" width="400"></p>
+<p><strong>3.</strong> Name your project and select the directory where you want to save it. Click on <em>use renv for this project</em>. Finally click <code>Create Project</code></p>
+<p><strong>4.</strong> The project is now established. You can see some files are automatically created into the project directory.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you want to open your project the next time, you can either: - Open the project by double-clicking on the file in Windows Explorer/OSX Finder (e.g.&nbsp;MyProject.Rproj) - Open RStudio, go to the menu and select <code>File</code> –&gt; <code>Open Project</code> and browser to find and select the project that you want to open - Open RStudio, go to the menu, select <code>File</code> –&gt; <code>Recent Projects</code>, and select the project from the list of most recently opened projects</p>
+<p>Some of the things making it nice to work in projects in RStudio are that when a project is opened:</p>
+<ul>
+<li>A new R session (process) is started</li>
+<li>The .RData file (saved data) in the project’s main directory is loaded</li>
+<li>The .Rhistory file (command history) in the project’s main directory is loaded</li>
+<li>The current working directory is set to the project directory</li>
+<li>Packages in the environment are loaded</li>
+<li>And other settings are restored to where they were the last time the project was closed</li>
+</ul>
+</div>
+</div>
+<section id="project-structure" class="level3">
+<h3 class="anchored" data-anchor-id="project-structure">Project structure</h3>
+<p><strong>A clean and organised project structure is super important</strong>. To ensure this, a good practice is to create subfolders like <code>Data</code>, <code>Scripts</code>, <code>Output</code>, and <code>Docs</code> within your project directory. You can do all this in the RStudio browser (bottom-right corner).</p>
+<p><img src="./2024-06-27-ABC2/projStruct.png" class="img-fluid" width="400"></p>
+</section>
+</section>
+<section id="using-the-renv-package-to-manage-a-projects-environment" class="level2">
+<h2 class="anchored" data-anchor-id="using-the-renv-package-to-manage-a-projects-environment">Using the <code>renv</code> package to manage a project’s environment</h2>
+<p>The <code>renv</code> package allows you to create isolated and reproducible environments for your R projects, ensuring that the exact package versions and dependencies are used, ultimately facilitating reproducibility and collaboration. For an extended description, <a href="https://rstudio.github.io/renv/articles/renv.html">read more here</a>. Dependencies are packages on which others rely on to work.</p>
+<p>Key features:</p>
+<ul>
+<li>Each project can have its own set of R packages and versions</li>
+<li>Ensures that the same package versions are used each time the project is run</li>
+<li>Manages dependencies by automatically tracking the packages used in your project and their versions</li>
+<li>Ensures the same environment setup when sharing projects with collaborators</li>
+</ul>
+<section id="tracking-installed-packages-with-renv" class="level3">
+<h3 class="anchored" data-anchor-id="tracking-installed-packages-with-renv">tracking installed packages with renv</h3>
+<p>You do not need much to track all your packages. Simply create your files with R code and save them inside your project folder. While you code, you will necessarily install some packages which you need to create your program.</p>
+<p>When you are done, run in the Rstudio console the program <code>renv::snapshot()</code> - this will update the file <code>renv.lock</code> with a list of all installed packages and dependencies (open the file to see how it looks like). All the packages are installed inside the <code>renv</code> folder and will be loaded from there.</p>
+<p>Note that <code>renv</code> will track only packages that are used in your files with code - other packages which are installed but not used will not be tracked. Pretty smart!</p>
+<p><strong>1.</strong> Now, try to install <code>dplyr</code> and <code>ggplot2</code> using</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"dplyr"</span>, <span class="st">"ggplot2"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>in the RStudio console.</p>
+<p><strong>2.</strong> Snapshot the environment by running</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">snapshot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Have a look at the file <code>renv.lock</code> to see how it looks like. It should not show any package beyond <code>renv</code>: the file is updated only with packages used in the scripts you have in the project folder, so we will have to run the snapshot at the end of the tutorial where we use the packages!</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Sharing projects">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sharing projects
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When sharing your project, include the <code>renv.lock</code> and <code>renv</code> directory in the project folder. You can also include just the file <code>renv.lock</code>. Other users can use <code>renv::activate()</code> to activate the environment, and also <code>renv::restore()</code> if they need to install the packages (in case the folder <code>renv</code> is not provided).</p>
+<p>Note that if you provide the folder <code>renv</code>, this must be used in the same operating system. It might not be possible to use the environment folder create, for example, in Linux, on a windows or mac computer.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="kickstart-dplyr-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="kickstart-dplyr-analysis">Kickstart dplyr analysis</h2>
+<p>The <code>dplyr</code> package is part of the <a href="https://www.tidyverse.org/">tidyverse</a>, a set of packages all based on consistent and intuitive syntax/grammar for data manipulation, where the fundamental data structure is the data frame. <code>dplyr</code> is one of the most popular packages for data manipulation.</p>
+<p>We already install the package in our environment and it is ready to use. You can use the following commands in the Console, or create an R script or an R markdown document.</p>
+<p>Create a small dataset with gene expressions and some patient meta data:</p>
+<div id="cell-1" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dplyr</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>library(dplyr)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the dataframe</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">&lt;-</span> data.frame(</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  SampleID <span class="op">=</span> c(<span class="st">"S1"</span>, <span class="st">"S2"</span>, <span class="st">"S3"</span>, <span class="st">"S4"</span>, <span class="st">"S5"</span>),</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  Gene1 <span class="op">=</span> c(<span class="fl">5.2</span>, <span class="fl">6.3</span>, <span class="fl">4.9</span>, <span class="fl">7.2</span>, <span class="fl">5.8</span>),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  Gene2 <span class="op">=</span> c(<span class="fl">3.8</span>, <span class="fl">2.7</span>, <span class="fl">3.5</span>, <span class="fl">4.1</span>, <span class="fl">3.9</span>),</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  Gene3 <span class="op">=</span> c(<span class="fl">7.1</span>, <span class="fl">8.5</span>, <span class="fl">6.8</span>, <span class="fl">9.2</span>, <span class="fl">7.3</span>),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  Age <span class="op">=</span> c(<span class="dv">45</span>, <span class="dv">52</span>, <span class="dv">37</span>, <span class="dv">50</span>, <span class="dv">43</span>),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  Treatment <span class="op">=</span> c(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"A"</span>),</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  Response <span class="op">=</span> c(<span class="st">"Responder"</span>, <span class="st">"Non-Responder"</span>, <span class="st">"Responder"</span>, <span class="st">"Non-Responder"</span>, <span class="st">"Responder"</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A data.frame: 5 × 7</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">SampleID</th>
+<th data-quarto-table-cell-role="th" scope="col">Gene1</th>
+<th data-quarto-table-cell-role="th" scope="col">Gene2</th>
+<th data-quarto-table-cell-role="th" scope="col">Gene3</th>
+<th data-quarto-table-cell-role="th" scope="col">Age</th>
+<th data-quarto-table-cell-role="th" scope="col">Treatment</th>
+<th data-quarto-table-cell-role="th" scope="col">Response</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S1</td>
+<td>5.2</td>
+<td>3.8</td>
+<td>7.1</td>
+<td>45</td>
+<td>A</td>
+<td>Responder</td>
+</tr>
+<tr class="even">
+<td>S2</td>
+<td>6.3</td>
+<td>2.7</td>
+<td>8.5</td>
+<td>52</td>
+<td>B</td>
+<td>Non-Responder</td>
+</tr>
+<tr class="odd">
+<td>S3</td>
+<td>4.9</td>
+<td>3.5</td>
+<td>6.8</td>
+<td>37</td>
+<td>A</td>
+<td>Responder</td>
+</tr>
+<tr class="even">
+<td>S4</td>
+<td>7.2</td>
+<td>4.1</td>
+<td>9.2</td>
+<td>50</td>
+<td>B</td>
+<td>Non-Responder</td>
+</tr>
+<tr class="odd">
+<td>S5</td>
+<td>5.8</td>
+<td>3.9</td>
+<td>7.3</td>
+<td>43</td>
+<td>A</td>
+<td>Responder</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>You can apply many commands very intuitively with <code>dplyr</code>. For example, to select only the gene expressions:</p>
+<div id="cell-3" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>selected_data <span class="op">&lt;-</span> select(data, Gene1, Gene2, Gene3)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>selected_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A data.frame: 5 × 3</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">Gene1</th>
+<th data-quarto-table-cell-role="th" scope="col">Gene2</th>
+<th data-quarto-table-cell-role="th" scope="col">Gene3</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>5.2</td>
+<td>3.8</td>
+<td>7.1</td>
+</tr>
+<tr class="even">
+<td>6.3</td>
+<td>2.7</td>
+<td>8.5</td>
+</tr>
+<tr class="odd">
+<td>4.9</td>
+<td>3.5</td>
+<td>6.8</td>
+</tr>
+<tr class="even">
+<td>7.2</td>
+<td>4.1</td>
+<td>9.2</td>
+</tr>
+<tr class="odd">
+<td>5.8</td>
+<td>3.9</td>
+<td>7.3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>You can establish any filter based on the columns or combination of them. Filtering only on age of at least 50yo and rate of Gene1 and Gene2 larger than 2 is as below</p>
+<div id="cell-5" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>filtered_data <span class="op">&lt;-</span> <span class="bu">filter</span>(data, Age<span class="op">&gt;</span><span class="dv">50</span> <span class="op">&amp;</span> Gene1<span class="op">/</span>Gene2<span class="op">&gt;</span><span class="dv">2</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>filtered_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A data.frame: 1 × 7</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">SampleID</th>
+<th data-quarto-table-cell-role="th" scope="col">Gene1</th>
+<th data-quarto-table-cell-role="th" scope="col">Gene2</th>
+<th data-quarto-table-cell-role="th" scope="col">Gene3</th>
+<th data-quarto-table-cell-role="th" scope="col">Age</th>
+<th data-quarto-table-cell-role="th" scope="col">Treatment</th>
+<th data-quarto-table-cell-role="th" scope="col">Response</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S2</td>
+<td>6.3</td>
+<td>2.7</td>
+<td>8.5</td>
+<td>52</td>
+<td>B</td>
+<td>Non-Responder</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Adding new columns as a combination of others is also immediate</p>
+<div id="cell-7" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mutated_data <span class="op">&lt;-</span> mutate(data, GeneTotal <span class="op">=</span> Gene1 <span class="op">+</span> Gene2 <span class="op">+</span> Gene3)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>mutated_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A data.frame: 5 × 8</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">SampleID</th>
+<th data-quarto-table-cell-role="th" scope="col">Gene1</th>
+<th data-quarto-table-cell-role="th" scope="col">Gene2</th>
+<th data-quarto-table-cell-role="th" scope="col">Gene3</th>
+<th data-quarto-table-cell-role="th" scope="col">Age</th>
+<th data-quarto-table-cell-role="th" scope="col">Treatment</th>
+<th data-quarto-table-cell-role="th" scope="col">Response</th>
+<th data-quarto-table-cell-role="th" scope="col">GeneTotal</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>S1</td>
+<td>5.2</td>
+<td>3.8</td>
+<td>7.1</td>
+<td>45</td>
+<td>A</td>
+<td>Responder</td>
+<td>16.1</td>
+</tr>
+<tr class="even">
+<td>S2</td>
+<td>6.3</td>
+<td>2.7</td>
+<td>8.5</td>
+<td>52</td>
+<td>B</td>
+<td>Non-Responder</td>
+<td>17.5</td>
+</tr>
+<tr class="odd">
+<td>S3</td>
+<td>4.9</td>
+<td>3.5</td>
+<td>6.8</td>
+<td>37</td>
+<td>A</td>
+<td>Responder</td>
+<td>15.2</td>
+</tr>
+<tr class="even">
+<td>S4</td>
+<td>7.2</td>
+<td>4.1</td>
+<td>9.2</td>
+<td>50</td>
+<td>B</td>
+<td>Non-Responder</td>
+<td>20.5</td>
+</tr>
+<tr class="odd">
+<td>S5</td>
+<td>5.8</td>
+<td>3.9</td>
+<td>7.3</td>
+<td>43</td>
+<td>A</td>
+<td>Responder</td>
+<td>17.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Now we introduce the pipe symbol <code>%&gt;%</code>. This combines with the dplyr functions such that subsequent operations between pipes reflect the way we enunciate them orally. For example: The dataframe <strong>data</strong> must be <strong>grouped by</strong> treatment and for each group <strong>summarise</strong> the Gene1 by its average. <strong>Arrange</strong> the result by the average of Gene1 in descending order.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="dataframes and tibbles">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+dataframes and tibbles
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note how the output is no longer a dataframe, but a <em>tibble</em>. A tibble is a more “modern” version of the dataframe which is used in the tidyverse packages. You cannot really notice much difference when using them. To ensure you are using a tibble , you can always define a dataframe and transform it into a tibble using the command <code>as_tibble</code>. <a href="https://tibble.tidyverse.org/">Read more about tibbles at this link</a>.</p>
+</div>
+</div>
+<div id="cell-9" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>grouped_data <span class="op">&lt;-</span> data <span class="op">%&gt;%</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                group_by(Treatment) <span class="op">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                summarise(avgGene1 <span class="op">=</span> mean(Gene1)) <span class="op">%&gt;%</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                arrange( desc(avgGene1) )</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>grouped_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A tibble: 2 × 2</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" scope="col">Treatment</th>
+<th data-quarto-table-cell-role="th" scope="col">avgGene1</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" scope="col">&lt;chr&gt;</th>
+<th data-quarto-table-cell-role="th" scope="col">&lt;dbl&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>B</td>
+<td>6.75</td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td>5.30</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>To save your table in the <code>Output</code> folder as csv file:</p>
+<div id="cell-11" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>write.csv(grouped_data, <span class="st">"Output/grouped.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, if you ran all the commands in your console, create a new R script (File -&gt; New -&gt; R Script) and paste all the code used until now, then save it. If you instead used a Script or Markdown, save it. Move the script/markdown file into the <code>Code</code> folder, so you keep the files organized! Now run again</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">snapshot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You should be requested for permission to write some packages into <code>renv.lock</code>. Accept and look into the file, which not should be different and including new package names.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="wrap up">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+wrap up
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Now you know how to manage a project in RStudio and the packages you need. <code>dplyr</code> and the other packages pivoting around <code>tidyverse</code> have a plethora of useful functionalities. A good place to start from is to use a table you need for your own work, and try out various things you can do. Some good resources for training are available as links below:</p>
+<ul>
+<li><p><a href="https://uw-madison-datascience.github.io/R-health-lesson/03-dplyr/index.html">A chapter of <strong>R for data science</strong> from the data carpentry</a>. Go through it and look at other chapters as well, they are very instructive!</p></li>
+<li><p><a href="https://rstudio.github.io/cheatsheets/">A cheatsheet for all <code>dplyr</code> manipulation and for other important tidyverse packages + Rstudio.</a> Keep some at your desk!</p></li>
+</ul>
+</div>
+</div>
+</section>
 </section>
 <section id="python-tutorial" class="level1">
 <h1>Python Tutorial</h1>
@@ -286,8 +761,397 @@ wrap up
 <p>We will use the created environment to run some basic commands in python.</p>
 </div>
 </div>
+</section>
+<section id="python-basics" class="level2">
+<h2 class="anchored" data-anchor-id="python-basics">Python basics</h2>
+<p>Here we look at the python basics: variables, arrays and dataframes. We will immediately work with two packages: <code>numpy</code> and <code>pandas</code>, which make the use of arrays and dataframes very flexible.</p>
+<section id="jupyterlab" class="level3">
+<h3 class="anchored" data-anchor-id="jupyterlab">JupyterLab</h3>
+<p>Launch jupyterlab from the Anaconda Home, using the environment ABC2. You should be able to see Jupyterlab opened in your internet browser. It will look similar to the one below: it has a file browser, can show the opened files on different tabs, and has a coding window where the opened file is shown. When you first open jupyterlab you will instead see a Launcher, which gives you a choice for all the available things to do, usually Notebooks, Console, or Other, with related available languages.</p>
+<p><img src="./2024-06-27-ABC2/jupyterLab.png" class="img-fluid"></p>
+<p>You do not create projects in JupyterLab, you simply create folders instead.</p>
+<ul>
+<li><p>Use the browser to create a folder wherever you prefere, and organize it into subfolders: <code>Code</code>, <code>Output</code>, <code>Data</code>, <code>Scripts</code>. You can use the small button above the browser to create a folder, or simply the right-click options.</p></li>
+<li><p>Again with a right click, create a notebook inside the <code>Code</code> folder</p></li>
+<li><p>When asked to choose a kernel, select <code>python 3</code>. A kernel includes the programming language and its packages as we installed them into the environment using Anaconda.</p>
+<p><img src="./2024-06-27-ABC2/kernel.png" class="img-fluid">{fig-align=“center”, width=300px}</p></li>
+</ul>
+<p>A notebook looks like this:</p>
+<p><img src="./2024-06-27-ABC2/notebook.png" class="img-fluid" width="800"></p>
+<p>The gray area is a code cell, where you can write code. Select the left border out of a cell to</p>
+<ul>
+<li>transform it into a Markdown cell where you can write text: key M of your keyboard</li>
+<li>add a cell below: key B</li>
+<li>run the cell and add one below: keys Shift+Enter</li>
+</ul>
+<p>:::{.callout-tip}</p>
+<p>A notebook looks a lot like a text file. When you open it, it will show all results and images from your code! You can share it to anyone without the need to run the code again for the recipient, if it is needed to simply show some results.</p>
+<p>The webpage you are reading now has been created with a notebook!</p>
+<p>:::</p>
+<p>Let’s turn things into practice now. Transform the first cell into markdown (key M) and write a title with</p>
+<pre><code>## ABC2 is cool</code></pre>
+<p>and press Shift+Enter. You will get a new cell below, and the text will be formatted from Markdown.</p>
+<p>Now we write some code in the new cell and press Shift+Enter to execute:</p>
+<div id="cell-16" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello ABC"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>,<span class="dv">10</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"x"</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"y"</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello ABC
+x
+[1 2 3 4 5 6 7 8 9]
+y
+[ 1  4  9 16 25 36 49 64 81]</code></pre>
+</div>
+</div>
+<p>Things should look as below:</p>
+<p><img src="./2024-06-27-ABC2/run.png" class="img-fluid" width="800"></p>
+<p>The little number on the left shows how many code steps you have been running so far. The code imports relevant libraries and shortens their name with <code>np</code> and <code>pd</code>, which makes coding easier and compact. Then we use the library <code>np</code> to define an array of numbers from 1 to 10, and we square this array assigning it to <code>y</code>. Finally we print the two arrays.</p>
+<p>All variables are assigned with the <code>=</code> symbol and you can do all arithmetic operations:</p>
+<div id="cell-18" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span><span class="op">+</span><span class="dv">3</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">9</span><span class="op">*</span><span class="dv">2</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">5</span><span class="op">**</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>5
+18
+25</code></pre>
+</div>
+</div>
+</section>
+<section id="pandas-dataframes" class="level3">
+<h3 class="anchored" data-anchor-id="pandas-dataframes">Pandas dataframes</h3>
+<p>we procees looking into a small dataframe. Let’s create one using the <code>pandas</code> library</p>
+<div id="cell-20" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the dataframe</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SampleID'</span>: [<span class="st">'S1'</span>, <span class="st">'S2'</span>, <span class="st">'S3'</span>, <span class="st">'S4'</span>, <span class="st">'S5'</span>],</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Gene1'</span>: [<span class="fl">5.2</span>, <span class="fl">6.3</span>, <span class="fl">4.9</span>, <span class="fl">7.2</span>, <span class="fl">5.8</span>],</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Gene2'</span>: [<span class="fl">3.8</span>, <span class="fl">2.7</span>, <span class="fl">3.5</span>, <span class="fl">4.1</span>, <span class="fl">3.9</span>],</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Gene3'</span>: [<span class="fl">7.1</span>, <span class="fl">8.5</span>, <span class="fl">6.8</span>, <span class="fl">9.2</span>, <span class="fl">7.3</span>],</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Age'</span>: [<span class="dv">45</span>, <span class="dv">52</span>, <span class="dv">37</span>, <span class="dv">50</span>, <span class="dv">43</span>],</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Treatment'</span>: [<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'A'</span>],</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Response'</span>: [<span class="st">'Responder'</span>, <span class="st">'Non-Responder'</span>, <span class="st">'Responder'</span>, <span class="st">'Non-Responder'</span>, <span class="st">'Responder'</span>]</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># View the dataframe</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
 
 
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">SampleID</th>
+<th data-quarto-table-cell-role="th">Gene1</th>
+<th data-quarto-table-cell-role="th">Gene2</th>
+<th data-quarto-table-cell-role="th">Gene3</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Treatment</th>
+<th data-quarto-table-cell-role="th">Response</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>S1</td>
+<td>5.2</td>
+<td>3.8</td>
+<td>7.1</td>
+<td>45</td>
+<td>A</td>
+<td>Responder</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>S2</td>
+<td>6.3</td>
+<td>2.7</td>
+<td>8.5</td>
+<td>52</td>
+<td>B</td>
+<td>Non-Responder</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>S3</td>
+<td>4.9</td>
+<td>3.5</td>
+<td>6.8</td>
+<td>37</td>
+<td>A</td>
+<td>Responder</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>S4</td>
+<td>7.2</td>
+<td>4.1</td>
+<td>9.2</td>
+<td>50</td>
+<td>B</td>
+<td>Non-Responder</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>S5</td>
+<td>5.8</td>
+<td>3.9</td>
+<td>7.3</td>
+<td>43</td>
+<td>A</td>
+<td>Responder</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>You can plot variables from the dataframe with the package <code>seaborn</code>. For example</p>
+<div id="cell-22" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>data,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                x<span class="op">=</span><span class="st">"Gene1"</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                y<span class="op">=</span><span class="st">"Gene2"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                hue<span class="op">=</span><span class="st">"Response"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>                size<span class="op">=</span><span class="st">"Age"</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>               )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2024-06-27-ABC2_files/figure-html/cell-11-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In the command above we used some options beyond <code>x</code> and <code>y</code>. Can you see what they match in the plot?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <a href="https://seaborn.pydata.org/"><code>seaborn</code> package webpage</a> has great examples for any kind of plot you desire!</p>
+</div>
+</div>
+<p>There are lots of summary statistics already implemented in <code>python</code>. Below we calculate mean, median and standard deviation for the column <code>Gene1</code> of the data frame and then we print them.</p>
+<div id="cell-26" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> data.Gene1</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>meanG1 <span class="op">=</span> np.mean(x)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>medianG1 <span class="op">=</span> np.median(x)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>sdG1 <span class="op">=</span> np.std(x)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"mean, median and sd:"</span>)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>[meanG1, medianG1, sdG1]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>mean, median and sd:</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>[np.float64(5.88), np.float64(5.8), np.float64(0.8182909018191513)]</code></pre>
+</div>
+</div>
+<p>This was neat! Can you try to calculate the cumulative sum of the difference between Gene1 and Gene2?</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The answer is</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> data.Gene1 <span class="op">-</span> data.Gene2</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>csum <span class="op">=</span> np.cumsum(x)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"cumulative sum of Gene1 - Gene2:"</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(csum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="functions" class="level3">
+<h3 class="anchored" data-anchor-id="functions">Functions</h3>
+<p>Although <code>python</code> and the packages you can find have almost everything you will need, sometimes you might need to define your own function. The syntax to do it is very easy: you define a function name, which then you will be able to use it. Below, there is a function taking an argument (<code>arg1</code>) and multiplying it by 5. The output needs to be explicit through the <code>return()</code> function.</p>
+<div id="cell-29" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> myFunction(arg1):</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    res <span class="op">=</span> arg1 <span class="op">*</span> <span class="dv">5</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Such a function works if the argument is a number, but also if it is an array!</p>
+<div id="cell-31" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"with a number only"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( myFunction(<span class="dv">5</span>) )</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"with an array"</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>( myFunction(data.Gene1) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>with a number only
+25
+with an array
+0    26.0
+1    31.5
+2    24.5
+3    36.0
+4    29.0
+Name: Gene1, dtype: float64</code></pre>
+</div>
+</div>
+<p>Try to make a function that takes three vectors, plots the first against the sum of the second and third, and returns the sum of all three vectors. Use the plot command we applied previously for help.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Answer">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Answer
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The answer is</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> simpleSumPlot(arg1, arg2, arg3):</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    arg23 <span class="op">=</span> arg2 <span class="op">+</span> arg3</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    arg123 <span class="op">=</span> arg1 <span class="op">+</span> arg2 <span class="op">+</span> arg3</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">#plotting</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    fig <span class="op">=</span> sns.scatterplot(x <span class="op">=</span> arg1, </span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>                    y <span class="op">=</span> arg2)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    fig.set_title(<span class="st">"Plot with my own function"</span>)</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    fig</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(arg123)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now you can try this on vectors <strong>of the same length</strong>. We can use the ones in our data frame!</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>simpleSumPlot(arg1 <span class="op">=</span> data.Gene1,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>             arg2 <span class="op">=</span> data.Gene2,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>             arg3 <span class="op">=</span> data.Gene3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="read-and-write-files" class="level3">
+<h3 class="anchored" data-anchor-id="read-and-write-files">Read and write files</h3>
+<p>Save a dataframe with the command <code>.to_csv</code></p>
+<div id="cell-35" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>data.to_csv(<span class="st">'../Ouput/data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And read it again using</p>
+<div id="cell-37" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>data2 <span class="op">=</span> pd.read_csv(<span class="st">'../Ouput/data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-38" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>data2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Unnamed: 0</th>
+<th data-quarto-table-cell-role="th">SampleID</th>
+<th data-quarto-table-cell-role="th">Gene1</th>
+<th data-quarto-table-cell-role="th">Gene2</th>
+<th data-quarto-table-cell-role="th">Gene3</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Treatment</th>
+<th data-quarto-table-cell-role="th">Response</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0</td>
+<td>S1</td>
+<td>5.2</td>
+<td>3.8</td>
+<td>7.1</td>
+<td>45</td>
+<td>A</td>
+<td>Responder</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>S2</td>
+<td>6.3</td>
+<td>2.7</td>
+<td>8.5</td>
+<td>52</td>
+<td>B</td>
+<td>Non-Responder</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>2</td>
+<td>S3</td>
+<td>4.9</td>
+<td>3.5</td>
+<td>6.8</td>
+<td>37</td>
+<td>A</td>
+<td>Responder</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>3</td>
+<td>S4</td>
+<td>7.2</td>
+<td>4.1</td>
+<td>9.2</td>
+<td>50</td>
+<td>B</td>
+<td>Non-Responder</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>4</td>
+<td>S5</td>
+<td>5.8</td>
+<td>3.9</td>
+<td>7.3</td>
+<td>43</td>
+<td>A</td>
+<td>Responder</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="wrap up">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+wrap up
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You learned how to use jupyterlab notebooks and how to do basic operations and plots with python.</p>
+</div>
+</div>
+
+
+</section>
 </section>
 </section>
 
