@@ -53,15 +53,6 @@ Each ~2 hour session of the ABC will feature:
 
 ## Calendar
 
-
-
-:::{.callout-warning title="Newsletter"}
-Subscribe to our newsletter to receive a few, non-invasive reminders for our meetings and events!
-
-<button class="ml-onclick-form" onclick="ml('show', 'iGIYwp', true)">Click here to subscribe</button>
-
-:::
-
 &nbsp;
 
 | What  | When  | Where | Topics | SignUp for cake! |
@@ -70,3 +61,9 @@ Subscribe to our newsletter to receive a few, non-invasive reminders for our mee
 | ABC.2  | 27.june 2024 | [AIAS hall](https://maps.app.goo.gl/ns3c3PpTyNVqhaENA) | R projects and dplyr, Anaconda and python intro | [Here](https://docs.google.com/forms/d/e/1FAIpQLSdBlUCqiO3uAq5jSZCSlzJmKDN-vEVRDstlzsRhe7I4_sJHFA/viewform?usp=pp_url&entry.1204655311=Yes) |
 
 : Events Calendar. Look at our [News](./news.qmd) for more information {.striped .hover}
+
+## Newsletter
+
+Subscribe to our newsletter to receive a few, non-invasive reminders for our meetings and events!
+
+<div class="ml-embedded" data-form="iGIYwp"></div>
