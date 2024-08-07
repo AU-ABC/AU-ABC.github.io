@@ -1,1 +1,2 @@
-Sitemap: https://abc.au.dk/sitemap.xml
+Sitemap: https://abc.au.dk
+litesrv._domainkey.birc.au.dk/sitemap.xml
