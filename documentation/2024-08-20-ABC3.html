@@ -151,9 +151,11 @@ cookieconsent.run({
 <meta property="og:title" content="ABC.3: R analysis of bulkRNA expression matrix – ABC - Accessible Bioinformatics Cafe">
 <meta property="og:description" content="Things worth remembering from the ABC.3">
 <meta property="og:image" content="https://abc.au.dk
-litesrv._domainkey.birc.au.dk/documentation/2024-08-20/rnaseq.png">
+litesrv._domainkey.birc.au.dk/documentation/2024-08-20-ABC3/rnaseq.png">
 <meta property="og:site_name" content="ABC - Accessible Bioinformatics Cafe">
 <meta property="og:locale" content="en_US">
+<meta property="og:image:height" content="1182">
+<meta property="og:image:width" content="1182">
 </head>
 
 <body class="nav-fixed">
@@ -236,7 +238,7 @@ litesrv._domainkey.birc.au.dk/documentation/2024-08-20/rnaseq.png">
   <ul class="collapse">
   <li><a href="#install-packages" id="toc-install-packages" class="nav-link" data-scroll-target="#install-packages">Install packages</a></li>
   <li><a href="#condition-matrix" id="toc-condition-matrix" class="nav-link" data-scroll-target="#condition-matrix">Condition matrix</a></li>
-  <li><a href="#apllying-deseq2" id="toc-apllying-deseq2" class="nav-link" data-scroll-target="#apllying-deseq2">Apllying DeSeq2</a></li>
+  <li><a href="#applying-deseq2" id="toc-applying-deseq2" class="nav-link" data-scroll-target="#applying-deseq2">Applying DeSeq2</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -299,7 +301,7 @@ litesrv._domainkey.birc.au.dk/documentation/2024-08-20/rnaseq.png">
 <section id="install-packages" class="level2">
 <h2 class="anchored" data-anchor-id="install-packages">Install packages</h2>
 <p>First of all you need quite some packages for bulkRNA analysis. The following installations will also help in the fiture analysis tutorial where various different plots are explored. Note how you install some packages with <code>install.packages</code> (from the R default channel) and with <code>BiocManager::install</code> (from the BiocManager channel).”</p>
-<div id="cell-1" class="cell" data-scrolled="true" data-execution_count="1">
+<div id="cell-1" class="cell" data-scrolled="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"pheatmap"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggrepel"</span>)</span>
@@ -332,7 +334,7 @@ litesrv._domainkey.birc.au.dk/documentation/2024-08-20/rnaseq.png">
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">"SummarizedExperiment"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We should then load the needed packages</p>
-<div id="cell-3" class="cell" data-scrolled="true" data-execution_count="1">
+<div id="cell-3" class="cell" data-scrolled="true" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(edgeR)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DESeq2)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
@@ -359,17 +361,17 @@ litesrv._domainkey.birc.au.dk/documentation/2024-08-20/rnaseq.png">
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(BiocManager)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here we download a data matrix which we created in advance. The file is compressed, so we also unzip it (converting it from compressed to normal reading format) before reading.</p>
-<div id="cell-5" class="cell" data-execution_count="5">
+<div id="cell-5" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(<span class="st">"https://github.com/AU-ABC/AU-ABC.github.io/raw/main/documentation/2024-08-20-ABC3/FeatureCountOutput.zip"</span>, <span class="at">destfile =</span> <span class="st">"./FeatureCountOutput.zip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="6">
+<div id="cell-6" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span>(<span class="st">"./FeatureCountOutput.zip"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="30">
+<div id="cell-7" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>countData <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"./FeatureCountOutput.txt"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now we have created the matrix <code>Countdata</code> and we check the rownames of the countMatrix. The names are simply numbers and not gene IDs or names. So we replace the row names with the <code>countData$Geneid</code> column of the dataset. We use the function “head” to view the first 5 names before and after substitution.</p>
-<div id="cell-9" class="cell" data-execution_count="31">
+<div id="cell-9" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">rownames</span>(countData))</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(countData) <span class="ot">&lt;-</span> countData<span class="sc">$</span>Geneid</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">rownames</span>(countData))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -391,7 +393,7 @@ litesrv._domainkey.birc.au.dk/documentation/2024-08-20/rnaseq.png">
 </div>
 </div>
 <p>If we look at column names, we see a certain number of names columns. The first ones are gene IDs and genetic informations about chromosome, starting and ending position, strand and length. The rest is sample names.</p>
-<div id="cell-11" class="cell" data-execution_count="32">
+<div id="cell-11" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(countData)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -417,11 +419,11 @@ Tip
 <p>The order the colnames(countData) is shown, is the order you have to follow with the renaming for the scientific annotation.</p>
 </div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="33">
+<div id="cell-13" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a> sampleNames <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"WT_1"</span>, <span class="st">"WT_2"</span>, <span class="st">"WT_3"</span>, <span class="st">"DRUG_1"</span>, <span class="st">"DRUG_2"</span>, <span class="st">"DRUG_3"</span>, <span class="st">"DRUG+SUPPLEMENT_1"</span>, <span class="st">"DRUG+SUPPLEMENT_2"</span>, <span class="st">"DRUG+SUPPLEMENT_3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The countmatrix <code>countData</code> contains additional information such as gene name, gene length, exon start and more. These informations are found in columns from 1 to 6. This means, that we have to change the samplenames starting from column number 7. Before we print the column names before and after we do substitution</p>
-<div id="cell-15" class="cell" data-execution_count="34">
+<div id="cell-15" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(countData)[<span class="dv">7</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">colnames</span>(countData))]</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(countData)[<span class="dv">7</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">colnames</span>(countData))] <span class="ot">&lt;-</span> sampleNames</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(countData)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -443,14 +445,14 @@ Tip
 </div>
 </div>
 <p>Any sequencing data is prone to noise. The kind of noise we remove here is arguably something of great discussion as to where and when to keep data. We can see there are a lot of genes by counting the rows of <code>countData</code></p>
-<div id="cell-17" class="cell" data-execution_count="35">
+<div id="cell-17" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">nrow</span>(countData) <span class="co"># This returns the number of genes in the countmatrix before removing noise.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 49771
 </div>
 </div>
 <p>We can also plot a simple histogram of how many counts each gene has in a specific sample, for example WT_1. We use the logarithm log(x+1), where x is the expression to have a readable plot. Note how we can see many genes with 0 expression.</p>
-<div id="cell-19" class="cell" data-execution_count="50">
+<div id="cell-19" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">log1p</span>(countData<span class="sc">$</span>WT_1), <span class="at">breaks=</span><span class="dv">30</span>, <span class="at">main=</span><span class="st">"WT_1 expression values"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -474,7 +476,7 @@ Warning
 </div>
 </div>
 <p>we still have a number of genes with little or no expression. Those are of very little relevance in any analysis</p>
-<div id="cell-21" class="cell" data-execution_count="52">
+<div id="cell-21" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>sumExpr <span class="ot">&lt;-</span> <span class="fu">rowSums</span>( countData[,<span class="dv">7</span><span class="sc">:</span><span class="dv">15</span>] )</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>( <span class="fu">log1p</span>(sumExpr), <span class="at">breaks=</span><span class="dv">30</span>, <span class="at">main=</span><span class="st">"Sum of gene expression values on all samples"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -487,7 +489,7 @@ Warning
 </div>
 </div>
 <p>As an example, we print the fifth gene to see the number of counts. If none of the samples have 5 or more counts of this gene, then we remove the gene.</p>
-<div id="cell-23" class="cell" data-execution_count="53">
+<div id="cell-23" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>  countData[<span class="dv">5</span>, <span class="dv">7</span><span class="sc">:</span><span class="fu">ncol</span>(countData)] </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -536,11 +538,11 @@ Warning
 </div>
 </div>
 <p>Below we use <code>subset</code> to apply the filter. We remove data (genes) contains little to no information. It essentially removes a gene from the countmatrix if the gene has less than 5 counts in all the samples.</p>
-<div id="cell-25" class="cell" data-execution_count="54">
+<div id="cell-25" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>countData <span class="ot">&lt;-</span> <span class="fu">subset</span>(countData, <span class="fu">rowSums</span>(countData[, <span class="dv">7</span><span class="sc">:</span><span class="fu">ncol</span>(countData)] <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We removed a lot of genes!</p>
-<div id="cell-27" class="cell" data-execution_count="55">
+<div id="cell-27" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(countData) <span class="co">#Returning the number of genes after removing noise.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 21473
@@ -550,15 +552,15 @@ Warning
 <section id="condition-matrix" class="level2">
 <h2 class="anchored" data-anchor-id="condition-matrix">Condition matrix</h2>
 <p>The samples are defined in some condition like WT, DRUG, DRUG+SUPPLEMENT or some other condition.</p>
-<div id="cell-30" class="cell" data-execution_count="19">
+<div id="cell-30" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>conditions <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"WT"</span>, <span class="dv">3</span>), <span class="fu">rep</span>(<span class="st">"DRUG"</span>, <span class="dv">3</span>), <span class="fu">rep</span>(<span class="st">"DRUG+SUPPLEMENT"</span>, <span class="dv">3</span>)) </span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We create a dataframe with the condition and sample information</p>
-<div id="cell-32" class="cell" data-execution_count="20">
+<div id="cell-32" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>coldata <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">row.names =</span> <span class="fu">colnames</span>(countData[<span class="dv">0</span>, <span class="dv">7</span><span class="sc">:</span><span class="fu">ncol</span>(countData)]), conditions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-33" class="cell" data-execution_count="21">
+<div id="cell-33" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>coldata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -615,10 +617,10 @@ Warning
 </div>
 </div>
 <p>We create a subset of the countData so that we have an object only containing only the counts of the samples.</p>
-<div id="cell-35" class="cell" data-execution_count="22">
+<div id="cell-35" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>countData_subset <span class="ot">&lt;-</span> countData[, <span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-36" class="cell" data-execution_count="23">
+<div id="cell-36" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(countData_subset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true">
@@ -727,7 +729,7 @@ Warning
 </div>
 </div>
 <p>We check if the sample names are correct. Both of these should return TRUE, otherwise there is some incorrect naming.</p>
-<div id="cell-38" class="cell" data-execution_count="24">
+<div id="cell-38" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">colnames</span>(countData_subset) <span class="sc">%in%</span> <span class="fu">rownames</span>(coldata))</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">colnames</span>(countData_subset) <span class="sc">==</span> <span class="fu">rownames</span>(coldata))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -738,15 +740,15 @@ TRUE
 </div>
 </div>
 </section>
-<section id="apllying-deseq2" class="level2">
-<h2 class="anchored" data-anchor-id="apllying-deseq2">Apllying DeSeq2</h2>
+<section id="applying-deseq2" class="level2">
+<h2 class="anchored" data-anchor-id="applying-deseq2">Applying DeSeq2</h2>
 <p>Time to use the DESeq2 normalization method to analyse your sequencing data. The commands below run DeSeq2 and</p>
 <ul>
 <li>builds a DeSeq2 object from the data matrix and condition matrix</li>
 <li>applyes DeSeq2</li>
 <li>transforms the expressions by variance stabilization</li>
 </ul>
-<div id="cell-40" class="cell" data-execution_count="57">
+<div id="cell-40" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>dds <span class="ot">&lt;-</span> <span class="fu">DESeqDataSetFromMatrix</span>(<span class="at">count =</span> countData_subset, <span class="at">colData =</span> coldata, <span class="at">design =</span> <span class="sc">~</span>conditions)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>dds <span class="ot">&lt;-</span> <span class="fu">DESeq</span>(dds)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>vsdata <span class="ot">&lt;-</span> <span class="fu">vst</span>(dds, <span class="at">blind=</span><span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -789,7 +791,7 @@ fitting model and testing
 </div>
 <p>To compute a variance stabilizing transformation is roughly similar to putting the data on the log2 scale, while also dealing with the sampling variability of low counts. It uses the design formula to calculate the within-group variability (if blind=FALSE) or the across-all-samples variability (if blind=TRUE). It does not use the design to remove variation in the data. It therefore does not remove variation that can be associated with batch or other covariates (nor does DESeq2 have a way to specify which covariates are nuisance and which are of interest).</p>
 <p>The resulting object is called <code>vsdata</code>, which will be used for further analysis with DESeq2</p>
-<div id="cell-42" class="cell" data-execution_count="84">
+<div id="cell-42" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="84">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>vsdata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>class: DESeqTransform 
