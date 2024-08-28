@@ -1,17 +1,17 @@
 ---
-title: "ABC.3: Third ABC session"
+title: "ABC.4: Fourth ABC session"
 author: "Samuele Soraggi"
 Organizers: HDS Sandbox, Bioinf Core facility
-date: 2024-08-20
+date: 2024-09-03
 categories: [Cafe, Coding, Bioinformatics]
 description: "Coding and bioinformatics (and cake) for anyone!"
 ---
 
-![](../../img/news/number3.png){fig-align="center" width=400px}
+![](../../img/news/number4.png){fig-align="center" width=400px}
 
-The third session of the ABC (Accessible Bioinformatics Cafe) will be **on august 20th, at 12:30 in the hall of AIAS** (the Aarhus Institute of Advanced Studies, see below).
+The fourth session of the ABC (Accessible Bioinformatics Cafe) will be **on september 3rd, at 13:00 in building 1321 room 320** (by the lake, see below).
 
-![](../../img/news/AIAS.png){fig-align="center" width=800px}
+![](../../img/news/bartholin1231.png){fig-align="center" width=800px}
 
 Everyone is welcome to **join independently of coding skills and level**. 
 
@@ -25,7 +25,9 @@ We have a very minimalistic agenda consisting of
 
 The tutorials we propose are of increasing difficulty (and [documented](../../Documentation.qmd) at each meeting. This time we have
 
-- `R` analysis of bulkRNA sequencing data
+- introduction to `bash` for bioinformatics
+
+You can also bring your own code and issues and get help from us.
  
 ## Signing up
 
@@ -34,7 +36,7 @@ No signup is really necessary, but if you just want to ensure there is enough ca
 &nbsp;
 
  <p align="center">
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSfZl_blsvhiLIc2P-UyD0CFqyOYJNrQ80FzTaNc9UIfYhsO_w/viewform?usp=pp_url&entry.1204655311=Yes" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSc0TAGJx8LHALBNUtirUIczqTOcv3M6yKANutNeCHAS8oxsGw/viewform?usp=pp_url&entry.1204655311=Yes" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
     Sign up for cake
   </a>
 </p>
