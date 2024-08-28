@@ -23,6 +23,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -200,10 +234,15 @@ litesrv._domainkey.birc.au.dk/documentation/2024-09-03-ABC4/bash.png">
   <li><a href="#efficiency-and-speed" id="toc-efficiency-and-speed" class="nav-link" data-scroll-target="#efficiency-and-speed">Efficiency and Speed</a></li>
   </ul></li>
   <li><a href="#slides" id="toc-slides" class="nav-link" data-scroll-target="#slides">Slides</a></li>
-  <li><a href="#slides-1" id="toc-slides-1" class="nav-link" data-scroll-target="#slides-1">Slides</a></li>
   <li><a href="#tutorial" id="toc-tutorial" class="nav-link" data-scroll-target="#tutorial">Tutorial</a>
   <ul class="collapse">
-  <li><a href="#install-packages" id="toc-install-packages" class="nav-link" data-scroll-target="#install-packages">Install packages</a></li>
+  <li><a href="#terminal-and-folders-anatomy" id="toc-terminal-and-folders-anatomy" class="nav-link" data-scroll-target="#terminal-and-folders-anatomy">Terminal and folders anatomy</a>
+  <ul class="collapse">
+  <li><a href="#home-directory" id="toc-home-directory" class="nav-link" data-scroll-target="#home-directory">Home directory ~</a></li>
+  <li><a href="#current-working-directory-cwd" id="toc-current-working-directory-cwd" class="nav-link" data-scroll-target="#current-working-directory-cwd">Current working directory (cwd)</a></li>
+  <li><a href="#paths-and-navigating-the-directory-tree" id="toc-paths-and-navigating-the-directory-tree" class="nav-link" data-scroll-target="#paths-and-navigating-the-directory-tree">Paths and navigating the directory tree</a></li>
+  <li><a href="#navigating-folders" id="toc-navigating-folders" class="nav-link" data-scroll-target="#navigating-folders">Navigating folders</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -273,11 +312,15 @@ Why the bash command line?
 <section id="some-terminology" class="level2">
 <h2 class="anchored" data-anchor-id="some-terminology">Some terminology</h2>
 <p>When using a UNIX operating system (Linux, MacOs), everything on your computer fits one of two categories: <strong>processes and files</strong>. Processes are running instances of a program, and a program is any executable file stored in your computer. A file is any collection of data (program, image, video, audio, …).</p>
-<p>Whenever we write a command on the terminal and press enter, we have a shell taking the code we wrote and sending it to the kernel. The <strong>shell is the outer layer of the operating system</strong>, which facilitates the communication to the kernel. The <strong>kernel is the core of the operating system</strong>, managing the computer physical components (hardware) and interfacing them with the processes that need to run. In general, any program (browser, game, …) you open or action (moving files, renaming folders, …) you do on your computer ends up being a process managed by the kernel. This communication process is shown in <strong>?@fig-shellkernel</strong></p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./2024-09-03-ABC4/shellkernel.png" class="img-fluid figure-img" label="fig-shellkernel"></p>
-<figcaption>Communication scheme where the outer layer is a bash shell command, which the shell then communicate to the kernel, which in turn manages the hardware resources to make the program actually run. Note that there can be <strong>many languages for the UNIX shell</strong>: bash is the most popular, but others exist and are used (for example <em>zsh</em> on MacOs). <em>Figure credit: InnoKrea.</em></figcaption>
+<p>Whenever we write a command on the terminal and press enter, we have a shell taking the code we wrote and sending it to the kernel. The <strong>shell is the outer layer of the operating system</strong>, which facilitates the communication to the kernel. The <strong>kernel is the core of the operating system</strong>, managing the computer physical components (hardware) and interfacing them with the processes that need to run. In general, any program (browser, game, …) you open or action (moving files, renaming folders, …) you do on your computer ends up being a process managed by the kernel. This communication process is shown in <a href="#fig-shellkernel" class="quarto-xref">Figure&nbsp;1</a></p>
+<div id="fig-shellkernel" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-shellkernel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./2024-09-03-ABC4/shellkernel.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-shellkernel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Communication scheme where the outer layer is a bash shell command, which the shell then communicate to the kernel, which in turn manages the hardware resources to make the program actually run. Note that there can be <strong>many languages for the UNIX shell</strong>: bash is the most popular, but others exist and are used (for example <em>zsh</em> on MacOs). <em>Figure credit: InnoKrea.</em>
+</figcaption>
 </figure>
 </div>
 </section>
@@ -325,21 +368,12 @@ Why the bash command line?
 </tr>
 </tbody>
 </table>
-<p>You will see in this tutorial how we can handle pretty large text files in a short time. Those files would take long time to read in R and python and the code to modify them would run just as slowly.</p>
+<p>You will see in this tutorial how we can use basic bash utilities and handle text files. Those files would take longer time to read in R and python and the code to modify them would be in general longer and slower.</p>
 </section>
 </section>
 <section id="slides" class="level1">
 <h1>Slides</h1>
-<p>Our slides introducing the bash command line</p>
-<p>&nbsp;</p>
-<p align="center">
-<a href="https://abc.au.dk/documentation/slides/20240903-ABC.4.zip" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Download Slides </a>
-</p>
-<p>&nbsp;</p>
-</section>
-<section id="slides-1" class="level1">
-<h1>Slides</h1>
-<p>Our slides introducing the bash command line</p>
+<p>Our slides introducing the bash shell</p>
 <p>&nbsp;</p>
 <p align="center">
 <a href="https://abc.au.dk/documentation/slides/20240903-ABC.4.zip" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Download Slides </a>
@@ -351,16 +385,92 @@ Why the bash command line?
 <p>Here starts the tutorial. There is only one technical prerequisite, that is, you need a <strong>Terminal</strong>. The terminal is where you can write your commands - which are then <strong>interpreted</strong> and sent to the computer to be executed.</p>
 <ul>
 <li><p>Mac and Linux computers already have a software called <code>Terminal</code> installed (they are both computers with UNIX-based operating systems)</p></li>
-<li><p>Windows have a different sort of terminal called Powershell (it is DOS-based and not UNIX-based). Please install <code>Git Bash</code></p></li>
+<li><p>Windows have a different sort of terminal called Powershell (it is DOS-based and not UNIX-based). Please install <code>MobaXTerm</code>, then open it and click <strong>Start Local Terminal</strong>.</p></li>
 </ul>
-<section id="install-packages" class="level2">
-<h2 class="anchored" data-anchor-id="install-packages">Install packages</h2>
-<p>First of all you need quite some packages for bulkRNA analysis. The following installations will also help in the fiture analysis tutorial where various different plots are explored. Note how you install some packages with <code>install.packages</code> (from the R default channel) and with <code>BiocManager::install</code> (from the BiocManager channel).”</p>
+<section id="terminal-and-folders-anatomy" class="level2">
+<h2 class="anchored" data-anchor-id="terminal-and-folders-anatomy">Terminal and folders anatomy</h2>
+<p>When you work in the terminal, you will always see a prompt which starts with something of this type</p>
+<p><img src="./2024-09-03-ABC4/shell.png" class="img-fluid"></p>
+<p>which provides you</p>
+<ul>
+<li>username (e.g.&nbsp;samuele)</li>
+<li>computer name (e.g.&nbsp;D55749)</li>
+<li>current working directory where the user is working at the moment (e.g.&nbsp;<code>~</code>, which is the short form for the home directory)</li>
+</ul>
+<p>In MobaXTerm you see only date, time and current working directory</p>
+<section id="home-directory" class="level3">
+<h3 class="anchored" data-anchor-id="home-directory">Home directory ~</h3>
+<p>The home directory, which can be written as <code>~</code>, is usually of the form <code>/home/username</code>, and is private to the user (no other users of that computer can access it).</p>
+<p>When you open the terminal, you always start with current working directory as your home. Try to write and execute (pressing enter) the command</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and you will see the full home path (which is the folder structure leading to your home directory)</p>
+</section>
+<section id="current-working-directory-cwd" class="level3">
+<h3 class="anchored" data-anchor-id="current-working-directory-cwd">Current working directory (cwd)</h3>
+<p>Every command you execute refers to your cwd. For example, write</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and you will see the list of files in your cwd. Try to create an empty file now with</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">touch</span> emptyFile.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and create a folder, which will be inside our cwd:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> myFolder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you use again the <code>ls</code> command, the new file and folder will show in the cwd.</p>
+<p>Now we want to download something from the internet, for which we have a download link. We are getting a raw sequenced dataset in <code>fastq</code> format, which is currently <code>gzip</code>-compressed. The <code>curl</code> command can be used for the download. Note that now we also add an option <code>-O</code> to provide the output file name as <code>./myFolder/data.fastq.gz</code>, where the dot <code>.</code> stands for the cwd, followed by <code>myFolder</code>, followed by the file name.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://github.com/hartwigmedical/testdata/raw/master/100k_reads_hiseq/TESTX/TESTX_H7YRLADXX_S1_L001_R1_001.fastq.gz <span class="at">-O</span> ./myFolder/data.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Not all utilities are installed in MobaXTerm. If you get an error, install <code>wget</code> with the command</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> <span class="at">-y</span> install wget</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="paths-and-navigating-the-directory-tree" class="level3">
+<h3 class="anchored" data-anchor-id="paths-and-navigating-the-directory-tree">Paths and navigating the directory tree</h3>
+<p>We have already been using directories and paths a lot, so it is time to polish some definitions. Files are organized in a directory tree, which restricted to the tutorial we are running looks like <a href="#fig-dirtree" class="quarto-xref">Figure&nbsp;2</a>. Here <code>home</code> is a root folder, which is one of the top-level folder of your computer, so it has <code>/</code> at the beginning of its name. <code>/home</code> contains a folder with your username, which is right now your cwd. Inside your cwd you have the empty file and a folder containing the data. All those folders and file are organized with a tree hierarchy, so that <code>/home</code> is the first level, <code>username the second</code>, and <code>myFolder</code> the third level. The path in the directory tree to <code>data.fastq.gz</code> is expressed as <code>/home/username/myFolder/data.fastq.gz</code>.</p>
+<div id="fig-dirtree" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dirtree-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./2024-09-03-ABC4/treeStructure.png" class="img-fluid figure-img" width="400">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dirtree-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Directory tree of the tutorial. The home folder is a root folder (top-level of the tree) so its name starts with the <code>/</code> symbol. Other folders and files are at subsequent branch levels of the root folder <code>/home</code>. Some folders specific to your computer might be missing from this scheme.
+</figcaption>
+</figure>
+</div>
+<section id="absolute-and-relative-path" class="level4">
+<h4 class="anchored" data-anchor-id="absolute-and-relative-path">Absolute and relative path</h4>
+<p>The path <code>/home/username/myFolder/data.fastq.gz</code> is called <strong>absolute</strong> because independent of your cwd. Let’s try another absolute path: the root folder <code>/usr</code> contains all executable files of the bash utilities we are using in this tutorial. Such files are in the folder <code>bin</code>. Execute</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> /usr/bin/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The output is a long list of executable files and some folders (sometimes they also have different colors, depending on your terminal settings). If you scroll and look, you can find familiar names like <code>wget, ls</code>, and so on. Now, this path is independent of our cwd.</p>
+<p>On the contrary, the path <code>./myFolder/data.tar.gz</code> depends on the cwd, and is equivalent to write <code>myFolder/data.tar.gz</code>, because <code>./</code> is always included by default. <strong>All paths that do not start with a root folder are relative!</strong>. So to look inside <code>myFolder</code>, we can both write</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> myFolder/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ~/myFolder/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>where we have used <code>~</code> which is the shortform for /home/username.</p>
+</section>
+</section>
+<section id="navigating-folders" class="level3">
+<h3 class="anchored" data-anchor-id="navigating-folders">Navigating folders</h3>
+<p>How to change your cwd? Simply use the command <em>change directory</em>. For example, you might want to work inside <code>myFolder</code>. Simply write</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> myFolder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and verify with <code>pwd</code> the new working directory path. If we want to unzip the compressed data file, we simply use its relative path:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> data.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Use <code>ls</code> to verify that you have a file with name <code>data.fastq</code>.</p>
+<section id="question-1" class="level4">
+<h4 class="anchored" data-anchor-id="question-1">Question 1</h4>
 <form id="quizForm">
-<h4 class="anchored">
-Behauptung: Das 50%-PI [.6,.8] ist das plausiblere.
-</h4>
-<label> <input type="radio" name="q1" value="Ja"> Ja </label> <label> <input type="radio" name="q1" value="Nein"> Nein </label> <label> <input type="radio" name="q1" value="Keine Antwort möglich"> Keine Antwort möglich </label> <button type="button" onclick="submitQuiz()">Antworten</button>
+Which of these commands is correct?<br><br> <label> <input type="radio" name="q1" value="Ja"> Ja </label> <br> <label> <input type="radio" name="q1" value="Nein"> Nein </label> <br> <label> <input type="radio" name="q1" value="Keine Antwort möglich"> Keine Antwort möglich </label> <br> <button type="button" onclick="submitQuiz()">Antworten</button>
 </form>
 <script>
   function submitQuiz() {
@@ -387,6 +497,8 @@ Behauptung: Das 50%-PI [.6,.8] ist das plausiblere.
  </script>
 
 
+</section>
+</section>
 </section>
 </section>
 
