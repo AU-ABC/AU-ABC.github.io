@@ -151,6 +151,8 @@ cookieconsent.run({
 litesrv._domainkey.birc.au.dk/documentation/2024-09-03-ABC4/bash.png">
 <meta property="og:site_name" content="ABC - Accessible Bioinformatics Cafe">
 <meta property="og:locale" content="en_US">
+<meta property="og:image:height" content="482">
+<meta property="og:image:width" content="680">
 </head>
 
 <body class="nav-fixed">
@@ -290,6 +292,19 @@ litesrv._domainkey.birc.au.dk/documentation/2024-09-03-ABC4/bash.png">
 </header>
 
 
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>tutorial under construction</p>
+</div>
+</div>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>The difficulty of learning bash is often underestimated by others, who expect people approaching bioinformatics to learn it automatically. Here we try to put together the first basic concepts and commands.</p>
@@ -369,6 +384,19 @@ Figure&nbsp;1: Communication scheme where the outer layer is a bash shell comman
 </tbody>
 </table>
 <p>You will see in this tutorial how we can use basic bash utilities and handle text files. Those files would take longer time to read in R and python and the code to modify them would be in general longer and slower.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Why is the Bash shell fast">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why is the Bash shell fast
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>One of the advantages of the bash shell language is that shell languages are already interpreted. This means that they travel directly from the shell to the kernel in <a href="#fig-shellkernel" class="quarto-xref">Figure&nbsp;1</a>. Languages such as <code>R</code> and <code>python</code> need to be interpreted: every time you run a command, an interpreter translates this such that the kernel is able to understand the instructions to execute. This means that the python shell sends the command to an intermediate layer (the interpreter) which finally sends the program to run to the kernel. Interpreting <code>R</code>and <code>python</code> can be inefficient, because a single command has many implicit assumptions (how to use the computer memory, how to structure the data, …) which need to be interpreted for the kernel. Other languages such as <code>C</code> are more complex to write, because the memory and the data are specified very thoroughly by the user, and the interpreter has less burden.</p>
+</div>
+</div>
 </section>
 </section>
 <section id="slides" class="level1">
@@ -382,7 +410,7 @@ Figure&nbsp;1: Communication scheme where the outer layer is a bash shell comman
 </section>
 <section id="tutorial" class="level1">
 <h1>Tutorial</h1>
-<p>Here starts the tutorial. There is only one technical prerequisite, that is, you need a <strong>Terminal</strong>. The terminal is where you can write your commands - which are then <strong>interpreted</strong> and sent to the computer to be executed.</p>
+<p>Here starts the tutorial. There is only one technical prerequisite, that is, you need a <strong>Terminal</strong>. The terminal is where you can write your commands - which are then sent to the computer to be executed.</p>
 <ul>
 <li><p>Mac and Linux computers already have a software called <code>Terminal</code> installed (they are both computers with UNIX-based operating systems)</p></li>
 <li><p>Windows have a different sort of terminal called Powershell (it is DOS-based and not UNIX-based). Please install <code>MobaXTerm</code>, then open it and click <strong>Start Local Terminal</strong>.</p></li>
