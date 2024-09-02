@@ -10,9 +10,6 @@ website:
   google-analytics: 
     tracking-id: "G-WG01Z2LJ1J"
     anonymize-ip: true
-  cookie-consent:
-    type: express
-    style: simple
   open-graph:
     locale: en_US
     site-name: ABC - Accessible Bioinformatics Cafe
@@ -37,12 +34,6 @@ website:
       - icon: github
         href: https://github.com/AU-ABC
         aria-label: GitHub
-#      - icon: linkedin
-#        href: https://www.linkedin.com/company/ucph-heads
-#        aria-label: LinkedIn
-#      - icon: twitter
-#        href: https://twitter.com/ucph_heads
-#        aria-label: Twitter
 
 
 format:
