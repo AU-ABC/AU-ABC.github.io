@@ -42,5 +42,5 @@ format:
       light: [materia, css/materialight.scss]
       dark: darkly
     toc: true
-    include-in-header:
-      - file: "resources/mailerlite.html"
+#    include-in-header:
+#      - file: "resources/mailerlite.html"
