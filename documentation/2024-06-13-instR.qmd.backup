@@ -5,7 +5,7 @@ image: ../img/Rlogo.png
 date: 2024-06-13
 categories: [R, RStudio, Dataframe]
 description: "Things worth remembering from the ABC.1"
-eval: true
+eval: false
 ---
 
 # Slides
