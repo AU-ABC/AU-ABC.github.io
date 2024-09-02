@@ -34,7 +34,6 @@ jobs:
           GH_TOKEN: ${{ secrets.TOKEN }}
         with:
           tinytex: true
-        with:
           version: pre-release
 
       - name: Render and Publish
