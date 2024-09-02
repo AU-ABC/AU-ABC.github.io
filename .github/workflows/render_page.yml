@@ -30,8 +30,12 @@ jobs:
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
+        env:
+          GH_TOKEN: ${{ secrets.TOKEN }}
         with:
-          quarto-version: '1.6.5'
+          tinytex: true
+        with:
+          version: pre-release
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
