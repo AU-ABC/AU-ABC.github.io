@@ -2,77 +2,77 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/about/about.html</loc>
-    <lastmod>2024-09-03T09:14:13.500Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/documentation/2024-08-20-ABC3.html</loc>
-    <lastmod>2024-09-03T09:14:13.512Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/documentation/2024-09-03-ABC4.html</loc>
-    <lastmod>2024-09-03T09:14:13.536Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news.html</loc>
-    <lastmod>2024-09-03T09:14:13.620Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/tips/bash.html</loc>
-    <lastmod>2024-09-03T09:14:13.624Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/tips/python.html</loc>
-    <lastmod>2024-09-03T09:14:13.624Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
 litesrv._domainkey.birc.au.dk/news/past/2024-06-27-session2.html</loc>
-    <lastmod>2024-09-03T09:14:13.620Z</lastmod>
+    <lastmod>2024-09-03T11:33:54.483Z</lastmod>
   </url>
   <url>
     <loc>https://abc.au.dk
 litesrv._domainkey.birc.au.dk/news/upcoming/2024-08-20-session3.html</loc>
-    <lastmod>2024-09-03T09:14:13.624Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/upcoming/2024-09-03-session4.html</loc>
-    <lastmod>2024-09-03T09:14:13.624Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/past/2024-06-13-session1.html</loc>
-    <lastmod>2024-09-03T09:14:13.620Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/tips/R.html</loc>
-    <lastmod>2024-09-03T09:14:13.624Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/Documentation.html</loc>
-    <lastmod>2024-09-03T09:14:13.500Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/documentation/2024-06-13-instR.html</loc>
-    <lastmod>2024-09-03T09:14:13.504Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/documentation/2024-06-27-ABC2.html</loc>
-    <lastmod>2024-09-03T09:14:13.508Z</lastmod>
+    <lastmod>2024-09-03T11:33:54.483Z</lastmod>
   </url>
   <url>
     <loc>https://abc.au.dk
 litesrv._domainkey.birc.au.dk/index.html</loc>
-    <lastmod>2024-09-03T09:14:13.620Z</lastmod>
+    <lastmod>2024-09-03T11:33:54.483Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/tips/bash.html</loc>
+    <lastmod>2024-09-03T11:33:54.483Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/about/about.html</loc>
+    <lastmod>2024-09-03T11:33:54.363Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/documentation/2024-08-20-ABC3.html</loc>
+    <lastmod>2024-09-03T11:33:54.371Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/documentation/2024-06-27-ABC2.html</loc>
+    <lastmod>2024-09-03T11:33:54.367Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/news.html</loc>
+    <lastmod>2024-09-03T11:33:54.483Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/documentation/2024-09-03-ABC4.html</loc>
+    <lastmod>2024-09-03T11:33:54.399Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/documentation/2024-06-13-instR.html</loc>
+    <lastmod>2024-09-03T11:33:54.363Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/Documentation.html</loc>
+    <lastmod>2024-09-03T11:33:54.363Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/tips/python.html</loc>
+    <lastmod>2024-09-03T11:33:54.483Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/tips/R.html</loc>
+    <lastmod>2024-09-03T11:33:54.483Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/news/upcoming/2024-09-03-session4.html</loc>
+    <lastmod>2024-09-03T11:33:54.483Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/news/past/2024-06-13-session1.html</loc>
+    <lastmod>2024-09-03T11:33:54.483Z</lastmod>
   </url>
 </urlset>
