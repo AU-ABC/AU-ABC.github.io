@@ -231,6 +231,7 @@ litesrv._domainkey.birc.au.dk/documentation/2024-09-03-ABC4/bash.png">
   <li><a href="#copy-and-move" id="toc-copy-and-move" class="nav-link" data-scroll-target="#copy-and-move">Copy and Move</a></li>
   <li><a href="#writing-on-a-file" id="toc-writing-on-a-file" class="nav-link" data-scroll-target="#writing-on-a-file">Writing on a file</a></li>
   <li><a href="#piping" id="toc-piping" class="nav-link" data-scroll-target="#piping">Piping</a></li>
+  <li><a href="#shortcuts-and-useful-keys-combinations" id="toc-shortcuts-and-useful-keys-combinations" class="nav-link" data-scroll-target="#shortcuts-and-useful-keys-combinations">Shortcuts and useful keys combinations</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -313,8 +314,14 @@ Why the bash command line?
 </div>
 <section id="some-terminology" class="level2">
 <h2 class="anchored" data-anchor-id="some-terminology">Some terminology</h2>
-<p>When using a UNIX operating system (Linux, MacOs), everything on your computer fits one of two categories: <strong>processes and files</strong>. Processes are running instances of a program, and a program is any executable file stored in your computer. A file is any collection of data (program, image, video, audio, …).</p>
-<p>Whenever we write a command on the terminal and press enter, we have a shell taking the code we wrote and sending it to the kernel. The <strong>shell is the outer layer of the operating system</strong>, which facilitates the communication to the kernel. The <strong>kernel is the core of the operating system</strong>, managing the computer physical components (hardware) and interfacing them with the processes that need to run. In general, any program (browser, game, …) you open or action (moving files, renaming folders, …) you do on your computer ends up being a process managed by the kernel. This communication process is shown in <a href="#fig-shellkernel" class="quarto-xref">Figure&nbsp;1</a></p>
+<p>When using a UNIX operating system (Linux, MacOs), everything on your computer fits one of two categories: <strong>processes and files</strong>.</p>
+<ul>
+<li>Processes are running instances of a program, and a program is any executable file stored in your computer.</li>
+<li>A file is any collection of data (program, image, video, audio, …).</li>
+</ul>
+<p>The <strong>terminal</strong> is a text-based interface where you can write commands in various languages, depending on your choice. A terminal looks rather primitive, but it is what you often use on a daily basis to perform bioinformatics operations or control computing clusters.</p>
+<p>Whenever we write a command on the terminal and press enter, we have a shell receiving the code we wrote through the terminal. The <strong>shell is the outer layer of the operating system</strong>, which inteprets the commands and communicates them to the kernel.</p>
+<p>The <strong>kernel is the core of the operating system</strong>, managing the computer physical components (hardware) and interfacing them with the processes that need to run. In general, any program (browser, game, …) you open or action (moving files, renaming folders, …) you do on your computer ends up being a process managed by the kernel. This communication process is shown in <a href="#fig-shellkernel" class="quarto-xref">Figure&nbsp;1</a></p>
 <div id="fig-shellkernel" class="quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-shellkernel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -351,7 +358,7 @@ Figure&nbsp;1: Communication scheme where the outer layer is a bash shell comman
 <td>R, python, …</td>
 <td>from 1 to 10s</td>
 <td>small</td>
-<td>slow</td>
+<td>package-dependent</td>
 <td>A lot</td>
 </tr>
 <tr class="even">
@@ -371,19 +378,49 @@ Figure&nbsp;1: Communication scheme where the outer layer is a bash shell comman
 </tbody>
 </table>
 <p>You will see in this tutorial how we can use basic bash utilities and handle text files. Those files would take longer time to read in R and python and the code to modify them would be in general longer and slower.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Why is the Bash shell fast">
+<div class="callout callout-style-default callout-note callout-titled" title="Shell vs Python-R?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Why is the Bash shell fast
+Shell vs Python-R?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>One of the advantages of the bash shell language is that shell languages are already interpreted. This means that they travel directly from the shell to the kernel in <a href="#fig-shellkernel" class="quarto-xref">Figure&nbsp;1</a>. Languages such as <code>R</code> and <code>python</code> need to be interpreted: every time you run a command, an interpreter translates this such that the kernel is able to understand the instructions to execute. This means that the python shell sends the command to an intermediate layer (the interpreter) which finally sends the program to run to the kernel. Interpreting <code>R</code>and <code>python</code> can be inefficient, because a single command has many implicit assumptions (how to use the computer memory, how to structure the data, …) which need to be interpreted for the kernel. Other languages such as <code>C</code> are more complex to write, because the memory and the data are specified very thoroughly by the user, and the interpreter has less burden.</p>
+<p>Both the bash language and python or R are interpreted languages. You shouldn’t consider them as opposed to each other, but rather as complementary. Bash can do many things python or R cannot do very efficiently: search for files, look for patterns in long text files, concatenate operations, create pipelines, be the preferred system language on computing clusters. Python or R are great to perform for example statistical analysis.</p>
+<p>So the best way to approach all those languages is to harness their advantages, instead of consider one of them “worse” than the others.</p>
 </div>
 </div>
+<p><strong>What is Bash? <a href="https://www.gnu.org/software/bash/manual/html_node/What-is-Bash_003f.html">Help you with this link if necessary</a></strong></p>
+
+<form id="quizForm">
+<label> <input type="radio" name="qI" value="a"> a package </label> <br> <label> <input type="radio" name="qI" value="b"> a version of the Linux operating system </label> <br> <label> <input type="radio" name="qI" value="c"> a language and an interpreter </label> <br> <label> <input type="radio" name="qI" value="d"> a compiler which works only on Linux and Mac </label> <br> <button type="button" onclick="submitQuizI()">Submit</button>
+</form>
+<script>
+  function submitQuizI() {
+      var selectedOption = getSelectedOptionI("qI");
+      var correctAnswer = "c";
+
+      // Display feedback
+      if (selectedOption === correctAnswer) {
+        alert("Right on point!");
+      } else{
+        alert("Nope. Have you checked the suggested link?");
+      }
+    }
+
+    function getSelectedOptionI(questionName) {
+      var radioButtons = document.getElementsByName(questionName);
+      for (var i = 0; i < radioButtons.length; i++) {
+        if (radioButtons[i].checked) {
+          return radioButtons[i].value;
+        }
+      }
+      return null;
+    }
+ </script>
+
 </section>
 </section>
 <section id="slides" class="level1">
@@ -412,7 +449,7 @@ Why is the Bash shell fast
 <li>computer name (e.g.&nbsp;D55749)</li>
 <li>current working directory where the user is working at the moment (e.g.&nbsp;<code>~</code>, which is the short form for the home directory)</li>
 </ul>
-<p>In MobaXTerm you see only date, time and current working directory</p>
+<p>In MobaXTerm you see only date, time and current working directory highlighted with various colors.</p>
 <section id="home-directory" class="level3">
 <h3 class="anchored" data-anchor-id="home-directory">Home directory ~</h3>
 <p>The home directory, which can be written as <code>~</code>, is usually of the form <code>/home/username</code>, and is private to the user (no other users of that computer can access it).</p>
@@ -443,12 +480,15 @@ Warning
 <div class="callout-body-container callout-body">
 <p>Not all utilities are installed in MobaXTerm. If you get an error, install <code>wget</code> with the command</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">apt-get</span> <span class="at">-y</span> install wget</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>and then try the download again.</p>
 </div>
 </div>
 </section>
 <section id="paths-and-navigating-the-directory-tree" class="level3">
 <h3 class="anchored" data-anchor-id="paths-and-navigating-the-directory-tree">Paths and navigating the directory tree</h3>
-<p>We have already been using directories and paths a lot, so it is time to polish some definitions. Files are organized in a directory tree, which restricted to the tutorial we are running looks like <a href="#fig-dirtree" class="quarto-xref">Figure&nbsp;2</a>. Here <code>home</code> is a root folder, which is one of the top-level folder of your computer, so it has <code>/</code> at the beginning of its name. <code>/home</code> contains a folder with your username, which is right now your cwd. Inside your cwd you have the empty file and a folder containing the data. All those folders and file are organized with a tree hierarchy, so that <code>/home</code> is the first level, <code>username the second</code>, and <code>myFolder</code> the third level. The path in the directory tree to <code>data.fastq.gz</code> is expressed as <code>/home/username/myFolder/data.fastq.gz</code>.</p>
+<p>We have already been using directories and paths a lot, so it is time to polish some definitions. Files are organized in a directory tree, which restricted to the tutorial we are running looks like <a href="#fig-dirtree" class="quarto-xref">Figure&nbsp;2</a>. Here <code>home</code> is a root folder, which is one of the top-level folder of your computer, so it has <code>/</code> at the beginning of its name.</p>
+<p><code>/home</code> contains a folder with your username, which is right now your cwd. Inside your cwd you have the empty file and a directory <code>myFolder</code> containing the data.</p>
+<p>Directories and files are organized with a tree hierarchy, so that <code>/home</code> is the first level, <code>username the second</code>, and <code>myFolder</code> the third level. The path in the directory tree to <code>data.fastq.gz</code> is expressed as <code>/home/username/myFolder/data.fastq.gz</code>.</p>
 <div id="fig-dirtree" class="quarto-figure quarto-figure-center anchored" width="400">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-dirtree-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -464,29 +504,54 @@ Figure&nbsp;2: Directory tree of the tutorial. The home folder is a root folder 
 <p>The path <code>/home/username/myFolder/data.fastq.gz</code> is called <strong>absolute</strong> because independent of your cwd. Let’s try another absolute path: the root folder <code>/usr</code> contains all executable files of the bash utilities we are using in this tutorial. Such files are in the folder <code>bin</code>. Execute</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> /usr/bin/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The output is a long list of executable files and some folders (sometimes they also have different colors, depending on your terminal settings). If you scroll and look, you can find familiar names like <code>wget, ls</code>, and so on. Now, this path is independent of our cwd.</p>
-<p>On the contrary, the path <code>./myFolder/data.tar.gz</code> depends on the cwd, and is equivalent to write <code>myFolder/data.tar.gz</code>, because <code>./</code> is always included by default. <strong>All paths that do not start with a root folder are relative!</strong>. So to look inside <code>myFolder</code>, we can both write</p>
+<p>The output is a long list of executable files and some folders (sometimes they also have different colors, depending on your terminal settings). If you scroll and look, you can find familiar names like <code>wget, ls</code>, and so on. Now, the path <code>/usr/bin</code> is independent of our cwd.</p>
+<p>On the contrary, the path <code>./myFolder/data.tar.gz</code> depends on the cwd, and is equivalent to write <code>myFolder/data.tar.gz</code>, because <code>./</code> is always included by default (<code>.</code> represents the cwd). <strong>All paths that do not start with a root folder are relative!</strong>. To look inside <code>myFolder</code>, we can write</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> myFolder/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>and</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ~/myFolder/</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>where we have used <code>~</code> which is the shortform for /home/username.</p>
+<p><strong>How do you write the command above using absolute paths? Remember that ~ correspondes to /home/username</strong></p>
+
+<form id="quizForm">
+<label> <input type="radio" name="qI" value="a"> ls /home/myFolder/ </label> <br> <label> <input type="radio" name="qI" value="b"> ls ~/myFolder </label> <br> <label> <input type="radio" name="qI" value="c"> ls . </label> <br> <button type="button" onclick="submitQuizII()">Submit</button>
+</form>
+<script>
+  function submitQuizII() {
+      var selectedOption = getSelectedOptionII("qII");
+      var correctAnswer = "b";
+
+      // Display feedback
+      if (selectedOption === correctAnswer) {
+        alert("Perfect, the absolute path starts always from a root folder, in this canse /home");
+      } else{
+        alert("Try again!");
+      }
+    }
+
+    function getSelectedOptionII(questionName) {
+      var radioButtons = document.getElementsByName(questionName);
+      for (var i = 0; i < radioButtons.length; i++) {
+        if (radioButtons[i].checked) {
+          return radioButtons[i].value;
+        }
+      }
+      return null;
+    }
+ </script>
+
 </section>
 </section>
 <section id="navigating-folders" class="level3">
 <h3 class="anchored" data-anchor-id="navigating-folders">Navigating folders</h3>
 <p>How to change your cwd? Simply use the command <em>change directory</em>. For example, you might want to work inside <code>myFolder</code>. Simply write</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> myFolder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> myFolder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and verify with <code>pwd</code> the new working directory path. If we want to unzip the compressed data file, we simply use its relative path:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> data.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">gunzip</span> data.fastq.gz</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Use <code>ls</code> to verify that you have a file with name <code>data.fastq</code>.</p>
 </section>
 </section>
 <section id="working-with-text-files" class="level2">
 <h2 class="anchored" data-anchor-id="working-with-text-files">Working with (text) files</h2>
-<p>Many files you use in bioinformatics are nothing else than text files which are written in a specific matter. This specific way of arranging the text in the files gives you all the <strong>file formats</strong> you encounter when doing bioinformatics.</p>
+<p>Many files you use in bioinformatics are nothing else than text files which are written in a specific matter. This specific way of arranging the text in the files gives you many of the <strong>file formats</strong> you encounter when doing bioinformatics.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -503,8 +568,8 @@ Note
 <section id="less-for-reading-files" class="level3">
 <h3 class="anchored" data-anchor-id="less-for-reading-files">Less for reading files</h3>
 <p>The first thing you want to do, is to check at how the content of a file looks like. The program <code>less</code> is perfect for this purpose: you can scroll text with the arrows, and use the keyboard to do operations like searching for text or jumping to a line. Try</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> data.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">less</span> data.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>and see the format of your data, where each four lines provide a sequence. The very first sequence you see should be</p>
 <pre><code>@HISEQ_HU01:89:H7YRLADXX:1:1101:1116:2123 1:N:0:ATCACG
 TCTGTGTAAATTACCCAGCCTCACGTATTCCTTTAGAGCAATGCAAAACAGACTAGACAAAAGGCTTTTAAAAGTCTA
@@ -512,10 +577,10 @@ ATCTGAGATTCCTGACCAAATGT
 +
 CCCFFFFFHHHHHJJJJJJJJJJJJHIJJJJJJJJJIJJJJJJJJJJJJJJJJJJJHIJGHJIJJIJJJJJHHHHHHH
 FFFFFFFEDDEEEEDDDDDDDDD</code></pre>
-<p>Here the first line is informative of the sequence, the second is the sequence itself and then you have an empty line (symbol +), followed by the quality scores (encoded by letters following <a href="https://learn.gencore.bio.nyu.edu/ngs-file-formats/quality-scores/">this table</a>).</p>
-<p>Try to scroll in all directions to explore some lines in the file. If you want to exit from the text viewer, press <code>q</code>.</p>
+<p>Here the first line is informative of the sequence, the second is the sequence itself and then you have an empty line (symbol +), followed by the quality scores (encoded by letters according to <a href="https://learn.gencore.bio.nyu.edu/ngs-file-formats/quality-scores/">this table</a>).</p>
+<p>Try to scroll in all directions (with the arrow keys) to explore some lines in the file. If you want to exit from the text viewer, press <code>q</code>.</p>
 <div class="callout-tips" title="Exercise" data-icon="false">
-<p>Try to search online how to search a specific work in a file with <code>less</code>. Then visualize the data and try to find if there is any sequence containing a sequence of ten <code>N</code>s (which is, ten missing nucleotides). Then, answer the question below</p>
+<p>Try to search online how to look for a specific word in a file with <code>less</code>. Then visualize the data with <code>less</code>, and try to find if there is any sequence ten adjacent <code>N</code>s (which is, ten missing nucleotides). Then, answer the question below</p>
 <p><strong>How long is the shortest sequence of missing nucleotides not found anywhere in the file data.fastq?</strong><br><br></p>
 
 <form id="quizForm">
@@ -566,13 +631,13 @@ Tip
 <section id="file-properties" class="level3">
 <h3 class="anchored" data-anchor-id="file-properties">File properties</h3>
 <p>How big is a file? How many lines does it have? When has it been created? You can use the good old <code>ls</code> with some extra options to list all files with some extra info:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-lah</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You should get something like this depending on your computer:</p>
 <pre><code>totalt 6,3M
 drwxr-xr-x+ 1 au612681 UsersGrp    0 28 aug 11:38 .
 drwx------+ 1 au612681 UsersGrp    0 28 aug 10:38 ..
 -rw-r--r--+ 1 au612681 UsersGrp 6,3M 28 aug 11:38 data.fastq</code></pre>
-<p>the last one is clearly the data file, with creation date and size. Other infos about the file are group and user ownership and which rights we have on the files (we will not talk about these in this tutorial).</p>
+<p>the last line is clearly the data file, with creation date and size. Other infos about the file are group and user ownership and which rights we have on the file (we will not talk about these in this tutorial).</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -584,7 +649,7 @@ Note
 </div>
 <div class="callout-body-container callout-body">
 <p>Look also at the other two elements: <code>.</code> and <code>..</code>, which represents the current directory and the one above in the directory structure. Those link you to the directories, so one can always change to the directory above by using <code>cd ..</code></p>
-<p><strong>You can combine multiple times <code>..</code> to change directories multiple levels above. Where does <code>cd ../../</code> bring you to? Hint: use the terminal to try it out if you cannot remember your folder structure.</strong></p>
+<p><strong>You can combine multiple times <code>..</code> to change directories multiple levels above. Use the terminal and execute the command <code>cd ../../</code>. Which folder does it bring you to?</strong></p>
 
 <form id="quizForm">
 <label> <input type="radio" name="q2" value="a"> /home </label> <br> <label> <input type="radio" name="q2" value="b"> /home/myFolder </label> <br> <label> <input type="radio" name="q2" value="c"> /usr/bin </label> <br> <label> <input type="radio" name="q2" value="d"> /home/username/ </label> <br> <button type="button" onclick="submitQuiz2()">Submit</button>
@@ -615,6 +680,8 @@ Note
 
 </div>
 </div>
+<p>Oh damn, now we changed cwd, and we cannot remember the path to the previous one where we have the data. We can use <code>-</code>, which brings us to the previous cwd!</p>
+<pre><code>cd -</code></pre>
 <p>Now, how many lines are there in your file? The command <code>wc</code> can show that to you. It has many options, but we are going to use the one to count lines in a file. As always, look for the manual or examples to see how you can use it in other many ways.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> data.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>will tell you that the file has 100000 lines, so you have 25000 sequences (each sequence is defined by 4 lines).</p>
@@ -631,7 +698,7 @@ Note
 <section id="writing-on-a-file" class="level3">
 <h3 class="anchored" data-anchor-id="writing-on-a-file">Writing on a file</h3>
 <p>You can write something on a file using <code>&gt;</code>. This writes any output from a command which would appear on the screen into a file. For example the following commands prints out the first four lines of the data, but they will end up inside the file fourLines.fastq</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-4</span> dataoriginal.fastq <span class="op">&gt;</span> fourLines.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span> <span class="at">-4</span> dataOriginal.fastq <span class="op">&gt;</span> fourLines.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Try to use</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span> fourLines.fastq</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -699,8 +766,70 @@ Warning
     }
  </script>
 
+</section>
+<section id="shortcuts-and-useful-keys-combinations" class="level3">
+<h3 class="anchored" data-anchor-id="shortcuts-and-useful-keys-combinations">Shortcuts and useful keys combinations</h3>
+<p>This was all for this very introductory tutorial. You have already seen how the bash shell is flexible, though requiring a bit of a steep learning curve.</p>
+<p>We want to recap here useful shortcuts and key combinations for your day-to-day use of the bash shell</p>
+<p>Here’s a list of useful shortcuts and key combinations that you can use in the Bash shell to improve your efficiency:</p>
+<section id="navigating-the-command-line" class="level4">
+<h4 class="anchored" data-anchor-id="navigating-the-command-line"><strong>Navigating the Command Line</strong></h4>
+<ol type="1">
+<li><strong><code>Ctrl + A</code></strong>: Move the cursor to the beginning of the line.</li>
+<li><strong><code>Ctrl + E</code></strong>: Move the cursor to the end of the line.</li>
+<li><strong><code>Alt + F</code></strong>: Move the cursor forward one word.</li>
+<li><strong><code>Alt + B</code></strong>: Move the cursor backward one word.</li>
+<li><strong><code>Ctrl + L</code></strong>: Clear the terminal screen</li>
+</ol>
+</section>
+<section id="editing-text" class="level4">
+<h4 class="anchored" data-anchor-id="editing-text"><strong>Editing Text</strong></h4>
+<ol start="6" type="1">
+<li><strong><code>Ctrl + U</code></strong>: Delete the text from the cursor to the beginning of the line.</li>
+<li><strong><code>Ctrl + K</code></strong>: Delete the text from the cursor to the end of the line.</li>
+<li><strong><code>Ctrl + W</code></strong>: Delete the word before the cursor.</li>
+<li><strong><code>Alt + D</code></strong>: Delete the word after the cursor.</li>
+</ol>
+</section>
+<section id="history-navigation" class="level4">
+<h4 class="anchored" data-anchor-id="history-navigation"><strong>History Navigation</strong></h4>
+<ol start="10" type="1">
+<li><strong><code>Ctrl + R</code></strong>: Search through command history interactively (reverse-i-search).</li>
+<li><strong><code>Ctrl + P</code></strong>: Previous command in history (equivalent to the up arrow key).</li>
+<li><strong><code>Ctrl + N</code></strong>: Next command in history (equivalent to the down arrow key).</li>
+<li><strong><code>!!</code></strong>: Re-run the last command.</li>
+</ol>
+</section>
+<section id="command-completion-and-expansion" class="level4">
+<h4 class="anchored" data-anchor-id="command-completion-and-expansion"><strong>Command Completion and Expansion</strong></h4>
+<ol start="14" type="1">
+<li><strong><code>Tab</code></strong>: Auto-complete file names, directory names, or commands.</li>
+<li><strong><code>Alt + .</code></strong>: Use the last argument of the previous command in the current command line.</li>
+</ol>
+</section>
+<section id="other-useful-shortcuts" class="level4">
+<h4 class="anchored" data-anchor-id="other-useful-shortcuts"><strong>Other Useful Shortcuts</strong></h4>
+<ol start="16" type="1">
+<li><strong><code>Ctrl + C</code></strong>: Terminate the current command (useful if things are stuck).</li>
+<li><strong><code>Ctrl + D</code></strong>: Log out of the current shell (equivalent to <code>exit</code>).</li>
+<li><strong><code>Ctrl + T</code></strong>: Swap the last two characters before the cursor.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" title="wrap up">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+wrap up
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Now you are able to navigate the directory tree and visualize text files with <code>less</code>. You can also perform some basic operations, including piping commands, which is useful when handling large outputs which might end up directly on your screen.</p>
+</div>
+</div>
 
 
+</section>
 </section>
 </section>
 </section>
