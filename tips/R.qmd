@@ -6,3 +6,9 @@ format:
 ---
 
 # Useful tips for R
+
+Nothing yet
+
+:::{.callout-tip title="this is my tip"}
+hello I am Marie
+:::
