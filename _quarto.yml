@@ -30,6 +30,10 @@ website:
             text: Python
       - href: Documentation.qmd
         text: Documentation
+      - text: Resources
+        menu:
+          - href: binfResources/databases.qmd
+            text: Databases
     right: 
       - icon: github
         href: https://github.com/AU-ABC
