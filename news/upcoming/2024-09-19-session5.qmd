@@ -1,0 +1,40 @@
+---
+title: "ABC.4: Fourth ABC session"
+author: "Samuele Soraggi"
+Organizers: HDS Sandbox, Bioinf Core facility
+date: 2024-09-03
+categories: [Cafe, Coding, Bioinformatics]
+description: "Coding and bioinformatics (and cake) for anyone!"
+---
+
+![](../../img/news/number4.png){fig-align="center" width=400px}
+
+The fourth session of the ABC (Accessible Bioinformatics Cafe) will be **on september 19th, at 13:00 in building 1231 room 114** (by the lake, see below).
+
+![](../../img/news/bartholin1231-114.png){fig-align="center" width=800px}
+
+Everyone is welcome to **join independently of coding skills and level**. 
+
+## Agenda
+ 
+We have a very minimalistic agenda consisting of
+
+- What's new
+- What's on our screens
+- Tutorials and Open Coding
+
+The tutorials we propose are of increasing difficulty (and [documented](../../Documentation.qmd) at each meeting. For this meeting we do not have new tutorials, but will rely on the previous ones and on an [interactive single cell workshop](https://hds-sandbox.github.io/scverse-2024-workshop/) one of us have been giving at a conference.
+
+Of course, you can also **bring your own code and issues and get help from us**.
+ 
+## Signing up
+
+No signup is really necessary, but if you just want to ensure there is enough cake (and you are pretty sure you will show up), click on the button below to give us a heads up of your presence. Don't do it multiple times to cheat for extra cake!
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSeCI0k-mywn_K4IeiGa6qvDxDumHoJt3CA26J0pYQPkw7ZIag/viewform?usp=pp_url&entry.1204655311=Yes" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Sign up for cake
+  </a>
+</p>

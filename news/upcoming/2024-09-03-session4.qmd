@@ -9,9 +9,9 @@ description: "Coding and bioinformatics (and cake) for anyone!"
 
 ![](../../img/news/number4.png){fig-align="center" width=400px}
 
-The fourth session of the ABC (Accessible Bioinformatics Cafe) will be **on september 3rd, at 13:00 in building 1321 room 320** (by the lake, see below).
+The fourth session of the ABC (Accessible Bioinformatics Cafe) will be **on september 3rd, at 13:00 in building 1231 room 320** (by the lake, see below).
 
-![](../../img/news/bartholin1231.png){fig-align="center" width=800px}
+![](../../img/news/bartholin1231-320.png){fig-align="center" width=800px}
 
 Everyone is welcome to **join independently of coding skills and level**. 
 

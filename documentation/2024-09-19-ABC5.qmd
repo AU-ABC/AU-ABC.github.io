@@ -1,0 +1,35 @@
+---
+title: "ABC.5: open coding and tutorials, single cell dimensionality reduction"
+author: "Samuele Soraggi"
+image: 2024-09-19-ABC5/umap.png
+date: 2024-09-19
+categories: [scanpy, projection, PCA, UMAP]
+description: "ABC.5: try our previous tutorials or a workshop on dimensionality reduction"
+eval: true
+---
+
+# Slides
+
+Today's slides
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://abc.au.dk/documentation/slides/20240919-ABC5.zip" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Download Slides
+  </a>
+</p>
+
+&nbsp;
+
+# Tutorials
+
+You can try our previous tutorials by looking at the [Documentation](../Documentation.qmd) page, or **try a workshop** one of us have been giving at the scVerse 2024 conference in Munich. The workshop is about **dimensionality reduction methods for single cell data** and contains a jupyter notebook to run python code on Google Colab.
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://hds-sandbox.github.io/scverse-2024-workshop/" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Go to the workshop page
+  </a>
+</p>
