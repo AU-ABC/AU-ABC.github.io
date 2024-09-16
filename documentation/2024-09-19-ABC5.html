@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Samuele Soraggi">
+<meta name="dcterms.date" content="2024-09-19">
+<meta name="description" content="ABC.5: try our previous tutorials or a workshop on dimensionality reduction">
 
-<title>ABC - Accessible Bioinformatics Cafe - News</title>
+<title>ABC - Accessible Bioinformatics Cafe - ABC.5: open coding and tutorials, single cell dimensionality reduction</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +26,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,63 +70,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-upcoming_event .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-image','listing-title','listing-description','listing-categories','listing-date',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-upcoming_event'] = new List('listing-upcoming_event', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-past_event .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-Dates','listing-Location','listing-Organizers',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-past_event'] = new List('listing-past_event', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WG01Z2LJ1J"></script>
 
 <script type="text/javascript">
@@ -145,13 +89,15 @@ gtag('config', 'G-WG01Z2LJ1J', { 'anonymize_ip': true});
 </script>
 <!-- End MailerLite Universal -->
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<meta property="og:title" content="ABC - Accessible Bioinformatics Cafe - News">
-<meta property="og:description" content="">
+<meta property="og:title" content="ABC - Accessible Bioinformatics Cafe - ABC.5: open coding and tutorials, single cell dimensionality reduction">
+<meta property="og:description" content="ABC.5: try our previous tutorials or a workshop on dimensionality reduction">
+<meta property="og:image" content="https://abc.au.dk
+litesrv._domainkey.birc.au.dk/documentation/2024-09-19-ABC5/umap.png">
 <meta property="og:site_name" content="ABC - Accessible Bioinformatics Cafe">
 <meta property="og:locale" content="en_US">
+<meta property="og:image:height" content="740">
+<meta property="og:image:width" content="889">
 </head>
 
 <body class="nav-fixed">
@@ -161,10 +107,10 @@ gtag('config', 'G-WG01Z2LJ1J', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./img/ABClogo.png" alt="" class="navbar-logo">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../img/ABClogo.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">ABC - Accessible Bioinformatics Cafe</span>
     </a>
   </div>
@@ -175,11 +121,11 @@ gtag('config', 'G-WG01Z2LJ1J', { 'anonymize_ip': true});
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./news.html" aria-current="page"> 
+    <a class="nav-link" href="../news.html"> 
 <span class="menu-text">News</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -188,21 +134,21 @@ gtag('config', 'G-WG01Z2LJ1J', { 'anonymize_ip': true});
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-tips">    
         <li>
-    <a class="dropdown-item" href="./tips/bash.html">
+    <a class="dropdown-item" href="../tips/bash.html">
  <span class="dropdown-text">Bash</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./tips/R.html">
+    <a class="dropdown-item" href="../tips/R.html">
  <span class="dropdown-text">R</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./tips/python.html">
+    <a class="dropdown-item" href="../tips/python.html">
  <span class="dropdown-text">Python</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="./Documentation.html"> 
+    <a class="nav-link" href="../Documentation.html"> 
 <span class="menu-text">Documentation</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -211,7 +157,7 @@ gtag('config', 'G-WG01Z2LJ1J', { 'anonymize_ip': true});
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
         <li>
-    <a class="dropdown-item" href="./binfResources/databases.html">
+    <a class="dropdown-item" href="../binfResources/databases.html">
  <span class="dropdown-text">Databases</span></a>
   </li>  
     </ul>
@@ -232,25 +178,55 @@ gtag('config', 'G-WG01Z2LJ1J', { 'anonymize_ip': true});
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
+  <li><a href="#tutorials" id="toc-tutorials" class="nav-link" data-scroll-target="#tutorials">Tutorials</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">News</h1>
+<h1 class="title">ABC.5: open coding and tutorials, single cell dimensionality reduction</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">scanpy</div>
+    <div class="quarto-category">projection</div>
+    <div class="quarto-category">PCA</div>
+    <div class="quarto-category">UMAP</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    ABC.5: try our previous tutorials or a workshop on dimensionality reduction
+  </div>
 </div>
 
 
+<div class="quarto-title-meta">
 
-<div class="quarto-title-meta column-page">
-
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Samuele Soraggi </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 19, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -260,179 +236,27 @@ gtag('config', 'G-WG01Z2LJ1J', { 'anonymize_ip': true});
 </header>
 
 
-<p>The ABC will routinely post new meetings and related workshops/courses of interest here.</p>
+<section id="slides" class="level1">
+<h1>Slides</h1>
+<p>Today’s slides</p>
+<p>&nbsp;</p>
+<p align="center">
+<a href="https://abc.au.dk/documentation/slides/20240919-ABC5.zip" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Download Slides </a>
+</p>
+<p>&nbsp;</p>
+</section>
+<section id="tutorials" class="level1">
+<h1>Tutorials</h1>
+<p>You can try our previous tutorials by looking at the <a href="../Documentation.html">Documentation</a> page, or <strong>try a workshop</strong> one of us have been giving at the scVerse 2024 conference in Munich. The workshop is about <strong>dimensionality reduction methods for single cell data</strong> and contains a jupyter notebook to run python code on Google Colab.</p>
+<p>&nbsp;</p>
+<p align="center">
+<a href="https://hds-sandbox.github.io/scverse-2024-workshop/" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Go to the workshop page </a>
+</p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-grid" id="listing-upcoming_event">
-<div class="list grid quarto-listing-cols-4">
-<div class="g-col-1" data-index="0" data-categories="Cafe,Coding,Bioinformatics" data-listing-date-sort="1724112000000" data-listing-file-modified-sort="1726480821298" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="157">
-<a href="./news/upcoming/2024-08-20-session3.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="img/news/number3.png" style="height: 300px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-ABC.3: Third ABC session
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Cafe'); return false;">
-Cafe
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Coding'); return false;">
-Coding
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Bioinformatics'); return false;">
-Bioinformatics
-</div>
-</div>
-<div class="card-text listing-description">
-Coding and bioinformatics (and cake) for anyone!
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Aug 20, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="Cafe,Coding,Bioinformatics" data-listing-date-sort="1725321600000" data-listing-file-modified-sort="1726480821298" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="166">
-<a href="./news/upcoming/2024-09-03-session4.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="img/news/number4.png" style="height: 300px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-ABC.4: Fourth ABC session
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Cafe'); return false;">
-Cafe
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Coding'); return false;">
-Coding
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Bioinformatics'); return false;">
-Bioinformatics
-</div>
-</div>
-<div class="card-text listing-description">
-Coding and bioinformatics (and cake) for anyone!
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Sep 3, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="Cafe,Coding,Bioinformatics" data-listing-date-sort="1725321600000" data-listing-file-modified-sort="1726480821298" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="192">
-<a href="./news/upcoming/2024-09-19-session5.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top"><img src="img/news/number4.png" style="height: 300px;"  class="thumbnail-image card-img"/></p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-ABC.4: Fourth ABC session
-</h5>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Cafe'); return false;">
-Cafe
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Coding'); return false;">
-Coding
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Bioinformatics'); return false;">
-Bioinformatics
-</div>
-</div>
-<div class="card-text listing-description">
-Coding and bioinformatics (and cake) for anyone!
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-Sep 3, 2024
-</div>
-</div>
-</div>
-</div>
-</a>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div><div class="quarto-listing quarto-listing-container-table" id="listing-past_event">
-<div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-     <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-     <select id="listing-past_event-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-past_event'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-       <option value="" disabled="" selected="" hidden="">Order By</option>
-       <option value="index" data-direction="asc">Default</option>
-         <option value="listing-title-sort" data-direction="asc">
-          Event title
-        </option>
-     </select>
-  </div>
-    <div class="input-group input-group-sm quarto-listing-filter">
-      <span class="input-group-text"><i class="bi bi-search"></i></span>
-      <input type="text" class="search form-control" placeholder="Filter">
-    </div>
-</div>
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-<a class="sort" data-sort="listing-title-sort" onclick="if (this.classList.contains('sort-asc')) { this.classList.add('sort-desc'); this.classList.remove('sort-asc') } else { this.classList.add('sort-asc'); this.classList.remove('sort-desc')} return false;">Event title</a>
-</th>
-<th>
-Dates
-</th>
-<th>
-Location
-</th>
-<th>
-Organizers
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-categories="Cafe,Coding,Bioinformatics" data-listing-date-sort="1719446400000" data-listing-file-modified-sort="1726480821298" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="157" data-listing-title-sort="ABC.2: Second ABC session" data-listing-filename-sort="2024-06-27-session2.qmd">
-<td>
-<a href="./news/past/2024-06-27-session2.html" class="title listing-title">ABC.2: Second ABC session</a>
-</td>
-<td>
-<span class="listing-Dates">&nbsp;</span>
-</td>
-<td>
-<span class="listing-Location">&nbsp;</span>
-</td>
-<td>
-<span class="listing-Organizers">HDS Sandbox, Bioinf Core facility</span>
-</td>
-</tr>
-<tr data-index="1" data-categories="Cafe,Coding,Bioinformatics" data-listing-date-sort="1718236800000" data-listing-file-modified-sort="1726480821298" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="238" data-listing-title-sort="ABC.1: First ABC session" data-listing-filename-sort="2024-06-13-session1.qmd">
-<td>
-<a href="./news/past/2024-06-13-session1.html" class="title listing-title">ABC.1: First ABC session</a>
-</td>
-<td>
-<span class="listing-Dates">&nbsp;</span>
-</td>
-<td>
-<span class="listing-Location">&nbsp;</span>
-</td>
-<td>
-<span class="listing-Organizers">HDS Sandbox, Bioinf Core facility</span>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
