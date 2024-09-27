@@ -1,5 +1,5 @@
 ---
-title: "News"
+title: "Events"
 format:
   html:
     page-layout: full
