@@ -51,7 +51,7 @@ Each ~2 hour session of the ABC will feature:
 - Topic Presentation: Insightful presentations on various bioinformatics and coding topics.
 - Open Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues.
 
-## Calendar
+## Calendar of events
 
 &nbsp;
 
@@ -61,7 +61,8 @@ Each ~2 hour session of the ABC will feature:
 | ABC.2  | 27.june 2024 | [AIAS hall](https://maps.app.goo.gl/ns3c3PpTyNVqhaENA) | R projects and dplyr, Anaconda and python intro | Too late! |
 | ABC.3  | 20.august 2024 | [AIAS hall](https://maps.app.goo.gl/ns3c3PpTyNVqhaENA) | BulkRNA analysis in R | Too late! |
 | ABC.4  | 3.september 2024 | [1231-320](https://maps.app.goo.gl/TKzvmQz1WnSwQUNy5) | Bash for bioinformatics | Too late! |
-| ABC.5  | 19.september 2024 | [1231-114](https://maps.app.goo.gl/9CFUe5q83rBK7bQt7) | Previous tutorials + Dimensionality reduction | [Here](https://docs.google.com/forms/d/e/1FAIpQLSeCI0k-mywn_K4IeiGa6qvDxDumHoJt3CA26J0pYQPkw7ZIag/viewform?usp=pp_url&entry.1204655311=Yes) |
+| ABC.5  | 19.september 2024 | [1231-114](https://maps.app.goo.gl/9CFUe5q83rBK7bQt7) | Previous tutorials + Dimensionality reduction | Too late! |
+| ABC.6  | 3.september 2024 | [1873-118A](https://maps.app.goo.gl/UWysYHQ7JM41SKhd7) | Download from online databases | [Here](https://docs.google.com/forms/d/e/1FAIpQLSdgWPTzvdbezY-fxGv0VYPW-dgdCidw6r_bRJ8Uv2lUdlxrBQ/viewform?usp=pp_url&entry.1204655311=Yes) |
 
 
 : Events Calendar. Look at our [News](./news.qmd) for more information {.striped .hover} about each meeting and upcoming workshops and courses.

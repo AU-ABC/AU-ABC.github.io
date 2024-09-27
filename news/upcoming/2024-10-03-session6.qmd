@@ -1,0 +1,44 @@
+---
+title: "ABC.6: Sixth ABC session"
+author: "Samuele Soraggi"
+Organizers: HDS Sandbox, Bioinf Core facility
+date: 2024-10-03
+categories: [Cafe, Coding, Bioinformatics]
+description: "Learn how to download from online databases and gethelp with your code - and have cake!"
+---
+
+![](../../img/news/number6.png){fig-align="center" width=400px}
+
+The fourth session of the ABC (Accessible Bioinformatics Cafe) will be **on october 3rd, at 13:00 in building 1873 room 118A** (University city Molecular Biology Building, room by the canteen, see below).
+
+![Where is the building and how to reach it from campus throught he tunnel](../../img/news/1873-118A-loc.png){fig-align="center" width=800px}
+
+![Where is the room and how to reach it. There will be guiding signs.](../../img/news/1873-118A-find.png){fig-align="center" width=800px}
+
+Everyone is welcome to **join independently of coding skills and level**. 
+
+## Agenda
+ 
+We have a very minimalistic agenda consisting of
+
+- What's new
+- Accessible topic presentation
+- Tutorials and Open Coding
+
+The tutorials we propose are of increasing difficulty (and [documented](../../Documentation.qmd) at each meeting. This time we have
+
+- download of open datasets from online databases
+
+You can also bring your own code and issues and get help from us.
+ 
+## Signing up
+
+No signup is really necessary, but if you just want to ensure there is enough cake (and you are pretty sure you will show up), click on the button below to give us a heads up of your presence. Don't do it multiple times to cheat for extra cake!
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdgWPTzvdbezY-fxGv0VYPW-dgdCidw6r_bRJ8Uv2lUdlxrBQ/viewform?usp=pp_url&entry.1204655311=Yes" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Sign up for cake
+  </a>
+</p>
