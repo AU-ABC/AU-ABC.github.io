@@ -19,7 +19,7 @@ website:
       - href: index.qmd
         text: Home
       - href: news.qmd
-        text: News
+        text: Calendar
       - text: Tips
         menu:
           - href: tips/bash.qmd
