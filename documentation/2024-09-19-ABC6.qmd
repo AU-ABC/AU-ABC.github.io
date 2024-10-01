@@ -1,0 +1,309 @@
+---
+title: "ABC.6: Download from online databases, open coding session"
+author: "Samuele Soraggi"
+image: 2024-10-02-ABC6/dna.jpg
+date: 2024-10-03
+categories: [GEO, SRA, Download]
+description: "Learn how to download (especially) GEO-SRA data"
+eval: true
+bibliography: ./2024-10-03-ABC6/citations.bib
+---
+
+# Slides
+
+Today's slides
+
+ 
+
+<p align="center">
+
+<a href="https://abc.au.dk/documentation/slides/20241003-ABC6.zip" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Download Slides </a>
+
+</p>
+
+ 
+
+# Download from GEO and SRA 
+
+There is a multitude of online databases for OMICS data of all types (we are try to put together [an useful list of databases here](../binfResources/databases.qmd)). Some of those databases provide direct links to the data to download (either raw data or analysis results), some others havea more complex way of downloading data (through a software or some more complex way of finding the download link). A database people often find problematic is [GEO](https://www.ncbi.nlm.nih.gov/geo/) (Gene Expression Omnibus), which includes processed and raw data, usally for short read datasets.
+
+## GEO and SRA data
+
+[GEO](https://www.ncbi.nlm.nih.gov/geo/) (Gene Expression Omnibus) is a database which contains processed data from biological experiments. For example aligned files and analysis results, and supplementary files of various type. A GEO entry is called **Series** and contains **Samples** , **Platforms**, **Supplementary data**. Usually, there is an associate SRA number.
+
+A [SRA](https://www.ncbi.nlm.nih.gov/sra/) (Sequence Read Archive) number contains the **raw data for the samples contained in a GEO series**. The download from GEO can happen by using the various alphanumerical identifiers to write a download link. SRA downloads need the software SRA-tools, and cannot be performed using a simple download link.
+
+![A GEO Series, where highlighted in different colours there are the main data elements. The Series ID (red). the type of platform (green) for creating the samples (blue), and the SRA number for raw data (purple).](./2024-10-03-ABC6/GEOpage.png)
+
+### Download GEO data programmatically
+
+Sometimes you need to download some supplementary files from GEO. This is pretty easy from the command line, and we show it with an example. We consider the GEO series in the figure above - go to the [GEO home page](https://www.ncbi.nlm.nih.gov/geo/) and find it using the series number in the search bar of the website.
+
+Now, we use the [guidelines of GEO for programmatic downloads](https://www.ncbi.nlm.nih.gov/geo/info/geo_paccess.html). Here you have examples and descriptions on how to write the FTP^[FTP stands for File Transfer Protocol, and consists of a remote folder structure which you can access with URLs starting with `ftp://`] address of all files in the series (excluding SRA files). 
+
+To look at the content of the series, use the command line and write
+
+```{.bash}
+curl -l ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE67nnn/GSE67303/
+```
+
+note how the address contains `series`, the series ID where the last three numbers are changed into `nnn`, and the series number itself. The output is a list of the content of the series:
+
+```
+matrix
+miniml
+soft
+suppl
+```
+The first three are folders containing matrix, miniml and soft files, which are plain text files used to describe the series. The fourth is the folder of supplementary material. Using `curl -l` we can see that it contains the supplementary file of the series:
+
+```{.bash}
+curl -l ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE67nnn/GSE67303/suppl
+```
+
+```
+GSE67303_DEG_cuffdiff.xlsx
+```
+
+Now we can download the file using the whole URL with `wget`
+
+```{.bash}
+wget ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE67nnn/GSE67303/suppl/GSE67303_DEG_cuffdiff.xlsx
+```
+
+:::{.callout-tip}
+Do you want to download a lot of supplementary files without one-by-one download by hand? Then `wget -r` will download recursively the content of the whole folder, for example:
+
+```{.bash}
+wget -r ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE67nnn/GSE67303/suppl/
+```
+:::
+
+You can change the URL to show the supplementary data inside samples and inside platforms. In our example you can click on the platform/sample number on the webpage, and see if they contain any supplementary data. It is not the case of this GEO series, but for the sake of the example we will write down how to list the supplementary files inside the related FTP folders. 
+
+- For the platforms, we need to substute `series` with `platforms`, and the same with the IDs, which will again have `nnn` for the last 3 digits:
+    ```
+    curl -l ftp://ftp.ncbi.nlm.nih.gov/geo/platforms/GPL19nnn/GPL19949/
+    ```
+    you will notice there are only `soft` and `miniml` folders for the platform description, and no supplementary
+
+- For the samples, it works analogously, using sample IDs
+    ```
+    curl -l ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM1644nnn/GSM1644066/
+    ```
+    you will notice there are only `soft` and `miniml` folders for the platform description
+
+### Download GEO and SRA data with `geofetch` 
+
+Downloading entire GEO series and related raw data through SRA is always painful. Here comes into play a pretty useful package called `geofetch` (@khoroshevskyi_geofetch:_2023). This can be easily installed through `conda` on the command line
+
+```{.bash}         
+conda create -n geofetch
+conda activate geofetch
+conda install -c bioconda -c conda-forge geofetch sra-tools
+```
+
+:::{.callout-tips}
+You can also find a guide to `anaconda` in [our ABC2 tutorial](2024-06-27-ABC2.ipynb), where the packages `geofetch` and `sra-tools` can be installed interactively. `geofetch` works also with windows, though some options are not available.
+:::
+
+:::{.callout-note title="settings for sra-tools"}
+`sra-tools` creates very large files in `.sra` format into your home folder while downloading. This can be detrimental on a cluster, for example on GenomeDK, where your home is limited in 100GB size. `sra` files are then converted into the desired format. You can decide to download `sra` files in to a temporary folder or any other folder of your choice. For example you can do what follows to change the folder for `sra` files into `/tmp`
+
+```{.bash}
+mkdir -p ${HOME}/.ncbi
+echo '/repository/user/main/public/root = "/tmp"' > ${HOME}/.ncbi/user-settings.mkfg
+```
+:::
+
+#### Download
+
+`geofetch` makes it easy to download data - the command is very basic and different options can personalize which content you want to download. The whole download contain also metadata which follows the PEP format, a FAIR-ready way of documenting data for reproducible access by other users (@sheffield_linking_2021, @leroy_pephub:_2024). The basic command has this form:
+
+```{.bash}
+geofetch -i SRA_SERIES_ID
+```
+
+and one can add other arguments to choose the type of data to be downloaded according to this table:
+
+![Arguments to choose what to download with geofetch. The first line with empty arguments corresponds to the basic geofetch command.](./2024-10-03-ABC6/arguments_outputs.svg)
+
+We can download metadata and raw `sra` data for the GEO series we have in the first figure of this tutorial with the basic `geofetch` command
+
+```{.bash}
+geofetch -i GSE67303
+```
+
+Once you are done, you have the following files and folders:
+
+```{.bash}
+GSE67303
+```
+
+```
+GSE67303
+├── GSE67303_GSE.soft
+├── GSE67303_GSM.soft
+├── GSE67303_PEP
+│   ├── GSE67303_PEP_raw.csv
+│   └── GSE67303_PEP.yaml
+├── GSE67303_SRA.csv
+```
+
+- `GSE67303_GSE.soft` is a text file containing series information
+- `GSE67303_GSM.soft` is a text file containing samples information
+- `GSE67303_SRA.csv` is a comma-separated table with the `sra` file lists who was downloaded
+- the files in the subfolder `GSE67303_PEP` contains data info following `PEP` standard
+
+Try to do `ls` in the folder used as default for the download of `sra` data, such as
+
+```{.bash}
+ls /tmp/sra/
+```
+
+and you should see the downloaded data from the `sra` archive
+
+```
+SRR1930183.sra  SRR1930184.sra  SRR1930185.sra  SRR1930186.sra
+```
+
+Now you can use `fasterq-dump` to convert the `sra` data into `fastq` format. `fasterq-dump` builds up on the tool `fastq-dump`, but includes some default settings, such as splitting the `fastq` files into paired reads and ambiguous reads (only when you actually have paired reads), which is usually the standard.
+
+In this example we choose the locally downloaded files in the `sra` download folder, and we choose the output folder inside where we have the metadata information. 
+
+```
+fasterq-dump /tmp/sra/*.sra -O GSE67303/raw -v
+```
+
+Now you can see the raw data is also there
+
+```{.bash}
+ls /tmp/sra/
+```
+
+```
+GSE67303
+├── GSE67303_GSE.soft
+├── GSE67303_GSM.soft
+├── GSE67303_PEP
+│   ├── GSE67303_PEP_raw.csv
+│   └── GSE67303_PEP.yaml
+├── GSE67303_SRA.csv
+└── raw
+    ├── SRR1930183_1.fastq
+    ├── SRR1930183_2.fastq
+    ├── SRR1930184_1.fastq
+    ├── SRR1930184_2.fastq
+    ├── SRR1930185_1.fastq
+    ├── SRR1930185_2.fastq
+    ├── SRR1930186_1.fastq
+    └── SRR1930186_2.fastq
+```
+
+If you want, you can empty the `sra` download folder
+
+```{.bash}
+rm /tmp/sra/*.sra
+```
+
+### Download SRA data with `fasterq-dump`
+
+You can also use `fasterq-dump` directly if you do not want any metadata. It can be used with only one `sra` run at the time, but below we show how you can download entire series runs or sample runs.
+
+#### Only one SRA run
+
+Do you simply need a single raw file? In the webpage of the GEO series, click on the SRA code. A new window will show all the samples: choose one and find the SRA run number, which starts with SRR (in figure below).
+
+![](2024-10-03-ABC6/SRR.png)
+
+In relation to figure above 
+
+```{.bash}
+fasterq-dump SRR1930186 -v
+```
+
+#### All SRA runs of a GEO series
+
+Click on the SRA link inside the GEO series. When the list with all samples appears, click on `Send to` on the top-right button, choose `File` and `Accession List`. This will download a `csv` file which you can combine with `fasterq-dump` to download all runs:
+
+```{.bash}
+fasterq-dump `sed 1,1d ./Downloads/SraAccList.csv` -v
+```
+
+#### All SRA runs of a single sample
+
+After clicking on the SRA code of the GEO series, you can click on a specific sample and use the same method with the `Send to` button to download all the runs of a specific sample.
+
+
+---------------------
+
+
+# Extra references for `fastq-dump` and `fasterq-dump`
+
+Below some references with all the options for getting `sra` raw data (credit [Ronan Harrington](https://github.com/rnnh))
+
+## fastq-dump command
+
+`fastq-dump` is a tool for downloading sequencing reads from [NCBI's Sequence Read Archive (SRA)](https://www.ncbi.nlm.nih.gov/sra).
+These sequence reads will be downloaded as FASTQ files.
+How these FASTQ files are formatted depends on the `fastq-dump` options used.
+
+### Downloading reads from the SRA using `fastq-dump`
+
+In this example, we want to download FASTQ reads for a mate-pair library.
+
+```{.bash}
+fastq-dump --gzip --skip-technical --readids --read-filter pass --dumpbase --split-3 --clip --outdir path/to/reads/ SRR_ID
+```
+
+In this command...
+
+1. **`--gzip`**: Compress output using gzip. Gzip archived reads can be read directly by `bowtie2`.
+2. **`--skip-technical`**: Dump only biological reads, skip the technical reads.
+3. **`--readids`** or **`-I`**: Append read ID after spot ID as 'accession.spot.readid'. With this flag, one sequence gets appended the ID `.1` and the other `.2`. Without this option, pair-ended reads will have identical IDs.
+4. **`--read-filter pass`**: Only returns reads that pass filtering (without `N`s).
+5. **`--dumpbase`** or **`-B`**: Formats sequence using base space (default for other than SOLiD). Included to avoid colourspace (in which pairs of bases are represented by numbers).
+6. **`--split-3`** separates the reads into left and right ends. If there is a left end without a matching right end, or a right end without a matching left end, they will be put in a single file.
+7. **`--clip`** or **`-W`**: Some of the sequences in the SRA contain tags that need to be removed. This will remove those sequences.
+8. **`--outdir`** or **`-O`**: *(Optional)* Output directory, default is current working directory.
+9. **`SRR_ID`**: This is is the ID of the run from SRA to be downloaded. This ID begins with "SRR" and is followed by around seven digits (e.g. `SRA1234567`).
+
+Other options that can be used instead of `--split-3`:
+
+1. **`--split-files`** splits the FASTQ reads into two files: one file for mate 1s (`...1`), and another for mate 2s (`..._2`). This option will not mateless pairs into a third file.
+2. **`--split-spot`** splits the FASTQ reads into two (mate 1s and mate 2s) within one file. `--split-spot` gives you an 8-line fastq format where forward precedes reverse (see <https://www.biostars.org/p/178586/#258378>).
+
+## fasterq-dump command
+
+`fasterq-dump` is a tool for downloading sequencing reads from [NCBI's Sequence Read Archive (SRA)](https://www.ncbi.nlm.nih.gov/sra).
+These sequence reads will be downloaded as `fastq` files.
+`fasterq-dump` is a newer, streamlined alternative to `fastq-dump`; both of these programs are a part of [sra-tools](https://anaconda.org/bioconda/sra-tools).
+
+### `fasterq-dump` vs `fastq-dump`
+
+Here are a few of the differences between `fastq-dump` and `fasterq-dump`:
+
+1. In `fastq-dump`, the flag `--split-3` is required to separate paired reads into left and right ends. This is the default setting in `fasterq-dump`.
+2. The `fastq-dump` flag `--skip-technical` is no longer required to skip technical reads in `fasterq-dump`. Instead, the flag `--include-technical` is required to include technical reads when using `fasterq-dump`.
+3. There is no `--gzip` or `--bzip2` flag in `fasterq-dump` to download compressed reads with `fasterq-dump`. However, FASTQ files downloaded using `fasterq-dump` can still be subsequently compressed.
+
+The following commands are equivalent, but will be executed faster using `fasterq-dump`:
+
+```{.bash}
+fastq-dump SRR_ID --split-3 --skip-technical
+fasterq-dump SRR_ID
+```
+
+### Downloading reads from the SRA using `fasterq-dump`
+
+In this example, we want to download FASTQ reads for a mate-pair library.
+
+```{.bash}
+fastq-dump --threads n --progress SRR_ID
+```
+
+In this command...
+
+1. **`--threads`** specifies the number (*`n`*) processors/threads to be used.
+2. **`--progress`** is an optional argument that displays a progress bar when the reads are being downloaded.
+3. **`SRR_ID`** is the ID of the run from the SRA to be downloaded. This ID begins with "SRR" and is followed by around seven digits (e.g. `SRR1234567`).

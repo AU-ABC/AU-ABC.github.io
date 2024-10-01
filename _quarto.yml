@@ -20,20 +20,18 @@ website:
         text: Home
       - href: news.qmd
         text: Calendar
-      - text: Tips
-        menu:
-          - href: tips/bash.qmd
-            text: Bash
-          - href: tips/R.qmd
-            text: R
-          - href: tips/python.qmd
-            text: Python
       - href: Documentation.qmd
         text: Documentation
       - text: Resources
         menu:
           - href: binfResources/databases.qmd
             text: Databases
+          - href: binfResources/bash.qmd
+            text: Bash
+          - href: binfResources/R.qmd
+            text: R
+          - href: binfResources/python.qmd
+            text: Python
     right: 
       - icon: github
         href: https://github.com/AU-ABC
