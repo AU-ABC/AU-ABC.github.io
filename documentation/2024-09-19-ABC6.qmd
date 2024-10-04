@@ -1,7 +1,7 @@
 ---
 title: "ABC.6: Download from online databases, open coding session"
 author: "Samuele Soraggi"
-image: 2024-10-02-ABC6/dna.jpg
+image: 2024-10-03-ABC6/dna.jpg
 date: 2024-10-03
 categories: [GEO, SRA, Download]
 description: "Learn how to download (especially) GEO-SRA data"

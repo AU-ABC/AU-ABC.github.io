@@ -12,10 +12,12 @@ You are invited to join our **Use GenomeDK** workshop on October 10th, in buildi
 &nbsp;
 
  <p align="center">
-  <a href="abc.au.dk/news/2024-10-10-usegenomedk.html" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+  <a href="https://abc.au.dk/news/upcoming/2024-10-10-usegenomedk.html" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
     Information + signup
   </a>
 </p>
+
+&nbsp;
 
 :::
 
