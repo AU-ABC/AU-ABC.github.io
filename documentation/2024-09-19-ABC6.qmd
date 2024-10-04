@@ -55,6 +55,7 @@ miniml
 soft
 suppl
 ```
+
 The first three are folders containing matrix, miniml and soft files, which are plain text files used to describe the series. The fourth is the folder of supplementary material. Using `curl -l` we can see that it contains the supplementary file of the series:
 
 ```{.bash}
@@ -77,6 +78,19 @@ Do you want to download a lot of supplementary files without one-by-one download
 ```{.bash}
 wget -r ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE67nnn/GSE67303/suppl/
 ```
+
+Some webpages have so-called robots which avoid a user to download in an autopmated way too many datasets at once, to prevent overloading of the bandwidth. Bulk downloads are identified by, amongst others, how much time it takes to request a download. When a robot rejects your download attempt, you get an error message. In that case, `wget` can solve the problems with some extra dedicated options. Below you can see a bulk download from the [PRIDE](https://www.ebi.ac.uk/pride/) database, which uses robots:
+
+```{.bash}
+wget --random-wait \
+     -r -p -e robots=off \
+     -U mozilla \
+     ftp.pride.ebi.ac.uk/pride/data/archive/2024/09/PXD056312/
+
+```
+
+Note: the command above takes time because the data is quite big and is just for the sake of example, so don't run it :-)
+
 :::
 
 You can change the URL to show the supplementary data inside samples and inside platforms. In our example you can click on the platform/sample number on the webpage, and see if they contain any supplementary data. It is not the case of this GEO series, but for the sake of the example we will write down how to list the supplementary files inside the related FTP folders. 
