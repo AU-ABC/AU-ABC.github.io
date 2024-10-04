@@ -1,0 +1,44 @@
+---
+title: "Use GenomeDK workshop"
+author: "Samuele Soraggi"
+Organizers: HDS Sandbox, Bioinf Core facility, GenomeDK admin
+date: 2024-10-10
+categories: [Workshop, GenomeDK, Introduction, HPC, cluster]
+description: "All you need to get up and running with GenomeDK"
+---
+
+![](../../img/news/gdkLogo.jpg){fig-align="center" width=800px}
+
+You are invited to an introductory workshop **on october 10th, at 11:00 in building 1540-K26** (Biology department).
+
+![Where is the building](../../img/news/1540.jpg){fig-align="center" width=800px}
+
+## Agenda
+
+The topics for the workshop are all at introductory level, such as
+
+- login and account setup
+- file system
+- command line intro
+- software management
+- projects on GenomeDK
+- file transfer
+- jobs
+
+There are no prerequisites apart from having a working account on GenomeDK with a complete 2-Factor authentication. Also, bring your laptop, so we can try out live some commands and exercises on the cluster.
+
+There will be a lunch break 12-13, with lunch **not included** in the workshop. We will serve coffee and cake.
+
+There is time for questions and problem-solving, so come with your issues if you are already a GDK user.
+
+## Signing up
+
+Please sign up through this very short online form:
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://lnkd.in/dU24924r" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Sign up
+  </a>
+</p>
