@@ -1,0 +1,19 @@
+---
+title: "Workshop: Use GenomeDK"
+author: "Samuele Soraggi"
+image: ../img/news/gdkLogo.jpg
+date: 2024-10-10
+categories: [GenomeDK, bash]
+description: "Introductive workshop to genomeDK"
+eval: true
+---
+
+We had a great workshop day, and for those of you who were not there, or want to see the slides again, here they are
+
+ 
+
+<p align="center">
+
+<a href="https://tinyurl.com/useGDK" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> See the slides </a>
+
+</p>
