@@ -95,49 +95,49 @@
     "href": "index.html",
     "title": "Welcome to the Accessible Bioinformatics Cafe",
     "section": "",
-    "text": "An informal and collaborative cafe to help each other upskilling coding/bioinformatics skills. Hosted by scientists and bioinformaticians of the Health data science sandbox and Bioinformatics core facility at Aarhus University.\n\n \n\n\n\n\n\n\n\n\nHave you ever ended in a situation involving questions similar to those?\n\nWhere do I start to code on a command line?\n How do I learn the basic R/python commands?\n What the heck is this error?????\n\nDo you feel finding the right tools is like going through a maze of software installations, versions and incompatibilities?\n\n\n\nWhat follows is the natural desire of throwing your computer out of the window. Don’t worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the Kubler-Ross curve1, where frustration is the point in which coding becomes challenging and we might feel lost.\nThe idea behind ABC is to bridge you beyond frustration moments, while at the same time offering a relaxed environment and the possibility to learn new things, help and get to know each other:\n\n\n\n\n\n\n\n\nEveryone, really. Those that will particularly benefit from the ABC include:\n\nBiologists, bioinformaticians, and health scientists who wish to adopt coding-based solutions.\nScientists and students who wish to accelerate the coding-based analysis of various types of data (such as OMICs data and other large-scale data) in research across Aarhus University and Aarhus University Hospital.\nStudents and researchers who want an open environment where it is easy to get assistance and talk with others encountering similar issues (or maybe who already solved them!)\n\n\n\n\nEach ~2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues.\n\n\n\n\nLook at our Events calendar for more information about each meeting and upcoming workshops and courses.\n\n\n\nSubscribe to our newsletter to receive a few, non-invasive reminders for our meetings and events!\n\n\n\n\n\n\nDo you have an input on making the ABC better with new tutorials or workshops we could organize? Please write it down in the form below, and we will see if we can implement something for the future editions of ABC.\n \n\n Give your input!"
+    "text": "Incoming ABC\n\n\n\nThe next ABC is on October 24th, in building 1240-218, from 1pm to 3pm. Click the button below for more information and sign up to the event.\n \n\n Information + signup"
   },
   {
     "objectID": "index.html#concept",
     "href": "index.html#concept",
     "title": "Welcome to the Accessible Bioinformatics Cafe",
-    "section": "",
-    "text": "Have you ever ended in a situation involving questions similar to those?\n\nWhere do I start to code on a command line?\n How do I learn the basic R/python commands?\n What the heck is this error?????\n\nDo you feel finding the right tools is like going through a maze of software installations, versions and incompatibilities?\n\n\n\nWhat follows is the natural desire of throwing your computer out of the window. Don’t worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the Kubler-Ross curve1, where frustration is the point in which coding becomes challenging and we might feel lost.\nThe idea behind ABC is to bridge you beyond frustration moments, while at the same time offering a relaxed environment and the possibility to learn new things, help and get to know each other:"
+    "section": "Concept",
+    "text": "Concept\n\n\n\n\n\n\nHave you ever ended in a situation involving questions similar to those?\n\nWhere do I start to code on a command line?\n How do I learn the basic R/python commands?\n What the heck is this error?????\n\nDo you feel finding the right tools is like going through a maze of software installations, versions and incompatibilities?\n\n\n\nWhat follows is the natural desire of throwing your computer out of the window. Don’t worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the Kubler-Ross curve1, where frustration is the point in which coding becomes challenging and we might feel lost.\nThe idea behind ABC is to bridge you beyond frustration moments, while at the same time offering a relaxed environment and the possibility to learn new things, help and get to know each other:"
   },
   {
     "objectID": "index.html#who-can-benefit-from-the-abc",
     "href": "index.html#who-can-benefit-from-the-abc",
     "title": "Welcome to the Accessible Bioinformatics Cafe",
-    "section": "",
-    "text": "Everyone, really. Those that will particularly benefit from the ABC include:\n\nBiologists, bioinformaticians, and health scientists who wish to adopt coding-based solutions.\nScientists and students who wish to accelerate the coding-based analysis of various types of data (such as OMICs data and other large-scale data) in research across Aarhus University and Aarhus University Hospital.\nStudents and researchers who want an open environment where it is easy to get assistance and talk with others encountering similar issues (or maybe who already solved them!)"
+    "section": "Who can benefit from the ABC?",
+    "text": "Who can benefit from the ABC?\nEveryone, really. Those that will particularly benefit from the ABC include:\n\nBiologists, bioinformaticians, and health scientists who wish to adopt coding-based solutions.\nScientists and students who wish to accelerate the coding-based analysis of various types of data (such as OMICs data and other large-scale data) in research across Aarhus University and Aarhus University Hospital.\nStudents and researchers who want an open environment where it is easy to get assistance and talk with others encountering similar issues (or maybe who already solved them!)"
   },
   {
     "objectID": "index.html#format",
     "href": "index.html#format",
     "title": "Welcome to the Accessible Bioinformatics Cafe",
-    "section": "",
-    "text": "Each ~2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues."
+    "section": "Format",
+    "text": "Format\nEach ~2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues."
   },
   {
     "objectID": "index.html#when-and-where",
     "href": "index.html#when-and-where",
     "title": "Welcome to the Accessible Bioinformatics Cafe",
-    "section": "",
-    "text": "Look at our Events calendar for more information about each meeting and upcoming workshops and courses."
+    "section": "When and where",
+    "text": "When and where\nLook at our Events calendar for more information about each meeting and upcoming workshops and courses."
   },
   {
     "objectID": "index.html#newsletter",
     "href": "index.html#newsletter",
     "title": "Welcome to the Accessible Bioinformatics Cafe",
-    "section": "",
-    "text": "Subscribe to our newsletter to receive a few, non-invasive reminders for our meetings and events!"
+    "section": "Newsletter",
+    "text": "Newsletter\nSubscribe to our newsletter to receive a few, non-invasive reminders for our meetings and events!"
   },
   {
     "objectID": "index.html#suggestions",
     "href": "index.html#suggestions",
     "title": "Welcome to the Accessible Bioinformatics Cafe",
-    "section": "",
-    "text": "Do you have an input on making the ABC better with new tutorials or workshops we could organize? Please write it down in the form below, and we will see if we can implement something for the future editions of ABC.\n \n\n Give your input!"
+    "section": "Suggestions",
+    "text": "Suggestions\nDo you have an input on making the ABC better with new tutorials or workshops we could organize? Please write it down in the form below, and we will see if we can implement something for the future editions of ABC.\n \n\n Give your input!"
   },
   {
     "objectID": "Documentation.html",
@@ -403,21 +403,21 @@
     "href": "news/upcoming/2024-10-24-session7.html",
     "title": "ABC.7: Seventh ABC session",
     "section": "",
-    "text": "The seventh session of the ABC (Accessible Bioinformatics Cafe) will be on october 24th, at 13:00 - building to be arranged\nEveryone is welcome to join independently of coding skills and level."
+    "text": "The seventh session of the ABC (Accessible Bioinformatics Cafe) will be on october 24th, at 13:00 - building 1240-218\nEveryone is welcome to join independently of coding skills and level."
   },
   {
     "objectID": "news/upcoming/2024-10-24-session7.html#agenda",
     "href": "news/upcoming/2024-10-24-session7.html#agenda",
     "title": "ABC.7: Seventh ABC session",
     "section": "Agenda",
-    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented at each meeting. This time we have\n\nTo be arranged\n\nYou can also bring your own code and issues and get help from us."
+    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented at each meeting. You can also bring your own code and issues and get help from us."
   },
   {
     "objectID": "news/upcoming/2024-10-24-session7.html#signing-up",
     "href": "news/upcoming/2024-10-24-session7.html#signing-up",
     "title": "ABC.7: Seventh ABC session",
     "section": "Signing up",
-    "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake (and you are pretty sure you will show up), click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Link not yet activated"
+    "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake (and you are pretty sure you will show up), click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n https://lnkd.in/dRendtca"
   },
   {
     "objectID": "news/past/2024-06-27-session2.html",
