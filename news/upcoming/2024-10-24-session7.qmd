@@ -32,7 +32,7 @@ No signup is really necessary, but if you just want to ensure there is enough ca
 &nbsp;
 
  <p align="center">
-  <a href="https" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
-    https://lnkd.in/dRendtca
+  <a href="https://lnkd.in/dRendtca" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Sign-up
   </a>
 </p>
