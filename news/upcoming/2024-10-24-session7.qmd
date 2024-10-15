@@ -9,7 +9,9 @@ description: "New tutorial, cake and coffee. And of course... help :)"
 
 ![](../../img/news/number7.png){fig-align="center" width=400px}
 
-The seventh session of the ABC (Accessible Bioinformatics Cafe) will be **on october 24th, at 13:00 - building to be arranged**
+The seventh session of the ABC (Accessible Bioinformatics Cafe) will be **on october 24th, at 13:00 - building 1240-218**
+
+![](../../img/news/1240-218.png){fig-align="center" width=400px}
 
 Everyone is welcome to **join independently of coding skills and level**. 
 
@@ -21,11 +23,7 @@ We have a very minimalistic agenda consisting of
 - Accessible topic presentation
 - Tutorials and Open Coding
 
-The tutorials we propose are of increasing difficulty (and [documented](../../Documentation.qmd) at each meeting. This time we have
-
-- To be arranged
-
-You can also bring your own code and issues and get help from us.
+The tutorials we propose are of increasing difficulty (and [documented](../../Documentation.qmd) at each meeting. You can also bring your own code and issues and get help from us.
  
 ## Signing up
 
@@ -35,6 +33,6 @@ No signup is really necessary, but if you just want to ensure there is enough ca
 
  <p align="center">
   <a href="https" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
-    Link not yet activated
+    https://lnkd.in/dRendtca
   </a>
 </p>
