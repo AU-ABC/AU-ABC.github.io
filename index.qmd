@@ -6,6 +6,21 @@ format:
 bibliography: resources/references.bib
 ---
 
+:::{.callout-warning title="Incoming ABC"}
+The next ABC is on October 24th, in building 1240-218, from 1pm to 3pm. Click the button below for more information and sign up to the event.
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://abc.au.dk/news/upcoming/2024-10-24-session7.html" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Information + signup
+  </a>
+</p>
+
+&nbsp;
+
+:::
+
 # Welcome to the Accessible Bioinformatics Cafe {.centered}
 
 <div style="text-align: center;">
