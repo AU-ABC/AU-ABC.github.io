@@ -1,5 +1,19 @@
 [
   {
+    "listing": "/news.html",
+    "items": [
+      "/news/upcoming/2024-10-24-session7.html",
+      "/news/upcoming/2024-11-07-session8.html",
+      "/news/past/2024-10-10-usegenomedk.html",
+      "/news/past/2024-10-03-session6.html",
+      "/news/past/2024-09-19-session5.html",
+      "/news/past/2024-09-03-session4.html",
+      "/news/past/2024-08-20-session3.html",
+      "/news/past/2024-06-27-session2.html",
+      "/news/past/2024-06-13-session1.html"
+    ]
+  },
+  {
     "listing": "/Documentation.html",
     "items": [
       "/documentation/2024-06-13-ABC1.html",
@@ -9,19 +23,6 @@
       "/documentation/2024-09-19-ABC5.html",
       "/documentation/2024-09-19-ABC6.html",
       "/documentation/2024-10-10-usegdk.html"
-    ]
-  },
-  {
-    "listing": "/news.html",
-    "items": [
-      "/news/upcoming/2024-10-10-usegenomedk.html",
-      "/news/upcoming/2024-10-24-session7.html",
-      "/news/past/2024-10-03-session6.html",
-      "/news/past/2024-09-19-session5.html",
-      "/news/past/2024-09-03-session4.html",
-      "/news/past/2024-08-20-session3.html",
-      "/news/past/2024-06-27-session2.html",
-      "/news/past/2024-06-13-session1.html"
     ]
   }
 ]
