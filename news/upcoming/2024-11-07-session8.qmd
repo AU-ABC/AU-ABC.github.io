@@ -1,0 +1,32 @@
+---
+title: "ABC.8: Nygen workshop"
+author: "Samuele Soraggi"
+Organizers: HDS Sandbox, Bioinf Core facility, CellX, Nygen
+date: 2024-10-24
+categories: [Cafe, Coding, Bioinformatics, Workshop]
+description: "A single cell workshop with the tool developed by Nygen"
+---
+
+![](../../img/news/number8.png){fig-align="center" width=400px}
+
+The eighth session of the ABC (Accessible Bioinformatics Cafe) will be **on november 3rd, at 13:00 - building to be arranged**
+
+Everyone is welcome to **join independently of coding skills and level**. 
+
+## Agenda
+ 
+For this ABC we host a workshop by Nygen, which will give a live demo of a downstream analysis with their interactive tool for single cell datasets.
+
+The tool has a free tier account with up to 5 single cell dataset uploads for free.
+ 
+## Signing up
+
+No signup is really necessary, but if you just want to ensure there is enough cake (and you are pretty sure you will show up), click on the button below to give us a heads up of your presence. Don't do it multiple times to cheat for extra cake!
+
+&nbsp;
+
+ <p align="center">
+  <a href="https" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Link not yet activated
+  </a>
+</p>

@@ -9,7 +9,7 @@ description: "New tutorial, cake and coffee. And of course... help :)"
 
 ![](../../img/news/number7.png){fig-align="center" width=400px}
 
-The seventh session of the ABC (Accessible Bioinformatics Cafe) will be **on october 24th, at 13:00 - building to be arranged**
+The seventh session of the ABC (Accessible Bioinformatics Cafe) will be **on october 24th, at 13:00 - building 1240-218**
 
 Everyone is welcome to **join independently of coding skills and level**. 
 
@@ -35,6 +35,6 @@ No signup is really necessary, but if you just want to ensure there is enough ca
 
  <p align="center">
   <a href="https" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
-    Link not yet activated
+    Link
   </a>
 </p>
