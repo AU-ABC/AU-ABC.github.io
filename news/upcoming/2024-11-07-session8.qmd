@@ -4,8 +4,7 @@ author: "Samuele Soraggi"
 Organizers: HDS Sandbox, Bioinf Core facility, CellX, Nygen
 date: 2024-11-07
 categories: [Cafe, Coding, Bioinformatics, Workshop, single cell]
-description: "A single cell workshop with the tool developed by Nygen",
-image: "../../img/news/nygenLogo.png"
+description: "A single cell workshop with the tool developed by Nygen"
 ---
 
 ![](../../img/news/number8.png){fig-align="center" width=400px}
