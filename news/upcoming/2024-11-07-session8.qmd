@@ -10,9 +10,9 @@ image: "../../img/news/nygenLogo.png"
 
 ![](../../img/news/number8.png){fig-align="center" width=400px}
 
-The eighth session of the ABC (Accessible Bioinformatics Cafe) will be **on november 3rd, at 13:00 - building 1253-317**
+The eighth session of the ABC (Accessible Bioinformatics Cafe) will be **on november 7th, at 13:00-15:00 in building 1253-317**
 
-![Building 1253 on AU campus](../../img/news/1253-317.png){width="400px"}
+![Building 1253 on AU campus](../../img/news/1253-317.png){width=400px}
 
 Everyone is welcome to **join independently of coding skills and level**. 
 
