@@ -1,8 +1,8 @@
 ---
 title: "ABC.7: Practical guide to SLURM and job submissions on HPC"
 author: "Manuel Peral Vazquez"
-image: 2024-11-07-ABC7/slurm.png
-date: 2024-11-07
+image: 2024-10-24-ABC7/slurm.png
+date: 2024-10-24
 categories: [Slurm, Jobs, HPC]
 description: "Learn how to create jobs on HPC and troubleshoot bugs/problems"
 eval: true
