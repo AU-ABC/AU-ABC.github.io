@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.515">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Manuel Peral Vazquez">
+<meta name="dcterms.date" content="2024-11-07">
+<meta name="description" content="Learn how to create jobs on HPC and troubleshoot bugs/problems">
+
+<title>ABC - Accessible Bioinformatics Cafe - ABC.7: Practical guide to SLURM and job submissions on HPC</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WG01Z2LJ1J"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-WG01Z2LJ1J', { 'anonymize_ip': true});
+</script>
+<!-- MailerLite Universal -->
+<script>
+    (function(w,d,e,u,f,l,n){w[f]=w[f]||function(){(w[f].q=w[f].q||[])
+    .push(arguments);},l=d.createElement(e),l.async=1,l.src=u,
+    n=d.getElementsByTagName(e)[0],n.parentNode.insertBefore(l,n);})
+    (window,document,'script','https://assets.mailerlite.com/js/universal.js','ml');
+    ml('account', '1004787');
+</script>
+<!-- End MailerLite Universal -->
+
+
+<meta property="og:title" content="ABC - Accessible Bioinformatics Cafe - ABC.7: Practical guide to SLURM and job submissions on HPC">
+<meta property="og:description" content="Learn how to create jobs on HPC and troubleshoot bugs/problems">
+<meta property="og:image" content="https://abc.au.dk
+litesrv._domainkey.birc.au.dk/documentation/2024-11-07-ABC7/slurm.png">
+<meta property="og:site_name" content="ABC - Accessible Bioinformatics Cafe">
+<meta property="og:locale" content="en_US">
+<meta property="og:image:height" content="480">
+<meta property="og:image:width" content="524">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../img/ABClogo.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">ABC - Accessible Bioinformatics Cafe</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../news.html"> 
+<span class="menu-text">Calendar</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../Documentation.html"> 
+<span class="menu-text">Documentation</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Resources</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
+        <li>
+    <a class="dropdown-item" href="../binfResources/databases.html">
+ <span class="dropdown-text">Databases</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../binfResources/bash.html">
+ <span class="dropdown-text">Bash</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../binfResources/R.html">
+ <span class="dropdown-text">R</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../binfResources/python.html">
+ <span class="dropdown-text">Python</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/AU-ABC"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#a-brief-guide-to-slurm-and-batch-jobs" id="toc-a-brief-guide-to-slurm-and-batch-jobs" class="nav-link active" data-scroll-target="#a-brief-guide-to-slurm-and-batch-jobs">A brief guide to Slurm and batch jobs</a>
+  <ul class="collapse">
+  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">Table of Contents</a></li>
+  <li><a href="#what-is-slurm" id="toc-what-is-slurm" class="nav-link" data-scroll-target="#what-is-slurm">What is SLURM?</a>
+  <ul class="collapse">
+  <li><a href="#key-slurm-components" id="toc-key-slurm-components" class="nav-link" data-scroll-target="#key-slurm-components">Key SLURM Components:</a></li>
+  <li><a href="#basic-slurm-commands" id="toc-basic-slurm-commands" class="nav-link" data-scroll-target="#basic-slurm-commands">Basic SLURM Commands</a></li>
+  </ul></li>
+  <li><a href="#interactive-jobs" id="toc-interactive-jobs" class="nav-link" data-scroll-target="#interactive-jobs">Interactive Jobs</a>
+  <ul class="collapse">
+  <li><a href="#using-srun-for-interactive-jobs" id="toc-using-srun-for-interactive-jobs" class="nav-link" data-scroll-target="#using-srun-for-interactive-jobs">Using <code>srun</code> for Interactive Jobs</a></li>
+  </ul></li>
+  <li><a href="#submitting-batch-jobs" id="toc-submitting-batch-jobs" class="nav-link" data-scroll-target="#submitting-batch-jobs">Submitting Batch Jobs</a>
+  <ul class="collapse">
+  <li><a href="#making-the-job-script-executable" id="toc-making-the-job-script-executable" class="nav-link" data-scroll-target="#making-the-job-script-executable">Making the Job Script Executable</a></li>
+  <li><a href="#job-arrays-outputs-and-errors" id="toc-job-arrays-outputs-and-errors" class="nav-link" data-scroll-target="#job-arrays-outputs-and-errors">Job Arrays, outputs and errors</a></li>
+  </ul></li>
+  <li><a href="#understanding-paths" id="toc-understanding-paths" class="nav-link" data-scroll-target="#understanding-paths">Understanding Paths</a>
+  <ul class="collapse">
+  <li><a href="#how-slurm-handles-paths" id="toc-how-slurm-handles-paths" class="nav-link" data-scroll-target="#how-slurm-handles-paths">How SLURM Handles Paths</a></li>
+  <li><a href="#understanding-the-launch-directory" id="toc-understanding-the-launch-directory" class="nav-link" data-scroll-target="#understanding-the-launch-directory">Understanding the Launch Directory</a></li>
+  <li><a href="#working-with-relative-and-absolute-paths" id="toc-working-with-relative-and-absolute-paths" class="nav-link" data-scroll-target="#working-with-relative-and-absolute-paths">Working with Relative and Absolute Paths</a></li>
+  <li><a href="#changing-the-working-directory" id="toc-changing-the-working-directory" class="nav-link" data-scroll-target="#changing-the-working-directory">Changing the Working Directory</a></li>
+  <li><a href="#best-practices-for-path-management" id="toc-best-practices-for-path-management" class="nav-link" data-scroll-target="#best-practices-for-path-management">Best Practices for Path Management</a></li>
+  </ul></li>
+  <li><a href="#conda-in-batch-jobs" id="toc-conda-in-batch-jobs" class="nav-link" data-scroll-target="#conda-in-batch-jobs">Conda in Batch Jobs</a>
+  <ul class="collapse">
+  <li><a href="#understanding-environment-inheritance" id="toc-understanding-environment-inheritance" class="nav-link" data-scroll-target="#understanding-environment-inheritance">Understanding Environment Inheritance</a></li>
+  <li><a href="#methods-for-activating-conda-environments" id="toc-methods-for-activating-conda-environments" class="nav-link" data-scroll-target="#methods-for-activating-conda-environments">Methods for Activating Conda Environments</a></li>
+  <li><a href="#best-practices" id="toc-best-practices" class="nav-link" data-scroll-target="#best-practices">Best Practices</a></li>
+  <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a></li>
+  </ul></li>
+  <li><a href="#resource-estimation" id="toc-resource-estimation" class="nav-link" data-scroll-target="#resource-estimation">Resource Estimation</a>
+  <ul class="collapse">
+  <li><a href="#checking-past-job-usage" id="toc-checking-past-job-usage" class="nav-link" data-scroll-target="#checking-past-job-usage">Checking Past Job Usage</a></li>
+  <li><a href="#memory-suggestions" id="toc-memory-suggestions" class="nav-link" data-scroll-target="#memory-suggestions">Memory Suggestions</a></li>
+  <li><a href="#cpu-suggestions" id="toc-cpu-suggestions" class="nav-link" data-scroll-target="#cpu-suggestions">CPU Suggestions</a></li>
+  <li><a href="#job-priority" id="toc-job-priority" class="nav-link" data-scroll-target="#job-priority">Job Priority</a></li>
+  <li><a href="#priority-factors" id="toc-priority-factors" class="nav-link" data-scroll-target="#priority-factors">Priority Factors</a></li>
+  <li><a href="#tips-for-faster-start" id="toc-tips-for-faster-start" class="nav-link" data-scroll-target="#tips-for-faster-start">Tips for Faster Start</a></li>
+  </ul></li>
+  <li><a href="#common-errors" id="toc-common-errors" class="nav-link" data-scroll-target="#common-errors">Common Errors</a>
+  <ul class="collapse">
+  <li><a href="#out-of-memory" id="toc-out-of-memory" class="nav-link" data-scroll-target="#out-of-memory">Out of Memory</a></li>
+  <li><a href="#timeout" id="toc-timeout" class="nav-link" data-scroll-target="#timeout">Timeout</a></li>
+  </ul></li>
+  <li><a href="#using-screen-tmux" id="toc-using-screen-tmux" class="nav-link" data-scroll-target="#using-screen-tmux">Using SCREEN-TMUX</a>
+  <ul class="collapse">
+  <li><a href="#when-to-use-it" id="toc-when-to-use-it" class="nav-link" data-scroll-target="#when-to-use-it">When to use it?</a></li>
+  </ul></li>
+  <li><a href="#useful-links" id="toc-useful-links" class="nav-link" data-scroll-target="#useful-links">Useful links:</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">ABC.7: Practical guide to SLURM and job submissions on HPC</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Slurm</div>
+    <div class="quarto-category">Jobs</div>
+    <div class="quarto-category">HPC</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    Learn how to create jobs on HPC and troubleshoot bugs/problems
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Manuel Peral Vazquez </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 7, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="a-brief-guide-to-slurm-and-batch-jobs" class="level1">
+<h1>A brief guide to Slurm and batch jobs</h1>
+<p>Today we will talk about job submission on genomeDK using SLURM and SCREEN/TMUX.</p>
+<section id="table-of-contents" class="level2">
+<h2 class="anchored" data-anchor-id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#what-is-slurm">What-is-SLURM</a></li>
+<li><a href="#interactive-jobs">Interactive-Jobs</a></li>
+<li><a href="#submitting-batch-jobs">Submitting Batch Jobs</a></li>
+<li><a href="#understanding-paths">Understanding Paths</a></li>
+<li><a href="#conda-in-batch-jobs">Conda in Batch Jobs</a></li>
+<li><a href="#resource-estimation">Resource Estimation</a></li>
+<li><a href="#job-priority">Job-Priority</a></li>
+<li><a href="#monitoring-jobs">Monitoring-Jobs</a></li>
+<li><a href="#common-errors">Common-Errors</a></li>
+<li><a href="#using-screen-tmux">Using-SCREEN-TMUX</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+</section>
+<section id="what-is-slurm" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-slurm">What is SLURM?</h2>
+<p>“Slurm is an open source, fault-tolerant, and highly scalable cluster management and job scheduling system for large and small Linux clusters.”</p>
+<p>There are other managing systems as well but genomeDK uses SLURM so this is the one we learn. You do not need to know a lot about slurm but you do need to know how to interact with it. We submit our jobs through slurm.</p>
+<p>There are 2 types of jobs in general: <strong>Interactive</strong> jobs and <strong>batch</strong> jobs.</p>
+<section id="key-slurm-components" class="level3">
+<h3 class="anchored" data-anchor-id="key-slurm-components">Key SLURM Components:</h3>
+<ul>
+<li><strong>Node</strong>: A single machine in the cluster.</li>
+<li><strong>Job</strong>: A set of instructions or tasks that SLURM executes.</li>
+<li><strong>Partition</strong>: A logical grouping of nodes (like a queue) based on resource types or usage policies.</li>
+</ul>
+</section>
+<section id="basic-slurm-commands" class="level3">
+<h3 class="anchored" data-anchor-id="basic-slurm-commands">Basic SLURM Commands</h3>
+<p>SLURM has several basic commands that help users interact with the cluster:</p>
+<table class="table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 71%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>sinfo</code></td>
+<td>Displays information about the nodes in the cluster.</td>
+</tr>
+<tr class="even">
+<td><code>squeue</code></td>
+<td>Displays a list of jobs currently in the queue.</td>
+</tr>
+<tr class="odd">
+<td><code>sbatch</code></td>
+<td>Submits a job script to the queue for execution.</td>
+</tr>
+<tr class="even">
+<td><code>scancel</code></td>
+<td>Cancels a running or pending job.</td>
+</tr>
+<tr class="odd">
+<td><code>scontrol</code></td>
+<td>Used for controlling jobs, partitions, or nodes.</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="interactive-jobs" class="level2">
+<h2 class="anchored" data-anchor-id="interactive-jobs">Interactive Jobs</h2>
+<p>In interactive jobs you request from slurm to give you some resources and it assigns you a node with those resources. Now you can run any command you want on the shell or run scripts and they will use that node with the specific resource allocation you asked. It is called interactive because you do not need to submit your code beforehand but you can change this in real time. To ask for an interactive job you use the command <code>srun</code>.</p>
+<section id="using-srun-for-interactive-jobs" class="level3">
+<h3 class="anchored" data-anchor-id="using-srun-for-interactive-jobs">Using <code>srun</code> for Interactive Jobs</h3>
+<p>To run an interactive job, you use the <code>srun</code> command. Here’s a basic example to request an interactive session:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--account</span> myProjectname <span class="at">-c</span> 2 <span class="at">--mem</span> 6g <span class="at">--time</span> 03:00:00 <span class="at">--pty</span> bash</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this example we have requested resources under the account myProjectname. We request 2 cpus per task, 6g of ram for 3 hours. <code>--pty bash</code> tells that we want to be using a bash terminal.</p>
+<p><strong>Remember</strong> that you always have to specify an account. This is because genomeDK uses projects tied to accounts to track resource usage and by default we all have a very small quota to run stuff outside of genomeDK.</p>
+<p><strong>Be aware</strong> that downloading files does not require resources so it best be done outside of an interactive job!</p>
+</section>
+</section>
+<section id="submitting-batch-jobs" class="level2">
+<h2 class="anchored" data-anchor-id="submitting-batch-jobs">Submitting Batch Jobs</h2>
+<p>To submit a job, you need to write a job script and submit it using <code>sbatch</code>. Here is an example of a simple SLURM script:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --account=myProjectname</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=1               # Run a single task</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=01:00:00          # Time limit (hh:mm:ss)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=1G                 # Memory required (1 GB)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the job</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> my_script.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Batch scripts always have to start with the shebang. <code>#!/bin/bash</code>: This line, known as the shebang, indicates which interpreter should be used to run the script. In this case, it specifies the bash shell located in the /bin directory. The shebang must be the very first line of the script and begins with #!</p>
+<p>To submit a job to an HPC cluster managed by SLURM, you need to write a job script and submit it using the <code>sbatch</code> command. However, before submitting the script, you must ensure that it is executable. This can be done using the <code>chmod</code> command.</p>
+<section id="making-the-job-script-executable" class="level3">
+<h3 class="anchored" data-anchor-id="making-the-job-script-executable">Making the Job Script Executable</h3>
+<p>To make your job script executable, use the following command:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chmod</span> +x mybatchscript.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then you can execute your script by running:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sbatch</span> mybatchscript.sh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="job-arrays-outputs-and-errors" class="level3">
+<h3 class="anchored" data-anchor-id="job-arrays-outputs-and-errors">Job Arrays, outputs and errors</h3>
+<p>In the script below we specify an <code>output</code>. This is where everything that would be printed(echoed) in the terminal goes. We also specified an <code>error</code> file. Since this is not an interactive job, if it has any problem it would not show on your screen. To catch usefull information we store them in the error file. Lastly I added the <code>--array</code>. This will make the batch script to submit multiple version of it using different TASK ID. Here from 0 to 4. So for example if you wanted to run the same script for multiple different inputs in parallel this is a good option.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --account=myProjectname             # Specify the project/account name</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=test_job_array            # Job name</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=output_%A_%a.txt           # Standard output log, with job and array ID</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=error_%A_%a.log              # Standard error log, with job and array ID</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --array=0-4                           # Job array with indices from 0 to 4</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --ntasks=1                           # Run a single task</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=01:00:00                      # Time limit (hh:mm:ss)</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=1G                             # Memory required (1 GB)</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the job array index</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="va">array_index</span><span class="op">=</span><span class="va">$SLURM_ARRAY_TASK_ID</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Here we run a python script that accepts an input --index</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> my_script.py <span class="at">--index</span> <span class="va">$array_index</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="understanding-paths" class="level2">
+<h2 class="anchored" data-anchor-id="understanding-paths">Understanding Paths</h2>
+<p>Understanding how SLURM handles file paths is crucial for reliable job execution. When you submit a job, SLURM needs to know where to find your input files and where to write your output. This might seem straightforward, but it’s actually one of the most common sources of confusion and errors in job submissions.</p>
+<section id="how-slurm-handles-paths" class="level3">
+<h3 class="anchored" data-anchor-id="how-slurm-handles-paths">How SLURM Handles Paths</h3>
+<p>When you submit a job using <code>sbatch</code>, SLURM needs to understand two important things:</p>
+<ol type="1">
+<li>Where to find your input files</li>
+<li>Where to write your output files</li>
+</ol>
+<p>The tricky part is that these locations are determined by something called the “launch directory” - but what exactly is that?</p>
+</section>
+<section id="understanding-the-launch-directory" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-launch-directory">Understanding the Launch Directory</h3>
+<p>The launch directory is super important - it’s basically the starting point for all your relative paths. Here’s how it works:</p>
+<ul>
+<li>It’s the directory you’re in when you run the <code>sbatch</code> command</li>
+<li>By default, SLURM uses this as the working directory for your job</li>
+<li>All relative paths in your script will be based on this directory</li>
+<li>You can override it using <code>--chdir</code>, but be careful with that!</li>
+</ul>
+<p>For example, if you’re in <code>/home/username/projects/</code> when you run <code>sbatch</code>, that becomes your launch directory. Think of it as SLURM’s “You are here” marker.</p>
+</section>
+<section id="working-with-relative-and-absolute-paths" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-relative-and-absolute-paths">Working with Relative and Absolute Paths</h3>
+<p>A lot of your projects might(and should) look like this:</p>
+<pre><code>/home/username/projects/
+    ├── batch_job_script.sh
+    ├── data/
+    │   ├── raw_data/
+    │   │   └── input.csv
+    │   └── processed_data/
+    ├── scripts/
+    │   └── analysis_script.py
+    └── results/
+        └── output/</code></pre>
+<p>Now you have a few options for referencing these files in your batch script:</p>
+<section id="using-relative-paths" class="level4">
+<h4 class="anchored" data-anchor-id="using-relative-paths">Using Relative Paths</h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --account=myProjectname</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=data_analysis</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=results/output/job_%j.out</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=results/output/job_%j.err</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># This works because paths are relative to launch directory</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> scripts/analysis_script.py <span class="dt">\</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--input</span> data/raw_data/input.csv <span class="dt">\</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output</span> data/processed_data/results.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="using-absolute-paths" class="level4">
+<h4 class="anchored" data-anchor-id="using-absolute-paths">Using Absolute Paths</h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --account=myProjectname</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=data_analysis</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=/home/username/projects/results/output/job_%j.out</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=/home/username/projects/results/output/job_%j.err</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># This works anywhere but is less portable</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> /home/username/projects/scripts/analysis_script.py <span class="dt">\</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">--input</span> /home/username/projects/data/raw_data/input.csv <span class="dt">\</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output</span> /home/username/projects/data/processed_data/results.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="changing-the-working-directory" class="level3">
+<h3 class="anchored" data-anchor-id="changing-the-working-directory">Changing the Working Directory</h3>
+<p>Sometimes you might want your job to run from a different directory. You can do this with <code>--chdir</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --account=myProjectname</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=process_data</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=job_%j.out</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --error=job_%j.err</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --time=01:00:00</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --mem=1G</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --chdir=/home/username/projects/data/raw_data</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Now paths are relative to the raw_data directory</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> ../../scripts/analysis_script.py <span class="dt">\</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">--input</span> input.csv <span class="dt">\</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">--output</span> ../processed_data/results.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="best-practices-for-path-management" class="level3">
+<h3 class="anchored" data-anchor-id="best-practices-for-path-management">Best Practices for Path Management</h3>
+<p>Here are some tips to make your life easier when dealing with paths in SLURM:</p>
+<ol type="1">
+<li><p><strong>Use Project-Based Organization</strong></p>
+<ul>
+<li>Keep all related files under one project directory</li>
+<li>Use a consistent directory structure</li>
+<li>Document your directory layout</li>
+</ul></li>
+<li><p><strong>Path Variables in Scripts</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --account=myProjectname</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define paths at the start of your script</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="va">PROJECT_DIR</span><span class="op">=</span><span class="st">"</span><span class="va">$HOME</span><span class="st">/projects/my_project"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="va">DATA_DIR</span><span class="op">=</span><span class="st">"</span><span class="va">${PROJECT_DIR}</span><span class="st">/data"</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="va">SCRIPT_DIR</span><span class="op">=</span><span class="st">"</span><span class="va">${PROJECT_DIR}</span><span class="st">/scripts"</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Use these variables in your commands</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="va">${SCRIPT_DIR}</span>/analysis.py <span class="dt">\</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">--input</span> <span class="va">${DATA_DIR}</span>/input.csv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Common Pitfalls to Avoid</strong></p>
+<ul>
+<li>Don’t assume the current directory</li>
+<li>Always test paths with a small job first</li>
+<li>Be careful with spaces in paths</li>
+</ul></li>
+<li><p><strong>Debugging Path Issues</strong></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --account=myProjectname</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add these for debugging</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Working directory: </span><span class="va">$PWD</span><span class="st">"</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Script location: </span><span class="va">$0</span><span class="st">"</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> <span class="at">-la</span>  <span class="co"># List files in working directory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+</section>
+<section id="conda-in-batch-jobs" class="level2">
+<h2 class="anchored" data-anchor-id="conda-in-batch-jobs">Conda in Batch Jobs</h2>
+<p>When submitting batch jobs it is important to use the correct conda environment for your needs.</p>
+<section id="understanding-environment-inheritance" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-environment-inheritance">Understanding Environment Inheritance</h3>
+<p>When submitting a Slurm job, your current shell’s conda environment is <strong>not</strong> inherited by the batch job. This is because:</p>
+<ul>
+<li>Batch jobs start in a fresh shell session</li>
+<li>Shell initialization files (<code>.bashrc</code>, <code>.bash_profile</code>) may not be automatically sourced</li>
+</ul>
+</section>
+<section id="methods-for-activating-conda-environments" class="level3">
+<h3 class="anchored" data-anchor-id="methods-for-activating-conda-environments">Methods for Activating Conda Environments</h3>
+<p>There are several methods to activate conda environments in your Slurm scripts, each with its own advantages and considerations. I have mainly used these two which are also probably the best(?):</p>
+<section id="method-1-using-condas-shell-hook" class="level4">
+<h4 class="anchored" data-anchor-id="method-1-using-condas-shell-hook">Method 1: Using Conda’s Shell Hook</h4>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH [your parameters]</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize conda for bash shell</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">"</span><span class="va">$(</span><span class="ex">conda</span> shell.bash hook<span class="va">)</span><span class="st">"</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate my_env_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Properly initializes conda’s shell functions</li>
+<li>Works with conda’s auto-activation features</li>
+<li>Maintains conda’s internal state correctly</li>
+</ul>
+<p><strong>Considerations:</strong></p>
+<ul>
+<li>Requires conda to be in the system PATH</li>
+<li>Slightly longer initialization time</li>
+</ul>
+</section>
+<section id="method-2-using-condas-profile-script" class="level4">
+<h4 class="anchored" data-anchor-id="method-2-using-condas-profile-script">Method 2: Using Conda’s Profile Script</h4>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH [your parameters]</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Source conda's profile script</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> /path/to/conda/etc/profile.d/conda.sh</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate my_env_name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Works even if conda isn’t in PATH</li>
+<li>Reliable across different conda installations</li>
+<li>Proper initialization of conda functions</li>
+</ul>
+<p><strong>Considerations:</strong></p>
+<ul>
+<li>Requires knowing the exact path to your conda installation</li>
+<li>Path might vary across clusters</li>
+</ul>
+<p>Common conda installation paths:</p>
+<ul>
+<li><code>/opt/conda/etc/profile.d/conda.sh</code></li>
+<li><code>$HOME/miniconda3/etc/profile.d/conda.sh</code></li>
+<li><code>$HOME/anaconda3/etc/profile.d/conda.sh</code></li>
+</ul>
+</section>
+</section>
+<section id="best-practices" class="level3">
+<h3 class="anchored" data-anchor-id="best-practices">Best Practices</h3>
+<ol type="1">
+<li><p><strong>Always explicitly activate environments in your job script:</strong></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --job-name=my_analysis</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH --output=output_%j.log</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize conda</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">"</span><span class="va">$(</span><span class="ex">conda</span> shell.bash hook<span class="va">)</span><span class="st">"</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate your_env_name</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> script.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Check environment activation:</strong></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">#SBATCH [your parameters]</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="st">"</span><span class="va">$(</span><span class="ex">conda</span> shell.bash hook<span class="va">)</span><span class="st">"</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate your_env_name</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print environment info for debugging</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Active conda env: </span><span class="va">$CONDA_DEFAULT_ENV</span><span class="st">"</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Python path: </span><span class="va">$(</span><span class="fu">which</span> python<span class="va">)</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+<section id="troubleshooting" class="level3">
+<h3 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h3>
+<p>Common issues and solutions:</p>
+<ol type="1">
+<li><p><strong>Environment Not Found:</strong></p>
+<ul>
+<li>Verify the environment exists: <code>conda env list</code></li>
+<li>Check for typos in environment name</li>
+<li>Use absolute paths if necessary</li>
+</ul></li>
+<li><p><strong>Conda Command Not Found:</strong></p>
+<ul>
+<li><p>Add conda’s initialization to your script:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add to beginning of script</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">export</span> <span class="va">PATH</span><span class="op">=</span><span class="st">"/path/to/conda/bin:</span><span class="va">$PATH</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul></li>
+<li><p><strong>Package Import Errors:</strong></p>
+<ul>
+<li>Verify environment contents: <code>conda list</code></li>
+<li>Ensure environment was created on a compatible system</li>
+<li>Check for system-specific dependencies</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="resource-estimation" class="level2">
+<h2 class="anchored" data-anchor-id="resource-estimation">Resource Estimation</h2>
+<p>One tricky part of using SLURM is knowing how many resources to request. Here’s how to figure it out:</p>
+<section id="checking-past-job-usage" class="level3">
+<h3 class="anchored" data-anchor-id="checking-past-job-usage">Checking Past Job Usage</h3>
+<p>After your job completes, use sacct to see what resources it actually used:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sacct</span> <span class="at">-j</span> <span class="op">&lt;</span>jobid<span class="op">&gt;</span> --format=JobID,JobName,MaxRSS,MaxVMSize,CPUTime</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can also use the extremely useful <code>jobinfo &lt;job_id&lt;&gt;</code> That will show something like</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Name</span>                : Myjobname</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="ex">User</span>                : dipe</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Account</span>             : BioinformaticsCore</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Partition</span>           : normal</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Nodes</span>               : s21n42</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Cores</span>               : 1</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="ex">GPUs</span>                : 0</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="ex">State</span>               : PENDING <span class="er">(</span><span class="ex">AssocMaxWallDurationPerJobLimit</span><span class="kw">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="memory-suggestions" class="level3">
+<h3 class="anchored" data-anchor-id="memory-suggestions">Memory Suggestions</h3>
+<ul>
+<li>Start with a reasonable estimate (like 4GB)</li>
+<li>Check MaxRSS from sacct to see actual usage</li>
+<li>Add 20% buffer to account for variations</li>
+<li>If your job fails with “OUT OF MEMORY”, increase by 50%</li>
+</ul>
+</section>
+<section id="cpu-suggestions" class="level3">
+<h3 class="anchored" data-anchor-id="cpu-suggestions">CPU Suggestions</h3>
+<ul>
+<li>More CPUs ≠ Faster Job (depends on your code)</li>
+<li>Check CPU efficiency with sacct</li>
+<li>For most Python/R scripts, start with 1-2 CPUs</li>
+<li>Parallel jobs might need 4-16 CPUs</li>
+</ul>
+</section>
+<section id="job-priority" class="level3">
+<h3 class="anchored" data-anchor-id="job-priority">Job Priority</h3>
+<p>Your job’s position in the queue depends on several factors:</p>
+</section>
+<section id="priority-factors" class="level3">
+<h3 class="anchored" data-anchor-id="priority-factors">Priority Factors</h3>
+<ul>
+<li>Fair share (based on recent usage)</li>
+<li>Job size (smaller jobs might start sooner)</li>
+<li>Wait time (priority increases with time)</li>
+<li>Project priority</li>
+</ul>
+</section>
+<section id="tips-for-faster-start" class="level3">
+<h3 class="anchored" data-anchor-id="tips-for-faster-start">Tips for Faster Start</h3>
+<ul>
+<li>Use appropriate partition</li>
+<li>Don’t request more resources than needed</li>
+<li>Submit shorter jobs when possible</li>
+<li>Use job arrays for many small tasks</li>
+</ul>
+</section>
+</section>
+<section id="common-errors" class="level2">
+<h2 class="anchored" data-anchor-id="common-errors">Common Errors</h2>
+<p>Here are two of the common SLURM errors and what they mean:</p>
+<section id="out-of-memory" class="level3">
+<h3 class="anchored" data-anchor-id="out-of-memory">Out of Memory</h3>
+<pre><code>slurmstepd: error: Exceeded step memory limit</code></pre>
+<ul>
+<li>Your job needed more memory than requested</li>
+<li>Solution: Increase –mem value</li>
+</ul>
+</section>
+<section id="timeout" class="level3">
+<h3 class="anchored" data-anchor-id="timeout">Timeout</h3>
+<pre><code>CANCELLED AT 2024-01-01T12:00:00 DUE TO TIME LIMIT</code></pre>
+<ul>
+<li>Job didn’t finish in time</li>
+<li>Solution: Increase –time value or optimize code</li>
+</ul>
+</section>
+</section>
+<section id="using-screen-tmux" class="level2">
+<h2 class="anchored" data-anchor-id="using-screen-tmux">Using SCREEN-TMUX</h2>
+<p>Have you ever started a process on genomeDK only to be required to physically move, close your laptop and loose all your progress? Tools like <code>screen</code> and <code>tmux</code> can help manage these issues processes by allowing you to create detachable terminal sessions. I personally use screen so we will talk about that with <code>sbatch</code> and <code>srun</code>. Screen and tmux are already installed for everyone on genomeDK.</p>
+<p><code>screen</code> is a terminal multiplexer that enables you to create multiple shell sessions within a single terminal window. You can detach from a session and reattach later, allowing your processes to continue running in the background even if you disconnect from the terminal.</p>
+<section id="when-to-use-it" class="level3">
+<h3 class="anchored" data-anchor-id="when-to-use-it">When to use it?</h3>
+<p>Basically everytime you are doing something interactive. Lets say you want to download some file but you also want to keep working on something else. You can open a screen session, start the download there, detach from the session and keep doing whatever else you where doing while the file is downloading in that other session.</p>
+<section id="does-it-require-resources-from-genomedk" class="level4">
+<h4 class="anchored" data-anchor-id="does-it-require-resources-from-genomedk">Does it require resources from genomeDK?</h4>
+<p>Technically everything being done needs at least some resources but these are very minimal and unless you open hundrends of sessions at once (why would you?) there is no problem having multiple sessions at the same time.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create new named session</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">screen</span> <span class="at">-S</span> download-genomes</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Detach from session</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Ctrl</span> + A, D</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="co"># List sessions</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="ex">screen</span> <span class="at">-ls</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Reattach to session</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="ex">screen</span> <span class="at">-r</span> download-genomes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+</section>
+<section id="useful-links" class="level2">
+<h2 class="anchored" data-anchor-id="useful-links">Useful links:</h2>
+<p>The documentation for genomeDK. When you don’t remember something go there first: https://genome.au.dk/docs/overview/</p>
+<p>A bit more advanced, the <code>slurm</code> website: https://slurm.schedmd.com/overview.html</p>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Now you know the basics of SLURM and how to:</p>
+<ul>
+<li>Submit interactive and batch jobs</li>
+<li>Monitor your jobs</li>
+<li>Handle common issues</li>
+<li>Use screen for session management</li>
+</ul>
+<p>Remember:</p>
+<ul>
+<li>Always specify your account</li>
+<li>Request appropriate resources</li>
+<li>Use screen for long sessions</li>
+<li>Check job output and errors</li>
+</ul>
+<p>THE END!</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
