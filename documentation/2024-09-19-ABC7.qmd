@@ -1,0 +1,528 @@
+---
+title: "ABC.7: Practical guide to SLURM and job submissions on HPC"
+author: "Manuel Peral Vazquez"
+image: 2024-11-07-ABC7/slurm.png
+date: 2024-11-07
+categories: [Slurm, Jobs, HPC]
+description: "Learn how to create jobs on HPC and troubleshoot bugs/problems"
+eval: true
+---
+
+# A brief guide to Slurm and batch jobs
+
+Today we will talk about job submission on genomeDK using SLURM and SCREEN/TMUX. 
+
+## Table of Contents
+
+- [What-is-SLURM](#what-is-slurm)
+- [Interactive-Jobs](#interactive-jobs)
+- [Submitting Batch Jobs](#submitting-batch-jobs)
+- [Understanding Paths](#understanding-paths)
+- [Conda in Batch Jobs](#conda-in-batch-jobs)
+- [Resource Estimation](#resource-estimation)
+- [Job-Priority](#job-priority)
+- [Monitoring-Jobs](#monitoring-jobs)
+- [Common-Errors](#common-errors)
+- [Using-SCREEN-TMUX](#using-screen-tmux)
+- [Conclusion](#conclusion)
+
+## What is SLURM?
+
+"Slurm is an open source, fault-tolerant, and highly scalable cluster management and job scheduling system for large and small Linux clusters."
+
+There are other managing systems as well but genomeDK uses SLURM so this is the one we learn.
+You do not need to know a lot about slurm but you do need to know how to interact with it.
+We submit our jobs through slurm.
+
+There are 2 types of jobs in general: **Interactive** jobs and **batch** jobs.
+
+### Key SLURM Components:
+
+- **Node**: A single machine in the cluster.
+- **Job**: A set of instructions or tasks that SLURM executes.
+- **Partition**: A logical grouping of nodes (like a queue) based on resource types or usage policies.
+
+### Basic SLURM Commands
+
+SLURM has several basic commands that help users interact with the cluster:
+
+| Command          | Description                                 |
+|------------------|---------------------------------------------|
+| `sinfo`          | Displays information about the nodes in the cluster. |
+| `squeue`         | Displays a list of jobs currently in the queue. |
+| `sbatch`         | Submits a job script to the queue for execution. |
+| `scancel`        | Cancels a running or pending job.            |
+| `scontrol`       | Used for controlling jobs, partitions, or nodes. |
+
+## Interactive Jobs
+
+In interactive jobs you request from slurm to give you some resources and it assigns you a node with those resources. Now you can run any command you want on the shell or run scripts and they will use that node with the specific resource allocation you asked. It is called interactive because you do not need to submit your code beforehand but you can change this in real time. To ask for an interactive job you use the command `srun`.
+
+### Using `srun` for Interactive Jobs
+
+To run an interactive job, you use the `srun` command. Here's a basic example to request an interactive session:
+
+```{.bash}
+srun --account myProjectname -c 2 --mem 6g --time 03:00:00 --pty bash
+```
+In this example we have requested resources under the account myProjectname. We request 2 cpus per task, 6g of ram for 3 hours. `--pty bash` tells that we want to be using a bash terminal.
+
+__Remember__ that you always have to specify an account. This is because genomeDK uses projects tied to accounts to track resource usage and by default we all have a very small quota to run stuff outside of genomeDK.
+
+__Be aware__ that downloading files does not require resources so it best be done outside of an interactive job!
+
+## Submitting Batch Jobs
+
+To submit a job, you need to write a job script and submit it using `sbatch`. Here is an example of a simple SLURM script:
+
+```{.bash}
+#!/bin/bash
+#SBATCH --account=myProjectname
+#SBATCH --ntasks=1               # Run a single task
+#SBATCH --time=01:00:00          # Time limit (hh:mm:ss)
+#SBATCH --mem=1G                 # Memory required (1 GB)
+
+# Run the job
+python my_script.py
+```
+
+Batch scripts always have to start with the shebang.
+`#!/bin/bash`: This line, known as the shebang, indicates which interpreter should be used to run the script. In this case, it specifies the bash shell located in the /bin directory. The shebang must be the very first line of the script and begins with #!
+
+To submit a job to an HPC cluster managed by SLURM, you need to write a job script and submit it using the `sbatch` command. However, before submitting the script, you must ensure that it is executable. This can be done using the `chmod` command.
+
+### Making the Job Script Executable
+
+To make your job script executable, use the following command:
+
+```{.bash}
+chmod +x mybatchscript.sh
+```
+Then you can execute your script by running:
+
+```{.bash}
+sbatch mybatchscript.sh
+```
+
+### Job Arrays, outputs and errors
+
+In the script below we specify an `output`. This is where everything that would be printed(echoed) in the terminal goes. 
+We also specified an `error` file. Since this is not an interactive job, if it has any problem it would not show on your screen. To catch usefull information we store them in the error file.
+Lastly I added the `--array`. This will make the batch script to submit multiple version of it using different TASK ID. Here from 0 to 4. So for example if you wanted to run the same script for multiple different inputs in parallel this is a good option.
+
+```{.bash}
+#!/bin/bash
+#SBATCH --account=myProjectname             # Specify the project/account name
+#SBATCH --job-name=test_job_array            # Job name
+#SBATCH --output=output_%A_%a.txt           # Standard output log, with job and array ID
+#SBATCH --error=error_%A_%a.log              # Standard error log, with job and array ID
+#SBATCH --array=0-4                           # Job array with indices from 0 to 4
+#SBATCH --ntasks=1                           # Run a single task
+#SBATCH --time=01:00:00                      # Time limit (hh:mm:ss)
+#SBATCH --mem=1G                             # Memory required (1 GB)
+
+# Get the job array index
+array_index=$SLURM_ARRAY_TASK_ID
+
+# Here we run a python script that accepts an input --index
+python my_script.py --index $array_index
+```
+
+## Understanding Paths
+
+Understanding how SLURM handles file paths is crucial for reliable job execution. When you submit a job, SLURM needs to know where to find your input files and where to write your output. This might seem straightforward, but it's actually one of the most common sources of confusion and errors in job submissions.
+
+### How SLURM Handles Paths
+
+When you submit a job using `sbatch`, SLURM needs to understand two important things:
+
+1. Where to find your input files
+2. Where to write your output files
+
+The tricky part is that these locations are determined by something called the "launch directory" - but what exactly is that?
+
+### Understanding the Launch Directory
+
+The launch directory is super important - it's basically the starting point for all your relative paths. Here's how it works:
+
+- It's the directory you're in when you run the `sbatch` command
+- By default, SLURM uses this as the working directory for your job
+- All relative paths in your script will be based on this directory
+- You can override it using `--chdir`, but be careful with that!
+
+For example, if you're in `/home/username/projects/` when you run `sbatch`, that becomes your launch directory. Think of it as SLURM's "You are here" marker.
+
+### Working with Relative and Absolute Paths
+
+A lot of your projects might(and should) look like this:
+
+```
+/home/username/projects/
+    ├── batch_job_script.sh
+    ├── data/
+    │   ├── raw_data/
+    │   │   └── input.csv
+    │   └── processed_data/
+    ├── scripts/
+    │   └── analysis_script.py
+    └── results/
+        └── output/
+```
+
+Now you have a few options for referencing these files in your batch script:
+
+#### Using Relative Paths
+
+```{.bash}
+#!/bin/bash
+#SBATCH --account=myProjectname
+#SBATCH --job-name=data_analysis
+#SBATCH --output=results/output/job_%j.out
+#SBATCH --error=results/output/job_%j.err
+
+# This works because paths are relative to launch directory
+python scripts/analysis_script.py \
+    --input data/raw_data/input.csv \
+    --output data/processed_data/results.csv
+```
+
+#### Using Absolute Paths
+
+```{.bash}
+#!/bin/bash
+#SBATCH --account=myProjectname
+#SBATCH --job-name=data_analysis
+#SBATCH --output=/home/username/projects/results/output/job_%j.out
+#SBATCH --error=/home/username/projects/results/output/job_%j.err
+
+# This works anywhere but is less portable
+python /home/username/projects/scripts/analysis_script.py \
+    --input /home/username/projects/data/raw_data/input.csv \
+    --output /home/username/projects/data/processed_data/results.csv
+```
+
+### Changing the Working Directory
+
+Sometimes you might want your job to run from a different directory. You can do this with `--chdir`:
+
+```{.bash}
+#!/bin/bash
+#SBATCH --account=myProjectname
+#SBATCH --job-name=process_data
+#SBATCH --output=job_%j.out
+#SBATCH --error=job_%j.err
+#SBATCH --time=01:00:00
+#SBATCH --mem=1G
+#SBATCH --chdir=/home/username/projects/data/raw_data
+
+# Now paths are relative to the raw_data directory
+python ../../scripts/analysis_script.py \
+    --input input.csv \
+    --output ../processed_data/results.csv
+```
+
+### Best Practices for Path Management
+
+Here are some tips to make your life easier when dealing with paths in SLURM:
+
+1. **Use Project-Based Organization**
+
+   - Keep all related files under one project directory
+   - Use a consistent directory structure
+   - Document your directory layout
+
+2. **Path Variables in Scripts**
+
+   ```{.bash}
+   #!/bin/bash
+   #SBATCH --account=myProjectname
+   
+   # Define paths at the start of your script
+   PROJECT_DIR="$HOME/projects/my_project"
+   DATA_DIR="${PROJECT_DIR}/data"
+   SCRIPT_DIR="${PROJECT_DIR}/scripts"
+   
+   # Use these variables in your commands
+   python ${SCRIPT_DIR}/analysis.py \
+       --input ${DATA_DIR}/input.csv
+   ```
+
+3. **Common Pitfalls to Avoid**
+   - Don't assume the current directory
+   - Always test paths with a small job first
+   - Be careful with spaces in paths
+
+4. **Debugging Path Issues**
+
+   ```{.bash}
+   #!/bin/bash
+   #SBATCH --account=myProjectname
+   
+   # Add these for debugging
+   echo "Working directory: $PWD"
+   echo "Script location: $0"
+   ls -la  # List files in working directory
+   ```
+
+## Conda in Batch Jobs
+
+When submitting batch jobs it is important to use the correct conda environment for your needs. 
+
+### Understanding Environment Inheritance
+
+When submitting a Slurm job, your current shell's conda environment is **not** inherited by the batch job. This is because:
+
+- Batch jobs start in a fresh shell session
+- Shell initialization files (`.bashrc`, `.bash_profile`) may not be automatically sourced
+
+### Methods for Activating Conda Environments
+
+There are several methods to activate conda environments in your Slurm scripts, each with its own advantages and considerations. I have mainly used these two which are also probably the best(?):
+
+#### Method 1: Using Conda's Shell Hook
+
+```{.bash}
+#!/bin/bash
+#SBATCH [your parameters]
+
+# Initialize conda for bash shell
+eval "$(conda shell.bash hook)"
+conda activate my_env_name
+```
+
+**Advantages:**
+
+- Properly initializes conda's shell functions
+- Works with conda's auto-activation features
+- Maintains conda's internal state correctly
+
+**Considerations:**
+
+- Requires conda to be in the system PATH
+- Slightly longer initialization time
+
+#### Method 2: Using Conda's Profile Script
+
+```{.bash}
+#!/bin/bash
+#SBATCH [your parameters]
+
+# Source conda's profile script
+source /path/to/conda/etc/profile.d/conda.sh
+conda activate my_env_name
+```
+
+**Advantages:**
+
+- Works even if conda isn't in PATH
+- Reliable across different conda installations
+- Proper initialization of conda functions
+
+**Considerations:**
+
+- Requires knowing the exact path to your conda installation
+- Path might vary across clusters
+
+Common conda installation paths:
+
+- `/opt/conda/etc/profile.d/conda.sh`
+- `$HOME/miniconda3/etc/profile.d/conda.sh`
+- `$HOME/anaconda3/etc/profile.d/conda.sh`
+
+
+### Best Practices
+
+1. **Always explicitly activate environments in your job script:**
+
+   ```{.bash}
+   #!/bin/bash
+   #SBATCH --job-name=my_analysis
+   #SBATCH --output=output_%j.log
+   
+   # Initialize conda
+   eval "$(conda shell.bash hook)"
+   conda activate your_env_name
+   
+   python script.py
+   ```
+
+2. **Check environment activation:**
+
+   ```{.bash}
+   #!/bin/bash
+   #SBATCH [your parameters]
+   
+   eval "$(conda shell.bash hook)"
+   conda activate your_env_name
+   
+   # Print environment info for debugging
+   echo "Active conda env: $CONDA_DEFAULT_ENV"
+   echo "Python path: $(which python)"
+   ```
+
+
+
+### Troubleshooting
+
+Common issues and solutions:
+
+1. **Environment Not Found:**
+
+   - Verify the environment exists: `conda env list`
+   - Check for typos in environment name
+   - Use absolute paths if necessary
+
+2. **Conda Command Not Found:**
+
+   - Add conda's initialization to your script:
+     ```{.bash}
+     # Add to beginning of script
+     export PATH="/path/to/conda/bin:$PATH"
+     ```
+
+3. **Package Import Errors:**
+
+   - Verify environment contents: `conda list`
+   - Ensure environment was created on a compatible system
+   - Check for system-specific dependencies
+
+
+
+## Resource Estimation
+
+One tricky part of using SLURM is knowing how many resources to request. Here's how to figure it out:
+
+### Checking Past Job Usage
+
+After your job completes, use sacct to see what resources it actually used:
+
+```{.bash}
+sacct -j <jobid> --format=JobID,JobName,MaxRSS,MaxVMSize,CPUTime
+```
+
+You can also use the extremely useful `jobinfo <job_id<>`
+That will show something like
+
+```{.bash}
+Name                : Myjobname
+User                : dipe
+Account             : BioinformaticsCore
+Partition           : normal
+Nodes               : s21n42
+Cores               : 1
+GPUs                : 0
+State               : PENDING (AssocMaxWallDurationPerJobLimit)
+```
+
+### Memory Suggestions
+
+- Start with a reasonable estimate (like 4GB)
+- Check MaxRSS from sacct to see actual usage
+- Add 20% buffer to account for variations
+- If your job fails with "OUT OF MEMORY", increase by 50%
+
+### CPU Suggestions
+
+- More CPUs ≠ Faster Job (depends on your code)
+- Check CPU efficiency with sacct
+- For most Python/R scripts, start with 1-2 CPUs
+- Parallel jobs might need 4-16 CPUs
+
+
+
+### Job Priority
+
+Your job's position in the queue depends on several factors:
+
+### Priority Factors
+
+- Fair share (based on recent usage)
+- Job size (smaller jobs might start sooner)
+- Wait time (priority increases with time)
+- Project priority
+
+### Tips for Faster Start
+
+- Use appropriate partition
+- Don't request more resources than needed
+- Submit shorter jobs when possible
+- Use job arrays for many small tasks
+
+
+## Common Errors
+
+Here are two of the common SLURM errors and what they mean:
+
+### Out of Memory
+
+```
+slurmstepd: error: Exceeded step memory limit
+```
+
+- Your job needed more memory than requested
+- Solution: Increase --mem value
+
+### Timeout
+
+```
+CANCELLED AT 2024-01-01T12:00:00 DUE TO TIME LIMIT
+```
+
+- Job didn't finish in time
+- Solution: Increase --time value or optimize code
+
+## Using SCREEN-TMUX
+
+Have you ever started a process on genomeDK only to be required to physically move, close your laptop and loose all your progress? Tools like `screen` and `tmux` can help manage these issues processes by allowing you to create detachable terminal sessions. I personally use screen so we will talk about that with `sbatch` and `srun`. Screen and tmux are already installed for everyone on genomeDK.
+
+
+`screen` is a terminal multiplexer that enables you to create multiple shell sessions within a single terminal window. You can detach from a session and reattach later, allowing your processes to continue running in the background even if you disconnect from the terminal.
+
+### When to use it?
+
+Basically everytime you are doing something interactive. Lets say you want to download some file but you also want to keep working on something else. You can open a screen session, start the download there, detach from the session and keep doing whatever else you where doing while the file is downloading in that other session. 
+
+#### Does it require resources from genomeDK?
+
+Technically everything being done needs at least some resources but these are very minimal and unless you open hundrends of sessions at once (why would you?) there is no problem having multiple sessions at the same time.
+
+
+
+```{.bash}
+# Create new named session
+screen -S download-genomes
+
+# Detach from session
+Ctrl + A, D
+
+# List sessions
+screen -ls
+
+# Reattach to session
+screen -r download-genomes
+```
+
+## Useful links:
+
+The documentation for genomeDK. When you don't remember something go there first: https://genome.au.dk/docs/overview/
+
+A bit more advanced, the `slurm` website: https://slurm.schedmd.com/overview.html
+
+
+## Conclusion
+
+Now you know the basics of SLURM and how to:
+
+- Submit interactive and batch jobs
+- Monitor your jobs
+- Handle common issues
+- Use screen for session management
+
+Remember:
+
+- Always specify your account
+- Request appropriate resources
+- Use screen for long sessions
+- Check job output and errors
+
+THE END!
