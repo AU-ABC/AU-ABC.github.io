@@ -7,12 +7,12 @@ bibliography: resources/references.bib
 ---
 
 :::{.callout-warning title="Incoming workshop"}
-The next ABC is on November 7th, in building 1253-317, from 1pm to 3pm. There will be an interactive single cell workshop from Nygen Analytics. Click the button below for more information and sign up to the event.
+The next ABC is on November 28th, in building 1873-118A, from 1pm to 3pm. There will be live demo for RStudio and Jupyterlab on GenomeDK. Click the button below for more information and sign up to the event.
 
 &nbsp;
 
  <p align="center">
-  <a href="https://abc.au.dk/news/upcoming/2024-11-07-session8.html" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+  <a href="https://abc.au.dk/news/upcoming/2024-11-28-session9.html" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
     Information + signup
   </a>
 </p>

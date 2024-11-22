@@ -1,0 +1,33 @@
+---
+title: "ABC.9: Accessible Bioinformatics Cafe"
+author: "Samuele Soraggi"
+Organizers: HDS Sandbox, Bioinf Core facility
+date: 2024-11-28
+categories: [Cafe, Coding, Bioinformatics, GenomeDK, RStudio, Jupyterlab]
+description: "Live demo with Rstudio and Jupyterlab on GenomeDK"
+---
+
+![](../../img/Rlogo.png){fig-align="center" width=400px}
+
+The ninth session of the ABC (Accessible Bioinformatics Cafe) will be **on november 28th, at 13:00-15:00 in building 1873-118A**
+
+![Map to find the room](../../img/news/1873-118A-loc.png){width=400px}
+![Building 1873 on AU-city](../../img/news/1873-118A-find.png.png){width=400px}
+
+Everyone is welcome to **join independently of coding skills and level**. 
+
+## Agenda
+ 
+For this ABC we show how to use graphical applications on GenomeDK, and specifically show Rstudio and Jupyterlab.
+ 
+## Signing up
+
+Please sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don't do it multiple times to cheat for extra cake!
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://forms.gle/dAFJeb95YAtLQKMx6" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Sign Up!
+  </a>
+</p>
