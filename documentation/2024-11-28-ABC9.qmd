@@ -1,0 +1,181 @@
+---
+title: "ABC.9: Graphical applications on GenomeDK"
+author: "Samuele Soraggi"
+image: ../img/Rlogo.png
+date: 2024-11-28
+categories: [Jupyterlab, Rstudio, LLM, GenomeDK]
+description: "Learn how to launch graphical applications on GenomeDK and to integrate an LLM chatbot  in Jupyterlab"
+eval: true
+---
+
+# Slides
+
+Today's slides
+
+ 
+
+<p align="center">
+
+<a href="SLIDES LINK" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Download Slides </a>
+
+</p>
+
+
+
+# Table of Contents
+
+- [What is tunnelling](#tunnelling)
+- [What is a container](#container)
+- [What is a graphical application](#graphical)
+- [Rstudio](#rstudio)
+- [Jupyterlab and LLM chatbot](#jupyterlab)
+- [Wrapup](#conclusion)
+
+# Concepts
+
+## What is a graphical application
+
+:::{.callout-note title="Graphical application"}
+
+A graphical application provides a user interface that allows users to interact with software visually rather than through text-based commands.
+
+:::
+
+Examples of graphical applications very popular in bioinformatics are Jupyterlab and Rstudio.
+
+## What is tunnelling {#tunnelling}
+
+:::{.callout-note title="Definition"}
+
+SSH tunneling is a method of transporting arbitrary networking data over an encrypted SSH connection
+
+:::
+
+You can transport any type of data, for example when you use a command to transfer a dataset from GenomeDK to your own computer, or vice versa. Tunnelling can also be used to constantly transfer data from graphical applications, so that they can be viewed on your own computer.
+
+### Applications rendered locally with X11
+
+There are various way of rendering applications running on GenomeDK on your local laptop. You might have encountered X11 (for example when using Rstudio Desktop installed in a conda environment), and noticed it is very laggy and slow, also graphically outdated.
+
+X11 is based on sending all raw instructions for rendering across the network to your computer. This means that the whole graphics you see (icons, widgets, menus, buttons, ...) has to travel over the network to your computer. Whenever you take an action, like opening a menu, the cluster needs to know that, so the menu can be rendered and the instructions to show it sent to your computer. This takes clearly a lot of time!
+
+:::{.callout-note title="X11"}
+
+X11 does all the rendering and provides instructions to show the graphical interface. Each change in the interface has to go through the network to be shown locally.
+
+:::
+
+### Applications rendered locally with a web interface
+
+A faster and lighter way of rendering applications is through web-based interfaces. A web server is deployed on the cluster, and it transfer data over the network. Rendering instructions are all executed directly by the browser on the local computer, and do not need to travel over the network.
+
+What travels over the network are simple scripts, which th browser will interpret to visualize and update the graphical interface. Examples of web-based applications are Rstudio Server and Jupyterlab, but also all the interactive browsers that you can find online to explore OMICS data!
+
+:::{.callout-note title="web based applications"}
+
+Web based applications transmit only the necessary information to the local computer, minimizing bandwidth use compared to raw graphical instructions. Those applications are optimized for remote access, ensuring a more fluid experience.
+
+:::
+
+## Containers for web applications
+
+Some web-based applications are cumbersome to install (Rstudio server being the worst, probably, amongst softwares used by academics and researchers), cannot be deployed through a conda environment (Rstudio server again!), or require some administrator privileges to be installed (Once more, Rstudio server!). Here is where we can use containers: those include all the necessary operating system libraries and the software to make specific applications work. You can simply launch a container from the cluster, and it will be able to execute its installed web-based application without much effort.
+
+:::{.callout-note title="Container"}
+
+A container is an isolated environment that packages a web-based application and all its dependencies (e.g., libraries, runtime, and configuration) so it can run consistently anywhere. On an HPC system without administrator privileges, containers are especially useful because all steps requiring elevated privileges can be avoided.
+
+:::
+
+Containers can be created with various softwares, the most famous being Docker and Singularity/Apptainer. The latter can import containers from Docker almost seamlessly, and you will see how it is used to launch a session of RStudio server.
+
+# Tutorial
+
+:::{.callout-warning title="prerequisite"}
+
+- account on GenomeDK
+- a project on GenomeDK to run a small job
+- conda package manager
+
+:::
+
+## Launch Rstudio 
+
+
+
+The most practical way to launch Rstudio is through a web application with Rstudio server, deployed from a container, instead of Rstudio desktop deployed with X11 forwarding from a conda environment, which can cause a number of incompatibilities depending on your local computer. Follow these step-by-step instructions with explanations:
+
+1. Log into GenomeDK as usual. In your own project, create a folder dedicated to Rstudio, so that it is there and usable by you or others in the project. For example do `mkdir -p rstudioApplication`
+
+
+
+2. Check your user id. This is specific to you. **Note it down, because you will need it.**
+
+   ```{.bash}
+   echo $UID
+   ```
+
+3 - Only once you need to download the container which provides Rstudio. Here we use version 4.2.2 because it has been tested for this tutorial:
+
+   ```{.bash}
+   singularity pull docker://rocker/rstudio:4.2.2
+   ```
+
+   At this point you should have a file called something like `rstudio_4.2.2.sif`. 
+   
+4 - Do the steps below only once in the same folder where you have the `sif` file. This will created folders and configurations which allow Rstudio server to work.
+
+   ```{.bash}
+   mkdir -p run var-lib-rstudio-server
+   printf 'provider=sqlite\ndirectory=/var/lib/rstudio-server\n' > database.conf
+   ```
+ 
+5 - Every time you want to run Rstudio, open tmux to have a permanent desktop in background and request an interactive job. Your session and interactive job will not close even if you accidentally close the command line interface!. For example below I request a job with 2 cores, 32GB of RAM for 4 hours for the project `myProject`. Note that you also need a conda environment to be active with an R installation and the needed packages.
+
+   ```{.bash}
+   tmux new-window -t rstudio
+   srun --mem=32g --cores=2 --time=4:00:0 --account=myProject --pty bash
+   conda activate R_environment
+   ```
+
+6 - Check the name of the node and note it down by running
+
+   ```{.bash}
+   hostname
+   ```
+
+7 - and finally open Rstudio:
+
+   ```{.bash}
+   singularity exec --bind run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf rstudio_latest.sif rserver --www-address=`hostname` --www-port $UID --server-user $USER
+   ```
+
+8 - **Now you need to create a tunnel between your computer and the cluster**. Get ready with your user id and node name. Open **a second, new terminal window**, and write
+
+   ```{.bash}
+   ssh -L<USERID>:<HOSTNAME>:<USERID> <USERNAME>@login.genome.au.dk
+   ```
+
+9 -  You should see Rstudio if you write the following address in your browser
+
+   ```
+   localhost:<USERID>
+   ```
+
+   writing your user id instead of <USERID>
+
+### What to do if I close the terminals or I lost internet connection?
+
+Simple, open a terminal and create a tunnel with 
+
+   ```{.bash}
+   ssh -L<USERID>:<HOSTNAME>:<USERID> <USERNAME>login.genome.au.dk
+   ```
+
+The `tmux` software has kept your terminal running without interruption, so now Rstudio should be visible in your browser.
+
+### How to install packages?
+
+We suggest to install packages into the conda environment using `conda` before launching
+
+## Web application with jupyterlab
