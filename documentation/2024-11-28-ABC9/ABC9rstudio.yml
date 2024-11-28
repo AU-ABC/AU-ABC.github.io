@@ -1,0 +1,10 @@
+name: ABC9rstudio
+channels:
+  - conda-forge
+  - r
+  - bioconda
+dependencies:
+  - r-renv
+  - r-base=4.4.2
+  - r-ggplot2
+  - r-tidyverse

@@ -1,0 +1,17 @@
+name: ABC9rstudio
+channels:
+  - conda-forge
+  - r
+  - bioconda
+dependencies:
+  - r-irkernel
+  - r-base>4.4.0
+  - r-ggplot2
+  - r-tidyverse
+  - python>3.10
+  - ipykernel
+  - jupyterlab
+  - jupyterlab-git
+  - pip:
+    - jupyter-ai
+    - gpt4all
