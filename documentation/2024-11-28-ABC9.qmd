@@ -91,7 +91,7 @@ Containers can be created with various softwares, the most famous being Docker a
 
 # Tutorial
 
-:::{.callout-warning title="prerequisite"}
+:::{.callout-warning title="Prerequisites"}
 
 - account on GenomeDK
 - a project on GenomeDK to run a small job
@@ -105,17 +105,22 @@ Containers can be created with various softwares, the most famous being Docker a
 
 The most practical way to launch Rstudio is through a web application with Rstudio server, deployed from a container, instead of Rstudio desktop deployed with X11 forwarding from a conda environment, which can cause a number of incompatibilities depending on your local computer. Follow these step-by-step instructions with explanations:
 
-1. Log into GenomeDK as usual. In your own project, create a folder dedicated to Rstudio, so that it is there and usable by you or others in the project. For example do `mkdir -p rstudioApplication`
+1. Log into GenomeDK as usual. In your own project, create a folder dedicated to Rstudio, so that it is there and usable by you or others in the project. For example do `mkdir -p rstudio; cd rstudio`
 
+2. Create a conda environment with some R packages. I have made one for you with `R v4.4.2`, `renv`, `ggplot` and `tidyverse`.
 
+   ```{.bash}
+   wget https://raw.githubusercontent.com/AU-ABC/AU-ABC.github.io/refs/heads/main/documentation/2024-11-28-ABC9/ABC9rstudio.yml 
+   conda env create -f ABC9rstudio.yml 
+   ```
 
-2. Check your user id. This is specific to you. **Note it down, because you will need it.**
+3. Check your user id. This is specific to you. **Note it down, because you will need it.**
 
    ```{.bash}
    echo $UID
    ```
 
-3 - Only once you need to download the container which provides Rstudio. Here we use version 4.2.2 because it has been tested for this tutorial:
+4 - Only once you need to download the container which provides Rstudio. Here we use version 4.2.2 because it has been tested for this tutorial:
 
    ```{.bash}
    singularity pull docker://rocker/rstudio:4.2.2
@@ -123,31 +128,102 @@ The most practical way to launch Rstudio is through a web application with Rstud
 
    At this point you should have a file called something like `rstudio_4.2.2.sif`. 
    
-4 - Do the steps below only once in the same folder where you have the `sif` file. This will created folders and configurations which allow Rstudio server to work.
+5 - Do the steps below only once in the same folder where you have the `sif` file. This will created folders and configurations which allow Rstudio server to work.
 
    ```{.bash}
    mkdir -p run var-lib-rstudio-server
    printf 'provider=sqlite\ndirectory=/var/lib/rstudio-server\n' > database.conf
    ```
  
-5 - Every time you want to run Rstudio, open tmux to have a permanent desktop in background and request an interactive job. Your session and interactive job will not close even if you accidentally close the command line interface!. For example below I request a job with 2 cores, 32GB of RAM for 4 hours for the project `myProject`. Note that you also need a conda environment to be active with an R installation and the needed packages.
+6 - Every time you want to run Rstudio, open tmux to have a permanent desktop in background and request an interactive job. Your session and interactive job will not close even if you accidentally close the command line interface!. For example below I request a job with 2 cores, 32GB of RAM for 4 hours for the project `myProject`. Note that you also need a conda environment to be active with an R installation and the needed packages.
 
    ```{.bash}
-   tmux new-window -t rstudio
+   tmux new -t rstudio
    srun --mem=32g --cores=2 --time=4:00:0 --account=myProject --pty bash
-   conda activate R_environment
+   conda activate ABC9rstudio
    ```
 
-6 - Check the name of the node and note it down by running
+7 - Check the name of the node and note it down by running
 
    ```{.bash}
    hostname
    ```
 
-7 - and finally open Rstudio:
+8 - and finally open Rstudio:
 
    ```{.bash}
-   singularity exec --bind run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf rstudio_latest.sif rserver --www-address=`hostname` --www-port $UID --server-user $USER
+   singularity exec --bind run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf rstudio_4.2.2.sif rserver --www-address=`hostname` --www-port $UID --server-user $USER
+   ```
+
+9 - **Now you need to create a tunnel between your computer and the cluster**. Get ready with your user id and node name. Open **a second, new terminal window**, and write
+
+   ```{.bash}
+   ssh -L<USERID>:<HOSTNAME>:<USERID> <USERNAME>@login.genome.au.dk
+   ```
+
+10 -  You should see Rstudio if you write the following address in your browser
+
+   ```
+   localhost:<USERID>
+   ```
+
+   writing your user id instead of <USERID>.
+
+Now you are ready to use Rstudio and all the packages from your conda environment. Note that the environment contains the package `renv`, so **you can also start creating virtual R environments from Rstudio, as we did in the [second ABC tutorial](2024-06-27-ABC2.ipynb)**.
+
+### What to do if I close the terminals or I lost internet connection?
+
+Simple, open a terminal and recreate a tunnel with 
+
+   ```{.bash}
+   ssh -L<USERID>:<HOSTNAME>:<USERID> <USERNAME>login.genome.au.dk
+   ```
+
+The `tmux` software has kept your terminal running without interruption, so now Rstudio should be visible in your browser.
+
+
+## Web application with jupyterlab
+
+1. Log into GenomeDK as usual.
+
+2. Create a conda environment with some R packages, python, jupyterlab. I have made one for you with `R>v4.4.0`, `python v3.10`, the AI plugin for jupyterlab and some R packages.
+
+   ```{.bash}
+   wget https://raw.githubusercontent.com/AU-ABC/AU-ABC.github.io/refs/heads/main/documentation/2024-11-28-ABC9/ABC9jupyter.yml 
+   conda env create -f ABC9jupyter.yml 
+   ```
+
+3. Check your user id. This is specific to you. **Note it down, because you will need it.**
+
+   ```{.bash}
+   echo $UID
+   ```
+
+4 - Every time you want to run jupyterlab, open tmux to have a permanent desktop in background and request an interactive job. Your session and interactive job will not close even if you accidentally close the command line interface!. For example below I request a job with 2 cores, 32GB of RAM for 4 hours for the project `myProject`. Note that we activate the conda environment which contains 
+
+   ```{.bash}
+   tmux new -t rstudio
+   srun --mem=32g --cores=2 --time=4:00:0 --account=myProject --pty bash
+   conda activate ABC9jupyter
+   ```
+
+5 - Check the name of the node and note it down by running
+
+   ```{.bash}
+   hostname
+   ```
+
+6 - Download the Mistral LLM open model trained on 7Billion parameters
+
+   ```{.bash}
+   mkdir -p /home/`whoami`/.cache/gpt4all/
+   wget -nc -O /home/`whoami`/.cache/gpt4all/mistral-7b-openorca.Q4_0.gguf https://huggingface.co/TheBloke/Mistral-7B-OpenOrca-GGUF/resolve/main/mistral-7b-openorca.Q4_0.gguf
+   ```
+
+7 - Run jupyterlab
+
+   ```{.bash}
+   jupyter lab --ip=`hostname` --port=$UID --no-browser --NotebookApp.token='' --NotebookApp.password=''
    ```
 
 8 - **Now you need to create a tunnel between your computer and the cluster**. Get ready with your user id and node name. Open **a second, new terminal window**, and write
@@ -159,23 +235,22 @@ The most practical way to launch Rstudio is through a web application with Rstud
 9 -  You should see Rstudio if you write the following address in your browser
 
    ```
-   localhost:<USERID>
+   127.0.0.1:<USERID>/lab
    ```
 
-   writing your user id instead of <USERID>
+   writing your user id instead of <USERID>. Jupyterlab will open!
 
-### What to do if I close the terminals or I lost internet connection?
+10 - Now click on the AI plugin on the left-side toolbar with symbol ![](./2024-11-28-ABC9/symbolAI.png). Open the settings as suggested, and choose the Mistral model and the ChatGPT embedding which allows to use the language model (see choices below), then Save the settings and go back with the arrow on top of the plugin window.
 
-Simple, open a terminal and create a tunnel with 
+   ![](./2024-11-28-ABC9/mistral.png)
+   ![](./2024-11-28-ABC9/GTP4all.png)
 
-   ```{.bash}
-   ssh -L<USERID>:<HOSTNAME>:<USERID> <USERNAME>login.genome.au.dk
-   ```
+11 - Now you can ask any question in the plugin. Simply write `/ask` followed by what you want to know!
 
-The `tmux` software has kept your terminal running without interruption, so now Rstudio should be visible in your browser.
+12 - Use the launcher to choose if you want to start a notebook with python or with R, including the packages installed in the conda environment. The launcher looks similar to this:
 
-### How to install packages?
+   ![](./2024-11-28-ABC9/launcher.png)
 
-We suggest to install packages into the conda environment using `conda` before launching
+# Conclusion
 
-## Web application with jupyterlab
+You have learned how to launch a graphical application from a container and from a conda environment, with tunnelling between your local computer and the GenomeDK cluster. The same principles work for other graphical tools with a web interface which can be installed and launched in a conda environment, or are installed in a container. Every software requires its own command to start, so you have to read its documentation :)
