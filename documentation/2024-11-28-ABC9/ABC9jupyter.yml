@@ -1,4 +1,4 @@
-name: ABC9rstudio
+name: ABC9jupyter
 channels:
   - conda-forge
   - r
