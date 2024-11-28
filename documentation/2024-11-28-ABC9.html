@@ -217,23 +217,23 @@ litesrv._domainkey.birc.au.dk/img/Rlogo.png">
   <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">Table of Contents</a></li>
   <li><a href="#concepts" id="toc-concepts" class="nav-link" data-scroll-target="#concepts">Concepts</a>
   <ul class="collapse">
-  <li><a href="#what-is-a-graphical-application" id="toc-what-is-a-graphical-application" class="nav-link" data-scroll-target="#what-is-a-graphical-application">What is a graphical application</a></li>
+  <li><a href="#graphical" id="toc-graphical" class="nav-link" data-scroll-target="#graphical">What is a graphical application</a></li>
   <li><a href="#tunnelling" id="toc-tunnelling" class="nav-link" data-scroll-target="#tunnelling">What is tunnelling</a>
   <ul class="collapse">
   <li><a href="#applications-rendered-locally-with-x11" id="toc-applications-rendered-locally-with-x11" class="nav-link" data-scroll-target="#applications-rendered-locally-with-x11">Applications rendered locally with X11</a></li>
   <li><a href="#applications-rendered-locally-with-a-web-interface" id="toc-applications-rendered-locally-with-a-web-interface" class="nav-link" data-scroll-target="#applications-rendered-locally-with-a-web-interface">Applications rendered locally with a web interface</a></li>
   </ul></li>
-  <li><a href="#containers-for-web-applications" id="toc-containers-for-web-applications" class="nav-link" data-scroll-target="#containers-for-web-applications">Containers for web applications</a></li>
+  <li><a href="#container" id="toc-container" class="nav-link" data-scroll-target="#container">Containers for web applications</a></li>
   </ul></li>
   <li><a href="#tutorial" id="toc-tutorial" class="nav-link" data-scroll-target="#tutorial">Tutorial</a>
   <ul class="collapse">
-  <li><a href="#launch-rstudio" id="toc-launch-rstudio" class="nav-link" data-scroll-target="#launch-rstudio">Launch Rstudio</a>
+  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio">Launch Rstudio</a>
   <ul class="collapse">
   <li><a href="#what-to-do-if-i-close-the-terminals-or-i-lost-internet-connection" id="toc-what-to-do-if-i-close-the-terminals-or-i-lost-internet-connection" class="nav-link" data-scroll-target="#what-to-do-if-i-close-the-terminals-or-i-lost-internet-connection">What to do if I close the terminals or I lost internet connection?</a></li>
-  <li><a href="#how-to-install-packages" id="toc-how-to-install-packages" class="nav-link" data-scroll-target="#how-to-install-packages">How to install packages?</a></li>
   </ul></li>
-  <li><a href="#web-application-with-jupyterlab" id="toc-web-application-with-jupyterlab" class="nav-link" data-scroll-target="#web-application-with-jupyterlab">Web application with jupyterlab</a></li>
+  <li><a href="#jupyterlab" id="toc-jupyterlab" class="nav-link" data-scroll-target="#jupyterlab">Web application with jupyterlab</a></li>
   </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -293,9 +293,9 @@ litesrv._domainkey.birc.au.dk/img/Rlogo.png">
 <section id="table-of-contents" class="level1">
 <h1>Table of Contents</h1>
 <ul>
+<li><a href="#graphical">What is a graphical application</a></li>
 <li><a href="#tunnelling">What is tunnelling</a></li>
 <li><a href="#container">What is a container</a></li>
-<li><a href="#graphical">What is a graphical application</a></li>
 <li><a href="#rstudio">Rstudio</a></li>
 <li><a href="#jupyterlab">Jupyterlab and LLM chatbot</a></li>
 <li><a href="#conclusion">Wrapup</a></li>
@@ -303,8 +303,8 @@ litesrv._domainkey.birc.au.dk/img/Rlogo.png">
 </section>
 <section id="concepts" class="level1">
 <h1>Concepts</h1>
-<section id="what-is-a-graphical-application" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-a-graphical-application">What is a graphical application</h2>
+<section id="graphical" class="level2">
+<h2 class="anchored" data-anchor-id="graphical">What is a graphical application</h2>
 <div class="callout callout-style-default callout-note callout-titled" title="Graphical application">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -373,8 +373,8 @@ web based applications
 </div>
 </section>
 </section>
-<section id="containers-for-web-applications" class="level2">
-<h2 class="anchored" data-anchor-id="containers-for-web-applications">Containers for web applications</h2>
+<section id="container" class="level2">
+<h2 class="anchored" data-anchor-id="container">Containers for web applications</h2>
 <p>Some web-based applications are cumbersome to install (Rstudio server being the worst, probably, amongst softwares used by academics and researchers), cannot be deployed through a conda environment (Rstudio server again!), or require some administrator privileges to be installed (Once more, Rstudio server!). Here is where we can use containers: those include all the necessary operating system libraries and the software to make specific applications work. You can simply launch a container from the cluster, and it will be able to execute its installed web-based application without much effort.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Container">
 <div class="callout-header d-flex align-content-center">
@@ -394,13 +394,13 @@ Container
 </section>
 <section id="tutorial" class="level1">
 <h1>Tutorial</h1>
-<div class="callout callout-style-default callout-warning callout-titled" title="prerequisite">
+<div class="callout callout-style-default callout-warning callout-titled" title="Prerequisites">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-prerequisite
+Prerequisites
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -411,49 +411,86 @@ prerequisite
 </ul>
 </div>
 </div>
-<section id="launch-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="launch-rstudio">Launch Rstudio</h2>
+<section id="rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio">Launch Rstudio</h2>
 <p>The most practical way to launch Rstudio is through a web application with Rstudio server, deployed from a container, instead of Rstudio desktop deployed with X11 forwarding from a conda environment, which can cause a number of incompatibilities depending on your local computer. Follow these step-by-step instructions with explanations:</p>
 <ol type="1">
-<li><p>Log into GenomeDK as usual. In your own project, create a folder dedicated to Rstudio, so that it is there and usable by you or others in the project. For example do <code>mkdir -p rstudioApplication</code></p></li>
+<li><p>Log into GenomeDK as usual. In your own project, create a folder dedicated to Rstudio, so that it is there and usable by you or others in the project. For example do <code>mkdir -p rstudio; cd rstudio</code></p></li>
+<li><p>Create a conda environment with some R packages. I have made one for you with <code>R v4.4.2</code>, <code>renv</code>, <code>ggplot</code> and <code>tidyverse</code>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/AU-ABC/AU-ABC.github.io/refs/heads/main/documentation/2024-11-28-ABC9/ABC9rstudio.yml </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> ABC9rstudio.yml </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Check your user id. This is specific to you. <strong>Note it down, because you will need it.</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$UID</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$UID</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Only once you need to download the container which provides Rstudio. Here we use version 4.2.2 because it has been tested for this tutorial:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> pull docker://rocker/rstudio:4.2.2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>At this point you should have a file called something like <code>rstudio_4.2.2.sif</code>.</p></li>
+<li><p>Do the steps below only once in the same folder where you have the <code>sif</code> file. This will created folders and configurations which allow Rstudio server to work.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> run var-lib-rstudio-server</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">printf</span> <span class="st">'provider=sqlite\ndirectory=/var/lib/rstudio-server\n'</span> <span class="op">&gt;</span> database.conf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Every time you want to run Rstudio, open tmux to have a permanent desktop in background and request an interactive job. Your session and interactive job will not close even if you accidentally close the command line interface!. For example below I request a job with 2 cores, 32GB of RAM for 4 hours for the project <code>myProject</code>. Note that you also need a conda environment to be active with an R installation and the needed packages.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> new <span class="at">-t</span> rstudio</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--mem</span><span class="op">=</span>32g <span class="at">--cores</span><span class="op">=</span>2 <span class="at">--time</span><span class="op">=</span>4:00:0 <span class="at">--account</span><span class="op">=</span>myProject <span class="at">--pty</span> bash</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate ABC9rstudio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Check the name of the node and note it down by running</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>and finally open Rstudio:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec <span class="at">--bind</span> run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf rstudio_4.2.2.sif rserver <span class="at">--www-address</span><span class="op">=</span><span class="kw">`</span><span class="fu">hostname</span><span class="kw">`</span> <span class="at">--www-port</span> <span class="va">$UID</span> <span class="at">--server-user</span> <span class="va">$USER</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Now you need to create a tunnel between your computer and the cluster</strong>. Get ready with your user id and node name. Open <strong>a second, new terminal window</strong>, and write</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-L</span><span class="op">&lt;</span>USERID<span class="op">&gt;</span>:<span class="op">&lt;</span>HOSTNAME<span class="op">&gt;</span>:<span class="op">&lt;</span>USERID<span class="op">&gt;</span> <span class="op">&lt;</span>USERNAME<span class="op">&gt;</span>@login.genome.au.dk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>You should see Rstudio if you write the following address in your browser</p></li>
 </ol>
-<p>3 - Only once you need to download the container which provides Rstudio. Here we use version 4.2.2 because it has been tested for this tutorial:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> pull docker://rocker/rstudio:4.2.2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>At this point you should have a file called something like <code>rstudio_4.2.2.sif</code>.</p>
-<p>4 - Do the steps below only once in the same folder where you have the <code>sif</code> file. This will created folders and configurations which allow Rstudio server to work.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> run var-lib-rstudio-server</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">printf</span> <span class="st">'provider=sqlite\ndirectory=/var/lib/rstudio-server\n'</span> <span class="op">&gt;</span> database.conf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>5 - Every time you want to run Rstudio, open tmux to have a permanent desktop in background and request an interactive job. Your session and interactive job will not close even if you accidentally close the command line interface!. For example below I request a job with 2 cores, 32GB of RAM for 4 hours for the project <code>myProject</code>. Note that you also need a conda environment to be active with an R installation and the needed packages.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> new-window <span class="at">-t</span> rstudio</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--mem</span><span class="op">=</span>32g <span class="at">--cores</span><span class="op">=</span>2 <span class="at">--time</span><span class="op">=</span>4:00:0 <span class="at">--account</span><span class="op">=</span>myProject <span class="at">--pty</span> bash</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate R_environment</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>6 - Check the name of the node and note it down by running</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>7 - and finally open Rstudio:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">singularity</span> exec <span class="at">--bind</span> run:/run,var-lib-rstudio-server:/var/lib/rstudio-server,database.conf:/etc/rstudio/database.conf rstudio_latest.sif rserver <span class="at">--www-address</span><span class="op">=</span><span class="kw">`</span><span class="fu">hostname</span><span class="kw">`</span> <span class="at">--www-port</span> <span class="va">$UID</span> <span class="at">--server-user</span> <span class="va">$USER</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>8 - <strong>Now you need to create a tunnel between your computer and the cluster</strong>. Get ready with your user id and node name. Open <strong>a second, new terminal window</strong>, and write</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-L</span><span class="op">&lt;</span>USERID<span class="op">&gt;</span>:<span class="op">&lt;</span>HOSTNAME<span class="op">&gt;</span>:<span class="op">&lt;</span>USERID<span class="op">&gt;</span> <span class="op">&lt;</span>USERNAME<span class="op">&gt;</span>@login.genome.au.dk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>9 - You should see Rstudio if you write the following address in your browser</p>
 <pre><code>localhost:&lt;USERID&gt;</code></pre>
-<p>writing your user id instead of <userid></userid></p>
+<p>writing your user id instead of USERID.</p>
+<p>Now you are ready to use Rstudio and all the packages from your conda environment. Note that the environment contains the package <code>renv</code>, so <strong>you can also start creating virtual R environments from Rstudio, as we did in the <a href="../documentation/2024-06-27-ABC2.html">second ABC tutorial</a></strong>.</p>
 <section id="what-to-do-if-i-close-the-terminals-or-i-lost-internet-connection" class="level3">
 <h3 class="anchored" data-anchor-id="what-to-do-if-i-close-the-terminals-or-i-lost-internet-connection">What to do if I close the terminals or I lost internet connection?</h3>
-<p>Simple, open a terminal and create a tunnel with</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-L</span><span class="op">&lt;</span>USERID<span class="op">&gt;</span>:<span class="op">&lt;</span>HOSTNAME<span class="op">&gt;</span>:<span class="op">&lt;</span>USERID<span class="op">&gt;</span> <span class="op">&lt;</span>USERNAME<span class="op">&gt;</span>login.genome.au.dk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Simple, open a terminal and recreate a tunnel with</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-L</span><span class="op">&lt;</span>USERID<span class="op">&gt;</span>:<span class="op">&lt;</span>HOSTNAME<span class="op">&gt;</span>:<span class="op">&lt;</span>USERID<span class="op">&gt;</span> <span class="op">&lt;</span>USERNAME<span class="op">&gt;</span>login.genome.au.dk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The <code>tmux</code> software has kept your terminal running without interruption, so now Rstudio should be visible in your browser.</p>
 </section>
-<section id="how-to-install-packages" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-install-packages">How to install packages?</h3>
-<p>We suggest to install packages into the conda environment using <code>conda</code> before launching</p>
+</section>
+<section id="jupyterlab" class="level2">
+<h2 class="anchored" data-anchor-id="jupyterlab">Web application with jupyterlab</h2>
+<ol type="1">
+<li><p>Log into GenomeDK as usual.</p></li>
+<li><p>Create a conda environment with some R packages, python, jupyterlab. I have made one for you with <code>R&gt;v4.4.0</code>, <code>python v3.10</code>, the AI plugin for jupyterlab and some R packages.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/AU-ABC/AU-ABC.github.io/refs/heads/main/documentation/2024-11-28-ABC9/ABC9jupyter.yml </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> ABC9jupyter.yml </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Check your user id. This is specific to you. <strong>Note it down, because you will need it.</strong></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$UID</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Every time you want to run jupyterlab, open tmux to have a permanent desktop in background and request an interactive job. Your session and interactive job will not close even if you accidentally close the command line interface!. For example below I request a job with 2 cores, 32GB of RAM for 4 hours for the project <code>myProject</code>. Note that we activate the conda environment which contains</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> new <span class="at">-t</span> rstudio</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--mem</span><span class="op">=</span>32g <span class="at">--cores</span><span class="op">=</span>2 <span class="at">--time</span><span class="op">=</span>4:00:0 <span class="at">--account</span><span class="op">=</span>myProject <span class="at">--pty</span> bash</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate ABC9jupyter</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Check the name of the node and note it down by running</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Download the Mistral LLM open model trained on 7Billion parameters</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> <span class="at">-p</span> /home/<span class="kw">`</span><span class="fu">whoami</span><span class="kw">`</span>/.cache/gpt4all/</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> <span class="at">-nc</span> <span class="at">-O</span> /home/<span class="kw">`</span><span class="fu">whoami</span><span class="kw">`</span>/.cache/gpt4all/mistral-7b-openorca.Q4_0.gguf https://huggingface.co/TheBloke/Mistral-7B-OpenOrca-GGUF/resolve/main/mistral-7b-openorca.Q4_0.gguf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Run jupyterlab</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab <span class="at">--ip</span><span class="op">=</span><span class="kw">`</span><span class="fu">hostname</span><span class="kw">`</span> <span class="at">--port</span><span class="op">=</span><span class="va">$UID</span> <span class="at">--no-browser</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.password</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Now you need to create a tunnel between your computer and the cluster</strong>. Get ready with your user id and node name. Open <strong>a second, new terminal window</strong>, and write</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-L</span><span class="op">&lt;</span>USERID<span class="op">&gt;</span>:<span class="op">&lt;</span>HOSTNAME<span class="op">&gt;</span>:<span class="op">&lt;</span>USERID<span class="op">&gt;</span> <span class="op">&lt;</span>USERNAME<span class="op">&gt;</span>@login.genome.au.dk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>You should see Rstudio if you write the following address in your browser</p></li>
+</ol>
+<pre><code>127.0.0.1:&lt;USERID&gt;/lab</code></pre>
+<p>writing your user id instead of USERID. Jupyterlab will open!</p>
+<ol start="10" type="1">
+<li>Now click on the AI plugin on the left-side toolbar with symbol <img src="./2024-11-28-ABC9/symbolAI.png" class="img-fluid">. Open the settings as suggested, and choose the Mistral model and the ChatGPT embedding which allows to use the language model (see choices below), then Save the settings and go back with the arrow on top of the plugin window.</li>
+</ol>
+<p><img src="./2024-11-28-ABC9/mistral.png" class="img-fluid" width="300"> <img src="./2024-11-28-ABC9/GTP4all.png" class="img-fluid" width="300"></p>
+<ol start="11" type="1">
+<li><p>Now you can ask any question in the plugin. Simply write <code>/ask</code> followed by what you want to know. It requires some resources to use an LLM, so it might be slow withthe resources used in this tutorial.</p></li>
+<li><p>Use the launcher to choose if you want to start a notebook with python or with R, including the packages installed in the conda environment. The launcher looks similar to this:</p></li>
+</ol>
+<p><img src="./2024-11-28-ABC9/launcher.png" class="img-fluid"></p>
 </section>
 </section>
-<section id="web-application-with-jupyterlab" class="level2">
-<h2 class="anchored" data-anchor-id="web-application-with-jupyterlab">Web application with jupyterlab</h2>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>You have learned how to launch a graphical application from a container and from a conda environment, with tunnelling between your local computer and the GenomeDK cluster. The same principles work for other graphical tools with a web interface which can be installed and launched in a conda environment, or are installed in a container. Every software requires its own command to start, so you have to read its documentation :)</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
