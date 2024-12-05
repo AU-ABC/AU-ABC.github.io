@@ -16,7 +16,7 @@ Today's slides
 
 <p align="center">
 
-<a href="SLIDES LINK" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Download Slides </a>
+<a href="https://abc.au.dk/documentation/slides/20241128-ABC9.zip" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Download Slides </a>
 
 </p>
 
@@ -113,6 +113,8 @@ The most practical way to launch Rstudio is through a web application with Rstud
    conda env create -f ABC9rstudio.yml 
    ```
 
+   If you already have an environment with R and some R packages, do not create the one above, but activate yours.
+
 3. Check your user id. This is specific to you. **Note it down, because you will need it.**
 
    ```{.bash}
@@ -138,6 +140,7 @@ The most practical way to launch Rstudio is through a web application with Rstud
 
    ```{.bash}
    tmux new -t rstudio
+   rm -rf ~/.local/share/rstudio/ #remove old cache
    srun --mem=32g --cores=2 --time=4:00:0 --account=myProject --pty bash
    conda activate ABC9rstudio
    ```
@@ -166,7 +169,7 @@ The most practical way to launch Rstudio is through a web application with Rstud
    localhost:<USERID>
    ```
 
-   writing your user id instead of USERID.
+   writing your user id instead of `<USERID>`.
 
 Now you are ready to use Rstudio and all the packages from your conda environment. Note that the environment contains the package `renv`, so **you can also start creating virtual R environments from Rstudio, as we did in the [second ABC tutorial](2024-06-27-ABC2.ipynb)**.
 
@@ -231,13 +234,15 @@ The `tmux` software has kept your terminal running without interruption, so now 
    ssh -L<USERID>:<HOSTNAME>:<USERID> <USERNAME>@login.genome.au.dk
    ```
 
+   writing your user id, hostname and username instead of `<USERID>`, `<HOSTNAME>` and `<USERNAME>`.
+
 9.  You should see Rstudio if you write the following address in your browser
 
    ```
    127.0.0.1:<USERID>/lab
    ```
 
-   writing your user id instead of USERID. Jupyterlab will open!
+   writing your user id instead of `<USERID>`. Jupyterlab will open!
 
 10. Now click on the AI plugin on the left-side toolbar with symbol ![](./2024-11-28-ABC9/symbolAI.png). Open the settings as suggested, and choose the Mistral model and the ChatGPT embedding which allows to use the language model (see choices below), then Save the settings and go back with the arrow on top of the plugin window.
 
@@ -246,7 +251,7 @@ The `tmux` software has kept your terminal running without interruption, so now 
 
 11. Now you can ask any question in the plugin. Simply write `/ask` followed by what you want to know. It requires some resources to use an LLM, so it might be slow withthe resources used in this tutorial.
 
-12. Use the launcher to choose if you want to start a notebook with python or with R, including the packages installed in the conda environment. The launcher looks similar to this:
+12. Use the launcher to choose if you want to start a notebook with python or R, including the packages installed in the conda environment. The launcher looks similar to this:
 
    ![](./2024-11-28-ABC9/launcher.png)
 

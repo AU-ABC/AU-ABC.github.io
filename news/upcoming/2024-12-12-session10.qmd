@@ -1,0 +1,32 @@
+---
+title: "ABC.10: Accessible Bioinformatics Cafe"
+author: "Samuele Soraggi"
+Organizers: HDS Sandbox, Bioinf Core facility
+date: 2024-12-12
+categories: [Cafe, Coding, Bioinformatics, bulkRNA, preprocessing]
+description: "Detailed import and preprocessing of Bulk RNA data"
+---
+
+![](../../img/news/heatmap.png){fig-align="center" width=400px}
+
+The 10th session of the ABC (Accessible Bioinformatics Cafe) will be **on december 12th, at 13:00-15:00 in building 1231-114**
+
+![The building is close to the lakes. Room 114 is on the ground floor, by the southernmost corner of the building, where you can find also the door to the stairs to other floors.](../../img/news/bartholin1231-114.png){width=400px}
+
+Everyone is welcome to **join independently of coding skills and level**. 
+
+## Agenda
+ 
+For this ABC Marie will show in detail how to  import and preprocess bulkRNA sequencing data.
+ 
+## Signing up
+
+Please sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don't do it multiple times to cheat for extra cake!
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScJSAo7BJfcP-Q9IELAtop72tAECnZrRiiQFTz8wIGStC0NUA/viewform?usp=dialog" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Sign Up!
+  </a>
+</p>
