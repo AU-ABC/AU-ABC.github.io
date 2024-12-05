@@ -287,7 +287,7 @@ litesrv._domainkey.birc.au.dk/img/Rlogo.png">
 <p>Today’s slides</p>
 <p>&nbsp;</p>
 <p align="center">
-</p><p><a href="SLIDES LINK" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Download Slides </a></p>
+</p><p><a href="https://abc.au.dk/documentation/slides/20241128-ABC9.zip" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Download Slides </a></p>
 <p></p>
 </section>
 <section id="table-of-contents" class="level1">
@@ -418,7 +418,8 @@ Prerequisites
 <li><p>Log into GenomeDK as usual. In your own project, create a folder dedicated to Rstudio, so that it is there and usable by you or others in the project. For example do <code>mkdir -p rstudio; cd rstudio</code></p></li>
 <li><p>Create a conda environment with some R packages. I have made one for you with <code>R v4.4.2</code>, <code>renv</code>, <code>ggplot</code> and <code>tidyverse</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://raw.githubusercontent.com/AU-ABC/AU-ABC.github.io/refs/heads/main/documentation/2024-11-28-ABC9/ABC9rstudio.yml </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> ABC9rstudio.yml </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> env create <span class="at">-f</span> ABC9rstudio.yml </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If you already have an environment with R and some R packages, do not create the one above, but activate yours.</p></li>
 <li><p>Check your user id. This is specific to you. <strong>Note it down, because you will need it.</strong></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$UID</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Only once you need to download the container which provides Rstudio. Here we use version 4.2.2 because it has been tested for this tutorial:</p>
@@ -429,8 +430,9 @@ Prerequisites
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">printf</span> <span class="st">'provider=sqlite\ndirectory=/var/lib/rstudio-server\n'</span> <span class="op">&gt;</span> database.conf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Every time you want to run Rstudio, open tmux to have a permanent desktop in background and request an interactive job. Your session and interactive job will not close even if you accidentally close the command line interface!. For example below I request a job with 2 cores, 32GB of RAM for 4 hours for the project <code>myProject</code>. Note that you also need a conda environment to be active with an R installation and the needed packages.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">tmux</span> new <span class="at">-t</span> rstudio</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--mem</span><span class="op">=</span>32g <span class="at">--cores</span><span class="op">=</span>2 <span class="at">--time</span><span class="op">=</span>4:00:0 <span class="at">--account</span><span class="op">=</span>myProject <span class="at">--pty</span> bash</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate ABC9rstudio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-rf</span> ~/.local/share/rstudio/ <span class="co">#remove old cache</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">srun</span> <span class="at">--mem</span><span class="op">=</span>32g <span class="at">--cores</span><span class="op">=</span>2 <span class="at">--time</span><span class="op">=</span>4:00:0 <span class="at">--account</span><span class="op">=</span>myProject <span class="at">--pty</span> bash</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate ABC9rstudio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>Check the name of the node and note it down by running</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hostname</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p>and finally open Rstudio:</p>
@@ -440,7 +442,7 @@ Prerequisites
 <li><p>You should see Rstudio if you write the following address in your browser</p></li>
 </ol>
 <pre><code>localhost:&lt;USERID&gt;</code></pre>
-<p>writing your user id instead of USERID.</p>
+<p>writing your user id instead of <code>&lt;USERID&gt;</code>.</p>
 <p>Now you are ready to use Rstudio and all the packages from your conda environment. Note that the environment contains the package <code>renv</code>, so <strong>you can also start creating virtual R environments from Rstudio, as we did in the <a href="../documentation/2024-06-27-ABC2.html">second ABC tutorial</a></strong>.</p>
 <section id="what-to-do-if-i-close-the-terminals-or-i-lost-internet-connection" class="level3">
 <h3 class="anchored" data-anchor-id="what-to-do-if-i-close-the-terminals-or-i-lost-internet-connection">What to do if I close the terminals or I lost internet connection?</h3>
@@ -470,18 +472,19 @@ Prerequisites
 <li><p>Run jupyterlab</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="ex">jupyter</span> lab <span class="at">--ip</span><span class="op">=</span><span class="kw">`</span><span class="fu">hostname</span><span class="kw">`</span> <span class="at">--port</span><span class="op">=</span><span class="va">$UID</span> <span class="at">--no-browser</span> <span class="at">--NotebookApp.token</span><span class="op">=</span><span class="st">''</span> <span class="at">--NotebookApp.password</span><span class="op">=</span><span class="st">''</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
 <li><p><strong>Now you need to create a tunnel between your computer and the cluster</strong>. Get ready with your user id and node name. Open <strong>a second, new terminal window</strong>, and write</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-L</span><span class="op">&lt;</span>USERID<span class="op">&gt;</span>:<span class="op">&lt;</span>HOSTNAME<span class="op">&gt;</span>:<span class="op">&lt;</span>USERID<span class="op">&gt;</span> <span class="op">&lt;</span>USERNAME<span class="op">&gt;</span>@login.genome.au.dk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ssh</span> <span class="at">-L</span><span class="op">&lt;</span>USERID<span class="op">&gt;</span>:<span class="op">&lt;</span>HOSTNAME<span class="op">&gt;</span>:<span class="op">&lt;</span>USERID<span class="op">&gt;</span> <span class="op">&lt;</span>USERNAME<span class="op">&gt;</span>@login.genome.au.dk</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>writing your user id, hostname and username instead of <code>&lt;USERID&gt;</code>, <code>&lt;HOSTNAME&gt;</code> and <code>&lt;USERNAME&gt;</code>.</p></li>
 <li><p>You should see Rstudio if you write the following address in your browser</p></li>
 </ol>
 <pre><code>127.0.0.1:&lt;USERID&gt;/lab</code></pre>
-<p>writing your user id instead of USERID. Jupyterlab will open!</p>
+<p>writing your user id instead of <code>&lt;USERID&gt;</code>. Jupyterlab will open!</p>
 <ol start="10" type="1">
 <li>Now click on the AI plugin on the left-side toolbar with symbol <img src="./2024-11-28-ABC9/symbolAI.png" class="img-fluid">. Open the settings as suggested, and choose the Mistral model and the ChatGPT embedding which allows to use the language model (see choices below), then Save the settings and go back with the arrow on top of the plugin window.</li>
 </ol>
 <p><img src="./2024-11-28-ABC9/mistral.png" class="img-fluid" width="300"> <img src="./2024-11-28-ABC9/GTP4all.png" class="img-fluid" width="300"></p>
 <ol start="11" type="1">
 <li><p>Now you can ask any question in the plugin. Simply write <code>/ask</code> followed by what you want to know. It requires some resources to use an LLM, so it might be slow withthe resources used in this tutorial.</p></li>
-<li><p>Use the launcher to choose if you want to start a notebook with python or with R, including the packages installed in the conda environment. The launcher looks similar to this:</p></li>
+<li><p>Use the launcher to choose if you want to start a notebook with python or R, including the packages installed in the conda environment. The launcher looks similar to this:</p></li>
 </ol>
 <p><img src="./2024-11-28-ABC9/launcher.png" class="img-fluid"></p>
 </section>
