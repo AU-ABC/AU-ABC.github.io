@@ -133,46 +133,18 @@
     "text": "The ABC will routinely post new meetings and related workshops/courses of interest here.\n\n\n\n\n\n\n\n\n\n\n\n\nABC.8: Nygen workshop\n\n\n\nCafe\n\n\nCoding\n\n\nBioinformatics\n\n\nWorkshop\n\n\nsingle cell\n\n\n\nA single cell workshop with the tool developed by Nygen\n\n\n\nNov 7, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nABC.9: Accessible Bioinformatics Cafe\n\n\n\nCafe\n\n\nCoding\n\n\nBioinformatics\n\n\nGenomeDK\n\n\nRStudio\n\n\nJupyterlab\n\n\n\nLive demo with Rstudio and Jupyterlab on GenomeDK\n\n\n\nNov 28, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nABC.10: Accessible Bioinformatics Cafe\n\n\n\nCafe\n\n\nCoding\n\n\nBioinformatics\n\n\nbulkRNA\n\n\npreprocessing\n\n\n\nDetailed import and preprocessing of Bulk RNA data\n\n\n\nDec 12, 2024\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Event title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nEvent title\n\n\nDates\n\n\nLocation\n\n\nOrganizers\n\n\n\n\n\n\nABC.7: Seventh ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nUse GenomeDK workshop\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, GenomeDK admin\n\n\n\n\nABC.6: Sixth ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.5: Fifth ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.4: Fourth ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.3: Third ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.2: Second ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.1: First ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "binfResources/databases.html",
-    "href": "binfResources/databases.html",
-    "title": "Useful tips for databases",
+    "objectID": "binfResources/R.html",
+    "href": "binfResources/R.html",
+    "title": "Useful tips for R",
     "section": "",
-    "text": "Useful tips for databases\nNothing yet\n\n\n\n\n\n\nthis is my tip\n\n\n\nhello I am Marie"
+    "text": "Useful tips for R\nNothing yet\n\n\n\n\n\n\nthis is my tip\n\n\n\nhello I am Marie"
   },
   {
-    "objectID": "binfResources/bash.html",
-    "href": "binfResources/bash.html",
-    "title": "Useful tips for day-to-day bash",
+    "objectID": "binfResources/python.html",
+    "href": "binfResources/python.html",
+    "title": "Useful tips for python",
     "section": "",
-    "text": "awk '$2~/^-$/ { next } { print }' file_input &gt; file_output\n\n\n\nawk -F \"\\\"*,\\\"*\" '{print $M}' file.csv\n\n\n\nawk '{ $1=\"\"; $2=\"\"; print}' filename\n\n\n\nsed -n '10,20p' myFile\n\n\n\nsed -n -e 1p -e 2p  myFile\n\n\n\n sed -n '$L~$Mp' myFile\n\n\n\ncut -f1 20141020.combined_mask.whole_genomeV2.bed | sort -n | uniq -c\n\n\n\nsed -e \"s/string1/string2/\" myFile \n\n\n\nsort -k 3,3 myFile\n\n\n\ngrep -v -e \"pattern\" myFile &gt; newFile\n\n\ngrep -v -n -e \"pattern\" myFile | cut -f1 -d\":\"\n\ngrep -v -e \"pattern1\\|pattern2\" myFile &gt; newFile\n\n\n\n\n\n\n\necho $a $b $c | tr -s ' ' '\\t'\n\n\n\nperl -E \"say $a + $b\"\n\n\n\n\n\n\nls *.zip | xargs -n 1 basename -s .zip\n\n\n\nfind . -type f ! -name '*.gz' -exec gzip \"{}\" \\;\n\n\n\n\n\n\nwget -i file.txt\n\n\n\nfor var in `ls -d */`; do echo ${var::-1}; done"
-  },
-  {
-    "objectID": "binfResources/bash.html#handling-text-files",
-    "href": "binfResources/bash.html#handling-text-files",
-    "title": "Useful tips for day-to-day bash",
-    "section": "",
-    "text": "awk '$2~/^-$/ { next } { print }' file_input &gt; file_output\n\n\n\nawk -F \"\\\"*,\\\"*\" '{print $M}' file.csv\n\n\n\nawk '{ $1=\"\"; $2=\"\"; print}' filename\n\n\n\nsed -n '10,20p' myFile\n\n\n\nsed -n -e 1p -e 2p  myFile\n\n\n\n sed -n '$L~$Mp' myFile\n\n\n\ncut -f1 20141020.combined_mask.whole_genomeV2.bed | sort -n | uniq -c\n\n\n\nsed -e \"s/string1/string2/\" myFile \n\n\n\nsort -k 3,3 myFile\n\n\n\ngrep -v -e \"pattern\" myFile &gt; newFile\n\n\ngrep -v -n -e \"pattern\" myFile | cut -f1 -d\":\"\n\ngrep -v -e \"pattern1\\|pattern2\" myFile &gt; newFile"
-  },
-  {
-    "objectID": "binfResources/bash.html#handling-variables",
-    "href": "binfResources/bash.html#handling-variables",
-    "title": "Useful tips for day-to-day bash",
-    "section": "",
-    "text": "echo $a $b $c | tr -s ' ' '\\t'\n\n\n\nperl -E \"say $a + $b\""
-  },
-  {
-    "objectID": "binfResources/bash.html#managing-files",
-    "href": "binfResources/bash.html#managing-files",
-    "title": "Useful tips for day-to-day bash",
-    "section": "",
-    "text": "ls *.zip | xargs -n 1 basename -s .zip\n\n\n\nfind . -type f ! -name '*.gz' -exec gzip \"{}\" \\;"
-  },
-  {
-    "objectID": "binfResources/bash.html#transfering-files",
-    "href": "binfResources/bash.html#transfering-files",
-    "title": "Useful tips for day-to-day bash",
-    "section": "",
-    "text": "wget -i file.txt\n\n\n\nfor var in `ls -d */`; do echo ${var::-1}; done"
+    "text": "Useful tips for python"
   },
   {
     "objectID": "about/about.html",
@@ -490,18 +462,46 @@
     "text": "We had a great workshop day, and for those of you who were not there, or want to see the slides again, here they are\n \n\n See the slides"
   },
   {
-    "objectID": "binfResources/python.html",
-    "href": "binfResources/python.html",
-    "title": "Useful tips for python",
+    "objectID": "binfResources/Databases.html",
+    "href": "binfResources/Databases.html",
+    "title": "Archive of OMICS databases with open datasets",
     "section": "",
-    "text": "Useful tips for python"
+    "text": "In this notebook, we provide a searchable table of periodically updated and daily tested OMICS databases with open access datasets. The table is based on multiple online sources and inputs from our colleagues and ABC participants. The links are tested automatically every day at midnight, and an error in opening the related webpage is signaled in the table. When we verify the malfunctioning of the link, we remove the database from the list after a reasonable grace period.\n\n\n\n\n\n\nNote\n\n\n\nFor any contribution or suggestion, please contact us at abcafe [at] au.dk, or open an issue on the Github repository of this webpage. Any input is considered, especially if you produced your own database and want to share it with the community!!!\n\n\n\n\n\n\n\n\n\n\n\n\n\n    \n        \n        \n        \n        \n        \n        \n        \n        \n    \n    \n   \n    \n      \n  \n        \n    \n    \n  \n        \n    \n    \n  \n        \n    \n      \n  \n        \n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n        \n    \n\n\n\n\nThis is the init_notebook_mode cell from ITables v2.2.3\n(you should not see this message - is your notebook trusted?)\n\n\n\n\n\n\n\nNameOrganismOrganDescriptionLink\n\n\n\n    \n        \n        \n        \n        \n        \n        \n        \n        \n    \n    \n   \n    \n      \n  \n        \n    \n    \n  \n        \n    \n    \n  \n        \n    \n      \n  \n        \n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n        \n    \n\n\n\n\nLoading ITables v2.2.3 from the init_notebook_mode cell...\n(need help?)"
   },
   {
-    "objectID": "binfResources/R.html",
-    "href": "binfResources/R.html",
-    "title": "Useful tips for R",
+    "objectID": "binfResources/bash.html",
+    "href": "binfResources/bash.html",
+    "title": "Useful tips for day-to-day bash",
     "section": "",
-    "text": "Useful tips for R\nNothing yet\n\n\n\n\n\n\nthis is my tip\n\n\n\nhello I am Marie"
+    "text": "awk '$2~/^-$/ { next } { print }' file_input &gt; file_output\n\n\n\nawk -F \"\\\"*,\\\"*\" '{print $M}' file.csv\n\n\n\nawk '{ $1=\"\"; $2=\"\"; print}' filename\n\n\n\nsed -n '10,20p' myFile\n\n\n\nsed -n -e 1p -e 2p  myFile\n\n\n\n sed -n '$L~$Mp' myFile\n\n\n\ncut -f1 20141020.combined_mask.whole_genomeV2.bed | sort -n | uniq -c\n\n\n\nsed -e \"s/string1/string2/\" myFile \n\n\n\nsort -k 3,3 myFile\n\n\n\ngrep -v -e \"pattern\" myFile &gt; newFile\n\n\ngrep -v -n -e \"pattern\" myFile | cut -f1 -d\":\"\n\ngrep -v -e \"pattern1\\|pattern2\" myFile &gt; newFile\n\n\n\n\n\n\n\necho $a $b $c | tr -s ' ' '\\t'\n\n\n\nperl -E \"say $a + $b\"\n\n\n\n\n\n\nls *.zip | xargs -n 1 basename -s .zip\n\n\n\nfind . -type f ! -name '*.gz' -exec gzip \"{}\" \\;\n\n\n\n\n\n\nwget -i file.txt\n\n\n\nfor var in `ls -d */`; do echo ${var::-1}; done"
+  },
+  {
+    "objectID": "binfResources/bash.html#handling-text-files",
+    "href": "binfResources/bash.html#handling-text-files",
+    "title": "Useful tips for day-to-day bash",
+    "section": "",
+    "text": "awk '$2~/^-$/ { next } { print }' file_input &gt; file_output\n\n\n\nawk -F \"\\\"*,\\\"*\" '{print $M}' file.csv\n\n\n\nawk '{ $1=\"\"; $2=\"\"; print}' filename\n\n\n\nsed -n '10,20p' myFile\n\n\n\nsed -n -e 1p -e 2p  myFile\n\n\n\n sed -n '$L~$Mp' myFile\n\n\n\ncut -f1 20141020.combined_mask.whole_genomeV2.bed | sort -n | uniq -c\n\n\n\nsed -e \"s/string1/string2/\" myFile \n\n\n\nsort -k 3,3 myFile\n\n\n\ngrep -v -e \"pattern\" myFile &gt; newFile\n\n\ngrep -v -n -e \"pattern\" myFile | cut -f1 -d\":\"\n\ngrep -v -e \"pattern1\\|pattern2\" myFile &gt; newFile"
+  },
+  {
+    "objectID": "binfResources/bash.html#handling-variables",
+    "href": "binfResources/bash.html#handling-variables",
+    "title": "Useful tips for day-to-day bash",
+    "section": "",
+    "text": "echo $a $b $c | tr -s ' ' '\\t'\n\n\n\nperl -E \"say $a + $b\""
+  },
+  {
+    "objectID": "binfResources/bash.html#managing-files",
+    "href": "binfResources/bash.html#managing-files",
+    "title": "Useful tips for day-to-day bash",
+    "section": "",
+    "text": "ls *.zip | xargs -n 1 basename -s .zip\n\n\n\nfind . -type f ! -name '*.gz' -exec gzip \"{}\" \\;"
+  },
+  {
+    "objectID": "binfResources/bash.html#transfering-files",
+    "href": "binfResources/bash.html#transfering-files",
+    "title": "Useful tips for day-to-day bash",
+    "section": "",
+    "text": "wget -i file.txt\n\n\n\nfor var in `ls -d */`; do echo ${var::-1}; done"
   },
   {
     "objectID": "Documentation.html",
