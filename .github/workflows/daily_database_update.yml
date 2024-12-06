@@ -37,10 +37,10 @@ jobs:
       - name: Process Excel File
         run: |
           python -c "
-import pandas as pd
-import requests
-from bs4 import BeautifulSoup
-from datetime import datetime
+    import pandas as pd
+    import requests
+    from bs4 import BeautifulSoup
+    from datetime import datetime
 
 # Load the Excel file into a pandas dataframe
 excel_file = 'downloaded_file.xlsx'
