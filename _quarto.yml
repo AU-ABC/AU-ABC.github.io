@@ -24,14 +24,14 @@ website:
         text: Documentation
       - text: Resources
         menu:
-          - href: binfResources/databases.qmd
+          - href: binfResources/Databases.ipynb
             text: Databases
           - href: binfResources/bash.qmd
-            text: Bash
-          - href: binfResources/R.qmd
-            text: R
-          - href: binfResources/python.qmd
-            text: Python
+            text: Bash tips
+          #- href: binfResources/R.qmd
+          #  text: R
+          #- href: binfResources/python.qmd
+          #  text: Python
     right: 
       - icon: github
         href: https://github.com/AU-ABC
