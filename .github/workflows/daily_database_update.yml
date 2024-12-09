@@ -41,7 +41,6 @@ jobs:
         # Step 6: Move the CSV to the desired folder
       - name: Move CSV to Target Folder
         run: |
-          mkdir -p target_folder
           mv converted_file.csv binfResources/databases.csv
 
       # Step 7: Commit and push changes
