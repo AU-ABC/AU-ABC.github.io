@@ -1,18 +1,48 @@
-#on: 
-#  push:
-#    branches: main
-#  workflow_dispatch:
+on: 
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at midnight
+  push:
+    branches: main
+  workflow_dispatch:
 
 name: Quarto Publish
 
-on:
-  workflow_run:
-    workflows:
-      - Daily Database Update # Name of the first workflow
-    types:
-      - completed # Trigger this workflow only when the first workflow is completed
-
 jobs:
+  update-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      # Step 3: Install required Python dependencies
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas openpyxl requests lxml beautifulsoup4
+
+      # Step 4: Download the Excel file from Google Drive
+      - name: Download Excel File
+        run: |
+          curl -L -o downloaded_file.xlsx  "https://docs.google.com/spreadsheets/d/1AQa2f94s1WrNMXutVVvpeLuPFcCcNDe4/export?format=xlsx"
+
+      # Step 5: Process the Excel file
+      - name: Process Excel File
+        run: |
+          python resources/databaseFetch.py
+
+      # Step 6: Move the CSV to the desired folder
+      - name: Move CSV to Target Folder
+        run: |
+          mv converted_file.csv resources/databases.csv
+
   build-deploy:
     runs-on: ubuntu-latest
     permissions:
