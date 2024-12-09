@@ -10,6 +10,8 @@ name: Quarto Publish
 jobs:
   update-file:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       # Step 1: Checkout the repository
@@ -43,12 +45,7 @@ jobs:
         run: |
           mv converted_file.csv resources/databases.csv
 
-  build-deploy:
-    needs: update-file
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    steps:
+
       - name: Install libcurl on Linux
         if: runner.os == 'Linux'
         run: sudo apt-get update -y && sudo apt-get install -y libcurl4-openssl-dev libharfbuzz-dev libfribidi-dev
