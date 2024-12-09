@@ -51,6 +51,7 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           cat ~/.ssh/id_rsa
           ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh -vT git@github.com
 
       # Step 8: Commit and push changes
       - name: Commit and Push Changes
