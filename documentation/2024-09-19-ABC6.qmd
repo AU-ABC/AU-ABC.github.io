@@ -25,7 +25,7 @@ Today's slides
 
 # Download from GEO and SRA 
 
-There is a multitude of online databases for OMICS data of all types (we are try to put together [an useful list of databases here](../binfResources/databases.qmd)). Some of those databases provide direct links to the data to download (either raw data or analysis results), some others havea more complex way of downloading data (through a software or some more complex way of finding the download link). A database people often find problematic is [GEO](https://www.ncbi.nlm.nih.gov/geo/) (Gene Expression Omnibus), which includes processed and raw data, usally for short read datasets.
+There is a multitude of online databases for OMICS data of all types (we are trying to put together [an useful list of databases here](../binfResources/Databases.ipynb)). Some of those databases provide direct links to the data to download (either raw data or analysis results), some others havea more complex way of downloading data (through a software or some more complex way of finding the download link). A database people often find problematic is [GEO](https://www.ncbi.nlm.nih.gov/geo/) (Gene Expression Omnibus), which includes processed and raw data, usally for short read datasets.
 
 ## GEO and SRA data
 
