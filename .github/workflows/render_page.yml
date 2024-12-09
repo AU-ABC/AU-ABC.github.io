@@ -55,7 +55,7 @@ jobs:
 
       - name: Install packages for tables on quarto
         if: runner.os == 'Linux'
-        run: pip install pandas openpyxl requests itables pandas ipython
+        run: pip install jupyter pandas openpyxl requests itables pandas ipython
 
       - name: Check out repository
         uses: actions/checkout@v4
@@ -68,6 +68,9 @@ jobs:
           tinytex: true
           version: 1.4.515
 
+      - name: execute notebooks
+        run: jupyter nbconvert --execute --to notebook --inplace binfResources/Databases.ipynb
+         
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
