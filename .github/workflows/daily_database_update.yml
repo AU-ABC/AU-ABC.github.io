@@ -41,7 +41,7 @@ jobs:
         # Step 6: Move the CSV to the desired folder
       - name: Move CSV to Target Folder
         run: |
-          mv converted_file.csv binfResources/databases.csv
+          mv converted_file.csv resources/databases.csv
 
       # Step 7: Commit and push changes
       - name: Commit and Push Changes
