@@ -16,7 +16,7 @@ jobs:
     steps:
       # Step 1: Checkout the repository
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       # Step 2: Set up Python environment
       - name: Set up Python
@@ -45,7 +45,6 @@ jobs:
         run: |
           mv converted_file.csv resources/databases.csv
 
-
       - name: Install libcurl on Linux
         if: runner.os == 'Linux'
         run: sudo apt-get update -y && sudo apt-get install -y libcurl4-openssl-dev libharfbuzz-dev libfribidi-dev
@@ -54,8 +53,8 @@ jobs:
         if: runner.os == 'Linux'
         run: pip install jupyter pandas openpyxl requests itables pandas ipython
 
-      - name: Check out repository
-        uses: actions/checkout@v4
+#      - name: Check out repository
+#        uses: actions/checkout@v4
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
