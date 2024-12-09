@@ -50,6 +50,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add target_folder/converted_file.csv
-          git commit -m "Update converted_file.csv [Daily Update]"
+          git add resources/databases.csv
+          git commit -m "Update databases.csv [Daily Update]"
           git push
