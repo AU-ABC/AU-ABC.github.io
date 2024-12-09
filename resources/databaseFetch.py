@@ -25,7 +25,7 @@ def test_link(link):
         return 'Not Working', datetime.now().strftime('%Y-%m-%d')
 
 # Add a new column 'TESTED' with results
-df['TESTED'], df['DATE'] = zip(*df['LINK'].apply(test_link))
+df['Tested'], df['Date_tested'] = zip(*df['Link'].apply(test_link))
 
 # Save the updated dataframe to a CSV file
 df.to_csv(csv_file, index=False)
