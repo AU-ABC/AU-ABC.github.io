@@ -38,19 +38,29 @@ jobs:
         run: |
           python resources/databaseFetch.py
 
-        # Step 6: Move the CSV to the desired folder
+      # Step 6: Move the CSV to the desired folder
       - name: Move CSV to Target Folder
         run: |
-          mkdir -p target_folder
-          mv converted_file.csv binfResources/databases.csv
+          mv converted_file.csv resources/databases.csv
 
-      # Step 7: Commit and push changes
+      # Step 7: Set up SSH
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          cat ~/.ssh/id_ed25519
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh -vT git@github.com
+
+      # Step 8: Commit and push changes
       - name: Commit and Push Changes
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add target_folder/converted_file.csv
-          git commit -m "Update converted_file.csv [Daily Update]"
+          git config user.name "SamueleSoraggi"
+          git config user.email "samuelson1990@gmail.com"
+          git remote set-url origin git@github.com:AU-ABC/AU-ABC.github.io.git
+          git add resources/databases.csv
+          git commit -m "Update databases.csv"
           git push

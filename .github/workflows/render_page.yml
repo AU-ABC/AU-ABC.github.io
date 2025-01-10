@@ -1,33 +1,60 @@
-#on: 
-#  push:
-#    branches: main
-#  workflow_dispatch:
+on: 
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at midnight
+  push:
+    branches: main
+  workflow_dispatch:
 
 name: Quarto Publish
 
-on:
-  workflow_run:
-    workflows:
-      - Daily Database Update # Name of the first workflow
-    types:
-      - completed # Trigger this workflow only when the first workflow is completed
-
 jobs:
-  build-deploy:
+  update-file:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      # Step 3: Install required Python dependencies
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas openpyxl requests lxml beautifulsoup4
+
+      # Step 4: Download the Excel file from Google Drive
+      - name: Download Excel File
+        run: |
+          curl -L -o downloaded_file.xlsx  "https://docs.google.com/spreadsheets/d/1AQa2f94s1WrNMXutVVvpeLuPFcCcNDe4/export?format=xlsx"
+
+      # Step 5: Process the Excel file
+      - name: Process Excel File
+        run: |
+          python resources/databaseFetch.py
+
+      # Step 6: Move the CSV to the desired folder
+      - name: Move CSV to Target Folder
+        run: |
+          mv converted_file.csv resources/databases.csv
+
       - name: Install libcurl on Linux
         if: runner.os == 'Linux'
         run: sudo apt-get update -y && sudo apt-get install -y libcurl4-openssl-dev libharfbuzz-dev libfribidi-dev
 
       - name: Install packages for tables on quarto
         if: runner.os == 'Linux'
-        run: pip install pandas openpyxl requests itables pandas ipython
+        run: pip install jupyter pandas openpyxl requests itables pandas ipython
 
-      - name: Check out repository
-        uses: actions/checkout@v4
+#      - name: Check out repository
+#        uses: actions/checkout@v4
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -37,6 +64,9 @@ jobs:
           tinytex: true
           version: 1.4.515
 
+      - name: execute notebooks
+        run: jupyter nbconvert --execute --to notebook --inplace binfResources/Databases.ipynb
+         
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:
