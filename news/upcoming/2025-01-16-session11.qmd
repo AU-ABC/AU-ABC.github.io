@@ -1,0 +1,32 @@
+---
+title: "ABC.11: Accessible Bioinformatics Cafe"
+author: "Samuele Soraggi"
+Organizers: HDS Sandbox, Bioinf Core facility, DDSA
+date: 2025-01-16
+categories: [Cafe, Coding, Bioinformatics, bulkRNA, preprocessing, Lanuage Models]
+description: "Local language models and bulkRNA tutorial"
+---
+
+![](../../img/news/heatmap.png){fig-align="center" width=400px}
+
+The 11th session of the ABC (Accessible Bioinformatics Cafe) will be **on january 16th, at 13:00-15:00 in building 1231-114**
+
+![The building is close to the lakes. Room 114 is on the ground floor, by the southernmost corner of the building, where you can find also the door to the stairs to other floors.](../../img/news/bartholin1231-114.png){width=400px}
+
+Everyone is welcome to **join independently of coding skills and level**. 
+
+## Agenda
+ 
+For this ABC Manuel will show how to run locally a language model on your laptop, and Marie will propose a tutorial on bulkRNA data
+
+## Signing up
+
+Please sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don't do it multiple times to cheat for extra cake!
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://forms.gle/gymRVbLTFcQWpMqLA" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Sign Up!
+  </a>
+</p>

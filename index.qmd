@@ -6,13 +6,13 @@ format:
 bibliography: resources/references.bib
 ---
 
-:::{.callout-warning title="Incoming workshop"}
-The next ABC is on December 12th, in building 1231-114, from 1pm to 3pm. There will be a showcase of import and preprocessing of bulkRNA sequencing data by Marie. Click the button below for more information and sign up to the event.
+:::{.callout-warning title="Incoming ABC"}
+The next ABC is on january 16th, in building 1231-114, from 1pm to 3pm. There will be a showcase of local language model and a bulkRNA tutorial by Manuel and Marie. Click the button below for more information and sign up to the event.
 
 &nbsp;
 
  <p align="center">
-  <a href="https://abc.au.dk/news/upcoming/2024-12-12-session10.html" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+  <a href="https://abc.au.dk/news/upcoming/2025-01-16-session11.html" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
     Information + signup
   </a>
 </p>
@@ -86,3 +86,8 @@ Do you have an input on making the ABC better with new tutorials or workshops we
     Give your input!
   </a>
 </p>
+
+## Funding
+
+![](img/DDSA.png){widht=500px fig-align="center"}
+For all 2025 the cafe is supported by the Danish Data Science Foundation!
