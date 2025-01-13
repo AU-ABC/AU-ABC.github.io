@@ -75,19 +75,6 @@ Subscribe to our newsletter to receive a few, non-invasive reminders for our mee
 
 <div class="ml-embedded" data-form="iGIYwp"></div>
 
-## Suggestions
-
-Do you have an input on making the ABC better with new tutorials or workshops we could organize? Please write it down in the form below, and we will see if we can implement something for the future editions of ABC.
-
-&nbsp;
-
- <p align="center">
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSeNJlDV8XDyEBSmynFI_TEB1clzsjul41ozpFjZCkdCRXkAsg/viewform?usp=pp_url" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
-    Give your input!
-  </a>
-</p>
-
 ## Funding
 
-![](img/DDSA.png){widht=500px fig-align="center"}
-For all 2025 the cafe is supported by the Danish Data Science Foundation!
+![For all 2025 the cafe is supported by the Danish Data Science Foundation!](img/DDSA.png){widht=500px fig-align="center"}
