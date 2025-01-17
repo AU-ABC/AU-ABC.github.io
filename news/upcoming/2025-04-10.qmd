@@ -1,0 +1,45 @@
+---
+title: "Workshop: Advanced use of GenomeDK"
+author: "Samuele Soraggi, Dan Søndergaard"
+Organizers: HDS Sandbox, GenomeDK
+date: 2025-04-10
+categories: [Workshop, GenomeDK, Advanced]
+description: "What more you can get out of GenomeDK"
+---
+
+Are you a student or academic, current or future user of the GenomeDK high-performance computing (HPC) system? Or are you just curious about HPC and how you can utilize it in your work? Do you need to learn to use GenomeDK, or wish to become a better and more organized user?
+
+Then join us in this series of GenomeDK workshops where we guide you from a general introduction to advanced usage. Each workshop targets increasing difficulty levels, so you can join the sessions that fit you best. The second workshop is for more advanced usage of GenomeDK.
+
+
+
+:::{.callout-note title="Details"}
+April 10, 2025, 10:00-14:00 @ 1253-317 (William Scharff)
+
+Intended audience: For all users of GenomeDK, especially those already with some knowledge of the system.
+
+Topics:
+
+- Multiple terminal sessions with tmux
+- Web applications and tunneling
+- Containerized software
+- Data synchronization with rsync
+- Pipelines and your first pipeline submission
+:::
+
+
+This workshop will be hosted by Samuele Soraggi (BiRC, MBG) and Dan Søndergaard (GenomeDK). 
+
+
+## Signing up
+
+Each workshop is scheduled for four hours, including a 45 min. lunch break.
+There will be **cake, coffee, and tea** for attendants, so please remember to sign up! There are 30 seats available and a waiting list.
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://forms.gle/ESEfqtHcRx41Zg837" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Sign Up!
+  </a>
+</p>

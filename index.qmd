@@ -7,12 +7,11 @@ bibliography: resources/references.bib
 ---
 
 :::{.callout-warning title="Incoming ABC"}
-The next ABC is on january 16th, in building 1231-114, from 1pm to 3pm. There will be a showcase of local language model and a bulkRNA tutorial by Manuel and Marie. Click the button below for more information and sign up to the event.
-
+The GenomeDK workshop series for the first half of 2025 is out, with three workshops going from the basics to reproducible pipelines on the cluster. Reserve your seat at any of the three workshops from the link below
 &nbsp;
 
  <p align="center">
-  <a href="https://abc.au.dk/news/upcoming/2025-01-16-session11.html" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+  <a href="https://genome.au.dk/news/workshop-series-in-2025/" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
     Information + signup
   </a>
 </p>
