@@ -11,15 +11,19 @@
       "/documentation/2024-10-10-usegdk.html",
       "/documentation/2024-10-24-ABC7.html",
       "/documentation/2024-11-28-ABC9.html",
+      "/documentation/2024-12-12-ABC10.html",
       "/documentation/2025-01-16-ABC11.html"
     ]
   },
   {
     "listing": "/news.html",
     "items": [
-      "/news/upcoming/2024-11-28-session9.html",
-      "/news/upcoming/2024-12-12-session10.html",
-      "/news/upcoming/2025-01-16-session11.html",
+      "/news/upcoming/2025-02-26.html",
+      "/news/upcoming/2025-04-10.html",
+      "/news/upcoming/2025-06-04.html",
+      "/news/past/2025-01-16-session11.html",
+      "/news/past/2024-12-12-session10.html",
+      "/news/past/2024-11-28-session9.html",
       "/news/past/2024-11-07-session8.html",
       "/news/past/2024-10-24-session7.html",
       "/news/past/2024-10-10-usegenomedk.html",
