@@ -32,6 +32,8 @@ website:
           #  text: R
           #- href: binfResources/python.qmd
           #  text: Python
+      - href: gethelp.qmd
+        text: People&Help
     right: 
       - icon: github
         href: https://github.com/AU-ABC

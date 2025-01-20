@@ -2,6 +2,7 @@
 title: "Workshop: Pipelines on GenomeDK"
 author: "Samuele Soraggi, Dan Søndergaard"
 Organizers: HDS Sandbox, GenomeDK
+image: "../../img/news/binfPipeline.png"
 date: 2025-06-04
 categories: [Workshop, GenomeDK, Pipelines]
 description: "Create complex and reproducible pipelines on genomeDK"
@@ -9,7 +10,7 @@ description: "Create complex and reproducible pipelines on genomeDK"
 
 Are you a student or academic, current or future user of the GenomeDK high-performance computing (HPC) system? Or are you just curious about HPC and how you can utilize it in your work? Do you need to learn to use GenomeDK, or wish to become a better and more organized user?
 
-Then join us in this series of GenomeDK workshops where we guide you from a general introduction to advanced usage. Each workshop targets increasing difficulty levels, so you can join the sessions that fit you best. The second workshop is for more advanced usage of GenomeDK.
+Then join us in this series of GenomeDK workshops where we guide you from a general introduction to advanced usage. Each workshop targets increasing difficulty levels, so you can join the sessions that fit you best. The third workshop is for creating reproducible pipelines.
 
 
 

@@ -1,0 +1,32 @@
+---
+format: 
+    html:
+        toc: false
+        page-layout: full
+---
+
+# Behind the ABC - Who we are
+
+We organize the cafe as a collaboration between the [Danish Health Data Science Sandbox](https://hds-sandbox.github.io), the [Core Bioinformatics Facility](https://biomed.au.dk/bioinformatics-core-facility), and PhD students whose fields touch bioinformatics and health data science.
+
+Our shared email address for general enquiries about the cafe is `abcafe au.dk` (with the @ in between).
+
+| People | What do I do |
+|------- |--------- |
+| ![](img/people/Per.png){width=200px}| **Per Qvist**: Ass.Prof. at AU biomed, leads as well the Core Bioinformatics Facility. Most importantly, has been managing constant cake and drinks flow to the ABC, which has been making him invaluable to all participants!         |
+|![](img/people/marie.jpg){width=200px}| **Marie Sønderstrup**: Phd Student at The department of biomedicine. Is the inspirator of the ABC, after living through the deep frustration of understanding how to code. |
+|![](img/people/manu.jpg){width=200px}| **Manuel Peral Vazquez**: Phd Student at Department of Molecular Biology and Genetics - Cellular Health, Intervention, and Nutrition. He loves to dig into the amenities of the bash command line and trying out interesting things. |
+|![](img/people/samu.jpg){width=200px}| **Samuele Soraggi**: Special consultant at the department of bioinformatics after a migration from the field of mathematics. He often throws himself to unknown buggy pieces of code with duct tape and a hammer until they work. When he does not succeed, he deletes them and empty the trash bin. |
+|![](img/people/dimi.jpg){width=200px}| **Dimitrios Pediotidis-Maniatis**: Consultant at the bioinformatics core facility. Probably the person with the highest attendance to the ABC! He masters a lot of things in `bash` and `R` - test him out!|
+|![](img/people/jacob.jpg){width=200px}| **jacob Egemose Høgfeldt**: He is also consultant at the bioinformatics core facility, and knows a great deal of bioinformatics and data science. He is the absolute go-to person for bulkRNA sequencing questions together with Dimitrios. |
+
+
+# Beyond the ABC - in depth bioinformatics support
+
+Some of us work at Aarhus University as consultants, providing support for various HPC and bioinformatics topics and analysis, in two different ways:
+
+| Who     | Help and contact           |
+| ------- | --------- |
+| ![](img/people/samu.jpg){width=400px}        | Samuele from the Health Data Science Sandbox provides some free consultancy hours for **technical issues, bioinformatics setup for coding and perform analysis, machine learning practices, both on PC and computing cluster, and organizes a wide array of workshops**, both on demand and on own initiative. You can [book a short meeting with Samuele here](https://outlook.office.com/bookwithme/user/18fadf744cf6473c9f5d0d15bdcc608b@birc.au.dk?anonymous&ep=bwmEmailSignature) to introduce the problem and setup eventual solutions, or write at `samuele birc.au.dk` (with @ in between). |
+| ![](img/people/dimi.jpg){width=400px} ![](img/people/jacob.jpg){width=400px}        | Dimitrios and Jacob work at the Bioinformatics Core Facility, lead by Ass.Prof. Per Qvist. They can help you with a wide range of **bioinformatics services for data analysis, experimental design, bioinformatics support, writing, and even offer full research cooperation**. The Core facility has a "Bioinformatics as a Service" model with a generous fee, which you can see [at the webpage](https://biomed.au.dk/bioinformatics-core-facility) together with project examples. Take contact with Dimitrios and Jacob, or Ass.Prof Per Qvist, for an initial discussion, at one of those mails: `dimitrios.pm/jeh/per.q biomed.au.dk` (with @ in between)|
+

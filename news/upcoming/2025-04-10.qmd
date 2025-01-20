@@ -2,6 +2,7 @@
 title: "Workshop: Advanced use of GenomeDK"
 author: "Samuele Soraggi, Dan Søndergaard"
 Organizers: HDS Sandbox, GenomeDK
+image: "../../img/news/pcSmile.jpg"
 date: 2025-04-10
 categories: [Workshop, GenomeDK, Advanced]
 description: "What more you can get out of GenomeDK"
