@@ -8,6 +8,7 @@ bibliography: resources/references.bib
 
 :::{.callout-warning title="Incoming Events"}
 The 12th ABC will take place on January 30th, 2025. Drop in for help or follow our tutorial on pathway analysis in R with `clusterProfiler`!
+
 &nbsp;
 
 <p align="center">
@@ -16,9 +17,10 @@ The 12th ABC will take place on January 30th, 2025. Drop in for help or follow o
   </a>
 </p>
 
-
+&nbsp;
 
 The GenomeDK workshop series for the first half of 2025 is out, with three workshops going from the basics to reproducible pipelines on the cluster. Reserve your seat at any of the three workshops from the link below
+
 &nbsp;
 
  <p align="center">
