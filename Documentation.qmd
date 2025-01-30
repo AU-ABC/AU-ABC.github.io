@@ -12,6 +12,7 @@ listing:
     contents: 
       - documentation/*.qmd
       - documentation/*.ipynb
+      - documentation/*.html
     type: grid
     sort:
       - "date asc"
