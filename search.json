@@ -161,193 +161,263 @@
     "text": "Lets try some exercises!\nCreate a new script file or use the console to test some exercises below.\n\n1. Create a data frame\nWe will create a simple data frame. A data frame is nothing more than a table, where both rows and columns have labels, and can be easily accessed and manipulated. To create a small data frame, we can define its columns. We define each column through a vector with the function c(), where we can write values inside separated by a comma. Then we provide all vectors to the function data.frame, where we assign column names (Gene, Control, Treatment1, Treatment2).\n\n\n\n\n\n\nNote\n\n\n\nMake sure your vectors are all of the same length! Also, each vector usually contains values of the same type (for example only numbers or only text)\n\n\n\ngeneExpr &lt;- data.frame(\n  Gene = c(\"GeneA\", \"GeneB\", \"GeneC\"),\n  Control = c(10, 20, 30),\n  Treatment1 = c(15, 25, 35),\n  Treatment2 = c(100, 0, 250)\n)\n\ngeneExpr\n\n\nA data.frame: 3 × 4\n\n\nGene\nControl\nTreatment1\nTreatment2\n\n\n&lt;chr&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nGeneA\n10\n15\n100\n\n\nGeneB\n20\n25\n0\n\n\nGeneC\n30\n35\n250\n\n\n\n\n\nYou should be able to see the small data frame printed in output and also shown in the variable explorer.\n\n\n2. Plot from a data frame\nNow lets try to plot it Treatment 1 versus Treatment 2. The basic function for plotting in R is called plot. It takes as arguments the x axis and the y axis. It has other options which are not mandatory, such as style and color of the plot. Notice how we access the values in the columns using the $ sign.\n\nplot( x = geneExpr$Treatment1, \n      y = geneExpr$Treatment2 , \n      main=\"Expression per Treatment group\", \n      xlab = \"Treatment 1\", \n      ylab = \"Treatment 2\" , \n      col =\"blue\" , \n      type =\"b\")\n\n\n\n\n\n\n\n\nYou should be able to see a plot in the plotting window. In the command above we used many options beyond x and y. Can you see what they match in the plot?\n\n\n3. Summary statistics\nThere are lots of summary statistics already implemented in R. Below we calculate mean, median and standard deviation for the column Treatment1 of the data frame and then we print them.\n\nx &lt;- geneExpr$Treatment1\nmeanTr1 &lt;- mean(x)\nmedianTr1 &lt;- median(x)\nsdTr1 &lt;- sd(x)\n\nprint(\"mean, median and sd:\")\nprint(c(meanTr1, medianTr1, sdTr1))\n\n[1] \"mean, median and sd:\"\n[1] 25 25 10\n\n\nThis was neat! Can you try to calculate the cumulative sum of the difference between Treatment 1 and Treatment 2?\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nx &lt;- geneExpr$Treatment1 - geneExpr$Treatment2\ncsum &lt;- cumsum(x)\nprint(\"cumulative sum of Tr1 - Tr2:\")\nprint(csum)\n\n[1] \"cumulative sum of Tr1 - Tr2:\"\n[1]  -85  -60 -275\n\n\n\n\n\n\n\n4. Define your own function!\nAlthough R and the packages you can find have almost everything you will need, sometimes you might need to define your own function. The syntax to do it is very easy: you assign a function to a name, which then you will be able to use. Below, there is a function taking an argument (arg1) and multiplying it by 5. The function commands need to be between the curly brackets, and what we want as output need to be explicit through the return() function.\n\nmyFunction &lt;- function(arg1){\n  \n  # Now arg1 is a variable of the function. \n  # You can write comments inside code blocks with #\n  output &lt;- arg1 * 5\n  return (output)\n\n}\n\nSuch a function works if the argument is a number, but also if it is a vector!\n\nprint(\"with a number only\")\nmyFunction(5)\nprint(\"with a vector\")\nmyFunction(geneExpr$Treatment1)\n\n[1] \"with a number only\"\n[1] \"with a vector\"\n\n\n25\n\n\n\n75125175\n\n\nTry to make a function that takes three vectors, plots the first against the sum of the second and third, and returns the sum of all three vectors. Use the plot command we applied previously for help.\n\n\n\n\n\n\nAnswer\n\n\n\n\n\n\nsimpleSumPlot &lt;- function (arg1, arg2, arg3){\n  \n  arg23 &lt;- arg2 + arg3\n  arg123 &lt;- arg1 + arg2 + arg3\n\n  #plotting\n  plot( x = arg1, \n      y = arg23, \n      main=\"Plot with my own function\", \n      xlab = \"arg1\", \n      ylab = \"arg2+arg3\" , \n      col =\"red\", \n      type =\"o\" )\n\n  return (arg123)\n  \n}\n\nNow you can try this on vectors of the same length. We can use the ones in our data frame!\n\nsimpleSumPlot(arg1=geneExpr$Control, \n              arg2=geneExpr$Treatment1, \n              arg3=geneExpr$Treatment2)\n\n\n12545315\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n5. Read files\nMany times we want to read files from excel or other formats. R has many ways to do this and if not there are always packages out there to help you read the format you have. For reading an excel file a great package is the readxl. To read a csv file there is already the R function read.csv().\n\n\n\n\n\n\nNote\n\n\n\nBut wait. what are packages? Each package consist of a set of R and other scripts that meet specific needs for the users of R. For example openxlsx reads from Excel files, which R cannot do on its own. There are thousands of packages out there, ranging all fields of science, and some have become very popular.\n\n\nTry to install the package openxlsx. You can use the command install.packages(\"openxlsx\") in your RStudio console. Otherwise, go on the bottom right panel and click Packages and Install like this\n\nNow you are ready to import an Excel file. To use the package, we can load it with library(openxlsx). Otherwise we need to write the package name before the command to use from it (as done below). You can get a file locally on your computer or from an URL as done in this example.\n\ndf &lt;- openxlsx::read.xlsx(\"https://github.com/AU-ABC/AU-ABC.github.io/raw/main/documentation/2024-06-13-instR/data/data.xlsx\", sheet=1)\ndf\n\n\nA data.frame: 3 × 3\n\n\n\nx\ny\nz\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\n1\n10\n30\n-1\n\n\n2\n20\n20\n0\n\n\n3\n30\n10\n1\n\n\n\n\n\nOnce you have a data frame, you can always save it. Remember, the path of the saved file is related to your current working directory! To save your data frame as a csv file, use\n\nwrite.table(geneExpr, \n            file = \"./myFirstDataFrame.csv\", \n            row.names = FALSE , \n            sep=\"\\t\")\n\nwhere we remove the labels for the rows and use the tab separator instead of the comma. To read the file again, simply use\n\ndf2 &lt;- read.csv(\"./myFirstDataFrame.csv\" , sep=\"\\t\")\ndf2\n\n\nA data.frame: 3 × 4\n\n\nGene\nControl\nTreatment1\nTreatment2\n\n\n&lt;chr&gt;\n&lt;int&gt;\n&lt;int&gt;\n&lt;int&gt;\n\n\n\n\nGeneA\n10\n15\n100\n\n\nGeneB\n20\n25\n0\n\n\nGeneC\n30\n35\n250\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nYou can use the tab key of your keyboard to see a list of the available paths"
   },
   {
-    "objectID": "news.html",
-    "href": "news.html",
-    "title": "Events calendar",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome to the Accessible Bioinformatics Cafe",
     "section": "",
-    "text": "The ABC will routinely post new meetings and related workshops/courses of interest here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.12: Accessible Bioinformatics Cafe\n\n\n\nCafe\n\n\nCoding\n\n\nBioinformatics\n\n\npathway\n\n\nclusterprofiler\n\n\n\nPathway analysis in R\n\n\n\nInvalid Date\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorkshop: Introduction to GenomeDK\n\n\n\nWorkshop\n\n\nGenomeDK\n\n\nIntroduction\n\n\n\nGetting started with high-performance computing on GenomeDK\n\n\n\nFeb 26, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorkshop: Advanced use of GenomeDK\n\n\n\nWorkshop\n\n\nGenomeDK\n\n\nAdvanced\n\n\n\nWhat more you can get out of GenomeDK\n\n\n\nApr 10, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorkshop: Pipelines on GenomeDK\n\n\n\nWorkshop\n\n\nGenomeDK\n\n\nPipelines\n\n\n\nCreate complex and reproducible pipelines on genomeDK\n\n\n\nJun 4, 2025\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Event title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nEvent title\n\n\nDates\n\n\nLocation\n\n\nOrganizers\n\n\n\n\n\n\nABC.11: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, DDSA\n\n\n\n\nABC.10: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.9: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.8: Nygen workshop\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, CellX, Nygen\n\n\n\n\nABC.7: Seventh ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nUse GenomeDK workshop\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, GenomeDK admin\n\n\n\n\nABC.6: Sixth ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.5: Fifth ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.4: Fourth ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.3: Third ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.2: Second ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.1: First ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\n\nNo matching items"
+    "text": "Incoming Events\n\n\n\nThe 12th ABC will take place on January 30th, 2025. Drop in for help or follow our tutorial on pathway analysis in R with clusterProfiler!\n \n\n Information + signup \n\n \nThe GenomeDK workshop series for the first half of 2025 is out, with three workshops going from the basics to reproducible pipelines on the cluster. Reserve your seat at any of the three workshops from the link below\n \n\n Information + signup"
   },
   {
-    "objectID": "Documentation.html",
-    "href": "Documentation.html",
-    "title": "Documentation",
-    "section": "",
-    "text": "While it is always worth remembering an event which offers free cake (especially when it recurs with a frequency like the ABC, as you could read here), you might want to read again what has been done and said after the sugar levels drop down.\nOur tutorials and instructions are self contained, thus useful for anyone, also people not attending a session.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.1: Install R+Rstudio, first R coding problems/solutions\n\n\n\nR\n\n\nRStudio\n\n\nDataframe\n\n\n\nThings worth remembering from the ABC.1\n\n\n\nJun 13, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.2: RStudio projects and Anaconda+Python\n\n\n\nR\n\n\nRStudio\n\n\nAnaconda\n\n\nPython\n\n\nenvironments\n\n\n\nThings worth remembering from the ABC.2\n\n\n\nJun 27, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.3: R analysis of bulkRNA expression matrix\n\n\n\nR\n\n\nbulkRNA\n\n\n\nThings worth remembering from the ABC.3\n\n\n\nAug 20, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.4: Introduction to bash language for bioinformatics\n\n\n\nbash\n\n\ncommand line\n\n\n\nSlides and bash intro at the ABC.4\n\n\n\nSep 3, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.5: open coding and tutorials, single cell dimensionality reduction\n\n\n\nscanpy\n\n\nprojection\n\n\nPCA\n\n\nUMAP\n\n\n\nABC.5: try our previous tutorials or a workshop on dimensionality reduction\n\n\n\nSep 19, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.6: Download from online databases, open coding session\n\n\n\nGEO\n\n\nSRA\n\n\nDownload\n\n\n\nLearn how to download (especially) GEO-SRA data\n\n\n\nOct 3, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorkshop: Use GenomeDK\n\n\n\nGenomeDK\n\n\nbash\n\n\n\nIntroductive workshop to genomeDK\n\n\n\nOct 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.7: Practical guide to SLURM and job submissions on HPC\n\n\n\nSlurm\n\n\nJobs\n\n\nHPC\n\n\n\nLearn how to create jobs on HPC and troubleshoot bugs/problems\n\n\n\nOct 24, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.9: Graphical applications on GenomeDK\n\n\n\nJupyterlab\n\n\nRstudio\n\n\nLLM\n\n\nGenomeDK\n\n\n\nLearn how to launch graphical applications on GenomeDK and to integrate an LLM chatbot in Jupyterlab\n\n\n\nNov 28, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.10: Detailed bulkRNA data alignment and quality control\n\n\n\nbulkRNA\n\n\nalignment\n\n\nQC\n\n\nSTAR\n\n\n\nTry to align a bulk dataset and perform quality control!\n\n\n\nDec 12, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.11: Ollama for LLMs on your laptop, Introduction to Seurat, and scRNA-seq preprocessing\n\n\n\nscrna\n\n\nseurat\n\n\nR\n\n\n\nlearn about seurat object structure and preprocessing of scrnaSeq data\n\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "objectID": "index.html#concept",
+    "href": "index.html#concept",
+    "title": "Welcome to the Accessible Bioinformatics Cafe",
+    "section": "Concept",
+    "text": "Concept\n\n\n\n\n\n\nHave you ever ended in a situation involving questions similar to those?\n\nWhere do I start to code on a command line?\n How do I learn the basic R/python commands?\n What the heck is this error?????\n\nDo you feel finding the right tools is like going through a maze of software installations, versions and incompatibilities?\n\n\n\nWhat follows is the natural desire of throwing your computer out of the window. Don’t worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the Kubler-Ross curve1, where frustration is the point in which coding becomes challenging and we might feel lost.\nThe idea behind ABC is to bridge you beyond frustration moments, while at the same time offering a relaxed environment and the possibility to learn new things, help and get to know each other:"
   },
   {
-    "objectID": "binfResources/Databases.html",
-    "href": "binfResources/Databases.html",
-    "title": "Archive of OMICS databases with open datasets",
-    "section": "",
-    "text": "In this notebook, we provide a searchable table of periodically updated and daily tested OMICS databases with open access datasets. The table is based on multiple online sources and inputs from our colleagues and ABC participants. The links are tested automatically every day at midnight, and an error in opening the related webpage is signaled in the table. When we verify the malfunctioning of the link, we remove the database from the list after a reasonable grace period.\n\n\n\n\n\n\nNote\n\n\n\nFor any contribution or suggestion, please contact us at abcafe [at] au.dk, or open an issue on the Github repository of this webpage. Any input is considered, especially if you produced your own database and want to share it with the community!!!\n\n\n\n\n\n\n\n\n\n\n\n\n    \n        \n        \n        \n        \n        \n        \n        \n        \n    \n    \n   \n    \n      \n  \n        \n    \n    \n  \n        \n    \n    \n  \n        \n    \n      \n  \n        \n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n        \n    \n\n\nThis is the init_notebook_mode cell from ITables v2.2.4\n(you should not see this message - is your notebook trusted?)\n\n\n\n\n\n\n\nNameDescriptionOrganismOrganFormatTypeLinkTestedDate_tested\n\n\n    \n        \n        \n        \n        \n        \n        \n        \n        \n    \n    \n   \n    \n      \n  \n        \n    \n    \n  \n        \n    \n    \n  \n        \n    \n      \n  \n        \n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n        \n    \n\n\nLoading ITables v2.2.4 from the init_notebook_mode cell...\n(need help?)"
-  },
-  {
-    "objectID": "binfResources/R.html",
-    "href": "binfResources/R.html",
-    "title": "Useful tips for R",
-    "section": "",
-    "text": "Useful tips for R\nNothing yet\n\n\n\n\n\n\nthis is my tip\n\n\n\nhello I am Marie"
-  },
-  {
-    "objectID": "news/upcoming/2025-04-10.html",
-    "href": "news/upcoming/2025-04-10.html",
-    "title": "Workshop: Advanced use of GenomeDK",
-    "section": "",
-    "text": "Are you a student or academic, current or future user of the GenomeDK high-performance computing (HPC) system? Or are you just curious about HPC and how you can utilize it in your work? Do you need to learn to use GenomeDK, or wish to become a better and more organized user?\nThen join us in this series of GenomeDK workshops where we guide you from a general introduction to advanced usage. Each workshop targets increasing difficulty levels, so you can join the sessions that fit you best. The second workshop is for more advanced usage of GenomeDK.\nThis workshop will be hosted by Samuele Soraggi (BiRC, MBG) and Dan Søndergaard (GenomeDK)."
-  },
-  {
-    "objectID": "news/upcoming/2025-04-10.html#signing-up",
-    "href": "news/upcoming/2025-04-10.html#signing-up",
-    "title": "Workshop: Advanced use of GenomeDK",
-    "section": "Signing up",
-    "text": "Signing up\nEach workshop is scheduled for four hours, including a 45 min. lunch break. There will be cake, coffee, and tea for attendants, so please remember to sign up! There are 30 seats available and a waiting list.\n \n\n Sign Up!"
-  },
-  {
-    "objectID": "news/upcoming/2025-06-04.html",
-    "href": "news/upcoming/2025-06-04.html",
-    "title": "Workshop: Pipelines on GenomeDK",
-    "section": "",
-    "text": "Are you a student or academic, current or future user of the GenomeDK high-performance computing (HPC) system? Or are you just curious about HPC and how you can utilize it in your work? Do you need to learn to use GenomeDK, or wish to become a better and more organized user?\nThen join us in this series of GenomeDK workshops where we guide you from a general introduction to advanced usage. Each workshop targets increasing difficulty levels, so you can join the sessions that fit you best. The third workshop is for creating reproducible pipelines.\nThis workshop will be hosted by Samuele Soraggi (BiRC, MBG) and Dan Søndergaard (GenomeDK)."
-  },
-  {
-    "objectID": "news/upcoming/2025-06-04.html#signing-up",
-    "href": "news/upcoming/2025-06-04.html#signing-up",
-    "title": "Workshop: Pipelines on GenomeDK",
-    "section": "Signing up",
-    "text": "Signing up\nEach workshop is scheduled for four hours, including a 45 min. lunch break. There will be cake, coffee, and tea for attendants, so please remember to sign up! There are 30 seats available and a waiting list.\n \n\n Sign Up!"
-  },
-  {
-    "objectID": "news/past/2024-10-24-session7.html",
-    "href": "news/past/2024-10-24-session7.html",
-    "title": "ABC.7: Seventh ABC session",
-    "section": "",
-    "text": "The seventh session of the ABC (Accessible Bioinformatics Cafe) will be on october 24th, at 13:00 - building 1240-218\nEveryone is welcome to join independently of coding skills and level."
-  },
-  {
-    "objectID": "news/past/2024-10-24-session7.html#agenda",
-    "href": "news/past/2024-10-24-session7.html#agenda",
-    "title": "ABC.7: Seventh ABC session",
-    "section": "Agenda",
-    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented at each meeting. You can also bring your own code and issues and get help from us."
-  },
-  {
-    "objectID": "news/past/2024-10-24-session7.html#signing-up",
-    "href": "news/past/2024-10-24-session7.html#signing-up",
-    "title": "ABC.7: Seventh ABC session",
-    "section": "Signing up",
-    "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake (and you are pretty sure you will show up), click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign-up"
-  },
-  {
-    "objectID": "news/past/2024-06-13-session1.html",
-    "href": "news/past/2024-06-13-session1.html",
-    "title": "ABC.1: First ABC session",
-    "section": "",
-    "text": "The very first session of the ABC (Accessible Bioinformatics Cafe) will launch on june 13th, at 13:00 in the hall of AIAS (the Aarhus Institute of Advanced Studies, see below).\nEveryone is welcome to join independently of coding skills and level. In this first meeting we will also distribute a survey, so that participants can give some ideas about expectations and topics of interest."
-  },
-  {
-    "objectID": "news/past/2024-06-13-session1.html#purpose",
-    "href": "news/past/2024-06-13-session1.html#purpose",
-    "title": "ABC.1: First ABC session",
-    "section": "Purpose",
-    "text": "Purpose\nThe ABC aims to:\n\nSupport and guide in using bioinformatics and programming tools.\nProvide support for coding-related issues.\nEnhance the coding skills of participants in fundamental programming languages (R, python, bash command line)."
-  },
-  {
-    "objectID": "news/past/2024-06-13-session1.html#who-can-benefit-from-the-abc",
-    "href": "news/past/2024-06-13-session1.html#who-can-benefit-from-the-abc",
-    "title": "ABC.1: First ABC session",
+    "objectID": "index.html#who-can-benefit-from-the-abc",
+    "href": "index.html#who-can-benefit-from-the-abc",
+    "title": "Welcome to the Accessible Bioinformatics Cafe",
     "section": "Who can benefit from the ABC?",
     "text": "Who can benefit from the ABC?\nEveryone, really. Those that will particularly benefit from the ABC include:\n\nBiologists, bioinformaticians, and health scientists who wish to adopt coding-based solutions.\nScientists and students who wish to accelerate the coding-based analysis of various types of data (such as OMICs data and other large-scale data) in research across Aarhus University and Aarhus University Hospital.\nStudents and researchers who want an open environment where it is easy to get assistance and talk with others encountering similar issues (or maybe who already solved them!)"
   },
   {
-    "objectID": "news/past/2024-06-13-session1.html#format",
-    "href": "news/past/2024-06-13-session1.html#format",
-    "title": "ABC.1: First ABC session",
+    "objectID": "index.html#format",
+    "href": "index.html#format",
+    "title": "Welcome to the Accessible Bioinformatics Cafe",
     "section": "Format",
-    "text": "Format\nEach 2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues."
+    "text": "Format\nEach ~2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues."
   },
   {
-    "objectID": "news/past/2024-11-07-session8.html",
-    "href": "news/past/2024-11-07-session8.html",
-    "title": "ABC.8: Nygen workshop",
+    "objectID": "index.html#when-and-where",
+    "href": "index.html#when-and-where",
+    "title": "Welcome to the Accessible Bioinformatics Cafe",
+    "section": "When and where",
+    "text": "When and where\nLook at our Events calendar for more information about each meeting and upcoming workshops and courses."
+  },
+  {
+    "objectID": "index.html#newsletter",
+    "href": "index.html#newsletter",
+    "title": "Welcome to the Accessible Bioinformatics Cafe",
+    "section": "Newsletter",
+    "text": "Newsletter\nSubscribe to our newsletter to receive a few, non-invasive reminders for our meetings and events!"
+  },
+  {
+    "objectID": "index.html#funding",
+    "href": "index.html#funding",
+    "title": "Welcome to the Accessible Bioinformatics Cafe",
+    "section": "Funding",
+    "text": "Funding\n\n\n\nFor all 2025 the cafe is supported by the Danish Data Science Foundation!"
+  },
+  {
+    "objectID": "gethelp.html",
+    "href": "gethelp.html",
+    "title": "Behind the ABC - Who we are",
     "section": "",
-    "text": "The eighth session of the ABC (Accessible Bioinformatics Cafe) will be on november 7th, at 13:00-15:00 in building 1253-317\nEveryone is welcome to join independently of coding skills and level."
+    "text": "Behind the ABC - Who we are\nWe organize the cafe as a collaboration between the Danish Health Data Science Sandbox, the Core Bioinformatics Facility, and PhD students whose fields touch bioinformatics and health data science.\nOur shared email address for general enquiries about the cafe is abcafe au.dk (with the @ in between).\n\n\n\n\n\n\n\nPeople\nWhat do I do\n\n\n\n\n\nPer Qvist: Ass.Prof. at AU biomed, leads as well the Core Bioinformatics Facility. Most importantly, has been managing constant cake and drinks flow to the ABC, which has been making him invaluable to all participants!\n\n\n\nMarie Sønderstrup: Phd Student at The department of biomedicine. Is the inspirator of the ABC, after living through the deep frustration of understanding how to code.\n\n\n\nManuel Peral Vazquez: Phd Student at Department of Molecular Biology and Genetics - Cellular Health, Intervention, and Nutrition. He loves to dig into the amenities of the bash command line and trying out interesting things.\n\n\n\nSamuele Soraggi: Special consultant at the department of bioinformatics after a migration from the field of mathematics. He often throws himself to unknown buggy pieces of code with duct tape and a hammer until they work. When he does not succeed, he deletes them and empty the trash bin.\n\n\n\nDimitrios Pediotidis-Maniatis: Consultant at the bioinformatics core facility. Probably the person with the highest attendance to the ABC! He masters a lot of things in bash and R - test him out!\n\n\n\njacob Egemose Høgfeldt: He is also consultant at the bioinformatics core facility, and knows a great deal of bioinformatics and data science. He is the absolute go-to person for bulkRNA sequencing questions together with Dimitrios.\n\n\n\n\n\nBeyond the ABC - in depth bioinformatics support\nSome of us work at Aarhus University as consultants, providing support for various HPC and bioinformatics topics and analysis, in two different ways:\n\n\n\nWho\nHelp and contact\n\n\n\n\n\nSamuele from the Health Data Science Sandbox provides some free consultancy hours for technical issues, bioinformatics setup for coding and perform analysis, machine learning practices, both on PC and computing cluster, and organizes a wide array of workshops, both on demand and on own initiative. You can book a short meeting with Samuele here to introduce the problem and setup eventual solutions, or write at samuele birc.au.dk (with @ in between).\n\n\n \nDimitrios and Jacob work at the Bioinformatics Core Facility, led by Ass. Prof. Per Qvist. They offer expert assistance in a wide range of bioinformatics services, including data analysis, storage, visualization and advice on experiment design. The Bioinformatics Core Facility primarily operate on a fee for service model of data analysis but also offer full joint scientific collaborations and training. You can find more details, including project examples and pricing, on their website (https://biomed.au.dk/bioinformatics-core-facility). Feel free to reach out for a free initial consultation regarding your projects by emailing to bioinformatics [at] biomed.au.dk."
   },
   {
-    "objectID": "news/past/2024-11-07-session8.html#agenda",
-    "href": "news/past/2024-11-07-session8.html#agenda",
-    "title": "ABC.8: Nygen workshop",
+    "objectID": "binfResources/bash.html",
+    "href": "binfResources/bash.html",
+    "title": "Useful tips for day-to-day bash",
+    "section": "",
+    "text": "awk '$2~/^-$/ { next } { print }' file_input &gt; file_output\n\n\n\nawk -F \"\\\"*,\\\"*\" '{print $M}' file.csv\n\n\n\nawk '{ $1=\"\"; $2=\"\"; print}' filename\n\n\n\nsed -n '10,20p' myFile\n\n\n\nsed -n -e 1p -e 2p  myFile\n\n\n\n sed -n '$L~$Mp' myFile\n\n\n\ncut -f1 20141020.combined_mask.whole_genomeV2.bed | sort -n | uniq -c\n\n\n\nsed -e \"s/string1/string2/\" myFile \n\n\n\nsort -k 3,3 myFile\n\n\n\ngrep -v -e \"pattern\" myFile &gt; newFile\n\n\ngrep -v -n -e \"pattern\" myFile | cut -f1 -d\":\"\n\ngrep -v -e \"pattern1\\|pattern2\" myFile &gt; newFile\n\n\n\n\n\n\n\necho $a $b $c | tr -s ' ' '\\t'\n\n\n\nperl -E \"say $a + $b\"\n\n\n\n\n\n\nls *.zip | xargs -n 1 basename -s .zip\n\n\n\nfind . -type f ! -name '*.gz' -exec gzip \"{}\" \\;\n\n\n\n\n\n\nwget -i file.txt\n\n\n\nfor var in `ls -d */`; do echo ${var::-1}; done"
+  },
+  {
+    "objectID": "binfResources/bash.html#handling-text-files",
+    "href": "binfResources/bash.html#handling-text-files",
+    "title": "Useful tips for day-to-day bash",
+    "section": "",
+    "text": "awk '$2~/^-$/ { next } { print }' file_input &gt; file_output\n\n\n\nawk -F \"\\\"*,\\\"*\" '{print $M}' file.csv\n\n\n\nawk '{ $1=\"\"; $2=\"\"; print}' filename\n\n\n\nsed -n '10,20p' myFile\n\n\n\nsed -n -e 1p -e 2p  myFile\n\n\n\n sed -n '$L~$Mp' myFile\n\n\n\ncut -f1 20141020.combined_mask.whole_genomeV2.bed | sort -n | uniq -c\n\n\n\nsed -e \"s/string1/string2/\" myFile \n\n\n\nsort -k 3,3 myFile\n\n\n\ngrep -v -e \"pattern\" myFile &gt; newFile\n\n\ngrep -v -n -e \"pattern\" myFile | cut -f1 -d\":\"\n\ngrep -v -e \"pattern1\\|pattern2\" myFile &gt; newFile"
+  },
+  {
+    "objectID": "binfResources/bash.html#handling-variables",
+    "href": "binfResources/bash.html#handling-variables",
+    "title": "Useful tips for day-to-day bash",
+    "section": "",
+    "text": "echo $a $b $c | tr -s ' ' '\\t'\n\n\n\nperl -E \"say $a + $b\""
+  },
+  {
+    "objectID": "binfResources/bash.html#managing-files",
+    "href": "binfResources/bash.html#managing-files",
+    "title": "Useful tips for day-to-day bash",
+    "section": "",
+    "text": "ls *.zip | xargs -n 1 basename -s .zip\n\n\n\nfind . -type f ! -name '*.gz' -exec gzip \"{}\" \\;"
+  },
+  {
+    "objectID": "binfResources/bash.html#transfering-files",
+    "href": "binfResources/bash.html#transfering-files",
+    "title": "Useful tips for day-to-day bash",
+    "section": "",
+    "text": "wget -i file.txt\n\n\n\nfor var in `ls -d */`; do echo ${var::-1}; done"
+  },
+  {
+    "objectID": "binfResources/python.html",
+    "href": "binfResources/python.html",
+    "title": "Useful tips for python",
+    "section": "",
+    "text": "Useful tips for python"
+  },
+  {
+    "objectID": "news/upcoming/2025-01-30-session12.html",
+    "href": "news/upcoming/2025-01-30-session12.html",
+    "title": "ABC.12: Accessible Bioinformatics Cafe",
+    "section": "",
+    "text": "The 11th session of the ABC (Accessible Bioinformatics Cafe) will be on january 30th, at 13:00-15:00 in building 1231-114\nEveryone is welcome to join independently of coding skills and level."
+  },
+  {
+    "objectID": "news/upcoming/2025-01-30-session12.html#agenda",
+    "href": "news/upcoming/2025-01-30-session12.html#agenda",
+    "title": "ABC.12: Accessible Bioinformatics Cafe",
     "section": "Agenda",
-    "text": "Agenda\nFor this ABC we host a workshop by Nygen Analytics, which will give a live demo of a downstream analysis with their interactive tool for single cell datasets.\nThe tool has a free tier account with up to 5 single cell datasets uploaded."
+    "text": "Agenda\nFor this ABC Dimitrios will show how to do pathways analysis in R using the package clusterProfiler"
   },
   {
-    "objectID": "news/past/2024-11-07-session8.html#signing-up",
-    "href": "news/past/2024-11-07-session8.html#signing-up",
-    "title": "ABC.8: Nygen workshop",
+    "objectID": "news/upcoming/2025-01-30-session12.html#signing-up",
+    "href": "news/upcoming/2025-01-30-session12.html#signing-up",
+    "title": "ABC.12: Accessible Bioinformatics Cafe",
     "section": "Signing up",
     "text": "Signing up\nPlease sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign Up!"
   },
   {
-    "objectID": "news/past/2025-01-16-session11.html",
-    "href": "news/past/2025-01-16-session11.html",
-    "title": "ABC.11: Accessible Bioinformatics Cafe",
+    "objectID": "news/upcoming/2025-02-26.html",
+    "href": "news/upcoming/2025-02-26.html",
+    "title": "Workshop: Introduction to GenomeDK",
     "section": "",
-    "text": "The 11th session of the ABC (Accessible Bioinformatics Cafe) will be on january 16th, at 13:00-15:00 in building 1231-114\nEveryone is welcome to join independently of coding skills and level."
+    "text": "Are you a student or academic, current or future user of the GenomeDK high-performance computing (HPC) system? Or are you just curious about HPC and how you can utilize it in your work? Do you need to learn to use GenomeDK, or wish to become a better and more organized user?\nThen join us in this series of GenomeDK workshops where we guide you from a general introduction to advanced usage. Each workshop targets increasing difficulty levels, so you can join the sessions that fit you best. The first workshop is an introductory one.\nThis workshop will be hosted by Samuele Soraggi (BiRC, MBG) and Dan Søndergaard (GenomeDK)."
   },
   {
-    "objectID": "news/past/2025-01-16-session11.html#agenda",
-    "href": "news/past/2025-01-16-session11.html#agenda",
-    "title": "ABC.11: Accessible Bioinformatics Cafe",
-    "section": "Agenda",
-    "text": "Agenda\nFor this ABC Manuel will show how to run locally a language model on your laptop, and Marie will propose a tutorial on bulkRNA data"
-  },
-  {
-    "objectID": "news/past/2025-01-16-session11.html#signing-up",
-    "href": "news/past/2025-01-16-session11.html#signing-up",
-    "title": "ABC.11: Accessible Bioinformatics Cafe",
+    "objectID": "news/upcoming/2025-02-26.html#signing-up",
+    "href": "news/upcoming/2025-02-26.html#signing-up",
+    "title": "Workshop: Introduction to GenomeDK",
     "section": "Signing up",
-    "text": "Signing up\nPlease sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign Up!"
+    "text": "Signing up\nEach workshop is scheduled for four hours, including a 45 min. lunch break. There will be cake, coffee, and tea for attendants, so please remember to sign up! There are 30 seats available and a waiting list.\n \n\n Sign Up!"
   },
   {
-    "objectID": "news/past/2024-10-03-session6.html",
-    "href": "news/past/2024-10-03-session6.html",
-    "title": "ABC.6: Sixth ABC session",
+    "objectID": "news/past/2024-09-19-session5.html",
+    "href": "news/past/2024-09-19-session5.html",
+    "title": "ABC.5: Fifth ABC session",
     "section": "",
-    "text": "The fourth session of the ABC (Accessible Bioinformatics Cafe) will be on october 3rd, at 13:00 in building 1873 room 118A (University city Molecular Biology Building, room by the canteen, see below).\nEveryone is welcome to join independently of coding skills and level."
+    "text": "The fifth session of the ABC (Accessible Bioinformatics Cafe) will be on september 19th, at 13:00 in building 1231 room 114 (by the lake, see below).\nEveryone is welcome to join independently of coding skills and level."
   },
   {
-    "objectID": "news/past/2024-10-03-session6.html#agenda",
-    "href": "news/past/2024-10-03-session6.html#agenda",
-    "title": "ABC.6: Sixth ABC session",
+    "objectID": "news/past/2024-09-19-session5.html#agenda",
+    "href": "news/past/2024-09-19-session5.html#agenda",
+    "title": "ABC.5: Fifth ABC session",
     "section": "Agenda",
-    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented at each meeting. This time we have\n\ndownload of open datasets from online databases\n\nYou can also bring your own code and issues and get help from us."
+    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nWhat’s on our screens\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented at each meeting. For this meeting we do not have new tutorials, but will rely on the previous ones and on an interactive single cell workshop one of us have been giving at a conference.\nOf course, you can also bring your own code and issues and get help from us."
   },
   {
-    "objectID": "news/past/2024-10-03-session6.html#signing-up",
-    "href": "news/past/2024-10-03-session6.html#signing-up",
-    "title": "ABC.6: Sixth ABC session",
+    "objectID": "news/past/2024-09-19-session5.html#signing-up",
+    "href": "news/past/2024-09-19-session5.html#signing-up",
+    "title": "ABC.5: Fifth ABC session",
     "section": "Signing up",
     "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake (and you are pretty sure you will show up), click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign up for cake"
   },
   {
-    "objectID": "news/past/2024-10-10-usegenomedk.html",
-    "href": "news/past/2024-10-10-usegenomedk.html",
-    "title": "Use GenomeDK workshop",
+    "objectID": "news/past/2024-06-27-session2.html",
+    "href": "news/past/2024-06-27-session2.html",
+    "title": "ABC.2: Second ABC session",
     "section": "",
-    "text": "You are invited to an introductory workshop on october 10th, at 11:00 in building 1540-K26 (Biology department)."
+    "text": "The second session of the ABC (Accessible Bioinformatics Cafe) will be on june 27th, at 13:00 in the hall of AIAS (the Aarhus Institute of Advanced Studies, see below).\nEveryone is welcome to join independently of coding skills and level."
   },
   {
-    "objectID": "news/past/2024-10-10-usegenomedk.html#agenda",
-    "href": "news/past/2024-10-10-usegenomedk.html#agenda",
-    "title": "Use GenomeDK workshop",
+    "objectID": "news/past/2024-06-27-session2.html#agenda",
+    "href": "news/past/2024-06-27-session2.html#agenda",
+    "title": "ABC.2: Second ABC session",
     "section": "Agenda",
-    "text": "Agenda\nThe topics for the workshop are all at introductory level, such as\n\nlogin and account setup\nfile system\ncommand line intro\nsoftware management\nprojects on GenomeDK\nfile transfer\njobs\n\nThere are no prerequisites apart from having a working account on GenomeDK with a complete 2-Factor authentication. Also, bring your laptop, so we can try out live some commands and exercises on the cluster.\nThere will be a lunch break 12-13, with lunch not included in the workshop. We will serve coffee and cake.\nThere is time for questions and problem-solving, so come with your issues if you are already a GDK user."
+    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented) at each meeting. This time we have a choice of\n\nA small dplyr project managed with RStudio\nInstall Anaconda and python basics"
   },
   {
-    "objectID": "news/past/2024-10-10-usegenomedk.html#signing-up",
-    "href": "news/past/2024-10-10-usegenomedk.html#signing-up",
-    "title": "Use GenomeDK workshop",
+    "objectID": "news/past/2024-06-27-session2.html#signing-up",
+    "href": "news/past/2024-06-27-session2.html#signing-up",
+    "title": "ABC.2: Second ABC session",
     "section": "Signing up",
-    "text": "Signing up\nPlease sign up through this very short online form:\n \n\n Sign up"
+    "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake, click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign up for cake"
+  },
+  {
+    "objectID": "news/past/2024-08-20-session3.html",
+    "href": "news/past/2024-08-20-session3.html",
+    "title": "ABC.3: Third ABC session",
+    "section": "",
+    "text": "The third session of the ABC (Accessible Bioinformatics Cafe) will be on august 20th, at 12:30 in the hall of AIAS (the Aarhus Institute of Advanced Studies, see below).\nEveryone is welcome to join independently of coding skills and level."
+  },
+  {
+    "objectID": "news/past/2024-08-20-session3.html#agenda",
+    "href": "news/past/2024-08-20-session3.html#agenda",
+    "title": "ABC.3: Third ABC session",
+    "section": "Agenda",
+    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented at each meeting. This time we have\n\nR analysis of bulkRNA sequencing data"
+  },
+  {
+    "objectID": "news/past/2024-08-20-session3.html#signing-up",
+    "href": "news/past/2024-08-20-session3.html#signing-up",
+    "title": "ABC.3: Third ABC session",
+    "section": "Signing up",
+    "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake (and you are pretty sure you will show up), click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign up for cake"
+  },
+  {
+    "objectID": "news/past/2024-09-03-session4.html",
+    "href": "news/past/2024-09-03-session4.html",
+    "title": "ABC.4: Fourth ABC session",
+    "section": "",
+    "text": "The fourth session of the ABC (Accessible Bioinformatics Cafe) will be on september 3rd, at 13:00 in building 1231 room 320 (by the lake, see below).\nEveryone is welcome to join independently of coding skills and level."
+  },
+  {
+    "objectID": "news/past/2024-09-03-session4.html#agenda",
+    "href": "news/past/2024-09-03-session4.html#agenda",
+    "title": "ABC.4: Fourth ABC session",
+    "section": "Agenda",
+    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented at each meeting. This time we have\n\nintroduction to bash for bioinformatics\n\nYou can also bring your own code and issues and get help from us."
+  },
+  {
+    "objectID": "news/past/2024-09-03-session4.html#signing-up",
+    "href": "news/past/2024-09-03-session4.html#signing-up",
+    "title": "ABC.4: Fourth ABC session",
+    "section": "Signing up",
+    "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake (and you are pretty sure you will show up), click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign up for cake"
+  },
+  {
+    "objectID": "news/past/2024-11-28-session9.html",
+    "href": "news/past/2024-11-28-session9.html",
+    "title": "ABC.9: Accessible Bioinformatics Cafe",
+    "section": "",
+    "text": "The ninth session of the ABC (Accessible Bioinformatics Cafe) will be on november 28th, at 13:00-15:00 in building 1873-118A\nEveryone is welcome to join independently of coding skills and level."
+  },
+  {
+    "objectID": "news/past/2024-11-28-session9.html#agenda",
+    "href": "news/past/2024-11-28-session9.html#agenda",
+    "title": "ABC.9: Accessible Bioinformatics Cafe",
+    "section": "Agenda",
+    "text": "Agenda\nFor this ABC we show how to use graphical applications on GenomeDK, and specifically show Rstudio and Jupyterlab."
+  },
+  {
+    "objectID": "news/past/2024-11-28-session9.html#signing-up",
+    "href": "news/past/2024-11-28-session9.html#signing-up",
+    "title": "ABC.9: Accessible Bioinformatics Cafe",
+    "section": "Signing up",
+    "text": "Signing up\nPlease sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign Up!"
+  },
+  {
+    "objectID": "news/past/2024-12-12-session10.html",
+    "href": "news/past/2024-12-12-session10.html",
+    "title": "ABC.10: Accessible Bioinformatics Cafe",
+    "section": "",
+    "text": "The 10th session of the ABC (Accessible Bioinformatics Cafe) will be on december 12th, at 13:00-15:00 in building 1231-114\nEveryone is welcome to join independently of coding skills and level."
+  },
+  {
+    "objectID": "news/past/2024-12-12-session10.html#agenda",
+    "href": "news/past/2024-12-12-session10.html#agenda",
+    "title": "ABC.10: Accessible Bioinformatics Cafe",
+    "section": "Agenda",
+    "text": "Agenda\nFor this ABC Marie will show in detail how to import and preprocess bulkRNA sequencing data."
+  },
+  {
+    "objectID": "news/past/2024-12-12-session10.html#signing-up",
+    "href": "news/past/2024-12-12-session10.html#signing-up",
+    "title": "ABC.10: Accessible Bioinformatics Cafe",
+    "section": "Signing up",
+    "text": "Signing up\nPlease sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign Up!"
   },
   {
     "objectID": "tmp/2025-02-06-ABC13.html",
@@ -399,263 +469,221 @@
     "text": "Clustering\nNow we go straight into clustering. Now it is very popular to pull cluster labels from large cell atlases, but it is good to know how to do it manually by looking at markers. First of all we calculate cell similarities (neighbors) and a clustering. We choose a small resolution parameters to avoid a too fine-grained clustering inthe tutorial. Your clusters might be looking different than in this tutorial!\n\nsample &lt;- FindNeighbors(sample, dims = 1:15)\nsample &lt;- FindClusters(sample, resolution = 0.3)\n\nComputing nearest neighbor graph\n\nComputing SNN\n\n\n\nModularity Optimizer version 1.3.0 by Ludo Waltman and Nees Jan van Eck\n\nNumber of nodes: 3883\nNumber of edges: 113438\n\nRunning Louvain algorithm...\nMaximum modularity in 10 random starts: 0.9486\nNumber of communities: 11\nElapsed time: 0 seconds\n\n\nNotice how cluster numbers are now assigned to the active.ident assay, unused until now.\n\nsample@active.ident[1:10]\n\nAAACCTGAGCCTATGT-16AAACCTGAGCTTTGGT-14AAACCTGAGTACGCCC-17AAACCTGAGTGAATTG-15AAACCTGCAGAGCCAA-15AAACCTGGTAGGGTAC-10AAACCTGGTCAGAAGC-19AAACCTGGTCGTGGCT-13AAACCTGTCTCTGTCG-10AAACGGGAGATGTGGC-14\n\n\n    \n        Levels:\n    \n    \n    '0''1''2''3''4''5''6''7''8''9''10'\n\n\n\nYou can plot the clusters as well on UMAP (or PCA)\n\nDimPlot(sample, reduction = 'umap', label=TRUE, label.size = 10)\n\n\n\n\n\n\n\n\nNow let’s look to some broad markers categories for spermatogenesis. This step requires biological knowledge of your data, and you can look at the literature or other resources to find the markers. For example, we can look at markers for spermatogonia, spermatocytes, and spermatids.\n\ncat(\"Spermatogonia Markers\\n\")\nFeaturePlot(sample, features = c('MKI67','DMRT1','STRA8','ID4'))\n\nSpermatogonia Markers\n\n\n\n\n\n\n\n\n\n\ncat(\"Spermatocytes Markers\\n\")\nFeaturePlot(sample, features = c('MEIOB','SYCP1','TEX101','PIWIL1','SPATA16','CLGN'))\n\nSpermatocytes Markers\n\n\n\n\n\n\n\n\n\n\ncat(\"Spermatid Markers\\n\")\nFeaturePlot(sample, features = c('PRM1','PRM2','PRM3','AKAP4','SPATA9','SPAM1'))\n\nSpermatid Markers\n\n\n\n\n\n\n\n\n\nWe also look for some somatic markers\n\ncat(\"Somatic Markers\\n\")\nFeaturePlot(sample, features = c('VIM','CTSL'))\n\nSomatic Markers\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nNote how the somatic marker CTSL also ends where we might have another cell type. This happens often as there are markers involved in multiple biological processes! This is why it is important to look at multiple markers and not just one.\n\n\n\nRenaming clusters\nNow, we can choose to rename the clusters to more meaningful names. Simply create a named vector with the old and new names separated by :.\n\n\n\n\n\n\nWarning\n\n\n\nFill out the example vector below yourself!\n\n\n\nnew_names = c(\n    '0'='clusterA',\n    '1'='clusterB',\n    '2'='clusterC')\n\nBelow, you substitute the cluster names with the new names. You can also use the RenameIdents function to rename the clusters.\n\nsample@meta.data$new_clusters = recode(Idents(sample), !!!new_names)\nsample@active.ident = as.factor(sample@meta.data$new_clusters)\nnames(sample@active.ident) = colnames(sample)\n\nNow you are ready to look at your clustering!\n\nDimPlot(sample, reduction = 'umap', label=TRUE, label.size = 10)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\n\nNow you are ready to go on with your analysis. You can look at differential expression, cell cycle, and other analyses. Those will come in a second tutorial of the ABC, so keep your eyes on our documentation.\nIn the meanwhile, you can try further tutorials on the Seurat website, or look at the Seurat vignettes for more advanced analyses.\nWe at the ABC also work with single cell analysis regularly, so do not hesitate to ask us for help!"
   },
   {
-    "objectID": "news/past/2024-12-12-session10.html",
-    "href": "news/past/2024-12-12-session10.html",
-    "title": "ABC.10: Accessible Bioinformatics Cafe",
+    "objectID": "news/past/2024-10-10-usegenomedk.html",
+    "href": "news/past/2024-10-10-usegenomedk.html",
+    "title": "Use GenomeDK workshop",
     "section": "",
-    "text": "The 10th session of the ABC (Accessible Bioinformatics Cafe) will be on december 12th, at 13:00-15:00 in building 1231-114\nEveryone is welcome to join independently of coding skills and level."
+    "text": "You are invited to an introductory workshop on october 10th, at 11:00 in building 1540-K26 (Biology department)."
   },
   {
-    "objectID": "news/past/2024-12-12-session10.html#agenda",
-    "href": "news/past/2024-12-12-session10.html#agenda",
-    "title": "ABC.10: Accessible Bioinformatics Cafe",
+    "objectID": "news/past/2024-10-10-usegenomedk.html#agenda",
+    "href": "news/past/2024-10-10-usegenomedk.html#agenda",
+    "title": "Use GenomeDK workshop",
     "section": "Agenda",
-    "text": "Agenda\nFor this ABC Marie will show in detail how to import and preprocess bulkRNA sequencing data."
+    "text": "Agenda\nThe topics for the workshop are all at introductory level, such as\n\nlogin and account setup\nfile system\ncommand line intro\nsoftware management\nprojects on GenomeDK\nfile transfer\njobs\n\nThere are no prerequisites apart from having a working account on GenomeDK with a complete 2-Factor authentication. Also, bring your laptop, so we can try out live some commands and exercises on the cluster.\nThere will be a lunch break 12-13, with lunch not included in the workshop. We will serve coffee and cake.\nThere is time for questions and problem-solving, so come with your issues if you are already a GDK user."
   },
   {
-    "objectID": "news/past/2024-12-12-session10.html#signing-up",
-    "href": "news/past/2024-12-12-session10.html#signing-up",
-    "title": "ABC.10: Accessible Bioinformatics Cafe",
+    "objectID": "news/past/2024-10-10-usegenomedk.html#signing-up",
+    "href": "news/past/2024-10-10-usegenomedk.html#signing-up",
+    "title": "Use GenomeDK workshop",
     "section": "Signing up",
-    "text": "Signing up\nPlease sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign Up!"
+    "text": "Signing up\nPlease sign up through this very short online form:\n \n\n Sign up"
   },
   {
-    "objectID": "news/past/2024-11-28-session9.html",
-    "href": "news/past/2024-11-28-session9.html",
-    "title": "ABC.9: Accessible Bioinformatics Cafe",
+    "objectID": "news/past/2024-10-03-session6.html",
+    "href": "news/past/2024-10-03-session6.html",
+    "title": "ABC.6: Sixth ABC session",
     "section": "",
-    "text": "The ninth session of the ABC (Accessible Bioinformatics Cafe) will be on november 28th, at 13:00-15:00 in building 1873-118A\nEveryone is welcome to join independently of coding skills and level."
+    "text": "The fourth session of the ABC (Accessible Bioinformatics Cafe) will be on october 3rd, at 13:00 in building 1873 room 118A (University city Molecular Biology Building, room by the canteen, see below).\nEveryone is welcome to join independently of coding skills and level."
   },
   {
-    "objectID": "news/past/2024-11-28-session9.html#agenda",
-    "href": "news/past/2024-11-28-session9.html#agenda",
-    "title": "ABC.9: Accessible Bioinformatics Cafe",
+    "objectID": "news/past/2024-10-03-session6.html#agenda",
+    "href": "news/past/2024-10-03-session6.html#agenda",
+    "title": "ABC.6: Sixth ABC session",
     "section": "Agenda",
-    "text": "Agenda\nFor this ABC we show how to use graphical applications on GenomeDK, and specifically show Rstudio and Jupyterlab."
+    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented at each meeting. This time we have\n\ndownload of open datasets from online databases\n\nYou can also bring your own code and issues and get help from us."
   },
   {
-    "objectID": "news/past/2024-11-28-session9.html#signing-up",
-    "href": "news/past/2024-11-28-session9.html#signing-up",
-    "title": "ABC.9: Accessible Bioinformatics Cafe",
-    "section": "Signing up",
-    "text": "Signing up\nPlease sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign Up!"
-  },
-  {
-    "objectID": "news/past/2024-09-03-session4.html",
-    "href": "news/past/2024-09-03-session4.html",
-    "title": "ABC.4: Fourth ABC session",
-    "section": "",
-    "text": "The fourth session of the ABC (Accessible Bioinformatics Cafe) will be on september 3rd, at 13:00 in building 1231 room 320 (by the lake, see below).\nEveryone is welcome to join independently of coding skills and level."
-  },
-  {
-    "objectID": "news/past/2024-09-03-session4.html#agenda",
-    "href": "news/past/2024-09-03-session4.html#agenda",
-    "title": "ABC.4: Fourth ABC session",
-    "section": "Agenda",
-    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented at each meeting. This time we have\n\nintroduction to bash for bioinformatics\n\nYou can also bring your own code and issues and get help from us."
-  },
-  {
-    "objectID": "news/past/2024-09-03-session4.html#signing-up",
-    "href": "news/past/2024-09-03-session4.html#signing-up",
-    "title": "ABC.4: Fourth ABC session",
+    "objectID": "news/past/2024-10-03-session6.html#signing-up",
+    "href": "news/past/2024-10-03-session6.html#signing-up",
+    "title": "ABC.6: Sixth ABC session",
     "section": "Signing up",
     "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake (and you are pretty sure you will show up), click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign up for cake"
   },
   {
-    "objectID": "news/past/2024-08-20-session3.html",
-    "href": "news/past/2024-08-20-session3.html",
-    "title": "ABC.3: Third ABC session",
+    "objectID": "news/past/2025-01-16-session11.html",
+    "href": "news/past/2025-01-16-session11.html",
+    "title": "ABC.11: Accessible Bioinformatics Cafe",
     "section": "",
-    "text": "The third session of the ABC (Accessible Bioinformatics Cafe) will be on august 20th, at 12:30 in the hall of AIAS (the Aarhus Institute of Advanced Studies, see below).\nEveryone is welcome to join independently of coding skills and level."
+    "text": "The 11th session of the ABC (Accessible Bioinformatics Cafe) will be on january 16th, at 13:00-15:00 in building 1231-114\nEveryone is welcome to join independently of coding skills and level."
   },
   {
-    "objectID": "news/past/2024-08-20-session3.html#agenda",
-    "href": "news/past/2024-08-20-session3.html#agenda",
-    "title": "ABC.3: Third ABC session",
+    "objectID": "news/past/2025-01-16-session11.html#agenda",
+    "href": "news/past/2025-01-16-session11.html#agenda",
+    "title": "ABC.11: Accessible Bioinformatics Cafe",
     "section": "Agenda",
-    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented at each meeting. This time we have\n\nR analysis of bulkRNA sequencing data"
+    "text": "Agenda\nFor this ABC Manuel will show how to run locally a language model on your laptop, and Marie will propose a tutorial on bulkRNA data"
   },
   {
-    "objectID": "news/past/2024-08-20-session3.html#signing-up",
-    "href": "news/past/2024-08-20-session3.html#signing-up",
-    "title": "ABC.3: Third ABC session",
-    "section": "Signing up",
-    "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake (and you are pretty sure you will show up), click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign up for cake"
-  },
-  {
-    "objectID": "news/past/2024-06-27-session2.html",
-    "href": "news/past/2024-06-27-session2.html",
-    "title": "ABC.2: Second ABC session",
-    "section": "",
-    "text": "The second session of the ABC (Accessible Bioinformatics Cafe) will be on june 27th, at 13:00 in the hall of AIAS (the Aarhus Institute of Advanced Studies, see below).\nEveryone is welcome to join independently of coding skills and level."
-  },
-  {
-    "objectID": "news/past/2024-06-27-session2.html#agenda",
-    "href": "news/past/2024-06-27-session2.html#agenda",
-    "title": "ABC.2: Second ABC session",
-    "section": "Agenda",
-    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented) at each meeting. This time we have a choice of\n\nA small dplyr project managed with RStudio\nInstall Anaconda and python basics"
-  },
-  {
-    "objectID": "news/past/2024-06-27-session2.html#signing-up",
-    "href": "news/past/2024-06-27-session2.html#signing-up",
-    "title": "ABC.2: Second ABC session",
-    "section": "Signing up",
-    "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake, click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign up for cake"
-  },
-  {
-    "objectID": "news/past/2024-09-19-session5.html",
-    "href": "news/past/2024-09-19-session5.html",
-    "title": "ABC.5: Fifth ABC session",
-    "section": "",
-    "text": "The fifth session of the ABC (Accessible Bioinformatics Cafe) will be on september 19th, at 13:00 in building 1231 room 114 (by the lake, see below).\nEveryone is welcome to join independently of coding skills and level."
-  },
-  {
-    "objectID": "news/past/2024-09-19-session5.html#agenda",
-    "href": "news/past/2024-09-19-session5.html#agenda",
-    "title": "ABC.5: Fifth ABC session",
-    "section": "Agenda",
-    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nWhat’s on our screens\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented at each meeting. For this meeting we do not have new tutorials, but will rely on the previous ones and on an interactive single cell workshop one of us have been giving at a conference.\nOf course, you can also bring your own code and issues and get help from us."
-  },
-  {
-    "objectID": "news/past/2024-09-19-session5.html#signing-up",
-    "href": "news/past/2024-09-19-session5.html#signing-up",
-    "title": "ABC.5: Fifth ABC session",
-    "section": "Signing up",
-    "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake (and you are pretty sure you will show up), click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign up for cake"
-  },
-  {
-    "objectID": "news/upcoming/2025-02-26.html",
-    "href": "news/upcoming/2025-02-26.html",
-    "title": "Workshop: Introduction to GenomeDK",
-    "section": "",
-    "text": "Are you a student or academic, current or future user of the GenomeDK high-performance computing (HPC) system? Or are you just curious about HPC and how you can utilize it in your work? Do you need to learn to use GenomeDK, or wish to become a better and more organized user?\nThen join us in this series of GenomeDK workshops where we guide you from a general introduction to advanced usage. Each workshop targets increasing difficulty levels, so you can join the sessions that fit you best. The first workshop is an introductory one.\nThis workshop will be hosted by Samuele Soraggi (BiRC, MBG) and Dan Søndergaard (GenomeDK)."
-  },
-  {
-    "objectID": "news/upcoming/2025-02-26.html#signing-up",
-    "href": "news/upcoming/2025-02-26.html#signing-up",
-    "title": "Workshop: Introduction to GenomeDK",
-    "section": "Signing up",
-    "text": "Signing up\nEach workshop is scheduled for four hours, including a 45 min. lunch break. There will be cake, coffee, and tea for attendants, so please remember to sign up! There are 30 seats available and a waiting list.\n \n\n Sign Up!"
-  },
-  {
-    "objectID": "news/upcoming/2025-01-30-session12.html",
-    "href": "news/upcoming/2025-01-30-session12.html",
-    "title": "ABC.12: Accessible Bioinformatics Cafe",
-    "section": "",
-    "text": "The 11th session of the ABC (Accessible Bioinformatics Cafe) will be on january 30th, at 13:00-15:00 in building 1231-114\nEveryone is welcome to join independently of coding skills and level."
-  },
-  {
-    "objectID": "news/upcoming/2025-01-30-session12.html#agenda",
-    "href": "news/upcoming/2025-01-30-session12.html#agenda",
-    "title": "ABC.12: Accessible Bioinformatics Cafe",
-    "section": "Agenda",
-    "text": "Agenda\nFor this ABC Dimitrios will show how to do pathways analysis in R using the package clusterProfiler"
-  },
-  {
-    "objectID": "news/upcoming/2025-01-30-session12.html#signing-up",
-    "href": "news/upcoming/2025-01-30-session12.html#signing-up",
-    "title": "ABC.12: Accessible Bioinformatics Cafe",
+    "objectID": "news/past/2025-01-16-session11.html#signing-up",
+    "href": "news/past/2025-01-16-session11.html#signing-up",
+    "title": "ABC.11: Accessible Bioinformatics Cafe",
     "section": "Signing up",
     "text": "Signing up\nPlease sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign Up!"
   },
   {
-    "objectID": "binfResources/python.html",
-    "href": "binfResources/python.html",
-    "title": "Useful tips for python",
+    "objectID": "news/past/2024-11-07-session8.html",
+    "href": "news/past/2024-11-07-session8.html",
+    "title": "ABC.8: Nygen workshop",
     "section": "",
-    "text": "Useful tips for python"
+    "text": "The eighth session of the ABC (Accessible Bioinformatics Cafe) will be on november 7th, at 13:00-15:00 in building 1253-317\nEveryone is welcome to join independently of coding skills and level."
   },
   {
-    "objectID": "binfResources/bash.html",
-    "href": "binfResources/bash.html",
-    "title": "Useful tips for day-to-day bash",
+    "objectID": "news/past/2024-11-07-session8.html#agenda",
+    "href": "news/past/2024-11-07-session8.html#agenda",
+    "title": "ABC.8: Nygen workshop",
+    "section": "Agenda",
+    "text": "Agenda\nFor this ABC we host a workshop by Nygen Analytics, which will give a live demo of a downstream analysis with their interactive tool for single cell datasets.\nThe tool has a free tier account with up to 5 single cell datasets uploaded."
+  },
+  {
+    "objectID": "news/past/2024-11-07-session8.html#signing-up",
+    "href": "news/past/2024-11-07-session8.html#signing-up",
+    "title": "ABC.8: Nygen workshop",
+    "section": "Signing up",
+    "text": "Signing up\nPlease sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign Up!"
+  },
+  {
+    "objectID": "news/past/2024-06-13-session1.html",
+    "href": "news/past/2024-06-13-session1.html",
+    "title": "ABC.1: First ABC session",
     "section": "",
-    "text": "awk '$2~/^-$/ { next } { print }' file_input &gt; file_output\n\n\n\nawk -F \"\\\"*,\\\"*\" '{print $M}' file.csv\n\n\n\nawk '{ $1=\"\"; $2=\"\"; print}' filename\n\n\n\nsed -n '10,20p' myFile\n\n\n\nsed -n -e 1p -e 2p  myFile\n\n\n\n sed -n '$L~$Mp' myFile\n\n\n\ncut -f1 20141020.combined_mask.whole_genomeV2.bed | sort -n | uniq -c\n\n\n\nsed -e \"s/string1/string2/\" myFile \n\n\n\nsort -k 3,3 myFile\n\n\n\ngrep -v -e \"pattern\" myFile &gt; newFile\n\n\ngrep -v -n -e \"pattern\" myFile | cut -f1 -d\":\"\n\ngrep -v -e \"pattern1\\|pattern2\" myFile &gt; newFile\n\n\n\n\n\n\n\necho $a $b $c | tr -s ' ' '\\t'\n\n\n\nperl -E \"say $a + $b\"\n\n\n\n\n\n\nls *.zip | xargs -n 1 basename -s .zip\n\n\n\nfind . -type f ! -name '*.gz' -exec gzip \"{}\" \\;\n\n\n\n\n\n\nwget -i file.txt\n\n\n\nfor var in `ls -d */`; do echo ${var::-1}; done"
+    "text": "The very first session of the ABC (Accessible Bioinformatics Cafe) will launch on june 13th, at 13:00 in the hall of AIAS (the Aarhus Institute of Advanced Studies, see below).\nEveryone is welcome to join independently of coding skills and level. In this first meeting we will also distribute a survey, so that participants can give some ideas about expectations and topics of interest."
   },
   {
-    "objectID": "binfResources/bash.html#handling-text-files",
-    "href": "binfResources/bash.html#handling-text-files",
-    "title": "Useful tips for day-to-day bash",
-    "section": "",
-    "text": "awk '$2~/^-$/ { next } { print }' file_input &gt; file_output\n\n\n\nawk -F \"\\\"*,\\\"*\" '{print $M}' file.csv\n\n\n\nawk '{ $1=\"\"; $2=\"\"; print}' filename\n\n\n\nsed -n '10,20p' myFile\n\n\n\nsed -n -e 1p -e 2p  myFile\n\n\n\n sed -n '$L~$Mp' myFile\n\n\n\ncut -f1 20141020.combined_mask.whole_genomeV2.bed | sort -n | uniq -c\n\n\n\nsed -e \"s/string1/string2/\" myFile \n\n\n\nsort -k 3,3 myFile\n\n\n\ngrep -v -e \"pattern\" myFile &gt; newFile\n\n\ngrep -v -n -e \"pattern\" myFile | cut -f1 -d\":\"\n\ngrep -v -e \"pattern1\\|pattern2\" myFile &gt; newFile"
+    "objectID": "news/past/2024-06-13-session1.html#purpose",
+    "href": "news/past/2024-06-13-session1.html#purpose",
+    "title": "ABC.1: First ABC session",
+    "section": "Purpose",
+    "text": "Purpose\nThe ABC aims to:\n\nSupport and guide in using bioinformatics and programming tools.\nProvide support for coding-related issues.\nEnhance the coding skills of participants in fundamental programming languages (R, python, bash command line)."
   },
   {
-    "objectID": "binfResources/bash.html#handling-variables",
-    "href": "binfResources/bash.html#handling-variables",
-    "title": "Useful tips for day-to-day bash",
-    "section": "",
-    "text": "echo $a $b $c | tr -s ' ' '\\t'\n\n\n\nperl -E \"say $a + $b\""
-  },
-  {
-    "objectID": "binfResources/bash.html#managing-files",
-    "href": "binfResources/bash.html#managing-files",
-    "title": "Useful tips for day-to-day bash",
-    "section": "",
-    "text": "ls *.zip | xargs -n 1 basename -s .zip\n\n\n\nfind . -type f ! -name '*.gz' -exec gzip \"{}\" \\;"
-  },
-  {
-    "objectID": "binfResources/bash.html#transfering-files",
-    "href": "binfResources/bash.html#transfering-files",
-    "title": "Useful tips for day-to-day bash",
-    "section": "",
-    "text": "wget -i file.txt\n\n\n\nfor var in `ls -d */`; do echo ${var::-1}; done"
-  },
-  {
-    "objectID": "gethelp.html",
-    "href": "gethelp.html",
-    "title": "Behind the ABC - Who we are",
-    "section": "",
-    "text": "Behind the ABC - Who we are\nWe organize the cafe as a collaboration between the Danish Health Data Science Sandbox, the Core Bioinformatics Facility, and PhD students whose fields touch bioinformatics and health data science.\nOur shared email address for general enquiries about the cafe is abcafe au.dk (with the @ in between).\n\n\n\n\n\n\n\nPeople\nWhat do I do\n\n\n\n\n\nPer Qvist: Ass.Prof. at AU biomed, leads as well the Core Bioinformatics Facility. Most importantly, has been managing constant cake and drinks flow to the ABC, which has been making him invaluable to all participants!\n\n\n\nMarie Sønderstrup: Phd Student at The department of biomedicine. Is the inspirator of the ABC, after living through the deep frustration of understanding how to code.\n\n\n\nManuel Peral Vazquez: Phd Student at Department of Molecular Biology and Genetics - Cellular Health, Intervention, and Nutrition. He loves to dig into the amenities of the bash command line and trying out interesting things.\n\n\n\nSamuele Soraggi: Special consultant at the department of bioinformatics after a migration from the field of mathematics. He often throws himself to unknown buggy pieces of code with duct tape and a hammer until they work. When he does not succeed, he deletes them and empty the trash bin.\n\n\n\nDimitrios Pediotidis-Maniatis: Consultant at the bioinformatics core facility. Probably the person with the highest attendance to the ABC! He masters a lot of things in bash and R - test him out!\n\n\n\njacob Egemose Høgfeldt: He is also consultant at the bioinformatics core facility, and knows a great deal of bioinformatics and data science. He is the absolute go-to person for bulkRNA sequencing questions together with Dimitrios.\n\n\n\n\n\nBeyond the ABC - in depth bioinformatics support\nSome of us work at Aarhus University as consultants, providing support for various HPC and bioinformatics topics and analysis, in two different ways:\n\n\n\nWho\nHelp and contact\n\n\n\n\n\nSamuele from the Health Data Science Sandbox provides some free consultancy hours for technical issues, bioinformatics setup for coding and perform analysis, machine learning practices, both on PC and computing cluster, and organizes a wide array of workshops, both on demand and on own initiative. You can book a short meeting with Samuele here to introduce the problem and setup eventual solutions, or write at samuele birc.au.dk (with @ in between).\n\n\n \nDimitrios and Jacob work at the Bioinformatics Core Facility, led by Ass. Prof. Per Qvist. They offer expert assistance in a wide range of bioinformatics services, including data analysis, storage, visualization and advice on experiment design. The Bioinformatics Core Facility primarily operate on a fee for service model of data analysis but also offer full joint scientific collaborations and training. You can find more details, including project examples and pricing, on their website (https://biomed.au.dk/bioinformatics-core-facility). Feel free to reach out for a free initial consultation regarding your projects by emailing to bioinformatics [at] biomed.au.dk."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Welcome to the Accessible Bioinformatics Cafe",
-    "section": "",
-    "text": "Incoming Events\n\n\n\nThe 12th ABC will take place on January 30th, 2025. Drop in for help or follow our tutorial on pathway analysis in R with clusterProfiler!\n \n\n Information + signup \n\n \nThe GenomeDK workshop series for the first half of 2025 is out, with three workshops going from the basics to reproducible pipelines on the cluster. Reserve your seat at any of the three workshops from the link below\n \n\n Information + signup"
-  },
-  {
-    "objectID": "index.html#concept",
-    "href": "index.html#concept",
-    "title": "Welcome to the Accessible Bioinformatics Cafe",
-    "section": "Concept",
-    "text": "Concept\n\n\n\n\n\n\nHave you ever ended in a situation involving questions similar to those?\n\nWhere do I start to code on a command line?\n How do I learn the basic R/python commands?\n What the heck is this error?????\n\nDo you feel finding the right tools is like going through a maze of software installations, versions and incompatibilities?\n\n\n\nWhat follows is the natural desire of throwing your computer out of the window. Don’t worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the Kubler-Ross curve1, where frustration is the point in which coding becomes challenging and we might feel lost.\nThe idea behind ABC is to bridge you beyond frustration moments, while at the same time offering a relaxed environment and the possibility to learn new things, help and get to know each other:"
-  },
-  {
-    "objectID": "index.html#who-can-benefit-from-the-abc",
-    "href": "index.html#who-can-benefit-from-the-abc",
-    "title": "Welcome to the Accessible Bioinformatics Cafe",
+    "objectID": "news/past/2024-06-13-session1.html#who-can-benefit-from-the-abc",
+    "href": "news/past/2024-06-13-session1.html#who-can-benefit-from-the-abc",
+    "title": "ABC.1: First ABC session",
     "section": "Who can benefit from the ABC?",
     "text": "Who can benefit from the ABC?\nEveryone, really. Those that will particularly benefit from the ABC include:\n\nBiologists, bioinformaticians, and health scientists who wish to adopt coding-based solutions.\nScientists and students who wish to accelerate the coding-based analysis of various types of data (such as OMICs data and other large-scale data) in research across Aarhus University and Aarhus University Hospital.\nStudents and researchers who want an open environment where it is easy to get assistance and talk with others encountering similar issues (or maybe who already solved them!)"
   },
   {
-    "objectID": "index.html#format",
-    "href": "index.html#format",
-    "title": "Welcome to the Accessible Bioinformatics Cafe",
+    "objectID": "news/past/2024-06-13-session1.html#format",
+    "href": "news/past/2024-06-13-session1.html#format",
+    "title": "ABC.1: First ABC session",
     "section": "Format",
-    "text": "Format\nEach ~2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues."
+    "text": "Format\nEach 2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues."
   },
   {
-    "objectID": "index.html#when-and-where",
-    "href": "index.html#when-and-where",
-    "title": "Welcome to the Accessible Bioinformatics Cafe",
-    "section": "When and where",
-    "text": "When and where\nLook at our Events calendar for more information about each meeting and upcoming workshops and courses."
+    "objectID": "news/past/2024-10-24-session7.html",
+    "href": "news/past/2024-10-24-session7.html",
+    "title": "ABC.7: Seventh ABC session",
+    "section": "",
+    "text": "The seventh session of the ABC (Accessible Bioinformatics Cafe) will be on october 24th, at 13:00 - building 1240-218\nEveryone is welcome to join independently of coding skills and level."
   },
   {
-    "objectID": "index.html#newsletter",
-    "href": "index.html#newsletter",
-    "title": "Welcome to the Accessible Bioinformatics Cafe",
-    "section": "Newsletter",
-    "text": "Newsletter\nSubscribe to our newsletter to receive a few, non-invasive reminders for our meetings and events!"
+    "objectID": "news/past/2024-10-24-session7.html#agenda",
+    "href": "news/past/2024-10-24-session7.html#agenda",
+    "title": "ABC.7: Seventh ABC session",
+    "section": "Agenda",
+    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented at each meeting. You can also bring your own code and issues and get help from us."
   },
   {
-    "objectID": "index.html#funding",
-    "href": "index.html#funding",
-    "title": "Welcome to the Accessible Bioinformatics Cafe",
-    "section": "Funding",
-    "text": "Funding\n\n\n\nFor all 2025 the cafe is supported by the Danish Data Science Foundation!"
+    "objectID": "news/past/2024-10-24-session7.html#signing-up",
+    "href": "news/past/2024-10-24-session7.html#signing-up",
+    "title": "ABC.7: Seventh ABC session",
+    "section": "Signing up",
+    "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake (and you are pretty sure you will show up), click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign-up"
+  },
+  {
+    "objectID": "news/upcoming/2025-06-04.html",
+    "href": "news/upcoming/2025-06-04.html",
+    "title": "Workshop: Pipelines on GenomeDK",
+    "section": "",
+    "text": "Are you a student or academic, current or future user of the GenomeDK high-performance computing (HPC) system? Or are you just curious about HPC and how you can utilize it in your work? Do you need to learn to use GenomeDK, or wish to become a better and more organized user?\nThen join us in this series of GenomeDK workshops where we guide you from a general introduction to advanced usage. Each workshop targets increasing difficulty levels, so you can join the sessions that fit you best. The third workshop is for creating reproducible pipelines.\nThis workshop will be hosted by Samuele Soraggi (BiRC, MBG) and Dan Søndergaard (GenomeDK)."
+  },
+  {
+    "objectID": "news/upcoming/2025-06-04.html#signing-up",
+    "href": "news/upcoming/2025-06-04.html#signing-up",
+    "title": "Workshop: Pipelines on GenomeDK",
+    "section": "Signing up",
+    "text": "Signing up\nEach workshop is scheduled for four hours, including a 45 min. lunch break. There will be cake, coffee, and tea for attendants, so please remember to sign up! There are 30 seats available and a waiting list.\n \n\n Sign Up!"
+  },
+  {
+    "objectID": "news/upcoming/2025-04-10.html",
+    "href": "news/upcoming/2025-04-10.html",
+    "title": "Workshop: Advanced use of GenomeDK",
+    "section": "",
+    "text": "Are you a student or academic, current or future user of the GenomeDK high-performance computing (HPC) system? Or are you just curious about HPC and how you can utilize it in your work? Do you need to learn to use GenomeDK, or wish to become a better and more organized user?\nThen join us in this series of GenomeDK workshops where we guide you from a general introduction to advanced usage. Each workshop targets increasing difficulty levels, so you can join the sessions that fit you best. The second workshop is for more advanced usage of GenomeDK.\nThis workshop will be hosted by Samuele Soraggi (BiRC, MBG) and Dan Søndergaard (GenomeDK)."
+  },
+  {
+    "objectID": "news/upcoming/2025-04-10.html#signing-up",
+    "href": "news/upcoming/2025-04-10.html#signing-up",
+    "title": "Workshop: Advanced use of GenomeDK",
+    "section": "Signing up",
+    "text": "Signing up\nEach workshop is scheduled for four hours, including a 45 min. lunch break. There will be cake, coffee, and tea for attendants, so please remember to sign up! There are 30 seats available and a waiting list.\n \n\n Sign Up!"
+  },
+  {
+    "objectID": "binfResources/R.html",
+    "href": "binfResources/R.html",
+    "title": "Useful tips for R",
+    "section": "",
+    "text": "Useful tips for R\nNothing yet\n\n\n\n\n\n\nthis is my tip\n\n\n\nhello I am Marie"
+  },
+  {
+    "objectID": "binfResources/Databases.html",
+    "href": "binfResources/Databases.html",
+    "title": "Archive of OMICS databases with open datasets",
+    "section": "",
+    "text": "In this notebook, we provide a searchable table of periodically updated and daily tested OMICS databases with open access datasets. The table is based on multiple online sources and inputs from our colleagues and ABC participants. The links are tested automatically every day at midnight, and an error in opening the related webpage is signaled in the table. When we verify the malfunctioning of the link, we remove the database from the list after a reasonable grace period.\n\n\n\n\n\n\nNote\n\n\n\nFor any contribution or suggestion, please contact us at abcafe [at] au.dk, or open an issue on the Github repository of this webpage. Any input is considered, especially if you produced your own database and want to share it with the community!!!\n\n\n\n\n\n\n\n\n\n\n\n\n    \n        \n        \n        \n        \n        \n        \n        \n        \n    \n    \n   \n    \n      \n  \n        \n    \n    \n  \n        \n    \n    \n  \n        \n    \n      \n  \n        \n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n        \n    \n\n\nThis is the init_notebook_mode cell from ITables v2.2.4\n(you should not see this message - is your notebook trusted?)\n\n\n\n\n\n\n\nNameDescriptionOrganismOrganFormatTypeLinkTestedDate_tested\n\n\n    \n        \n        \n        \n        \n        \n        \n        \n        \n    \n    \n   \n    \n      \n  \n        \n    \n    \n  \n        \n    \n    \n  \n        \n    \n      \n  \n        \n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n        \n    \n\n\nLoading ITables v2.2.4 from the init_notebook_mode cell...\n(need help?)"
+  },
+  {
+    "objectID": "Documentation.html",
+    "href": "Documentation.html",
+    "title": "Documentation",
+    "section": "",
+    "text": "While it is always worth remembering an event which offers free cake (especially when it recurs with a frequency like the ABC, as you could read here), you might want to read again what has been done and said after the sugar levels drop down.\nOur tutorials and instructions are self contained, thus useful for anyone, also people not attending a session.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.1: Install R+Rstudio, first R coding problems/solutions\n\n\n\nR\n\n\nRStudio\n\n\nDataframe\n\n\n\nThings worth remembering from the ABC.1\n\n\n\nJun 13, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.2: RStudio projects and Anaconda+Python\n\n\n\nR\n\n\nRStudio\n\n\nAnaconda\n\n\nPython\n\n\nenvironments\n\n\n\nThings worth remembering from the ABC.2\n\n\n\nJun 27, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.3: R analysis of bulkRNA expression matrix\n\n\n\nR\n\n\nbulkRNA\n\n\n\nThings worth remembering from the ABC.3\n\n\n\nAug 20, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.4: Introduction to bash language for bioinformatics\n\n\n\nbash\n\n\ncommand line\n\n\n\nSlides and bash intro at the ABC.4\n\n\n\nSep 3, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.5: open coding and tutorials, single cell dimensionality reduction\n\n\n\nscanpy\n\n\nprojection\n\n\nPCA\n\n\nUMAP\n\n\n\nABC.5: try our previous tutorials or a workshop on dimensionality reduction\n\n\n\nSep 19, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.6: Download from online databases, open coding session\n\n\n\nGEO\n\n\nSRA\n\n\nDownload\n\n\n\nLearn how to download (especially) GEO-SRA data\n\n\n\nOct 3, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorkshop: Use GenomeDK\n\n\n\nGenomeDK\n\n\nbash\n\n\n\nIntroductive workshop to genomeDK\n\n\n\nOct 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.7: Practical guide to SLURM and job submissions on HPC\n\n\n\nSlurm\n\n\nJobs\n\n\nHPC\n\n\n\nLearn how to create jobs on HPC and troubleshoot bugs/problems\n\n\n\nOct 24, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.9: Graphical applications on GenomeDK\n\n\n\nJupyterlab\n\n\nRstudio\n\n\nLLM\n\n\nGenomeDK\n\n\n\nLearn how to launch graphical applications on GenomeDK and to integrate an LLM chatbot in Jupyterlab\n\n\n\nNov 28, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.10: Detailed bulkRNA data alignment and quality control\n\n\n\nbulkRNA\n\n\nalignment\n\n\nQC\n\n\nSTAR\n\n\n\nTry to align a bulk dataset and perform quality control!\n\n\n\nDec 12, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.11: Ollama for LLMs on your laptop, Introduction to Seurat, and scRNA-seq preprocessing\n\n\n\nscrna\n\n\nseurat\n\n\nR\n\n\n\nlearn about seurat object structure and preprocessing of scrnaSeq data\n\n\n\nJan 16, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.12: Pixi and Desktop on genomeDK, R-clusterProfiler analysis\n\n\n\nGenomeDK\n\n\npixi\n\n\nconda\n\n\npackage-environment\n\n\nR\n\n\nclusterProfiler\n\n\npathway-analysis\n\n\n\nPathway enrichment analysis with R package clusterProfiler\n\n\n\nJan 30, 2025\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "news.html",
+    "href": "news.html",
+    "title": "Events calendar",
+    "section": "",
+    "text": "The ABC will routinely post new meetings and related workshops/courses of interest here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.12: Accessible Bioinformatics Cafe\n\n\n\nCafe\n\n\nCoding\n\n\nBioinformatics\n\n\npathway\n\n\nclusterprofiler\n\n\n\nPathway analysis in R\n\n\n\nInvalid Date\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorkshop: Introduction to GenomeDK\n\n\n\nWorkshop\n\n\nGenomeDK\n\n\nIntroduction\n\n\n\nGetting started with high-performance computing on GenomeDK\n\n\n\nFeb 26, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorkshop: Advanced use of GenomeDK\n\n\n\nWorkshop\n\n\nGenomeDK\n\n\nAdvanced\n\n\n\nWhat more you can get out of GenomeDK\n\n\n\nApr 10, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorkshop: Pipelines on GenomeDK\n\n\n\nWorkshop\n\n\nGenomeDK\n\n\nPipelines\n\n\n\nCreate complex and reproducible pipelines on genomeDK\n\n\n\nJun 4, 2025\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Event title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nEvent title\n\n\nDates\n\n\nLocation\n\n\nOrganizers\n\n\n\n\n\n\nABC.11: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, DDSA\n\n\n\n\nABC.10: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.9: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.8: Nygen workshop\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, CellX, Nygen\n\n\n\n\nABC.7: Seventh ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nUse GenomeDK workshop\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, GenomeDK admin\n\n\n\n\nABC.6: Sixth ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.5: Fifth ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.4: Fourth ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.3: Third ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.2: Second ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.1: First ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "documentation/2025-01-30-ABC12.html",
+    "href": "documentation/2025-01-30-ABC12.html",
+    "title": "ABC.12: Pixi and Desktop on genomeDK, R-clusterProfiler analysis",
+    "section": "",
+    "text": "Today’s slides with news about GenomeDK and Pixi, and topic presentation about clusterProfiler and pathway analysis. \n \n\n Download Slides"
+  },
+  {
+    "objectID": "documentation/2025-01-30-ABC12.html#over-representation-analysis-ora",
+    "href": "documentation/2025-01-30-ABC12.html#over-representation-analysis-ora",
+    "title": "ABC.12: Pixi and Desktop on genomeDK, R-clusterProfiler analysis",
+    "section": "Over Representation Analysis (ORA)",
+    "text": "Over Representation Analysis (ORA)\nORA answers the question: “Which pathways are overrepresented in my list of significant genes?”\nTo answer this, we need a list of background genes (also referred to as the universe). This is important because overrepresentation is always relative, i.e. overrepresented compared to what? Therefore, we essentially create a contingency table to determine the significance of the pathway’s representation in the gene list.e. For example:\n\nmytable &lt;- data.frame(not_interesting_genes=c(2613, 15310), interesting_genes=c(28, 29))\nrow.names(mytable) &lt;- c(\"In pathway\", \"not in pathway\")\nmytable\n\n\nA data.frame: 2 × 2\n\n\n\nnot_interesting_genes\ninteresting_genes\n\n\n\n&lt;dbl&gt;\n&lt;dbl&gt;\n\n\n\n\nIn pathway\n2613\n28\n\n\nnot in pathway\n15310\n29\n\n\n\n\n\n\nStatistical Test\nTo determine over-representation, we use Fisher’s Exact Test, which is a statistical test commonly applied in contingency table analysis. The test is represented by the following formula:\n\\[ p = 1 - \\sum_{i=0}^{k-1} \\frac{\\binom{M}{i} \\binom{N-M}{n-i}}{\\binom{N}{n}} \\]\nWhere: - ( M ) is the total number of genes in the pathway, - ( N ) is the total number of genes in the universe, - ( n ) is the number of significant genes (those of interest), - ( k ) is the number of significant genes in the pathway.\n\nfisher.test(mytable, alternative = \"greater\")\n\n\n    Fisher's Exact Test for Count Data\n\ndata:  mytable\np-value = 1\nalternative hypothesis: true odds ratio is greater than 1\n95 percent confidence interval:\n 0.110242      Inf\nsample estimates:\nodds ratio \n 0.1767937 \n\n\nSince we are testing multiple pathways we should correct for multiple testing.\n\ngene_data &lt;- data.frame(\n  Gene_Name = paste0(\"Gene\", 1:10),\n  LogFC = c(2.5, -1.2, 0.8, -2.3, 3.1, -0.5, 1.8, -1.0, 2.0, -3.0),\n  P_value = c(0.001, 0.04, 0.2, 0.005, 0.0001, 0.3, 0.02, 0.06, 0.0005, 0.00001),\n  Regulation = c(\"UP\", \"DOWN\", \"UP\", \"DOWN\", \"UP\", \"DOWN\", \"UP\", \"DOWN\", \"UP\", \"DOWN\")\n)\n\nprint(gene_data)\n\n   Gene_Name LogFC P_value Regulation\n1      Gene1   2.5   1e-03         UP\n2      Gene2  -1.2   4e-02       DOWN\n3      Gene3   0.8   2e-01         UP\n4      Gene4  -2.3   5e-03       DOWN\n5      Gene5   3.1   1e-04         UP\n6      Gene6  -0.5   3e-01       DOWN\n7      Gene7   1.8   2e-02         UP\n8      Gene8  -1.0   6e-02       DOWN\n9      Gene9   2.0   5e-04         UP\n10    Gene10  -3.0   1e-05       DOWN\n\n\n\n\nORA has some significant drawbacks.\n\nMainly it is highly dependent on what we (subjectively) will deem to be interesting genes. Usually that would be genes that are differentially expressed.\nAdditionally, it is highly dependent on the background genes. If there are lot of non annotated genes in the pathways then the power reduces substantially and also creates very biased results depending on which pathway databases you use.\nIt does not take into account the combination of the p value and the logfc. What if a gene has a fold change of 5 but a p value of 0.051?"
+  },
+  {
+    "objectID": "documentation/2025-01-30-ABC12.html#gene-set-enrichment-analysis",
+    "href": "documentation/2025-01-30-ABC12.html#gene-set-enrichment-analysis",
+    "title": "ABC.12: Pixi and Desktop on genomeDK, R-clusterProfiler analysis",
+    "section": "Gene Set Enrichment Analysis",
+    "text": "Gene Set Enrichment Analysis\nThese issues are addressed by Gene Set Enrichment analysis. GSEA answers the question “these changes I see between treatment and control are similar to which known list of changes”. The big difference now is that instead of choosing a list of interesting genes we consider all the genes in the output of our degs analysis and we rank them!\nThe core idea of Gene Set Enrichment Analysis (GSEA) is to assess whether the genes in a predefined gene set (e.g., a pathway) are enriched at the top or bottom of a ranked gene list.\n\nGene Ranking: Genes are ranked by a statistic, such as the log-fold change or p-value, representing their differential expression.\nEnrichment Score (ES): The algorithm traverses the ranked gene list and computes a cumulative running score. When encountering a gene in the pathway, the score is increased proportionally to its rank. For genes not in the pathway, the score is decreased. The enrichment score (ES) is the maximum deviation from zero observed during this traversal.\nSignificance Testing: The observed ES is compared to a null distribution of ES values generated by permuting the gene labels. The significance is quantified as a p-value, and adjustments for multiple testing are applied.\nNormalization: The ES is normalized (NES) to account for variations in gene set size, making results comparable across pathways.\n\nBefore we go any further lets quickly get a degs list using the airway package and deseq2\n\ndata(airway)\ncts  &lt;- assay(airway) # The counts matrix\nmetadata &lt;- as.data.frame(colData(airway)) # Our metadata\nmetadata$condition &lt;- factor(metadata$dex) # factor the dex col in condition\ndds &lt;- DESeqDataSetFromMatrix(\n  countData = cts,\n  colData = metadata,\n  design = ~ condition\n)\ndds &lt;- DESeq(dds)\nres &lt;- results(dds)\nresdf &lt;- as.data.frame(res)\nhead(res)\n\nestimating size factors\n\nestimating dispersions\n\ngene-wise dispersion estimates\n\nmean-dispersion relationship\n\nfinal dispersion estimates\n\nfitting model and testing\n\n\n\nlog2 fold change (MLE): condition untrt vs trt \nWald test p-value: condition untrt vs trt \nDataFrame with 6 rows and 6 columns\n                  baseMean log2FoldChange     lfcSE      stat    pvalue\n                 &lt;numeric&gt;      &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt; &lt;numeric&gt;\nENSG00000000003 708.602170      0.3788470  0.173141  2.188082 0.0286636\nENSG00000000005   0.000000             NA        NA        NA        NA\nENSG00000000419 520.297901     -0.2037604  0.100599 -2.025478 0.0428183\nENSG00000000457 237.163037     -0.0340428  0.126279 -0.269584 0.7874802\nENSG00000000460  57.932633      0.1171786  0.301237  0.388992 0.6972820\nENSG00000000938   0.318098      1.7245505  3.493633  0.493627 0.6215698\n                     padj\n                &lt;numeric&gt;\nENSG00000000003  0.139308\nENSG00000000005        NA\nENSG00000000419  0.183359\nENSG00000000457  0.930572\nENSG00000000460  0.895441\nENSG00000000938        NA\n\n\nNow we can rank the list. There is not on a correct way to rank the gene lists but we would like the ranking to represent both the significance and the fold change. One suggested formula is:\n\\[\n\\text{Ranking Score} = \\log_{2}(\\text{Fold Change}) \\times -\\log_{10}(\\text{P-value})\n\\]\nAdditionally we can order them by the stat column of the deseq2 output which is the wald statistic. This creates a list where over expressed and significant genes are at the top, under expressed and significant genes in the bottom and combinations of not significant genes in the middle.\n\nresOrdered &lt;- res[order(res$stat),]"
+  },
+  {
+    "objectID": "documentation/2025-01-30-ABC12.html#plots",
+    "href": "documentation/2025-01-30-ABC12.html#plots",
+    "title": "ABC.12: Pixi and Desktop on genomeDK, R-clusterProfiler analysis",
+    "section": "Plots",
+    "text": "Plots\nOne of the great things about clusterProfiler is that you can very easily create plots with the enrichplot library and they are very well integrated with ggplot. Here we will show some of them as there are many. You can see more here: https://yulab-smu.top/biomedical-knowledge-mining-book/enrichplot.html\n\nConverting Gene Lists\nWhen working with gene lists, it’s often necessary to convert between different types of gene identifiers. For instance, you may need to convert between ENTREZID, ENSEMBL, and SYMBOL identifiers, which are commonly used in gene annotation databases. The bitr() function from the clusterProfiler package is a useful tool for this task.\n\nbitr(gene, fromType = \"ENTREZID\",\n        toType = c(\"ENSEMBL\", \"SYMBOL\"),\n        OrgDb = org.Hs.eg.db)\n\n'select()' returned 1:many mapping between keys and columns\n\nWarning message in bitr(gene, fromType = \"ENTREZID\", toType = c(\"ENSEMBL\", \"SYMBOL\"), :\n“0.48% of input gene IDs are fail to map...”\n\n\n\nA data.frame: 242 × 3\n\n\n\nENTREZID\nENSEMBL\nSYMBOL\n\n\n\n&lt;chr&gt;\n&lt;chr&gt;\n&lt;chr&gt;\n\n\n\n\n1\n4312\nENSG00000196611\nMMP1\n\n\n2\n8318\nENSG00000093009\nCDC45\n\n\n3\n10874\nENSG00000109255\nNMU\n\n\n4\n55143\nENSG00000134690\nCDCA8\n\n\n5\n55388\nENSG00000065328\nMCM10\n\n\n6\n991\nENSG00000117399\nCDC20\n\n\n7\n6280\nENSG00000163220\nS100A9\n\n\n8\n2305\nENSG00000111206\nFOXM1\n\n\n9\n9493\nENSG00000137807\nKIF23\n\n\n10\n1062\nENSG00000138778\nCENPE\n\n\n11\n3868\nENSG00000186832\nKRT16\n\n\n12\n4605\nENSG00000101057\nMYBL2\n\n\n13\n9833\nENSG00000165304\nMELK\n\n\n14\n9133\nENSG00000157456\nCCNB2\n\n\n15\n6279\nENSG00000143546\nS100A8\n\n\n16\n10403\nENSG00000080986\nNDC80\n\n\n17\n8685\nENSG00000019169\nMARCO\n\n\n18\n597\nENSG00000140379\nBCL2A1\n\n\n19\n7153\nENSG00000131747\nTOP2A\n\n\n20\n23397\nENSG00000121152\nNCAPH\n\n\n21\n6278\nENSG00000143556\nS100A7\n\n\n22\n79733\nENSG00000129173\nE2F8\n\n\n23\n259266\nENSG00000066279\nASPM\n\n\n24\n1381\nENSG00000166426\nCRABP1\n\n\n25\n3627\nENSG00000169245\nCXCL10\n\n\n26\n27074\nENSG00000078081\nLAMP3\n\n\n27\n6241\nENSG00000171848\nRRM2\n\n\n28\n55165\nENSG00000138180\nCEP55\n\n\n29\n9787\nENSG00000126787\nDLGAP5\n\n\n30\n7368\nENSG00000174607\nUGT8\n\n\n⋮\n⋮\n⋮\n⋮\n\n\n214\n64499\nENSG00000197253\nTPSB2\n\n\n215\n54829\nENSG00000106819\nASPN\n\n\n216\n54829\nENSG00000292224\nASPN\n\n\n217\n1524\nENSG00000168329\nCX3CR1\n\n\n218\n10234\nENSG00000128606\nLRRC17\n\n\n219\n1580\nENSG00000142973\nCYP4B1\n\n\n220\n10647\nENSG00000124935\nSCGB1D2\n\n\n221\n25893\nENSG00000162722\nTRIM58\n\n\n222\n24141\nENSG00000125869\nLAMP5\n\n\n223\n10351\nENSG00000141338\nABCA8\n\n\n224\n2330\nENSG00000131781\nFMO5\n\n\n225\n5304\nENSG00000159763\nPIP\n\n\n226\n79846\nENSG00000105792\nCFAP69\n\n\n227\n8614\nENSG00000113739\nSTC2\n\n\n228\n2625\nENSG00000107485\nGATA3\n\n\n229\n7021\nENSG00000008196\nTFAP2B\n\n\n230\n7802\nENSG00000163879\nDNALI1\n\n\n231\n79689\nENSG00000127954\nSTEAP4\n\n\n232\n11122\nENSG00000196090\nPTPRT\n\n\n233\n55351\nENSG00000152953\nSTK32B\n\n\n234\n9\nENSG00000171428\nNAT1\n\n\n235\n4239\nENSG00000166482\nMFAP4\n\n\n236\n5241\nENSG00000082175\nPGR\n\n\n237\n10551\nENSG00000106541\nAGR2\n\n\n238\n10974\nENSG00000148671\nADIRF\n\n\n239\n79838\nENSG00000103534\nTMC5\n\n\n240\n79901\nENSG00000071967\nCYBRD1\n\n\n241\n57758\nENSG00000175356\nSCUBE2\n\n\n242\n4969\nENSG00000106809\nOGN\n\n\n243\n4969\nENSG00000291350\nOGN\n\n\n\n\n\nLets see from our examples:\n\nmutate(ego, qscore = -log(p.adjust, base=10)) %&gt;% \n    barplot(x=\"qscore\") + ggtitle(\"Bar plot from the ORA  above\")\n\n\n\n\n\n\n\n\n\nedox &lt;- setReadable(ego, 'org.Hs.eg.db', 'ENTREZID') # Convert to symbol\np &lt;- cnetplot(edox, foldChange=geneList, circular = TRUE, colorEdge = TRUE)\np\n\n\n\n\n\n\n\n\nA very informative plot is a heatplot which you can generate like this:\n\np1 &lt;- heatplot(edox, showCategory=5) # Show category dictates show many genesets you see\np2 &lt;- heatplot(edox, foldChange=geneList, showCategory=5)\ncowplot::plot_grid(p1, p2, ncol=1, labels=LETTERS[1:2])\n\n\n\n\n\n\n\n\nOne of the most useful ones I find to be the upset plot. For over-representation analysis, upsetplot will calculate the overlaps among different gene sets and for GSEA result, it will plot the fold change distributions of different categories.\n\nupsetplot(ego3) \n\n\n\n\n\n\n\n\n\noptions(repr.plot.height=20)\nridgeplot(ego3)\n\nPicking joint bandwidth of 0.223\n\n\n\n\n\n\n\n\n\n\nLastly we have: Running score and preranked list are traditional methods for visualizing the results of Gene Set Enrichment Analysis (GSEA). These visualizations help to understand how a particular gene set is enriched along the ordered gene list, as well as how the enrichment score changes as you progress through the gene list.\n\np1 &lt;- gseaplot(ego3, geneSetID = 1, by = \"runningScore\", title = ego3$Description[1])\np2 &lt;- gseaplot(ego3, geneSetID = 1, by = \"preranked\", title = ego3$Description[1])\n\n\noptions(repr.plot.height=10)\ncowplot::plot_grid(p1, p2, ncol=1, labels=LETTERS[1:3])\n\n\n\n\n\n\n\n\n\n\nRunning Score Plot Interpretation\nThe running score plot illustrates how the enrichment score (ES) accumulates as you move through the ranked gene list. The key features to observe are:\n\nSharp Peaks: A sharp rise indicates that a cluster of genes from the pathway is highly ranked, contributing strongly to enrichment.\nPeak Position: The x-axis location of the peak corresponds to where the pathway’s genes are most enriched within the ranked list.\nRunning Score Return: If the score drops back down, it suggests that the pathway genes are not uniformly distributed across the gene list."
   },
   {
     "objectID": "documentation/2024-08-20-ABC3.html",
