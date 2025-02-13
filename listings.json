@@ -1,26 +1,5 @@
 [
   {
-    "listing": "/news.html",
-    "items": [
-      "/news/upcoming/2025-01-30-session12.html",
-      "/news/upcoming/2025-02-26.html",
-      "/news/upcoming/2025-04-10.html",
-      "/news/upcoming/2025-06-04.html",
-      "/news/past/2025-01-16-session11.html",
-      "/news/past/2024-12-12-session10.html",
-      "/news/past/2024-11-28-session9.html",
-      "/news/past/2024-11-07-session8.html",
-      "/news/past/2024-10-24-session7.html",
-      "/news/past/2024-10-10-usegenomedk.html",
-      "/news/past/2024-10-03-session6.html",
-      "/news/past/2024-09-19-session5.html",
-      "/news/past/2024-09-03-session4.html",
-      "/news/past/2024-08-20-session3.html",
-      "/news/past/2024-06-27-session2.html",
-      "/news/past/2024-06-13-session1.html"
-    ]
-  },
-  {
     "listing": "/Documentation.html",
     "items": [
       "/documentation/2024-06-13-ABC1.html",
@@ -35,6 +14,28 @@
       "/documentation/2024-12-12-ABC10.html",
       "/documentation/2025-01-16-ABC11.html",
       "/documentation/2025-01-30-ABC12.html"
+    ]
+  },
+  {
+    "listing": "/news.html",
+    "items": [
+      "/news/upcoming/2025-02-26.html",
+      "/news/upcoming/2025-02-27-session13.html",
+      "/news/upcoming/2025-04-10.html",
+      "/news/upcoming/2025-06-04.html",
+      "/news/past/2025-01-30-session12.html",
+      "/news/past/2025-01-16-session11.html",
+      "/news/past/2024-12-12-session10.html",
+      "/news/past/2024-11-28-session9.html",
+      "/news/past/2024-11-07-session8.html",
+      "/news/past/2024-10-24-session7.html",
+      "/news/past/2024-10-10-usegenomedk.html",
+      "/news/past/2024-10-03-session6.html",
+      "/news/past/2024-09-19-session5.html",
+      "/news/past/2024-09-03-session4.html",
+      "/news/past/2024-08-20-session3.html",
+      "/news/past/2024-06-27-session2.html",
+      "/news/past/2024-06-13-session1.html"
     ]
   }
 ]
