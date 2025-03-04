@@ -1,14 +1,14 @@
 ---
-title: "ABC.12: Accessible Bioinformatics Cafe"
+title: "ABC.13: Accessible Bioinformatics Cafe"
 author: "Samuele Soraggi"
-image: ../../img/news/clusterProfiler.png
+#image: ../../img/news/clusterProfiler.png
 Organizers: HDS Sandbox, Bioinf Core facility, DDSA
-date: 2025-0130
-categories: [Cafe, Coding, Bioinformatics, pathway, clusterprofiler]
-description: "Pathway analysis in R"
+date: 2025-02-27
+categories: [Cafe, Coding, Bioinformatics, Deconvolution]
+description: "bulkRNA deconvolution with scRNA data"
 ---
 
-The 11th session of the ABC (Accessible Bioinformatics Cafe) will be **on january 30th, at 13:00-15:00 in building 1231-114**
+The 13th session of the ABC (Accessible Bioinformatics Cafe) will be **on february 27th, at 13:00-15:00 in building 1231-114**
 
 ![The building is close to the lakes. Room 114 is on the ground floor, by the southernmost corner of the building, where you can find also the door to the stairs to other floors.](../../img/news/bartholin1231-114.png){width=400px}
 
@@ -16,7 +16,7 @@ Everyone is welcome to **join independently of coding skills and level**.
 
 ## Agenda
  
-For this ABC Dimitrios will show how to do pathways analysis in R using the package `clusterProfiler`
+For this ABC we will talk about deconvolution techniques for bulkRNA data using single cell RNA data.
 
 ## Signing up
 
@@ -25,7 +25,7 @@ Please sign up to ensure there is enough cake (and you are pretty sure you will 
 &nbsp;
 
  <p align="center">
-  <a href="https://forms.gle/bt8MtXFu8AnSXN64A" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+  <a href="nolink" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
     Sign Up!
   </a>
 </p>
