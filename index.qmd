@@ -7,12 +7,12 @@ bibliography: resources/references.bib
 ---
 
 :::{.callout-warning title="Incoming Events"}
-The 12th ABC will take place on January 30th, 2025. Drop in for help or follow our tutorial on pathway analysis in R with `clusterProfiler`!
+The 13th ABC will take place on February 27th, 2025. Drop in for help or follow our tutorial of the day!
 
 &nbsp;
 
 <p align="center">
-  <a href="https://abc.au.dk/news/upcoming/2025-01-30-session12.html" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+  <a href="https://abc.au.dk/news/upcoming/2025-02-27-session13.html" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
     Information + signup
   </a>
 </p>
