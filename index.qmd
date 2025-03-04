@@ -7,24 +7,12 @@ bibliography: resources/references.bib
 ---
 
 :::{.callout-warning title="Incoming Events"}
-The 13th ABC will take place on February 27th, 2025. Drop in for help or follow our tutorial of the day!
+The 14th ABC will take place on march 13th, 2025. Drop in for help or for following our tutorials!
 
 &nbsp;
 
 <p align="center">
-  <a href="https://abc.au.dk/news/upcoming/2025-02-27-session13.html" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
-    Information + signup
-  </a>
-</p>
-
-&nbsp;
-
-The GenomeDK workshop series for the first half of 2025 is out, with three workshops going from the basics to reproducible pipelines on the cluster. Reserve your seat at any of the three workshops from the link below
-
-&nbsp;
-
- <p align="center">
-  <a href="https://genome.au.dk/news/workshop-series-in-2025/" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+  <a href="https://abc.au.dk/news/upcoming/2025-03-13-session14.html" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
     Information + signup
   </a>
 </p>
