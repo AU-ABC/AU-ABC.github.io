@@ -7,7 +7,7 @@ bibliography: resources/references.bib
 ---
 
 :::{.callout-warning title="Incoming Events"}
-The 14th ABC will take place on march 13th, 2025. Drop in for help or for following our tutorials!
+The 14th ABC will take place on march 13th, 2025, 13:00-15:00. Drop in for help or for following our tutorials!
 
 &nbsp;
 
