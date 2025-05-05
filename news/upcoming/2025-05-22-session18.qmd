@@ -1,5 +1,5 @@
 ---
-title: "ABC.15: Accessible Bioinformatics Cafe"
+title: "ABC.18: Accessible Bioinformatics Cafe"
 author: "Samuele Soraggi"
 image: ../../img/news/support.jpg
 Organizers: HDS Sandbox, Bioinf Core facility, DDSA
