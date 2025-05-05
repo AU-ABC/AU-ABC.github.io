@@ -21,25 +21,25 @@
     "text": "Behind the ABC - Who we are\nWe organize the cafe as a collaboration between the Danish Health Data Science Sandbox, the Core Bioinformatics Facility, and PhD students whose fields touch bioinformatics and health data science.\nOur shared email address for general enquiries about the cafe is abcafe au.dk (with the @ in between).\n\n\n\n\n\n\n\nPeople\nWhat do I do\n\n\n\n\n\nPer Qvist: Ass.Prof. at AU biomed, leads as well the Core Bioinformatics Facility. Most importantly, has been managing constant cake and drinks flow to the ABC, which has been making him invaluable to all participants!\n\n\n\nMarie Sønderstrup: Phd Student at The department of biomedicine. Is the inspirator of the ABC, after living through the deep frustration of understanding how to code.\n\n\n\nManuel Peral Vazquez: Phd Student at Department of Molecular Biology and Genetics - Cellular Health, Intervention, and Nutrition. He loves to dig into the amenities of the bash command line and trying out interesting things.\n\n\n\nSamuele Soraggi: Special consultant at the department of bioinformatics after a migration from the field of mathematics. He often throws himself to unknown buggy pieces of code with duct tape and a hammer until they work. When he does not succeed, he deletes them and empty the trash bin.\n\n\n\nDimitrios Pediotidis-Maniatis: Consultant at the bioinformatics core facility. Probably the person with the highest attendance to the ABC! He masters a lot of things in bash and R - test him out!\n\n\n\njacob Egemose Høgfeldt: He is also consultant at the bioinformatics core facility, and knows a great deal of bioinformatics and data science. He is the absolute go-to person for bulkRNA sequencing questions together with Dimitrios.\n\n\n\n\n\nBeyond the ABC - in depth bioinformatics support\nSome of us work at Aarhus University as consultants, providing support for various HPC and bioinformatics topics and analysis, in two different ways:\n\n\n\nWho\nHelp and contact\n\n\n\n\n\nSamuele from the Health Data Science Sandbox provides some free consultancy hours for technical issues, bioinformatics setup for coding and perform analysis, machine learning practices, both on PC and computing cluster, and organizes a wide array of workshops, both on demand and on own initiative. You can book a short meeting with Samuele here to introduce the problem and setup eventual solutions, or write at samuele birc.au.dk (with @ in between).\n\n\n \nDimitrios and Jacob work at the Bioinformatics Core Facility, led by Ass. Prof. Per Qvist. They offer expert assistance in a wide range of bioinformatics services, including data analysis, storage, visualization and advice on experiment design. The Bioinformatics Core Facility primarily operate on a fee for service model of data analysis but also offer full joint scientific collaborations and training. You can find more details, including project examples and pricing, on their website (https://biomed.au.dk/bioinformatics-core-facility). Feel free to reach out for a free initial consultation regarding your projects by emailing to bioinformatics [at] biomed.au.dk."
   },
   {
-    "objectID": "news/upcoming/2025-03-13-session14.html",
-    "href": "news/upcoming/2025-03-13-session14.html",
-    "title": "ABC.14: Accessible Bioinformatics Cafe",
+    "objectID": "news/upcoming/2025-05-22-session18.html",
+    "href": "news/upcoming/2025-05-22-session18.html",
+    "title": "ABC.15: Accessible Bioinformatics Cafe",
     "section": "",
-    "text": "The 14th session of the ABC (Accessible Bioinformatics Cafe) will be on march 13th, at 13:00-15:00 in building 1231-114\nEveryone is welcome to join independently of coding skills and level."
+    "text": "The 17th session of the ABC (Accessible Bioinformatics Cafe) will be on Thursday, May 22nd, at 13:00-15:00 in building 1231-224\nEveryone is welcome to join independently of coding skills and level."
   },
   {
-    "objectID": "news/upcoming/2025-03-13-session14.html#agenda",
-    "href": "news/upcoming/2025-03-13-session14.html#agenda",
-    "title": "ABC.14: Accessible Bioinformatics Cafe",
+    "objectID": "news/upcoming/2025-05-22-session18.html#agenda",
+    "href": "news/upcoming/2025-05-22-session18.html#agenda",
+    "title": "ABC.15: Accessible Bioinformatics Cafe",
     "section": "Agenda",
-    "text": "Agenda\nFor this ABC we will talk about an interesting and recent package for single cell and proteomics analysis!"
+    "text": "Agenda\nThis ABC will be a drop-in session where we will try to help you with your bioinformatics and data science issues. And maybe, you can even help each other!"
   },
   {
-    "objectID": "news/upcoming/2025-03-13-session14.html#signing-up",
-    "href": "news/upcoming/2025-03-13-session14.html#signing-up",
-    "title": "ABC.14: Accessible Bioinformatics Cafe",
+    "objectID": "news/upcoming/2025-05-22-session18.html#signing-up",
+    "href": "news/upcoming/2025-05-22-session18.html#signing-up",
+    "title": "ABC.15: Accessible Bioinformatics Cafe",
     "section": "Signing up",
-    "text": "Signing up\nPlease sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign Up!"
+    "text": "Signing up\nTo sign up, please simply drop a mail to abcafe [at] au.dk, so we know how much cake and tea/coffee we need."
   },
   {
     "objectID": "news/past/2024-11-07-session8.html",
@@ -112,25 +112,39 @@
     "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake (and you are pretty sure you will show up), click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign up for cake"
   },
   {
-    "objectID": "news/past/2024-06-27-session2.html",
-    "href": "news/past/2024-06-27-session2.html",
-    "title": "ABC.2: Second ABC session",
+    "objectID": "news/past/2025-04-24-session16.html",
+    "href": "news/past/2025-04-24-session16.html",
+    "title": "ABC.15: Accessible Bioinformatics Cafe",
     "section": "",
-    "text": "The second session of the ABC (Accessible Bioinformatics Cafe) will be on june 27th, at 13:00 in the hall of AIAS (the Aarhus Institute of Advanced Studies, see below).\nEveryone is welcome to join independently of coding skills and level."
+    "text": "The 16th session of the ABC (Accessible Bioinformatics Cafe) will be on april 24th, at 13:00-15:00 in building 1630-301\nEveryone is welcome to join independently of coding skills and level."
   },
   {
-    "objectID": "news/past/2024-06-27-session2.html#agenda",
-    "href": "news/past/2024-06-27-session2.html#agenda",
-    "title": "ABC.2: Second ABC session",
+    "objectID": "news/past/2025-04-24-session16.html#agenda",
+    "href": "news/past/2025-04-24-session16.html#agenda",
+    "title": "ABC.15: Accessible Bioinformatics Cafe",
     "section": "Agenda",
-    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented) at each meeting. This time we have a choice of\n\nA small dplyr project managed with RStudio\nInstall Anaconda and python basics"
+    "text": "Agenda\nThis ABC will be a drop-in session where we will try to help you with your bioinformatics and data science issues. And maybe, you can even help each other!"
   },
   {
-    "objectID": "news/past/2024-06-27-session2.html#signing-up",
-    "href": "news/past/2024-06-27-session2.html#signing-up",
-    "title": "ABC.2: Second ABC session",
+    "objectID": "news/past/2025-04-24-session16.html#signing-up",
+    "href": "news/past/2025-04-24-session16.html#signing-up",
+    "title": "ABC.15: Accessible Bioinformatics Cafe",
     "section": "Signing up",
-    "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake, click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign up for cake"
+    "text": "Signing up\nTo sign up, please simply drop a mail to abcafe [at] au.dk, so we know how much cake and tea/coffee we need."
+  },
+  {
+    "objectID": "news/past/2025-04-10.html",
+    "href": "news/past/2025-04-10.html",
+    "title": "Workshop: Advanced use of GenomeDK",
+    "section": "",
+    "text": "Are you a student or academic, current or future user of the GenomeDK high-performance computing (HPC) system? Or are you just curious about HPC and how you can utilize it in your work? Do you need to learn to use GenomeDK, or wish to become a better and more organized user?\nThen join us in this series of GenomeDK workshops where we guide you from a general introduction to advanced usage. Each workshop targets increasing difficulty levels, so you can join the sessions that fit you best. The second workshop is for more advanced usage of GenomeDK.\nThis workshop will be hosted by Samuele Soraggi (BiRC, MBG) and Dan Søndergaard (GenomeDK)."
+  },
+  {
+    "objectID": "news/past/2025-04-10.html#signing-up",
+    "href": "news/past/2025-04-10.html#signing-up",
+    "title": "Workshop: Advanced use of GenomeDK",
+    "section": "Signing up",
+    "text": "Signing up\nEach workshop is scheduled for four hours, including a 45 min. lunch break. There will be cake, coffee, and tea for attendants, so please remember to sign up! There are 30 seats available and a waiting list.\n \n\n Sign Up!"
   },
   {
     "objectID": "news/past/2025-01-16-session11.html",
@@ -154,74 +168,88 @@
     "text": "Signing up\nPlease sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign Up!"
   },
   {
-    "objectID": "news/past/2024-10-10-usegenomedk.html",
-    "href": "news/past/2024-10-10-usegenomedk.html",
-    "title": "Use GenomeDK workshop",
+    "objectID": "news/past/2025-02-27-session13.html",
+    "href": "news/past/2025-02-27-session13.html",
+    "title": "ABC.13: Accessible Bioinformatics Cafe",
     "section": "",
-    "text": "You are invited to an introductory workshop on october 10th, at 11:00 in building 1540-K26 (Biology department)."
+    "text": "The 13th session of the ABC (Accessible Bioinformatics Cafe) will be on february 27th, at 13:00-15:00 in building 1231-114\nEveryone is welcome to join independently of coding skills and level."
   },
   {
-    "objectID": "news/past/2024-10-10-usegenomedk.html#agenda",
-    "href": "news/past/2024-10-10-usegenomedk.html#agenda",
-    "title": "Use GenomeDK workshop",
-    "section": "Agenda",
-    "text": "Agenda\nThe topics for the workshop are all at introductory level, such as\n\nlogin and account setup\nfile system\ncommand line intro\nsoftware management\nprojects on GenomeDK\nfile transfer\njobs\n\nThere are no prerequisites apart from having a working account on GenomeDK with a complete 2-Factor authentication. Also, bring your laptop, so we can try out live some commands and exercises on the cluster.\nThere will be a lunch break 12-13, with lunch not included in the workshop. We will serve coffee and cake.\nThere is time for questions and problem-solving, so come with your issues if you are already a GDK user."
-  },
-  {
-    "objectID": "news/past/2024-10-10-usegenomedk.html#signing-up",
-    "href": "news/past/2024-10-10-usegenomedk.html#signing-up",
-    "title": "Use GenomeDK workshop",
+    "objectID": "news/past/2025-02-27-session13.html#signing-up",
+    "href": "news/past/2025-02-27-session13.html#signing-up",
+    "title": "ABC.13: Accessible Bioinformatics Cafe",
     "section": "Signing up",
-    "text": "Signing up\nPlease sign up through this very short online form:\n \n\n Sign up"
+    "text": "Signing up\nPlease sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign Up!"
   },
   {
-    "objectID": "news/past/2024-10-03-session6.html",
-    "href": "news/past/2024-10-03-session6.html",
-    "title": "ABC.6: Sixth ABC session",
+    "objectID": "news/past/2024-11-28-session9.html",
+    "href": "news/past/2024-11-28-session9.html",
+    "title": "ABC.9: Accessible Bioinformatics Cafe",
     "section": "",
-    "text": "The fourth session of the ABC (Accessible Bioinformatics Cafe) will be on october 3rd, at 13:00 in building 1873 room 118A (University city Molecular Biology Building, room by the canteen, see below).\nEveryone is welcome to join independently of coding skills and level."
+    "text": "The ninth session of the ABC (Accessible Bioinformatics Cafe) will be on november 28th, at 13:00-15:00 in building 1873-118A\nEveryone is welcome to join independently of coding skills and level."
   },
   {
-    "objectID": "news/past/2024-10-03-session6.html#agenda",
-    "href": "news/past/2024-10-03-session6.html#agenda",
-    "title": "ABC.6: Sixth ABC session",
+    "objectID": "news/past/2024-11-28-session9.html#agenda",
+    "href": "news/past/2024-11-28-session9.html#agenda",
+    "title": "ABC.9: Accessible Bioinformatics Cafe",
     "section": "Agenda",
-    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented at each meeting. This time we have\n\ndownload of open datasets from online databases\n\nYou can also bring your own code and issues and get help from us."
+    "text": "Agenda\nFor this ABC we show how to use graphical applications on GenomeDK, and specifically show Rstudio and Jupyterlab."
   },
   {
-    "objectID": "news/past/2024-10-03-session6.html#signing-up",
-    "href": "news/past/2024-10-03-session6.html#signing-up",
-    "title": "ABC.6: Sixth ABC session",
+    "objectID": "news/past/2024-11-28-session9.html#signing-up",
+    "href": "news/past/2024-11-28-session9.html#signing-up",
+    "title": "ABC.9: Accessible Bioinformatics Cafe",
     "section": "Signing up",
-    "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake (and you are pretty sure you will show up), click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign up for cake"
+    "text": "Signing up\nPlease sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign Up!"
   },
   {
-    "objectID": "news/past/2024-10-24-session7.html",
-    "href": "news/past/2024-10-24-session7.html",
-    "title": "ABC.7: Seventh ABC session",
+    "objectID": "news/past/2025-01-30-session12.html",
+    "href": "news/past/2025-01-30-session12.html",
+    "title": "ABC.12: Accessible Bioinformatics Cafe",
     "section": "",
-    "text": "The seventh session of the ABC (Accessible Bioinformatics Cafe) will be on october 24th, at 13:00 - building 1240-218\nEveryone is welcome to join independently of coding skills and level."
+    "text": "The 12th session of the ABC (Accessible Bioinformatics Cafe) will be on january 30th, at 13:00-15:00 in building 1231-114\nEveryone is welcome to join independently of coding skills and level."
   },
   {
-    "objectID": "news/past/2024-10-24-session7.html#agenda",
-    "href": "news/past/2024-10-24-session7.html#agenda",
-    "title": "ABC.7: Seventh ABC session",
+    "objectID": "news/past/2025-01-30-session12.html#agenda",
+    "href": "news/past/2025-01-30-session12.html#agenda",
+    "title": "ABC.12: Accessible Bioinformatics Cafe",
     "section": "Agenda",
-    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented at each meeting. You can also bring your own code and issues and get help from us."
+    "text": "Agenda\nFor this ABC Dimitrios will show how to do pathways analysis in R using the package clusterProfiler"
   },
   {
-    "objectID": "news/past/2024-10-24-session7.html#signing-up",
-    "href": "news/past/2024-10-24-session7.html#signing-up",
-    "title": "ABC.7: Seventh ABC session",
+    "objectID": "news/past/2025-01-30-session12.html#signing-up",
+    "href": "news/past/2025-01-30-session12.html#signing-up",
+    "title": "ABC.12: Accessible Bioinformatics Cafe",
     "section": "Signing up",
-    "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake (and you are pretty sure you will show up), click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign-up"
+    "text": "Signing up\nPlease sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign Up!"
+  },
+  {
+    "objectID": "news/past/2025-03-27-session15.html",
+    "href": "news/past/2025-03-27-session15.html",
+    "title": "ABC.15: Accessible Bioinformatics Cafe",
+    "section": "",
+    "text": "The 15th session of the ABC (Accessible Bioinformatics Cafe) will be on march 27th, at 13:00-15:00 in building 1231-224\nEveryone is welcome to join independently of coding skills and level."
+  },
+  {
+    "objectID": "news/past/2025-03-27-session15.html#agenda",
+    "href": "news/past/2025-03-27-session15.html#agenda",
+    "title": "ABC.15: Accessible Bioinformatics Cafe",
+    "section": "Agenda",
+    "text": "Agenda\nThis ABC will be a drop-in session where we will try to help you with your bioinformatics and data science issues. And maybe, you can even help each other!"
+  },
+  {
+    "objectID": "news/past/2025-03-27-session15.html#signing-up",
+    "href": "news/past/2025-03-27-session15.html#signing-up",
+    "title": "ABC.15: Accessible Bioinformatics Cafe",
+    "section": "Signing up",
+    "text": "Signing up\nTo sign up, please simply drop a mail to abcafe [at] au.dk, so we know how much cake and tea/coffee we need."
   },
   {
     "objectID": "news.html",
     "href": "news.html",
     "title": "Events calendar",
     "section": "",
-    "text": "The ABC will routinely post new meetings and related workshops/courses of interest here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.14: Accessible Bioinformatics Cafe\n\n\n\nCafe\n\n\nCoding\n\n\nBioinformatics\n\n\nSCP\n\n\nMass Spectrometry\n\n\nSingle cell proteomics\n\n\n\nSingle cell proteomics analysis\n\n\n\nMar 13, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorkshop: Advanced use of GenomeDK\n\n\n\nWorkshop\n\n\nGenomeDK\n\n\nAdvanced\n\n\n\nWhat more you can get out of GenomeDK\n\n\n\nApr 10, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorkshop: Pipelines on GenomeDK\n\n\n\nWorkshop\n\n\nGenomeDK\n\n\nPipelines\n\n\n\nCreate complex and reproducible pipelines on genomeDK\n\n\n\nJun 4, 2025\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Event title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nEvent title\n\n\nDates\n\n\nLocation\n\n\nOrganizers\n\n\n\n\n\n\nABC.13: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, DDSA\n\n\n\n\nWorkshop: Introduction to GenomeDK\n\n\n \n\n\n \n\n\nHDS Sandbox, GenomeDK\n\n\n\n\nABC.12: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, DDSA\n\n\n\n\nABC.11: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, DDSA\n\n\n\n\nABC.10: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.9: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.8: Nygen workshop\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, CellX, Nygen\n\n\n\n\nABC.7: Seventh ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nUse GenomeDK workshop\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, GenomeDK admin\n\n\n\n\nABC.6: Sixth ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.5: Fifth ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.4: Fourth ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.3: Third ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.2: Second ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.1: First ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\n\nNo matching items"
+    "text": "The ABC will routinely post new meetings and related workshops/courses of interest here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.15: Accessible Bioinformatics Cafe\n\n\n\nCafe\n\n\nCoding\n\n\nBioinformatics\n\n\nSupport\n\n\n\nBioinformatics and Data science drop-in\n\n\n\nMay 8, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nABC.15: Accessible Bioinformatics Cafe\n\n\n\nCafe\n\n\nCoding\n\n\nBioinformatics\n\n\nSupport\n\n\n\nBioinformatics and Data science drop-in\n\n\n\nMay 22, 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorkshop: Pipelines on GenomeDK\n\n\n\nWorkshop\n\n\nGenomeDK\n\n\nPipelines\n\n\n\nCreate complex and reproducible pipelines on genomeDK\n\n\n\nJun 4, 2025\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Event title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\nEvent title\n\n\nDates\n\n\nLocation\n\n\nOrganizers\n\n\n\n\n\n\nABC.15: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, DDSA\n\n\n\n\nWorkshop: Advanced use of GenomeDK\n\n\n \n\n\n \n\n\nHDS Sandbox, GenomeDK\n\n\n\n\nABC.15: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, DDSA\n\n\n\n\nABC.14: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, DDSA\n\n\n\n\nABC.13: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, DDSA\n\n\n\n\nWorkshop: Introduction to GenomeDK\n\n\n \n\n\n \n\n\nHDS Sandbox, GenomeDK\n\n\n\n\nABC.12: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, DDSA\n\n\n\n\nABC.11: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, DDSA\n\n\n\n\nABC.10: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.9: Accessible Bioinformatics Cafe\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.8: Nygen workshop\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, CellX, Nygen\n\n\n\n\nABC.7: Seventh ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nUse GenomeDK workshop\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility, GenomeDK admin\n\n\n\n\nABC.6: Sixth ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.5: Fifth ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.4: Fourth ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.3: Third ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.2: Second ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\nABC.1: First ABC session\n\n\n \n\n\n \n\n\nHDS Sandbox, Bioinf Core facility\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "documentation/2025-01-16-ABC11.html",
@@ -886,103 +914,131 @@
     "href": "index.html",
     "title": "Welcome to the Accessible Bioinformatics Cafe",
     "section": "",
-    "text": "An informal and collaborative cafe to help each other upskilling coding/bioinformatics skills. Hosted by scientists and bioinformaticians of the Health data science sandbox and Bioinformatics core facility at Aarhus University.\n\n \n\n\n\n\n\n\n\n\nHave you ever ended in a situation involving questions similar to those?\n\nWhere do I start to code on a command line?\n How do I learn the basic R/python commands?\n What the heck is this error?????\n\nDo you feel finding the right tools is like going through a maze of software installations, versions and incompatibilities?\n\n\n\nWhat follows is the natural desire of throwing your computer out of the window. Don’t worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the Kubler-Ross curve1, where frustration is the point in which coding becomes challenging and we might feel lost.\nThe idea behind ABC is to bridge you beyond frustration moments, while at the same time offering a relaxed environment and the possibility to learn new things, help and get to know each other:\n\n\n\n\n\n\n\n\nEveryone, really. Those that will particularly benefit from the ABC include:\n\nBiologists, bioinformaticians, and health scientists who wish to adopt coding-based solutions.\nScientists and students who wish to accelerate the coding-based analysis of various types of data (such as OMICs data and other large-scale data) in research across Aarhus University and Aarhus University Hospital.\nStudents and researchers who want an open environment where it is easy to get assistance and talk with others encountering similar issues (or maybe who already solved them!)\n\n\n\n\nEach ~2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues.\n\n\n\n\nLook at our Events calendar for more information about each meeting and upcoming workshops and courses.\n\n\n\nSubscribe to our newsletter to receive a few, non-invasive reminders for our meetings and events!\n\n\n\n\n\n\n\n\n\nFor all 2025 the cafe is supported by the Danish Data Science Foundation!"
+    "text": "Incoming Events\n\n\n\nThe 17th ABC will take place on Thursday, May 8th, 2025, 13:00-15:00, in room 1231-224.\nWe will have a 2-hours drop in to help you with bioinformatics and data science issues!\nTo participate, simply drop a line at abcafe [at] au.dk."
   },
   {
     "objectID": "index.html#concept",
     "href": "index.html#concept",
     "title": "Welcome to the Accessible Bioinformatics Cafe",
-    "section": "",
-    "text": "Have you ever ended in a situation involving questions similar to those?\n\nWhere do I start to code on a command line?\n How do I learn the basic R/python commands?\n What the heck is this error?????\n\nDo you feel finding the right tools is like going through a maze of software installations, versions and incompatibilities?\n\n\n\nWhat follows is the natural desire of throwing your computer out of the window. Don’t worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the Kubler-Ross curve1, where frustration is the point in which coding becomes challenging and we might feel lost.\nThe idea behind ABC is to bridge you beyond frustration moments, while at the same time offering a relaxed environment and the possibility to learn new things, help and get to know each other:"
+    "section": "Concept",
+    "text": "Concept\n\n\n\n\n\n\nHave you ever ended in a situation involving questions similar to those?\n\nWhere do I start to code on a command line?\n How do I learn the basic R/python commands?\n What the heck is this error?????\n\nDo you feel finding the right tools is like going through a maze of software installations, versions and incompatibilities?\n\n\n\nWhat follows is the natural desire of throwing your computer out of the window. Don’t worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the Kubler-Ross curve1, where frustration is the point in which coding becomes challenging and we might feel lost.\nThe idea behind ABC is to bridge you beyond frustration moments, while at the same time offering a relaxed environment and the possibility to learn new things, help and get to know each other:"
   },
   {
     "objectID": "index.html#who-can-benefit-from-the-abc",
     "href": "index.html#who-can-benefit-from-the-abc",
     "title": "Welcome to the Accessible Bioinformatics Cafe",
-    "section": "",
-    "text": "Everyone, really. Those that will particularly benefit from the ABC include:\n\nBiologists, bioinformaticians, and health scientists who wish to adopt coding-based solutions.\nScientists and students who wish to accelerate the coding-based analysis of various types of data (such as OMICs data and other large-scale data) in research across Aarhus University and Aarhus University Hospital.\nStudents and researchers who want an open environment where it is easy to get assistance and talk with others encountering similar issues (or maybe who already solved them!)"
+    "section": "Who can benefit from the ABC?",
+    "text": "Who can benefit from the ABC?\nEveryone, really. Those that will particularly benefit from the ABC include:\n\nBiologists, bioinformaticians, and health scientists who wish to adopt coding-based solutions.\nScientists and students who wish to accelerate the coding-based analysis of various types of data (such as OMICs data and other large-scale data) in research across Aarhus University and Aarhus University Hospital.\nStudents and researchers who want an open environment where it is easy to get assistance and talk with others encountering similar issues (or maybe who already solved them!)"
   },
   {
     "objectID": "index.html#format",
     "href": "index.html#format",
     "title": "Welcome to the Accessible Bioinformatics Cafe",
-    "section": "",
-    "text": "Each ~2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues."
+    "section": "Format",
+    "text": "Format\nEach ~2 hour session of the ABC will feature:\n\nTopic Presentation: Insightful presentations on various bioinformatics and coding topics.\nOpen Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues."
   },
   {
     "objectID": "index.html#when-and-where",
     "href": "index.html#when-and-where",
     "title": "Welcome to the Accessible Bioinformatics Cafe",
-    "section": "",
-    "text": "Look at our Events calendar for more information about each meeting and upcoming workshops and courses."
+    "section": "When and where",
+    "text": "When and where\nLook at our Events calendar for more information about each meeting and upcoming workshops and courses."
   },
   {
     "objectID": "index.html#newsletter",
     "href": "index.html#newsletter",
     "title": "Welcome to the Accessible Bioinformatics Cafe",
-    "section": "",
-    "text": "Subscribe to our newsletter to receive a few, non-invasive reminders for our meetings and events!"
+    "section": "Newsletter",
+    "text": "Newsletter\nSubscribe to our newsletter to receive a few, non-invasive reminders for our meetings and events!"
   },
   {
     "objectID": "index.html#funding",
     "href": "index.html#funding",
     "title": "Welcome to the Accessible Bioinformatics Cafe",
-    "section": "",
-    "text": "For all 2025 the cafe is supported by the Danish Data Science Foundation!"
+    "section": "Funding",
+    "text": "Funding\n\n\n\nFor all 2025 the cafe is supported by the Danish Data Science Foundation!"
   },
   {
-    "objectID": "news/past/2025-01-30-session12.html",
-    "href": "news/past/2025-01-30-session12.html",
-    "title": "ABC.12: Accessible Bioinformatics Cafe",
+    "objectID": "news/past/2024-10-24-session7.html",
+    "href": "news/past/2024-10-24-session7.html",
+    "title": "ABC.7: Seventh ABC session",
     "section": "",
-    "text": "The 12th session of the ABC (Accessible Bioinformatics Cafe) will be on january 30th, at 13:00-15:00 in building 1231-114\nEveryone is welcome to join independently of coding skills and level."
+    "text": "The seventh session of the ABC (Accessible Bioinformatics Cafe) will be on october 24th, at 13:00 - building 1240-218\nEveryone is welcome to join independently of coding skills and level."
   },
   {
-    "objectID": "news/past/2025-01-30-session12.html#agenda",
-    "href": "news/past/2025-01-30-session12.html#agenda",
-    "title": "ABC.12: Accessible Bioinformatics Cafe",
+    "objectID": "news/past/2024-10-24-session7.html#agenda",
+    "href": "news/past/2024-10-24-session7.html#agenda",
+    "title": "ABC.7: Seventh ABC session",
     "section": "Agenda",
-    "text": "Agenda\nFor this ABC Dimitrios will show how to do pathways analysis in R using the package clusterProfiler"
+    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented at each meeting. You can also bring your own code and issues and get help from us."
   },
   {
-    "objectID": "news/past/2025-01-30-session12.html#signing-up",
-    "href": "news/past/2025-01-30-session12.html#signing-up",
-    "title": "ABC.12: Accessible Bioinformatics Cafe",
+    "objectID": "news/past/2024-10-24-session7.html#signing-up",
+    "href": "news/past/2024-10-24-session7.html#signing-up",
+    "title": "ABC.7: Seventh ABC session",
     "section": "Signing up",
-    "text": "Signing up\nPlease sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign Up!"
+    "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake (and you are pretty sure you will show up), click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign-up"
   },
   {
-    "objectID": "news/past/2024-11-28-session9.html",
-    "href": "news/past/2024-11-28-session9.html",
-    "title": "ABC.9: Accessible Bioinformatics Cafe",
+    "objectID": "news/past/2024-10-03-session6.html",
+    "href": "news/past/2024-10-03-session6.html",
+    "title": "ABC.6: Sixth ABC session",
     "section": "",
-    "text": "The ninth session of the ABC (Accessible Bioinformatics Cafe) will be on november 28th, at 13:00-15:00 in building 1873-118A\nEveryone is welcome to join independently of coding skills and level."
+    "text": "The fourth session of the ABC (Accessible Bioinformatics Cafe) will be on october 3rd, at 13:00 in building 1873 room 118A (University city Molecular Biology Building, room by the canteen, see below).\nEveryone is welcome to join independently of coding skills and level."
   },
   {
-    "objectID": "news/past/2024-11-28-session9.html#agenda",
-    "href": "news/past/2024-11-28-session9.html#agenda",
-    "title": "ABC.9: Accessible Bioinformatics Cafe",
+    "objectID": "news/past/2024-10-03-session6.html#agenda",
+    "href": "news/past/2024-10-03-session6.html#agenda",
+    "title": "ABC.6: Sixth ABC session",
     "section": "Agenda",
-    "text": "Agenda\nFor this ABC we show how to use graphical applications on GenomeDK, and specifically show Rstudio and Jupyterlab."
+    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented at each meeting. This time we have\n\ndownload of open datasets from online databases\n\nYou can also bring your own code and issues and get help from us."
   },
   {
-    "objectID": "news/past/2024-11-28-session9.html#signing-up",
-    "href": "news/past/2024-11-28-session9.html#signing-up",
-    "title": "ABC.9: Accessible Bioinformatics Cafe",
+    "objectID": "news/past/2024-10-03-session6.html#signing-up",
+    "href": "news/past/2024-10-03-session6.html#signing-up",
+    "title": "ABC.6: Sixth ABC session",
     "section": "Signing up",
-    "text": "Signing up\nPlease sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign Up!"
+    "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake (and you are pretty sure you will show up), click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign up for cake"
   },
   {
-    "objectID": "news/past/2025-02-27-session13.html",
-    "href": "news/past/2025-02-27-session13.html",
-    "title": "ABC.13: Accessible Bioinformatics Cafe",
+    "objectID": "news/past/2024-10-10-usegenomedk.html",
+    "href": "news/past/2024-10-10-usegenomedk.html",
+    "title": "Use GenomeDK workshop",
     "section": "",
-    "text": "The 13th session of the ABC (Accessible Bioinformatics Cafe) will be on february 27th, at 13:00-15:00 in building 1231-114\nEveryone is welcome to join independently of coding skills and level."
+    "text": "You are invited to an introductory workshop on october 10th, at 11:00 in building 1540-K26 (Biology department)."
   },
   {
-    "objectID": "news/past/2025-02-27-session13.html#signing-up",
-    "href": "news/past/2025-02-27-session13.html#signing-up",
-    "title": "ABC.13: Accessible Bioinformatics Cafe",
+    "objectID": "news/past/2024-10-10-usegenomedk.html#agenda",
+    "href": "news/past/2024-10-10-usegenomedk.html#agenda",
+    "title": "Use GenomeDK workshop",
+    "section": "Agenda",
+    "text": "Agenda\nThe topics for the workshop are all at introductory level, such as\n\nlogin and account setup\nfile system\ncommand line intro\nsoftware management\nprojects on GenomeDK\nfile transfer\njobs\n\nThere are no prerequisites apart from having a working account on GenomeDK with a complete 2-Factor authentication. Also, bring your laptop, so we can try out live some commands and exercises on the cluster.\nThere will be a lunch break 12-13, with lunch not included in the workshop. We will serve coffee and cake.\nThere is time for questions and problem-solving, so come with your issues if you are already a GDK user."
+  },
+  {
+    "objectID": "news/past/2024-10-10-usegenomedk.html#signing-up",
+    "href": "news/past/2024-10-10-usegenomedk.html#signing-up",
+    "title": "Use GenomeDK workshop",
+    "section": "Signing up",
+    "text": "Signing up\nPlease sign up through this very short online form:\n \n\n Sign up"
+  },
+  {
+    "objectID": "news/past/2025-03-13-session14.html",
+    "href": "news/past/2025-03-13-session14.html",
+    "title": "ABC.14: Accessible Bioinformatics Cafe",
+    "section": "",
+    "text": "The 14th session of the ABC (Accessible Bioinformatics Cafe) will be on march 13th, at 13:00-15:00 in building 1231-114\nEveryone is welcome to join independently of coding skills and level."
+  },
+  {
+    "objectID": "news/past/2025-03-13-session14.html#agenda",
+    "href": "news/past/2025-03-13-session14.html#agenda",
+    "title": "ABC.14: Accessible Bioinformatics Cafe",
+    "section": "Agenda",
+    "text": "Agenda\nFor this ABC we will talk about an interesting and recent package for single cell and proteomics analysis!"
+  },
+  {
+    "objectID": "news/past/2025-03-13-session14.html#signing-up",
+    "href": "news/past/2025-03-13-session14.html#signing-up",
+    "title": "ABC.14: Accessible Bioinformatics Cafe",
     "section": "Signing up",
     "text": "Signing up\nPlease sign up to ensure there is enough cake (and you are pretty sure you will show up): click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign Up!"
   },
@@ -999,6 +1055,27 @@
     "title": "Workshop: Introduction to GenomeDK",
     "section": "Signing up",
     "text": "Signing up\nEach workshop is scheduled for four hours, including a 45 min. lunch break. There will be cake, coffee, and tea for attendants, so please remember to sign up! There are 30 seats available and a waiting list.\n \n\n Sign Up!"
+  },
+  {
+    "objectID": "news/past/2024-06-27-session2.html",
+    "href": "news/past/2024-06-27-session2.html",
+    "title": "ABC.2: Second ABC session",
+    "section": "",
+    "text": "The second session of the ABC (Accessible Bioinformatics Cafe) will be on june 27th, at 13:00 in the hall of AIAS (the Aarhus Institute of Advanced Studies, see below).\nEveryone is welcome to join independently of coding skills and level."
+  },
+  {
+    "objectID": "news/past/2024-06-27-session2.html#agenda",
+    "href": "news/past/2024-06-27-session2.html#agenda",
+    "title": "ABC.2: Second ABC session",
+    "section": "Agenda",
+    "text": "Agenda\nWe have a very minimalistic agenda consisting of\n\nWhat’s new\nAccessible topic presentation\nTutorials and Open Coding\n\nThe tutorials we propose are of increasing difficulty (and documented) at each meeting. This time we have a choice of\n\nA small dplyr project managed with RStudio\nInstall Anaconda and python basics"
+  },
+  {
+    "objectID": "news/past/2024-06-27-session2.html#signing-up",
+    "href": "news/past/2024-06-27-session2.html#signing-up",
+    "title": "ABC.2: Second ABC session",
+    "section": "Signing up",
+    "text": "Signing up\nNo signup is really necessary, but if you just want to ensure there is enough cake, click on the button below to give us a heads up of your presence. Don’t do it multiple times to cheat for extra cake!\n \n\n Sign up for cake"
   },
   {
     "objectID": "news/past/2024-12-12-session10.html",
@@ -1078,18 +1155,25 @@
     "text": "Signing up\nEach workshop is scheduled for four hours, including a 45 min. lunch break. There will be cake, coffee, and tea for attendants, so please remember to sign up! There are 30 seats available and a waiting list.\n \n\n Sign Up!"
   },
   {
-    "objectID": "news/upcoming/2025-04-10.html",
-    "href": "news/upcoming/2025-04-10.html",
-    "title": "Workshop: Advanced use of GenomeDK",
+    "objectID": "news/upcoming/2025-05-08-session17.html",
+    "href": "news/upcoming/2025-05-08-session17.html",
+    "title": "ABC.15: Accessible Bioinformatics Cafe",
     "section": "",
-    "text": "Are you a student or academic, current or future user of the GenomeDK high-performance computing (HPC) system? Or are you just curious about HPC and how you can utilize it in your work? Do you need to learn to use GenomeDK, or wish to become a better and more organized user?\nThen join us in this series of GenomeDK workshops where we guide you from a general introduction to advanced usage. Each workshop targets increasing difficulty levels, so you can join the sessions that fit you best. The second workshop is for more advanced usage of GenomeDK.\nThis workshop will be hosted by Samuele Soraggi (BiRC, MBG) and Dan Søndergaard (GenomeDK)."
+    "text": "The 17th session of the ABC (Accessible Bioinformatics Cafe) will be on Thursday, May 8th, at 13:00-15:00 in building 1231-224\nEveryone is welcome to join independently of coding skills and level."
   },
   {
-    "objectID": "news/upcoming/2025-04-10.html#signing-up",
-    "href": "news/upcoming/2025-04-10.html#signing-up",
-    "title": "Workshop: Advanced use of GenomeDK",
+    "objectID": "news/upcoming/2025-05-08-session17.html#agenda",
+    "href": "news/upcoming/2025-05-08-session17.html#agenda",
+    "title": "ABC.15: Accessible Bioinformatics Cafe",
+    "section": "Agenda",
+    "text": "Agenda\nThis ABC will be a drop-in session where we will try to help you with your bioinformatics and data science issues. And maybe, you can even help each other!"
+  },
+  {
+    "objectID": "news/upcoming/2025-05-08-session17.html#signing-up",
+    "href": "news/upcoming/2025-05-08-session17.html#signing-up",
+    "title": "ABC.15: Accessible Bioinformatics Cafe",
     "section": "Signing up",
-    "text": "Signing up\nEach workshop is scheduled for four hours, including a 45 min. lunch break. There will be cake, coffee, and tea for attendants, so please remember to sign up! There are 30 seats available and a waiting list.\n \n\n Sign Up!"
+    "text": "Signing up\nTo sign up, please simply drop a mail to abcafe [at] au.dk, so we know how much cake and tea/coffee we need."
   },
   {
     "objectID": "binfResources/bash.html",
