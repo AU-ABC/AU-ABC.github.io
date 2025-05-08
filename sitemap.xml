@@ -2,232 +2,232 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/binfResources/python.html</loc>
-    <lastmod>2025-05-07T01:20:26.544Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/binfResources/Databases.html</loc>
-    <lastmod>2025-05-07T01:22:48.019Z</lastmod>
+litesrv._domainkey.birc.au.dk/index.html</loc>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
   </url>
   <url>
     <loc>https://abc.au.dk
 litesrv._domainkey.birc.au.dk/gethelp.html</loc>
-    <lastmod>2025-05-07T01:20:26.630Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/upcoming/2025-05-22-session18.html</loc>
-    <lastmod>2025-05-07T01:20:26.721Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/past/2024-11-07-session8.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/past/2024-06-13-session1.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/past/2024-09-03-session4.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/past/2025-04-24-session16.html</loc>
-    <lastmod>2025-05-07T01:20:26.721Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/past/2025-04-10.html</loc>
-    <lastmod>2025-05-07T01:20:26.721Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/past/2025-01-16-session11.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/past/2025-02-27-session13.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/past/2024-11-28-session9.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/past/2025-01-30-session12.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/past/2025-03-27-session15.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/documentation/2025-01-16-ABC11.html</loc>
-    <lastmod>2025-05-07T01:20:26.598Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/documentation/2025-03-13-ABC14.html</loc>
-    <lastmod>2025-05-07T01:20:26.608Z</lastmod>
+    <lastmod>2025-05-08T01:20:56.812Z</lastmod>
   </url>
   <url>
     <loc>https://abc.au.dk
 litesrv._domainkey.birc.au.dk/documentation/2024-06-27-ABC2.html</loc>
-    <lastmod>2025-05-07T01:20:26.549Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/documentation/2024-08-20-ABC3.html</loc>
-    <lastmod>2025-05-07T01:20:26.552Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/documentation/2024-10-24-ABC7.html</loc>
-    <lastmod>2025-05-07T01:20:26.578Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/documentation/2025-02-27-ABC13.html</loc>
-    <lastmod>2025-05-07T01:20:26.603Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/documentation/2024-11-28-ABC9.html</loc>
-    <lastmod>2025-05-07T01:20:26.579Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/documentation/2025-01-30-ABC12.html</loc>
-    <lastmod>2025-05-07T01:20:26.603Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/Documentation.html</loc>
-    <lastmod>2025-05-07T01:20:26.540Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/documentation/2024-09-03-ABC4.html</loc>
-    <lastmod>2025-05-07T01:20:26.574Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/documentation/2024-06-13-ABC1.html</loc>
-    <lastmod>2025-05-07T01:20:26.546Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/documentation/2024-12-12-ABC10.html</loc>
-    <lastmod>2025-05-07T01:20:26.579Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/documentation/2024-10-10-usegdk.html</loc>
-    <lastmod>2025-05-07T01:20:26.578Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/documentation/2025-03-27-ABC15.html</loc>
-    <lastmod>2025-05-07T01:20:26.615Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/documentation/2024-09-19-ABC5.html</loc>
-    <lastmod>2025-05-07T01:20:26.576Z</lastmod>
+    <lastmod>2025-05-08T01:20:56.731Z</lastmod>
   </url>
   <url>
     <loc>https://abc.au.dk
 litesrv._domainkey.birc.au.dk/documentation/2024-09-19-ABC6.html</loc>
-    <lastmod>2025-05-07T01:20:26.576Z</lastmod>
+    <lastmod>2025-05-08T01:20:56.758Z</lastmod>
   </url>
   <url>
     <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/tmp/2025-02-06-ABC13.html</loc>
-    <lastmod>2025-05-07T01:20:26.724Z</lastmod>
+litesrv._domainkey.birc.au.dk/documentation/2024-10-10-usegdk.html</loc>
+    <lastmod>2025-05-08T01:20:56.761Z</lastmod>
   </url>
   <url>
     <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/index.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
+litesrv._domainkey.birc.au.dk/documentation/2024-06-13-ABC1.html</loc>
+    <lastmod>2025-05-08T01:20:56.727Z</lastmod>
   </url>
   <url>
     <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/past/2024-10-24-session7.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
+litesrv._domainkey.birc.au.dk/documentation/2024-11-28-ABC9.html</loc>
+    <lastmod>2025-05-08T01:20:56.761Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/documentation/2024-09-19-ABC5.html</loc>
+    <lastmod>2025-05-08T01:20:56.758Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/documentation/2025-01-16-ABC11.html</loc>
+    <lastmod>2025-05-08T01:20:56.780Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/Documentation.html</loc>
+    <lastmod>2025-05-08T01:20:56.722Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/news/upcoming/2025-05-22-session18.html</loc>
+    <lastmod>2025-05-08T01:20:56.903Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/news/past/2025-03-27-session15.html</loc>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
   </url>
   <url>
     <loc>https://abc.au.dk
 litesrv._domainkey.birc.au.dk/news/past/2024-10-03-session6.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
   </url>
   <url>
     <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/past/2024-10-10-usegenomedk.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
+litesrv._domainkey.birc.au.dk/news/past/2024-11-07-session8.html</loc>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
   </url>
   <url>
     <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/past/2025-03-13-session14.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
+litesrv._domainkey.birc.au.dk/news/past/2024-10-24-session7.html</loc>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
   </url>
   <url>
     <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/past/2025-02-26.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/past/2024-06-27-session2.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
+litesrv._domainkey.birc.au.dk/news/past/2025-01-16-session11.html</loc>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
   </url>
   <url>
     <loc>https://abc.au.dk
 litesrv._domainkey.birc.au.dk/news/past/2024-12-12-session10.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
-  </url>
-  <url>
-    <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/past/2024-08-20-session3.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
   </url>
   <url>
     <loc>https://abc.au.dk
 litesrv._domainkey.birc.au.dk/news/past/2024-09-19-session5.html</loc>
-    <lastmod>2025-05-07T01:20:26.720Z</lastmod>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
   </url>
   <url>
     <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/upcoming/2025-06-04.html</loc>
-    <lastmod>2025-05-07T01:20:26.721Z</lastmod>
+litesrv._domainkey.birc.au.dk/news/past/2025-02-26.html</loc>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
   </url>
   <url>
     <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/news/upcoming/2025-05-08-session17.html</loc>
-    <lastmod>2025-05-07T01:20:26.721Z</lastmod>
+litesrv._domainkey.birc.au.dk/news/past/2024-06-27-session2.html</loc>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
   </url>
   <url>
     <loc>https://abc.au.dk
-litesrv._domainkey.birc.au.dk/binfResources/bash.html</loc>
-    <lastmod>2025-05-07T01:20:26.544Z</lastmod>
+litesrv._domainkey.birc.au.dk/news/past/2025-01-30-session12.html</loc>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/binfResources/python.html</loc>
+    <lastmod>2025-05-08T01:20:56.725Z</lastmod>
   </url>
   <url>
     <loc>https://abc.au.dk
 litesrv._domainkey.birc.au.dk/binfResources/R.html</loc>
-    <lastmod>2025-05-07T01:20:26.544Z</lastmod>
+    <lastmod>2025-05-08T01:20:56.725Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/tmp/2025-02-06-ABC13.html</loc>
+    <lastmod>2025-05-08T01:20:56.906Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/binfResources/Databases.html</loc>
+    <lastmod>2025-05-08T01:23:04.496Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/binfResources/bash.html</loc>
+    <lastmod>2025-05-08T01:20:56.725Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/news/past/2025-02-27-session13.html</loc>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/news/past/2024-09-03-session4.html</loc>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/news/past/2024-10-10-usegenomedk.html</loc>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/news/past/2025-04-24-session16.html</loc>
+    <lastmod>2025-05-08T01:20:56.903Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/news/past/2025-03-13-session14.html</loc>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/news/past/2024-06-13-session1.html</loc>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/news/past/2024-11-28-session9.html</loc>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/news/past/2025-04-10.html</loc>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/news/past/2024-08-20-session3.html</loc>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/news/upcoming/2025-06-04.html</loc>
+    <lastmod>2025-05-08T01:20:56.903Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/news/upcoming/2025-05-08-session17.html</loc>
+    <lastmod>2025-05-08T01:20:56.903Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/documentation/2025-02-27-ABC13.html</loc>
+    <lastmod>2025-05-08T01:20:56.785Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/documentation/2025-03-13-ABC14.html</loc>
+    <lastmod>2025-05-08T01:20:56.790Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/documentation/2024-12-12-ABC10.html</loc>
+    <lastmod>2025-05-08T01:20:56.762Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/documentation/2024-10-24-ABC7.html</loc>
+    <lastmod>2025-05-08T01:20:56.761Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/documentation/2025-03-27-ABC15.html</loc>
+    <lastmod>2025-05-08T01:20:56.798Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/documentation/2024-08-20-ABC3.html</loc>
+    <lastmod>2025-05-08T01:20:56.734Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/documentation/2024-09-03-ABC4.html</loc>
+    <lastmod>2025-05-08T01:20:56.757Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/documentation/2025-01-30-ABC12.html</loc>
+    <lastmod>2025-05-08T01:20:56.785Z</lastmod>
+  </url>
+  <url>
+    <loc>https://abc.au.dk
+litesrv._domainkey.birc.au.dk/news.html</loc>
+    <lastmod>2025-05-08T01:20:56.902Z</lastmod>
   </url>
 </urlset>
