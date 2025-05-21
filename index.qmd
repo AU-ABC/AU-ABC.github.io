@@ -7,7 +7,7 @@ bibliography: resources/references.bib
 ---
 
 :::{.callout-warning title="Incoming Events"}
-The 17th ABC will take place on Thursday, May 8th, 2025, 13:00-15:00, in room 1231-224. 
+The 18th ABC will take place on Thursday, May 22nd, 2025, 13:00-15:00, in room 1231-224. 
 
 We will have a **2-hours drop in** to help you with bioinformatics and data science issues!
 
