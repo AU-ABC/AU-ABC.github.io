@@ -1,0 +1,21 @@
+---
+title: "ABC.24: Accessible Bioinformatics Cafe"
+author: "Samuele Soraggi"
+image: ../../img/news/support.jpg
+Organizers: HDS Sandbox, Bioinf Core facility, DDSA
+date: 2025-11-13
+categories: [Cafe, Coding, Bioinformatics, Support]
+description: "Bioinformatics and Data science drop-in"
+---
+
+The 24th session of the ABC (Accessible Bioinformatics Cafe) will be **on Thursday, November 13th, at 13:00-15:00 in building 1150-115**
+
+Everyone is welcome to **join independently of coding skills and level**. 
+
+## Agenda
+ 
+This ABC will be a drop-in session where we will try to help you with your bioinformatics and data science issues. And maybe, you can even help each other, or teach us something new!
+
+## Signing up
+
+To sign up, simply drop a mail to **abcafe [at] au.dk**, so we know how much cake and tea/coffee we need. But if you decide to show up spontaneously or last minute, you are of course very welcome as well!

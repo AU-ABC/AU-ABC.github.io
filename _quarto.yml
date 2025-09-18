@@ -24,8 +24,8 @@ website:
         text: Documentation
       - text: Resources
         menu:
-          - href: binfResources/Databases.ipynb
-            text: Databases
+          #- href: binfResources/Databases.ipynb
+          #  text: Databases
           - href: binfResources/bash.qmd
             text: Bash tips
           #- href: binfResources/R.qmd

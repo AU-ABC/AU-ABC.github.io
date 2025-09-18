@@ -8,7 +8,7 @@ categories: [Cafe, Coding, Bioinformatics, Support]
 description: "Bioinformatics and Data science drop-in"
 ---
 
-The 17th session of the ABC (Accessible Bioinformatics Cafe) will be **on Thursday, May 22nd, at 13:00-15:00 in building 1231-224**
+The 18th session of the ABC (Accessible Bioinformatics Cafe) will be **on Thursday, May 22nd, at 13:00-15:00 in building 1231-224**
 
 Everyone is welcome to **join independently of coding skills and level**. 
 

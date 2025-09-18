@@ -1,0 +1,50 @@
+---
+title: "GenomeDK Intro Workshop"
+author: "Samuele Soraggi, Dan Søndergaard, Manuel Peral-Vazquez"
+image: "../../img/news/introHPC.jpg"
+Organizers: GenomeDK, HDS Sandbox, Bioinf Core facility, DDSA
+date: 2025-09-25
+categories: [HPC, Workshop]
+description: "Getting started with high-performance computing on GenomeDK"
+---
+
+![](../../img/news/gdkLogo.jpg){fig-align="center" width=800px}
+
+The GenomeDK team is organizing an introductory workshop to get you started with high-performance computing on GenomeDK. The ABC (Accessible Bioinformatics Cafe) team is collaborating to help you get the most out of this opportunity.
+
+## Intended audience
+
+ For new or potential users of GenomeDK, or existing users with limited experience.
+
+## Date and location
+
+September 25, 2025, 10:00-15:00 @ 1872-047
+
+## Prerequisites
+
+An account on GenomeDK with 2-factor authentication ready to be used. If you do not have one yet, please get one. Contact us at **abcafe [at] au.dk** if you need help with this.
+
+## Topics:
+
+- Login and public-key authentication setup
+- File system organization
+- Basic Linux commands
+- Project management
+- Data transfer
+- Software management
+- The queueing system and your first batch jobs
+- Understanding and estimating resource usage
+
+## Signup
+
+Signup happens by clicking the button below. There are 30 seats available, and they will be allocated on a first-come, first-served basis.
+
+If you have any questions, feel free to contact us at **abcafe [at] au.dk**.
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://forms.gle/PSwA57LdZp32nZC99" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Sign up ! ! !
+  </a>
+</p>

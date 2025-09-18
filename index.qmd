@@ -7,11 +7,11 @@ bibliography: resources/references.bib
 ---
 
 :::{.callout-warning title="Incoming Events"}
-The 18th ABC will take place on Thursday, May 22nd, 2025, 13:00-15:00, in room 1231-224. 
+The 20th ABC will take place on Thursday, September 18, 2025, 13:00-15:00, in room 1231-228. 
 
 We will have a **2-hours drop in** to help you with bioinformatics and data science issues!
 
-To participate, simply drop a line at **abcafe [at] au.dk**.
+To participate, simply drop a line at **abcafe [at] au.dk**, or show up spontaneously (in this case, no prior notice is needed, but cake is not guaranteed!).
 :::
 
 # Welcome to the Accessible Bioinformatics Cafe {.centered}
@@ -55,7 +55,7 @@ Everyone, really. Those that will particularly benefit from the ABC include:
  
 Each ~2 hour session of the ABC will feature:
 
-- Topic Presentation: Insightful presentations on various bioinformatics and coding topics.
+- Occasional Topic Presentation (max 15 minutes): Insightful presentations on various bioinformatics and coding topics.
 - Open Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues.
 
 ## When and where

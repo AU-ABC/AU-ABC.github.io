@@ -1,0 +1,48 @@
+---
+title: "Advanced GenomeDK Workshop"
+author: "Samuele Soraggi, Dan Søndergaard, Manuel Peral-Vazquez"
+image: "../../img/news/pcSmile.jpg"
+Organizers: GenomeDK, HDS Sandbox, Bioinf Core facility, DDSA
+date: 2025-10-09
+categories: [HPC, Workshop]
+description: "More advanced usage of and relevant tools for GenomeDK"
+---
+
+![](../../img/news/gdkLogo.jpg){fig-align="center" width=800px}
+
+The GenomeDK team is organizing an advanced workshop to get you to the next level with high-performance computing on GenomeDK. The ABC (Accessible Bioinformatics Cafe) team is collaborating to help you get the most out of this opportunity.
+
+## Intended audience
+
+For all users of GenomeDK, especially those already with some knowledge of the system.
+
+## Date and location
+
+October 9, 2025, 10:00-15:00 @ 1613-109 (Asklepius)
+
+## Prerequisites
+
+Standard usage of the cluster: basic file management, some understanding on how the cluster works, software environments and editing of files.
+
+## Topics:
+
+- web applications and tunneling
+- Containerized software
+- Data synchronization with rsync
+- Pipelines and your first pipeline submission
+
+Some of these topics might be adjusted based on the audience and their needs - so consider them more as guidelines than a strict program.
+
+## Signup
+
+Signup happens by clicking the button below. There are 30 seats available, and they will be allocated on a first-come, first-served basis.
+
+If you have any questions, feel free to contact us at **abcafe [at] au.dk**.
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://forms.gle/ESEfqtHcRx41Zg837" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Sign up ! ! !
+  </a>
+</p>
