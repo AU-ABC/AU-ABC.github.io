@@ -2,8 +2,6 @@
   {
     "listing": "/news.html",
     "items": [
-      "/news/upcoming/2025-09-18-session20.html",
-      "/news/upcoming/2025-09-25-introToGDK.html",
       "/news/upcoming/2025-10-02-session21.html",
       "/news/upcoming/2025-10-09-advancedGDK.html",
       "/news/upcoming/2025-10-16-session22.html",
@@ -12,6 +10,8 @@
       "/news/upcoming/2025-11-13-session24.html",
       "/news/upcoming/2025-11-27-session25.html",
       "/news/upcoming/2025-12-11-session26.html",
+      "/news/past/2025-09-25-introToGDK.html",
+      "/news/past/2025-09-18-session20.html",
       "/news/past/2025-09-04-session19.html",
       "/news/past/2025-06-04.html",
       "/news/past/2025-05-22-session18.html",
