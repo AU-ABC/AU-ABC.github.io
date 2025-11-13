@@ -2,10 +2,10 @@
   {
     "listing": "/news.html",
     "items": [
-      "/news/upcoming/2025-10-30-session23.html",
-      "/news/upcoming/2025-11-13-session24.html",
       "/news/upcoming/2025-11-27-session25.html",
       "/news/upcoming/2025-12-11-session26.html",
+      "/news/past/2025-11-13-session24.html",
+      "/news/past/2025-10-30-session23.html",
       "/news/past/2025-10-23-workflowsGDK.html",
       "/news/past/2025-10-16-session22.html",
       "/news/past/2025-10-09-advancedGDK.html",
