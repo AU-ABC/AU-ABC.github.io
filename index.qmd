@@ -7,7 +7,7 @@ bibliography: resources/references.bib
 ---
 
 :::{.callout-warning title="Incoming Events"}
-The 23rd ABC will take place on Thursday, October 30th, 2025, 13:00-15:00, in room 1231-228. 
+The 25th ABC will take place on Thursday, November 27th, 2025, 13:00-15:00, in room 1150-115. 
 
 We will have a **2-hours drop in** to help you with bioinformatics and data science issues!
 
