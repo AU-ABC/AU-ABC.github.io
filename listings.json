@@ -2,8 +2,21 @@
   {
     "listing": "/news.html",
     "items": [
-      "/news/upcoming/2025-11-27-session25.html",
-      "/news/upcoming/2025-12-11-session26.html",
+      "/news/upcoming/2026-01-15-session27.html",
+      "/news/upcoming/2026-01-22-introToGDK.html",
+      "/news/upcoming/2026-01-29-session28.html",
+      "/news/upcoming/2026-02-26-OMICS-R.html",
+      "/news/upcoming/2026-03-09-advancedGDK.html",
+      "/news/upcoming/2026-03-12-session29.html",
+      "/news/upcoming/2026-03-16-workflowsGDK.html",
+      "/news/upcoming/2026-03-26-OMICS-bulk.html",
+      "/news/upcoming/2026-04-09-session30.html",
+      "/news/upcoming/2026-04-23-OMICS-scrna.html",
+      "/news/upcoming/2026-05-07-session31.html",
+      "/news/upcoming/2026-05-21-OMICS-spatial.html",
+      "/news/upcoming/2026-06-04-session32.html",
+      "/news/past/2025-12-11-session26.html",
+      "/news/past/2025-11-27-session25.html",
       "/news/past/2025-11-13-session24.html",
       "/news/past/2025-10-30-session23.html",
       "/news/past/2025-10-23-workflowsGDK.html",
@@ -46,15 +59,14 @@
       "/documentation/2024-09-03-ABC4.html",
       "/documentation/2024-09-19-ABC5.html",
       "/documentation/2024-09-19-ABC6.html",
-      "/documentation/2024-10-10-usegdk.html",
       "/documentation/2024-10-24-ABC7.html",
-      "/documentation/2024-11-28-ABC9.html",
       "/documentation/2024-12-12-ABC10.html",
       "/documentation/2025-01-16-ABC11.html",
       "/documentation/2025-01-30-ABC12.html",
       "/documentation/2025-02-27-ABC13.html",
       "/documentation/2025-03-13-ABC14.html",
-      "/documentation/2025-03-27-ABC15.html"
+      "/documentation/2025-03-27-ABC15.html",
+      "/documentation/2024-10-10-usegdk.html"
     ]
   }
 ]

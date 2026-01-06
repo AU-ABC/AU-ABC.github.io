@@ -8,9 +8,8 @@
 
 <meta name="author" content="Dimitrios Maniatis">
 <meta name="dcterms.date" content="2024-06-13">
-<meta name="description" content="Things worth remembering from the ABC.1">
 
-<title>ABC - Accessible Bioinformatics Cafe - ABC.1: Install R+Rstudio, first R coding problems/solutions</title>
+<title>ABC - Accessible Bioinformatics Cafe - Install R+Rstudio, first R coding problems/solutions</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -127,8 +126,8 @@ gtag('config', 'G-WG01Z2LJ1J', { 'anonymize_ip': true});
 <!-- End MailerLite Universal -->
 
 
-<meta property="og:title" content="ABC - Accessible Bioinformatics Cafe - ABC.1: Install R+Rstudio, first R coding problems/solutions">
-<meta property="og:description" content="Things worth remembering from the ABC.1">
+<meta property="og:title" content="ABC - Accessible Bioinformatics Cafe - Install R+Rstudio, first R coding problems/solutions">
+<meta property="og:description" content="">
 <meta property="og:image" content="https://abc.au.dk
 litesrv._domainkey.birc.au.dk/img/Rlogo.png">
 <meta property="og:site_name" content="ABC - Accessible Bioinformatics Cafe">
@@ -233,7 +232,7 @@ litesrv._domainkey.birc.au.dk/img/Rlogo.png">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ABC.1: Install R+Rstudio, first R coding problems/solutions</h1>
+<h1 class="title">Install R+Rstudio, first R coding problems/solutions</h1>
   <div class="quarto-categories">
     <div class="quarto-category">R</div>
     <div class="quarto-category">RStudio</div>
@@ -241,11 +240,6 @@ litesrv._domainkey.birc.au.dk/img/Rlogo.png">
   </div>
   </div>
 
-<div>
-  <div class="description">
-    Things worth remembering from the ABC.1
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -371,7 +365,7 @@ Note
 <li>Click on <code>File</code> &gt; <code>New File</code> &gt; <code>R Script</code> to open a new script editor.</li>
 <li>Inside the file you created, Write a simple script. Copy for example the script below:</li>
 </ul>
-<div id="f8c50e79-9d91-427e-bb37-46308fbbae22" class="cell" data-execution_count="1">
+<div id="f8c50e79-9d91-427e-bb37-46308fbbae22" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Hello ABC"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x<span class="sc">^</span><span class="dv">2</span></span>
@@ -412,7 +406,7 @@ Working directory
 <section id="some-basic-operations" class="level2">
 <h2 class="anchored" data-anchor-id="some-basic-operations">Some basic operations</h2>
 <p>In R you can perform basic math operations by using the appropriate symbol. For example</p>
-<div id="16cb7824-75a5-4189-b967-ba6b7828d953" class="cell" data-execution_count="3">
+<div id="16cb7824-75a5-4189-b967-ba6b7828d953" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">+</span><span class="dv">3</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="dv">9</span><span class="sc">*</span><span class="dv">2</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -427,7 +421,7 @@ Working directory
 </div>
 </div>
 <p>You can assign variables (“objects”) using the symbol <code>&lt;-</code>. For example</p>
-<div id="fd9cf43a-a79a-4574-8382-7b646be45b46" class="cell" data-execution_count="4">
+<div id="fd9cf43a-a79a-4574-8382-7b646be45b46" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>anothername <span class="ot">&lt;-</span> <span class="dv">3</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>itCanBeAnything <span class="ot">&lt;-</span> <span class="st">"It can be text"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -452,7 +446,7 @@ Note
 <p>Make sure your vectors are all of the same length! Also, each vector usually contains values of the same type (for example only numbers or only text)</p>
 </div>
 </div>
-<div id="864892f5-fdbf-4b3c-8d51-c40c4329f157" class="cell" data-execution_count="5">
+<div id="864892f5-fdbf-4b3c-8d51-c40c4329f157" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>geneExpr <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">Gene =</span> <span class="fu">c</span>(<span class="st">"GeneA"</span>, <span class="st">"GeneB"</span>, <span class="st">"GeneC"</span>),</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">Control =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>),</span>
@@ -506,7 +500,7 @@ Note
 <section id="plot-from-a-data-frame" class="level3">
 <h3 class="anchored" data-anchor-id="plot-from-a-data-frame">2. Plot from a data frame</h3>
 <p>Now lets try to plot it Treatment 1 versus Treatment 2. The basic function for plotting in <code>R</code> is called <code>plot</code>. It takes as arguments the x axis and the y axis. It has other options which are not mandatory, such as style and color of the plot. Notice how we access the values in the columns using the <code>$</code> sign.</p>
-<div id="907e79d2-cd16-4cc7-a6b4-634a5b1fc3ae" class="cell" data-execution_count="6">
+<div id="907e79d2-cd16-4cc7-a6b4-634a5b1fc3ae" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>( <span class="at">x =</span> geneExpr<span class="sc">$</span>Treatment1, </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> geneExpr<span class="sc">$</span>Treatment2 , </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">main=</span><span class="st">"Expression per Treatment group"</span>, </span>
@@ -527,7 +521,7 @@ Note
 <section id="summary-statistics" class="level3">
 <h3 class="anchored" data-anchor-id="summary-statistics">3. Summary statistics</h3>
 <p>There are lots of summary statistics already implemented in <code>R</code>. Below we calculate mean, median and standard deviation for the column <code>Treatment1</code> of the data frame and then we print them.</p>
-<div id="788f3716-2950-462f-ae9b-967ef3ac0004" class="cell" data-execution_count="7">
+<div id="788f3716-2950-462f-ae9b-967ef3ac0004" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> geneExpr<span class="sc">$</span>Treatment1</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>meanTr1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>medianTr1 <span class="ot">&lt;-</span> <span class="fu">median</span>(x)</span>
@@ -553,7 +547,7 @@ Answer
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="ea5c57dd-d7b0-4c9a-9fe7-58af2c9e7136" class="cell" data-execution_count="8">
+<div id="ea5c57dd-d7b0-4c9a-9fe7-58af2c9e7136" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> geneExpr<span class="sc">$</span>Treatment1 <span class="sc">-</span> geneExpr<span class="sc">$</span>Treatment2</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>csum <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(x)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"cumulative sum of Tr1 - Tr2:"</span>)</span>
@@ -570,7 +564,7 @@ Answer
 <section id="define-your-own-function" class="level3">
 <h3 class="anchored" data-anchor-id="define-your-own-function">4. Define your own function!</h3>
 <p>Although R and the packages you can find have almost everything you will need, sometimes you might need to define your own function. The syntax to do it is very easy: you assign a function to a name, which then you will be able to use. Below, there is a function taking an argument (<code>arg1</code>) and multiplying it by 5. The function commands need to be between the curly brackets, and what we want as output need to be explicit through the <code>return()</code> function.</p>
-<div id="4ffd2b5f-3761-4fd3-9353-11da3a1596e0" class="cell" data-execution_count="9">
+<div id="4ffd2b5f-3761-4fd3-9353-11da3a1596e0" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>myFunction <span class="ot">&lt;-</span> <span class="cf">function</span>(arg1){</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Now arg1 is a variable of the function. </span></span>
@@ -581,7 +575,7 @@ Answer
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Such a function works if the argument is a number, but also if it is a vector!</p>
-<div id="ca05150c-636c-4e8b-9a8b-d51f93fcbb7b" class="cell" data-execution_count="10">
+<div id="ca05150c-636c-4e8b-9a8b-d51f93fcbb7b" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"with a number only"</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">myFunction</span>(<span class="dv">5</span>)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"with a vector"</span>)</span>
@@ -615,7 +609,7 @@ Answer
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="16222e25-7a7b-46b7-bcaf-4da626f7cab5" class="cell" data-execution_count="11">
+<div id="16222e25-7a7b-46b7-bcaf-4da626f7cab5" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>simpleSumPlot <span class="ot">&lt;-</span> <span class="cf">function</span> (arg1, arg2, arg3){</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  arg23 <span class="ot">&lt;-</span> arg2 <span class="sc">+</span> arg3</span>
@@ -635,7 +629,7 @@ Answer
 <span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Now you can try this on vectors <strong>of the same length</strong>. We can use the ones in our data frame!</p>
-<div id="7b1c6985-7022-4232-9803-f7d658433278" class="cell" data-execution_count="12">
+<div id="7b1c6985-7022-4232-9803-f7d658433278" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">simpleSumPlot</span>(<span class="at">arg1=</span>geneExpr<span class="sc">$</span>Control, </span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">arg2=</span>geneExpr<span class="sc">$</span>Treatment1, </span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">arg3=</span>geneExpr<span class="sc">$</span>Treatment2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -678,7 +672,7 @@ Note
 <p>Try to install the package <code>openxlsx</code>. You can use the command <code>install.packages("openxlsx")</code> in your RStudio console. Otherwise, go on the bottom right panel and click <code>Packages</code> and <code>Install</code> like this</p>
 <p><img src="./2024-06-13-instR/images/installpackage.png" alt="Installing Packages" width="1000"></p>
 <p>Now you are ready to import an Excel file. To use the package, we can load it with <code>library(openxlsx)</code>. Otherwise we need to write the package name before the command to use from it (as done below). You can get a file locally on your computer or from an URL as done in this example.</p>
-<div id="24cb3e3c-1343-42f9-91a3-d6b282dbb6e6" class="cell" data-execution_count="13">
+<div id="24cb3e3c-1343-42f9-91a3-d6b282dbb6e6" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> openxlsx<span class="sc">::</span><span class="fu">read.xlsx</span>(<span class="st">"https://github.com/AU-ABC/AU-ABC.github.io/raw/main/documentation/2024-06-13-instR/data/data.xlsx"</span>, <span class="at">sheet=</span><span class="dv">1</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -722,14 +716,14 @@ Note
 </div>
 </div>
 <p>Once you have a data frame, you can always save it. Remember, the path of the saved file is related to your current working directory! To save your data frame as a <code>csv</code> file, use</p>
-<div id="60964436-159c-4ecf-810e-4b95028b4f89" class="cell" data-execution_count="14">
+<div id="60964436-159c-4ecf-810e-4b95028b4f89" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.table</span>(geneExpr, </span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">file =</span> <span class="st">"./myFirstDataFrame.csv"</span>, </span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">row.names =</span> <span class="cn">FALSE</span> , </span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">sep=</span><span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>where we remove the labels for the rows and use the tab separator instead of the comma. To read the file again, simply use</p>
-<div id="d61bc60d-94ea-431a-9486-550321b761d7" class="cell" data-execution_count="15">
+<div id="d61bc60d-94ea-431a-9486-550321b761d7" class="cell" data-vscode="{&quot;languageId&quot;:&quot;r&quot;}" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"./myFirstDataFrame.csv"</span> , <span class="at">sep=</span><span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">

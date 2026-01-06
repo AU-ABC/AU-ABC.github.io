@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Samuele Soraggi, Dan Søndergaard">
-<meta name="description" content="Introductive workshop to genomeDK">
+<meta name="author" content="Mohamed Hassan, Samuele Soraggi">
+<meta name="dcterms.date" content="2026-04-23">
 
-<title>ABC - Accessible Bioinformatics Cafe - GenomeDK workshops</title>
+<title>ABC - Accessible Bioinformatics Cafe - OMICS workshop III: scRNA data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,24 +25,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -89,12 +89,14 @@ gtag('config', 'G-WG01Z2LJ1J', { 'anonymize_ip': true});
 <!-- End MailerLite Universal -->
 
 
-<meta property="og:title" content="ABC - Accessible Bioinformatics Cafe - GenomeDK workshops">
-<meta property="og:description" content="Introductive workshop to genomeDK">
+<meta property="og:title" content="ABC - Accessible Bioinformatics Cafe - OMICS workshop III: scRNA data">
+<meta property="og:description" content="">
 <meta property="og:image" content="https://abc.au.dk
-litesrv._domainkey.birc.au.dk/img/news/gdkLogo.jpg">
+litesrv._domainkey.birc.au.dk/img/news/SeuratV5.png">
 <meta property="og:site_name" content="ABC - Accessible Bioinformatics Cafe">
 <meta property="og:locale" content="en_US">
+<meta property="og:image:height" content="4164">
+<meta property="og:image:width" content="4167">
 </head>
 
 <body class="nav-fixed">
@@ -104,10 +106,10 @@ litesrv._domainkey.birc.au.dk/img/news/gdkLogo.jpg">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../img/ABClogo.png" alt="" class="navbar-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../img/ABClogo.png" alt="" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ABC - Accessible Bioinformatics Cafe</span>
     </a>
   </div>
@@ -118,15 +120,15 @@ litesrv._domainkey.birc.au.dk/img/news/gdkLogo.jpg">
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../news.html"> 
+    <a class="nav-link" href="../../news.html"> 
 <span class="menu-text">Calendar</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Documentation.html"> 
+    <a class="nav-link" href="../../Documentation.html"> 
 <span class="menu-text">Documentation</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -135,13 +137,13 @@ litesrv._domainkey.birc.au.dk/img/news/gdkLogo.jpg">
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
         <li>
-    <a class="dropdown-item" href="../binfResources/bash.html">
+    <a class="dropdown-item" href="../../binfResources/bash.html">
  <span class="dropdown-text">Bash tips</span></a>
   </li>  
     </ul>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../gethelp.html"> 
+    <a class="nav-link" href="../../gethelp.html"> 
 <span class="menu-text">People&amp;Help</span></a>
   </li>  
 </ul>
@@ -164,25 +166,31 @@ litesrv._domainkey.birc.au.dk/img/news/gdkLogo.jpg">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#intended-audience" id="toc-intended-audience" class="nav-link active" data-scroll-target="#intended-audience">Intended audience</a></li>
+  <li><a href="#date-and-location" id="toc-date-and-location" class="nav-link" data-scroll-target="#date-and-location">Date and location</a></li>
+  <li><a href="#material" id="toc-material" class="nav-link" data-scroll-target="#material">Material</a></li>
+  <li><a href="#signup" id="toc-signup" class="nav-link" data-scroll-target="#signup">Signup</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">GenomeDK workshops</h1>
+<h1 class="title">OMICS workshop III: scRNA data</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">GenomeDK</div>
-    <div class="quarto-category">bash</div>
+    <div class="quarto-category">OMICS</div>
+    <div class="quarto-category">scRNA</div>
+    <div class="quarto-category">Workshop</div>
+    <div class="quarto-category">seurat</div>
   </div>
   </div>
 
-<div>
-  <div class="description">
-    Introductive workshop to genomeDK
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
@@ -190,10 +198,16 @@ litesrv._domainkey.birc.au.dk/img/news/gdkLogo.jpg">
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Samuele Soraggi, Dan Søndergaard </p>
+             <p>Mohamed Hassan, Samuele Soraggi </p>
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 23, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -203,13 +217,36 @@ litesrv._domainkey.birc.au.dk/img/news/gdkLogo.jpg">
 </header>
 
 
-<p>The GenomeDK workshop series has its own webpage which you can reach from the button below. There you can find all the necessary slides and materials to get started with using GenomeDK for your analyses. Slides are updated over time whenever we repeat the workshops at each semester.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../img/news/SeuratV5.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
+</figure>
+</div>
+<p>The ABC is organizing a series of short OMICS workshops, led by PhD student Mohamed Hassan with help from the ABC bioinformaticians and other health PhDs. This third workshop in the series will focus on the R analysis of scRNA data. You will learn how to perform quality control, normalization, differential expression analysis, and visualization of scRNA-seq data using popular R packages. There will be an introductory lecture followed by hands-on exercises. <strong>There will be some optional take-home exercise, and you are welcome to come to the following ABC (coding cafe) to ask more questions about the topic and your own data.</strong></p>
+<section id="intended-audience" class="level2">
+<h2 class="anchored" data-anchor-id="intended-audience">Intended audience</h2>
+<p>Students and researchers wanting to know more about and how to analyze scRNA-seq data using the Seurat package.</p>
+</section>
+<section id="date-and-location" class="level2">
+<h2 class="anchored" data-anchor-id="date-and-location">Date and location</h2>
+<p>April 23, 2026, 12:00-16:00 @ 1264-104 ## Prerequisites</p>
+<p>Your laptop with R and Rstudio installed. Knowledge of R, tidyverse and generic understanding of bulkRNA data might be helpful. You will need the Seurat package, so try to install it in advance.</p>
+</section>
+<section id="material" class="level2">
+<h2 class="anchored" data-anchor-id="material">Material</h2>
+<p>Tutorial and slides will be added in our <a href="../../Documentation.html">Documentation</a> page prior to the workshop.</p>
+</section>
+<section id="signup" class="level2">
+<h2 class="anchored" data-anchor-id="signup">Signup</h2>
+<p>Signup happens by clicking the button below. There are 20 seats available, and they will be allocated on a first-come, first-served basis.</p>
+<p>If you have any questions, feel free to contact us at <strong>abcafe [at] au.dk</strong>.</p>
 <p>&nbsp;</p>
 <p align="center">
-</p><p><a href="https://tinyurl.com/GDKslides" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> See the slides webpage </a></p>
-<p></p>
+<a href="https://" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Sign up ! ! ! </a>
+</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
