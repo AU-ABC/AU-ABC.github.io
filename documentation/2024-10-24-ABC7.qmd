@@ -1,5 +1,5 @@
 ---
-title: "ABC.7: Practical guide to SLURM and job submissions on HPC"
+title: "Practical guide to SLURM and job submissions on HPC"
 author: "Manuel Peral Vazquez"
 image: 2024-10-24-ABC7/slurm.png
 date: 2024-10-24

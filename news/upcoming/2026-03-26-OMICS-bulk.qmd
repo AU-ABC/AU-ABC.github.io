@@ -1,0 +1,42 @@
+---
+title: "OMICS workshop II: bulkRNA data"
+author: "Mohamed Hassan, Samuele Soraggi"
+image: "../../img/news/heatmap.png"
+Organizers: GenomeDK, HDS Sandbox, Bioinf Core facility, DDSA
+date: 2026-03-26
+categories: [OMICS, bulkRNA, Workshop]
+---
+
+![](../../img/news/heatmap.png){fig-align="center" width=400px}
+
+The ABC is organizing a series of short OMICS workshops, led by PhD student Mohamed Hassan with help from the ABC bioinformaticians and other health PhDs. This second workshop in the series will focus on the R analysis of bulkRNA data. You will learn how to perform quality control, normalization, differential expression analysis, and visualization of bulkRNA-seq data using popular R packages. There will be an introductory lecture followed by hands-on exercises. **There will be some optional take-home exercise, and you are welcome to come to the following ABC (coding cafe on 9.april) to ask more questions about the topic and your own data.**
+
+## Intended audience
+
+Students and researchers wanting to learn how to analyze bulkRNA-seq data using R and to produce useful figures.
+
+## Date and location
+
+March 26, 2026, 12:00-16:00 @ 1241-114
+
+## Prerequisites
+
+Your laptop with R and Rstudio installed. Knowledge of R, tidyverse and generic understanding of bulkRNA data might be helpful.
+
+## Material
+
+Tutorial and slides will be added in our [Documentation](../../Documentation.qmd) page prior to the workshop.
+
+## Signup
+
+Signup happens by clicking the button below. There are 20 seats available, and they will be allocated on a first-come, first-served basis.
+
+If you have any questions, feel free to contact us at **abcafe [at] au.dk**.
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Sign up ! ! !
+  </a>
+</p>

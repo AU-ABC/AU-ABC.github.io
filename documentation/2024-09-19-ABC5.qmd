@@ -1,10 +1,10 @@
 ---
-title: "ABC.5: open coding and tutorials, single cell dimensionality reduction"
+title: "Open coding and tutorials, single cell dimensionality reduction"
 author: "Samuele Soraggi"
 image: 2024-09-19-ABC5/umap.png
 date: 2024-09-19
 categories: [scanpy, projection, PCA, UMAP]
-description: "ABC.5: try our previous tutorials or a workshop on dimensionality reduction"
+description: "Try our previous tutorials or a workshop on dimensionality reduction"
 eval: true
 ---
 

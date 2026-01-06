@@ -6,37 +6,23 @@ format:
 bibliography: resources/references.bib
 ---
 
-:::{.callout-warning title="Incoming Events"}
-The 25th ABC will take place on Thursday, November 27th, 2025, 13:00-15:00, in room 1150-115. 
+:::{.callout-note title="" icon=false appearance="simple"}
+&nbsp;
 
-We will have a **2-hours drop in** to help you with bioinformatics and data science issues!
+<span style="font-size:1.6em"> Do you feel finding the right analysis and tools is like going through a maze of installation errors, software versions, tutorials and flawed chatGPT prompts? Then welcome to the</span>
 
-To participate, simply drop a line at **abcafe [at] au.dk**, or show up spontaneously (in this case, no prior notice is needed, but cake is not guaranteed!).
+
+# Accessible Bioinformatics Cafe {.centered}
 :::
 
-# Welcome to the Accessible Bioinformatics Cafe {.centered}
-
 <div style="text-align: center;">
-An informal and collaborative cafe to help each other upskilling coding/bioinformatics skills. Hosted by scientists and bioinformaticians of the [Health data science sandbox](https://hds-sandbox.github.io) and [Bioinformatics core facility](https://biomed.au.dk/bioinformatics-core-facility) at Aarhus University.
+An informal and collaborative cafe to help each other upskilling coding/bioinformatics skills. Hosted by scientists and bioinformaticians of the [Health data science sandbox](https://hds-sandbox.github.io), [Bioinformatics core facility](https://biomed.au.dk/bioinformatics-core-facility) and [Health Faculty](https://health.au.dk/) at Aarhus University. Supported by the [Danish Data Science Academy](https://www.ddsa.dk/)!
 </div>
 
 &nbsp;
 
 ## Concept
-
-::: {.callout-note appearance="simple" icon="false"}
-
-Have you ever ended in a situation involving questions similar to those?
-
-- <span style="font-size:1em;">Where do I start to code on a command line?</span>
-- <span style="font-size:1.2em;"> How do I learn the basic R/python commands?</span>
-- <span style="font-size:1.4em;"> What the heck is this error?????</span>
-
-Do you feel finding the right tools is like going through a maze of software installations, versions and incompatibilities?
-
-:::
-
-What follows is the natural desire of throwing your computer out of the window. Don't worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the [Kubler-Ross curve](https://en.wikipedia.org/wiki/Five_stages_of_grief)^[Someone prefers to refer to the [Dunning-Kruger effect](https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect) instead, but this is for people overestimating their abilities. It is not the case of coders: we know that we cannot do something when we get stuck!], where frustration is the point in which coding becomes challenging and we might feel lost.
+Coding frustration is followed is the natural desire of throwing your computer out of the window. Don't worry! All the bioinformaticians/data scientists have gone through that, sometimes defined as part of the [Kubler-Ross curve](https://en.wikipedia.org/wiki/Five_stages_of_grief)^[Someone prefers to refer to the [Dunning-Kruger effect](https://en.wikipedia.org/wiki/Dunning%E2%80%93Kruger_effect) instead, but this is for people overestimating their abilities. It is not the case of coders: we know that we cannot do something when we get stuck!], where frustration is the point in which coding becomes challenging and we might feel lost.
 
 The idea behind ABC is to bridge you beyond frustration moments, while at the same time offering a relaxed environment and the possibility to learn new things, help and get to know each other:
 
@@ -58,6 +44,8 @@ Each ~2 hour session of the ABC will feature:
 - Occasional Topic Presentation (max 15 minutes): Insightful presentations on various bioinformatics and coding topics.
 - Open Floor Session: A hands-on segment where staff from the Bioinformatics Core Facility and the Health Data Science Sandbox will be available to assist with any coding or bioinformatics issues.
 
+We also offer various workshops on specific topics, such as High performance computing, R/python programming, bulkRNA-seq analysis, single-cell RNA-seq analysis, and spatial transcriptomics. Check out the upcoming workshops in our calendar!
+
 ## When and where
 
 Look at our [Events calendar](./news.qmd) for more information about each meeting and upcoming workshops and courses.
@@ -70,4 +58,4 @@ Subscribe to our newsletter to receive a few, non-invasive reminders for our mee
 
 ## Funding
 
-![For all 2025 the cafe is supported by the Danish Data Science Foundation!](img/DDSA.png){widht=500px fig-align="center"}
+![For all 2025 and 2026 the cafe is supported by the Danish Data Science Foundation!](img/DDSA.png){width=500px fig-align="center"}

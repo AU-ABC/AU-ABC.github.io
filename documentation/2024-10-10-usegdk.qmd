@@ -1,19 +1,18 @@
 ---
-title: "Workshop: Use GenomeDK"
-author: "Samuele Soraggi"
+title: "GenomeDK workshops"
+author: "Samuele Soraggi, Dan Søndergaard"
 image: ../img/news/gdkLogo.jpg
-date: 2024-10-10
 categories: [GenomeDK, bash]
 description: "Introductive workshop to genomeDK"
 eval: true
 ---
 
-We had a great workshop day, and for those of you who were not there, or want to see the slides again, here they are
+The GenomeDK workshop series has its own webpage which you can reach from the button below. There you can find all the necessary slides and materials to get started with using GenomeDK for your analyses. Slides are updated over time whenever we repeat the workshops at each semester.
 
  
 
 <p align="center">
 
-<a href="https://tinyurl.com/useGDK" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> See the slides </a>
+<a href="https://tinyurl.com/GDKslides" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> See the slides webpage </a>
 
 </p>

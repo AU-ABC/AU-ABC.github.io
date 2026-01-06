@@ -1,0 +1,42 @@
+---
+title: "OMICS workshop I: R and Tidyverse"
+author: "Mohamed Hassan, Samuele Soraggi"
+image: "../../img/Rlogo.png"
+Organizers: GenomeDK, HDS Sandbox, Bioinf Core facility, DDSA
+date: 2026-02-26
+categories: [OMICS, R, tidyverse, Workshop]
+---
+
+![](../../img/Rlogo.png){fig-align="center" width=400px}
+
+The ABC is organizing a series of short OMICS workshops, led by PhD student Mohamed Hassan with help from the ABC bioinformaticians and other health PhDs. The first workshop in the series will focus on R and the Tidyverse collection of packages for data manipulation and visualization. These will be a common set of tools used in virtually all OMICS analysis in R, so attending this one is highly recommended if you plan to attend the rest of the series. **There will be some optional take-home exercise, and you are welcome to come to the following ABC (coding cafe on 12.march) to ask more questions about the topic and your own datasets.**
+
+## Intended audience
+
+All levels are welcome, from complete beginners to more experienced users. The workshop will start from the basics of R, and then move on to Tidyverse packages.
+
+## Date and location
+
+February 26, 2026, 12:00-16:00 @ 1241-114
+
+## Prerequisites
+
+Your laptop with R and Rstudio installed. Some very basic knowledge of R is helpful. 
+
+## Material
+
+Tutorial and slides will be added in our [Documentation](../../Documentation.qmd) page prior to the workshop.
+
+## Signup
+
+Signup happens by clicking the button below. There are 20 seats available, and they will be allocated on a first-come, first-served basis.
+
+If you have any questions, feel free to contact us at **abcafe [at] au.dk**.
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Sign up ! ! !
+  </a>
+</p>

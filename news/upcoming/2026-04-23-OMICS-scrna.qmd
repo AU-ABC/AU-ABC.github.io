@@ -1,0 +1,41 @@
+---
+title: "OMICS workshop III: scRNA data"
+author: "Mohamed Hassan, Samuele Soraggi"
+image: "../../img/news/SeuratV5.png"
+Organizers: GenomeDK, HDS Sandbox, Bioinf Core facility, DDSA
+date: 2026-04-23
+categories: [OMICS, scRNA, Workshop, seurat]
+---
+
+![](../../img/news/SeuratV5.png){fig-align="center" width=400px}
+
+The ABC is organizing a series of short OMICS workshops, led by PhD student Mohamed Hassan with help from the ABC bioinformaticians and other health PhDs. This third workshop in the series will focus on the R analysis of scRNA data. You will learn how to perform quality control, normalization, differential expression analysis, and visualization of scRNA-seq data using popular R packages. There will be an introductory lecture followed by hands-on exercises. **There will be some optional take-home exercise, and you are welcome to come to the following ABC (coding cafe) to ask more questions about the topic and your own data.**
+
+## Intended audience
+
+Students and researchers wanting to know more about and how to analyze scRNA-seq data using the Seurat package.
+
+## Date and location
+
+April 23, 2026, 12:00-16:00 @ 1264-104
+## Prerequisites
+
+Your laptop with R and Rstudio installed. Knowledge of R, tidyverse and generic understanding of bulkRNA data might be helpful. You will need the Seurat package, so try to install it in advance.
+
+## Material
+
+Tutorial and slides will be added in our [Documentation](../../Documentation.qmd) page prior to the workshop.
+
+## Signup
+
+Signup happens by clicking the button below. There are 20 seats available, and they will be allocated on a first-come, first-served basis.
+
+If you have any questions, feel free to contact us at **abcafe [at] au.dk**.
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Sign up ! ! !
+  </a>
+</p>

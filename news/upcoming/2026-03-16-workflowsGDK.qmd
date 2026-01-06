@@ -1,0 +1,51 @@
+---
+title: "Workflows on GenomeDK"
+author: "Samuele Soraggi, Dan Søndergaard, Manuel Peral-Vazquez"
+image: "../../img/news/binfPipeline.png"
+Organizers: HDS Sandbox, Bioinf Core facility, DDSA
+date: 2026-03-16
+categories: [HPC, Workshop, Pipeline, Workflow, gwf]
+description: "Organize and run complex workflows using a simple python package on the cluster"
+---
+
+![](../../img/news/gdkLogo.jpg){fig-align="center" width=800px}
+
+The GenomeDK team is organizing a workshop to help you organize and run complex workflows using a simple python package on the cluster. The ABC (Accessible Bioinformatics Cafe) team is collaborating to help you get the most out of this opportunity.
+
+## Intended audience
+
+For users of GenomeDK who want to learn building complex and reproducible pipelines. Some of the content might be bioinformatics-specific.
+
+## Date and location
+
+March 16, 2026, 10:00-14:00 @ 1241-114
+
+## Prerequisites
+
+Knowledge of conda or pixi environments, text file editing, standard usage of the cluster. It is optimal if you are part of a project on GenomeDK - if not you can still follow along with the exercises!
+
+
+## Topics:
+
+- Why pipelines?
+- Main pipeline languages
+- Think through your pipeline architecture
+- Dependencies
+- Set software up and prepare your first pipeline
+- Submit!
+- Polish your resource requirements
+- Wrap up
+
+## Signup
+
+Signup happens by clicking the button below. There are 30 seats available, and they will be allocated on a first-come, first-served basis.
+
+If you have any questions, feel free to contact us at **abcafe [at] au.dk**.
+
+&nbsp;
+
+ <p align="center">
+  <a href="https://forms.gle/xPmMZqAPcJQxE2if6" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+    Sign up ! ! !
+  </a>
+</p>
