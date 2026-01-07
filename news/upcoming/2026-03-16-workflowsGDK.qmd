@@ -45,7 +45,7 @@ If you have any questions, feel free to contact us at **abcafe [at] au.dk**.
 &nbsp;
 
  <p align="center">
-  <a href="https://forms.gle/xPmMZqAPcJQxE2if6" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
+  <a href="https://forms.gle/P53zhx3NWBs8cvVV8" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;">
     Sign up ! ! !
   </a>
 </p>
