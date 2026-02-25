@@ -966,62 +966,6 @@
     "text": "Applying DeSeq2\nTime to use the DESeq2 normalization method to analyse your sequencing data. The commands below run DeSeq2 and\n\nbuilds a DeSeq2 object from the data matrix and condition matrix\napplyes DeSeq2\ntransforms the expressions by variance stabilization\n\n\ndds &lt;- DESeqDataSetFromMatrix(count = countData_subset, colData = coldata, design = ~conditions)\ndds &lt;- DESeq(dds)\nvsdata &lt;- vst(dds, blind=FALSE)\n\nWarning message in DESeqDataSet(se, design = design, ignoreRank):\n\"some variables in design formula are characters, converting to factors\"\n  Note: levels of factors in the design contain characters other than\n  letters, numbers, '_' and '.'. It is recommended (but not required) to use\n  only letters, numbers, and delimiters '_' or '.', as these are safe characters\n  for column names in R. [This is a message, not a warning or an error]\n\nestimating size factors\n\n  Note: levels of factors in the design contain characters other than\n  letters, numbers, '_' and '.'. It is recommended (but not required) to use\n  only letters, numbers, and delimiters '_' or '.', as these are safe characters\n  for column names in R. [This is a message, not a warning or an error]\n\nestimating dispersions\n\ngene-wise dispersion estimates\n\nmean-dispersion relationship\n\n  Note: levels of factors in the design contain characters other than\n  letters, numbers, '_' and '.'. It is recommended (but not required) to use\n  only letters, numbers, and delimiters '_' or '.', as these are safe characters\n  for column names in R. [This is a message, not a warning or an error]\n\nfinal dispersion estimates\n\n  Note: levels of factors in the design contain characters other than\n  letters, numbers, '_' and '.'. It is recommended (but not required) to use\n  only letters, numbers, and delimiters '_' or '.', as these are safe characters\n  for column names in R. [This is a message, not a warning or an error]\n\nfitting model and testing\n\n\n\nTo compute a variance stabilizing transformation is roughly similar to putting the data on the log2 scale, while also dealing with the sampling variability of low counts. It uses the design formula to calculate the within-group variability (if blind=FALSE) or the across-all-samples variability (if blind=TRUE). It does not use the design to remove variation in the data. It therefore does not remove variation that can be associated with batch or other covariates (nor does DESeq2 have a way to specify which covariates are nuisance and which are of interest).\nThe resulting object is called vsdata, which will be used for further analysis with DESeq2\n\nvsdata\n\nclass: DESeqTransform \ndim: 21473 9 \nmetadata(1): version\nassays(1): ''\nrownames(21473): WASH7P MIR6859-1 ... TRNT TRNP\nrowData names(26): baseMean baseVar ... maxCooks dispFit\ncolnames(9): WT_1 WT_2 ... DRUG+SUPPLEMENT_2 DRUG+SUPPLEMENT_3\ncolData names(2): conditions sizeFactor\n\n\n\n\n\n\n\n\nwrap up\n\n\n\nYou have read and preprocessed a bulk RNA expression matrix and ran an analysis with DeSeq2. Further steps concern visualizing and interpreting the results inferred by DeSeq2 on the data."
   },
   {
-    "objectID": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-exercise.html",
-    "href": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-exercise.html",
-    "title": "OMICS workshop I Exercise",
-    "section": "",
-    "text": "In this exercise you will combine core tidy tools from the tutorial in one end-to-end analysis:\n\nleft_join() and anti_join()\npivot_longer() and pivot_wider()\nmutate() + case_when()\ngroup_by() + summarise()\nacross()\n\nYou will work on a synthetic RNA-like count dataset and produce a compact analysis report."
-  },
-  {
-    "objectID": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-exercise.html#goal",
-    "href": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-exercise.html#goal",
-    "title": "OMICS workshop I Exercise",
-    "section": "",
-    "text": "In this exercise you will combine core tidy tools from the tutorial in one end-to-end analysis:\n\nleft_join() and anti_join()\npivot_longer() and pivot_wider()\nmutate() + case_when()\ngroup_by() + summarise()\nacross()\n\nYou will work on a synthetic RNA-like count dataset and produce a compact analysis report."
-  },
-  {
-    "objectID": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-exercise.html#setup",
-    "href": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-exercise.html#setup",
-    "title": "OMICS workshop I Exercise",
-    "section": "Setup",
-    "text": "Setup\nlibrary(tidyverse)\nset.seed(12345) # for reproducibility"
-  },
-  {
-    "objectID": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-exercise.html#data-generation",
-    "href": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-exercise.html#data-generation",
-    "title": "OMICS workshop I Exercise",
-    "section": "Data generation",
-    "text": "Data generation\n# 1) Sample metadata\nsample_meta &lt;- tibble(\n  sample_id = str_c(\"S\", str_pad(1:30, width = 3, pad = \"0\")),\n  tissue = sample(c(\"tumor\", \"normal\"), 30, replace = TRUE, prob = c(0.55, 0.45)),\n  cohort = sample(c(\"A\", \"B\", \"C\"), 30, replace = TRUE),\n  batch = sample(c(\"B1\", \"B2\", \"B3\"), 30, replace = TRUE)\n)\n\n# 2) Clinical table (with intentional unmatched rows for join debugging)\nclinical &lt;- tibble(\n  sample_id = c(sample_meta$sample_id[1:26], \"S900\", \"S901\"),\n  patient_age = sample(35:85, 28, replace = TRUE),\n  response = sample(c(\"CR\", \"PR\", \"SD\", \"PD\"), 28, replace = TRUE)\n)\n\n# 3) Wide expression/count matrix (genes x samples)\ngenes &lt;- str_c(\"GENE_\", str_pad(1:120, 3, pad = \"0\"))\ncount_mat &lt;- matrix(\n  rnbinom(length(genes) * nrow(sample_meta), mu = 120, size = 1.3),\n  nrow = length(genes),\n  ncol = nrow(sample_meta),\n  dimnames = list(genes, sample_meta$sample_id)\n)\n\ncounts_wide &lt;- as_tibble(count_mat, rownames = \"gene_id\")\n\nsample_meta\nclinical\ncounts_wide"
-  },
-  {
-    "objectID": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-exercise.html#exercise-tasks",
-    "href": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-exercise.html#exercise-tasks",
-    "title": "OMICS workshop I Exercise",
-    "section": "Exercise tasks",
-    "text": "Exercise tasks\n\nPart 1 — Join diagnostics and clean analysis table\n\nUse anti_join() to identify:\n\nsample IDs in sample_meta that do not exist in clinical\nsample IDs in clinical that do not exist in sample_meta\n\nCreate clinical_clean by keeping only rows that can match sample_meta.\nBuild sample_annot using left_join(sample_meta, clinical_clean, by = \"sample_id\").\nAdd a new age group variable with case_when():\n\n&lt; 50 = \"young\"\n50-69 = \"middle\"\n&gt;= 70 = \"older\"\n\n\n# TODO: write your Part 1 solution here\n\n\nPart 2 — Reshape wide counts and annotate samples\n\nConvert counts_wide to long format as counts_long with columns: gene_id, sample_id, count.\nJoin counts_long with sample_annot to create counts_annot.\nCreate a log-transformed value: log_count = log2(count + 1).\n\n# TODO: write your Part 2 solution here\n\n\nPart 3 — Multi-level summaries using group_by(), summarise(), and across()\n\nCompute per-gene/per-tissue summary as gene_tissue_summary:\n\nmean_count\nsd_count\nmean_log_count\nn_samples\n\nCompute a second table cohort_summary with one row per cohort and tissue:\n\nmean and median for all numeric columns in counts_annot using across(where(is.numeric), ...)\ninclude n() as n_rows\n\n\n# TODO: write your Part 3 solution here\n\n\nPart 4 — Wide result table and differential signal\n\nPivot gene_tissue_summary wider to get one row per gene with separate tumor/normal means:\n\ncolumns like mean_count_tumor, mean_count_normal\n\nCreate:\n\ndelta = mean_count_tumor - mean_count_normal\nabs_delta = abs(delta)\n\nReturn top 15 genes by abs_delta.\n\n# TODO: write your Part 4 solution here"
-  },
-  {
-    "objectID": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-exercise.html#deliverables",
-    "href": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-exercise.html#deliverables",
-    "title": "OMICS workshop I Exercise",
-    "section": "Deliverables",
-    "text": "Deliverables\nCreate and print these objects:\n\nsample_annot\ncounts_annot\ngene_tissue_summary\ncohort_summary\ntop_genes_delta\n\n# TODO: print your final deliverables"
-  },
-  {
-    "objectID": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-exercise.html#self-check-questions",
-    "href": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-exercise.html#self-check-questions",
-    "title": "OMICS workshop I Exercise",
-    "section": "Self-check questions",
-    "text": "Self-check questions\n\nDo your unmatched IDs from anti_join() make sense given the generated data?\nDoes counts_annot have exactly n_genes * n_samples rows for matched samples?\nAre delta values positive for genes higher in tumor and negative for genes higher in normal?\nCan you explain why log2(count + 1) is often used before summarizing count-like data?"
-  },
-  {
-    "objectID": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-exercise.html#stretch-challenge-optional",
-    "href": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-exercise.html#stretch-challenge-optional",
-    "title": "OMICS workshop I Exercise",
-    "section": "Stretch challenge (optional)",
-    "text": "Stretch challenge (optional)\nCreate a compact report table with one row per cohort containing:\n\ntop 3 genes by absolute tumor-normal delta within that cohort\nmean age of included samples\nfraction of response == \"CR\"\n\nTips: use grouped summaries, ranking, and string aggregation (str_c() with collapse = \", \").\n# TODO: stretch solution"
-  },
-  {
     "objectID": "documentation/2024-06-27-ABC2.html",
     "href": "documentation/2024-06-27-ABC2.html",
     "title": "RStudio projects and Anaconda+Python",
@@ -1062,6 +1006,62 @@
     "title": "RStudio projects and Anaconda+Python",
     "section": "Python basics",
     "text": "Python basics\nHere we look at the python basics: variables, arrays and dataframes. We will immediately work with two packages: numpy and pandas, which make the use of arrays and dataframes very flexible.\n\nJupyterLab\nLaunch jupyterlab from the Anaconda Home, using the environment ABC2. You should be able to see Jupyterlab opened in your internet browser. It will look similar to the one below: it has a file browser, can show the opened files on different tabs, and has a coding window where the opened file is shown. When you first open jupyterlab you will instead see a Launcher, which gives you a choice for all the available things to do, usually Notebooks, Console, or Other, with related available languages.\n\nYou do not create projects in JupyterLab, you simply create folders instead.\n\nUse the browser to create a folder wherever you prefere, and organize it into subfolders: Code, Output, Data, Scripts. You can use the small button above the browser to create a folder, or simply the right-click options.\nAgain with a right click, create a notebook inside the Code folder\nWhen asked to choose a kernel, select python 3. A kernel includes the programming language and its packages as we installed them into the environment using Anaconda.\n{fig-align=“center”, width=300px}\n\nA notebook looks like this:\n\nThe gray area is a code cell, where you can write code. Select the left border out of a cell to\n\ntransform it into a Markdown cell where you can write text: key M of your keyboard\nadd a cell below: key B\nrun the cell and add one below: keys Shift+Enter\n\n\n\n\n\n\n\nTip\n\n\n\nA notebook looks a lot like a text file. When you open it, it will show all results and images from your code! You can share it to anyone without the need to run the code again for the recipient, if it is needed to simply show some results.\nThe webpage you are reading now has been created with a notebook!\n\n\nLet’s turn things into practice now. Transform the first cell into markdown (key M) and write a title with\n ## ABC2 is cool\nand press Shift+Enter. You will get a new cell below, and the text will be formatted from Markdown.\nNow we write some code in the new cell and press Shift+Enter to execute:\n\nimport numpy as np\nimport pandas as pd\n\nprint(\"Hello ABC\")\nx = np.arange(1,10)\ny = x**2\nprint(\"x\")\nprint(x)\nprint(\"y\")\nprint(y)\n\nHello ABC\nx\n[1 2 3 4 5 6 7 8 9]\ny\n[ 1  4  9 16 25 36 49 64 81]\n\n\nThings should look as below:\n\nThe little number on the left shows how many code steps you have been running so far. The code imports relevant libraries and shortens their name with np and pd, which makes coding easier and compact. Then we use the library np to define an array of numbers from 1 to 10, and we square this array assigning it to y. Finally we print the two arrays.\nAll variables are assigned with the = symbol and you can do all arithmetic operations:\n\nprint(2+3)\nprint(9*2)\nprint(5**2)\n\n5\n18\n25\n\n\n\n\nPandas dataframes\nwe procees looking into a small dataframe. Let’s create one using the pandas library\n\n# Create the dataframe\ndata = pd.DataFrame({\n    'SampleID': ['S1', 'S2', 'S3', 'S4', 'S5'],\n    'Gene1': [5.2, 6.3, 4.9, 7.2, 5.8],\n    'Gene2': [3.8, 2.7, 3.5, 4.1, 3.9],\n    'Gene3': [7.1, 8.5, 6.8, 9.2, 7.3],\n    'Age': [45, 52, 37, 50, 43],\n    'Treatment': ['A', 'B', 'A', 'B', 'A'],\n    'Response': ['Responder', 'Non-Responder', 'Responder', 'Non-Responder', 'Responder']\n})\n\n# View the dataframe\ndata\n\n\n\n\n\n\n\n\nSampleID\nGene1\nGene2\nGene3\nAge\nTreatment\nResponse\n\n\n\n\n0\nS1\n5.2\n3.8\n7.1\n45\nA\nResponder\n\n\n1\nS2\n6.3\n2.7\n8.5\n52\nB\nNon-Responder\n\n\n2\nS3\n4.9\n3.5\n6.8\n37\nA\nResponder\n\n\n3\nS4\n7.2\n4.1\n9.2\n50\nB\nNon-Responder\n\n\n4\nS5\n5.8\n3.9\n7.3\n43\nA\nResponder\n\n\n\n\n\n\n\nYou can plot variables from the dataframe with the package seaborn. For example\n\nimport seaborn as sns\n\nsns.scatterplot(data=data,\n                x=\"Gene1\",\n                y=\"Gene2\",\n                hue=\"Response\",\n                size=\"Age\"\n               )\n\n\n\n\n\n\n\n\nIn the command above we used some options beyond x and y. Can you see what they match in the plot?\n\n\n\n\n\n\nTip\n\n\n\nThe seaborn package webpage has great examples for any kind of plot you desire!\n\n\nThere are lots of summary statistics already implemented in python. Below we calculate mean, median and standard deviation for the column Gene1 of the data frame and then we print them.\n\nx = data.Gene1\nmeanG1 = np.mean(x)\nmedianG1 = np.median(x)\nsdG1 = np.std(x)\n\nprint(\"mean, median and sd:\")\n[meanG1, medianG1, sdG1]\n\nmean, median and sd:\n\n\n[np.float64(5.88), np.float64(5.8), np.float64(0.8182909018191513)]\n\n\nThis was neat! Can you try to calculate the cumulative sum of the difference between Gene1 and Gene2?\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nThe answer is\nx = data.Gene1 - data.Gene2\ncsum = np.cumsum(x)\nprint(\"cumulative sum of Gene1 - Gene2:\")\nprint(csum)\n\n\n\n\n\nFunctions\nAlthough python and the packages you can find have almost everything you will need, sometimes you might need to define your own function. The syntax to do it is very easy: you define a function name, which then you will be able to use it. Below, there is a function taking an argument (arg1) and multiplying it by 5. The output needs to be explicit through the return() function.\n\ndef myFunction(arg1):\n    res = arg1 * 5\n    return(res)\n\nSuch a function works if the argument is a number, but also if it is an array!\n\nprint(\"with a number only\")\nprint( myFunction(5) )\nprint(\"with an array\")\nprint( myFunction(data.Gene1) )\n\nwith a number only\n25\nwith an array\n0    26.0\n1    31.5\n2    24.5\n3    36.0\n4    29.0\nName: Gene1, dtype: float64\n\n\nTry to make a function that takes three vectors, plots the first against the sum of the second and third, and returns the sum of all three vectors. Use the plot command we applied previously for help.\n\n\n\n\n\n\nAnswer\n\n\n\n\n\nThe answer is\ndef simpleSumPlot(arg1, arg2, arg3):\n    arg23 = arg2 + arg3\n    arg123 = arg1 + arg2 + arg3\n\n    #plotting\n    fig = sns.scatterplot(x = arg1, \n                    y = arg2)\n    fig.set_title(\"Plot with my own function\")\n    fig\n\n    return(arg123)\nNow you can try this on vectors of the same length. We can use the ones in our data frame!\n\nsimpleSumPlot(arg1 = data.Gene1,\n             arg2 = data.Gene2,\n             arg3 = data.Gene3)\n\n\n\n\n\nRead and write files\nSave a dataframe with the command .to_csv\n\ndata.to_csv('../Ouput/data.csv')\n\nAnd read it again using\n\ndata2 = pd.read_csv('../Ouput/data.csv')\n\n\ndata2\n\n\n\n\n\n\n\n\nUnnamed: 0\nSampleID\nGene1\nGene2\nGene3\nAge\nTreatment\nResponse\n\n\n\n\n0\n0\nS1\n5.2\n3.8\n7.1\n45\nA\nResponder\n\n\n1\n1\nS2\n6.3\n2.7\n8.5\n52\nB\nNon-Responder\n\n\n2\n2\nS3\n4.9\n3.5\n6.8\n37\nA\nResponder\n\n\n3\n3\nS4\n7.2\n4.1\n9.2\n50\nB\nNon-Responder\n\n\n4\n4\nS5\n5.8\n3.9\n7.3\n43\nA\nResponder\n\n\n\n\n\n\n\n\n\n\n\n\n\nwrap up\n\n\n\nYou learned how to use jupyterlab notebooks and how to do basic operations and plots with python."
+  },
+  {
+    "objectID": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-exercise.html",
+    "href": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-exercise.html",
+    "title": "OMICS workshop I Exercise",
+    "section": "",
+    "text": "In this exercise you will combine core tidy tools from the tutorial in one end-to-end analysis:\n\nleft_join() and anti_join()\npivot_longer() and pivot_wider()\nmutate() + case_when()\ngroup_by() + summarise()\nacross()\n\nYou will work on a synthetic RNA-like count dataset and produce a compact analysis report."
+  },
+  {
+    "objectID": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-exercise.html#goal",
+    "href": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-exercise.html#goal",
+    "title": "OMICS workshop I Exercise",
+    "section": "",
+    "text": "In this exercise you will combine core tidy tools from the tutorial in one end-to-end analysis:\n\nleft_join() and anti_join()\npivot_longer() and pivot_wider()\nmutate() + case_when()\ngroup_by() + summarise()\nacross()\n\nYou will work on a synthetic RNA-like count dataset and produce a compact analysis report."
+  },
+  {
+    "objectID": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-exercise.html#setup",
+    "href": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-exercise.html#setup",
+    "title": "OMICS workshop I Exercise",
+    "section": "Setup",
+    "text": "Setup\nlibrary(tidyverse)\nset.seed(12345) # for reproducibility"
+  },
+  {
+    "objectID": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-exercise.html#data-generation",
+    "href": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-exercise.html#data-generation",
+    "title": "OMICS workshop I Exercise",
+    "section": "Data generation",
+    "text": "Data generation\n# 1) Sample metadata\nsample_meta &lt;- tibble(\n  sample_id = str_c(\"S\", str_pad(1:30, width = 3, pad = \"0\")),\n  tissue = sample(c(\"tumor\", \"normal\"), 30, replace = TRUE, prob = c(0.55, 0.45)),\n  cohort = sample(c(\"A\", \"B\", \"C\"), 30, replace = TRUE),\n  batch = sample(c(\"B1\", \"B2\", \"B3\"), 30, replace = TRUE)\n)\n\n# 2) Clinical table (with intentional unmatched rows for join debugging)\nclinical &lt;- tibble(\n  sample_id = c(sample_meta$sample_id[1:26], \"S900\", \"S901\"),\n  patient_age = sample(35:85, 28, replace = TRUE),\n  response = sample(c(\"CR\", \"PR\", \"SD\", \"PD\"), 28, replace = TRUE)\n)\n\n# 3) Wide expression/count matrix (genes x samples)\ngenes &lt;- str_c(\"GENE_\", str_pad(1:120, 3, pad = \"0\"))\ncount_mat &lt;- matrix(\n  rnbinom(length(genes) * nrow(sample_meta), mu = 120, size = 1.3),\n  nrow = length(genes),\n  ncol = nrow(sample_meta),\n  dimnames = list(genes, sample_meta$sample_id)\n)\n\ncounts_wide &lt;- as_tibble(count_mat, rownames = \"gene_id\")\n\nsample_meta\nclinical\ncounts_wide"
+  },
+  {
+    "objectID": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-exercise.html#exercise-tasks",
+    "href": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-exercise.html#exercise-tasks",
+    "title": "OMICS workshop I Exercise",
+    "section": "Exercise tasks",
+    "text": "Exercise tasks\n\nPart 1 — Join diagnostics and clean analysis table\n\nUse anti_join() to identify:\n\nsample IDs in sample_meta that do not exist in clinical\nsample IDs in clinical that do not exist in sample_meta\n\nCreate clinical_clean by keeping only rows that can match sample_meta.\nBuild sample_annot using left_join(sample_meta, clinical_clean, by = \"sample_id\").\nAdd a new age group variable with case_when():\n\n&lt; 50 = \"young\"\n50-69 = \"middle\"\n&gt;= 70 = \"older\"\n\n\n# TODO: write your Part 1 solution here\n\n\nPart 2 — Reshape wide counts and annotate samples\n\nConvert counts_wide to long format as counts_long with columns: gene_id, sample_id, count.\nJoin counts_long with sample_annot to create counts_annot.\nCreate a log-transformed value: log_count = log2(count + 1).\n\n# TODO: write your Part 2 solution here\n\n\nPart 3 — Multi-level summaries using group_by(), summarise(), and across()\n\nCompute per-gene/per-tissue summary as gene_tissue_summary:\n\nmean_count\nsd_count\nmean_log_count\nn_samples\n\nCompute a second table cohort_summary with one row per cohort and tissue:\n\nmean and median for all numeric columns in counts_annot using across(where(is.numeric), ...)\ninclude n() as n_rows\n\n\n# TODO: write your Part 3 solution here\n\n\nPart 4 — Wide result table and differential signal\n\nPivot gene_tissue_summary wider to get one row per gene with separate tumor/normal means:\n\ncolumns like mean_count_tumor, mean_count_normal\n\nCreate:\n\ndelta = mean_count_tumor - mean_count_normal\nabs_delta = abs(delta)\n\nReturn top 15 genes by abs_delta.\n\n# TODO: write your Part 4 solution here"
+  },
+  {
+    "objectID": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-exercise.html#deliverables",
+    "href": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-exercise.html#deliverables",
+    "title": "OMICS workshop I Exercise",
+    "section": "Deliverables",
+    "text": "Deliverables\nCreate and print these objects:\n\nsample_annot\ncounts_annot\ngene_tissue_summary\ncohort_summary\ntop_genes_delta\n\n# TODO: print your final deliverables"
+  },
+  {
+    "objectID": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-exercise.html#self-check-questions",
+    "href": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-exercise.html#self-check-questions",
+    "title": "OMICS workshop I Exercise",
+    "section": "Self-check questions",
+    "text": "Self-check questions\n\nDo your unmatched IDs from anti_join() make sense given the generated data?\nDoes counts_annot have exactly n_genes * n_samples rows for matched samples?\nAre delta values positive for genes higher in tumor and negative for genes higher in normal?\nCan you explain why log2(count + 1) is often used before summarizing count-like data?"
+  },
+  {
+    "objectID": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-exercise.html#stretch-challenge-optional",
+    "href": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-exercise.html#stretch-challenge-optional",
+    "title": "OMICS workshop I Exercise",
+    "section": "Stretch challenge (optional)",
+    "text": "Stretch challenge (optional)\nCreate a compact report table with one row per cohort containing:\n\ntop 3 genes by absolute tumor-normal delta within that cohort\nmean age of included samples\nfraction of response == \"CR\"\n\nTips: use grouped summaries, ranking, and string aggregation (str_c() with collapse = \", \").\n# TODO: stretch solution"
   },
   {
     "objectID": "documentation/2024-09-19-ABC5.html",
@@ -1260,6 +1260,69 @@
     "text": "Working with (text) files\nMany files you use in bioinformatics are nothing else than text files which are written in a specific matter. This specific way of arranging the text in the files gives you many of the file formats you encounter when doing bioinformatics.\n\n\n\n\n\n\nNote\n\n\n\nSome file formats are encoded differently than with plain text, and cannot usually be seen with a text editor.\n\n\n\nLess for reading files\nThe first thing you want to do, is to check at how the content of a file looks like. The program less is perfect for this purpose: you can scroll text with the arrows, and use the keyboard to do operations like searching for text or jumping to a line. Try\n\nless data.fastq\nand see the format of your data, where each four lines provide a sequence. The very first sequence you see should be\n@HISEQ_HU01:89:H7YRLADXX:1:1101:1116:2123 1:N:0:ATCACG\nTCTGTGTAAATTACCCAGCCTCACGTATTCCTTTAGAGCAATGCAAAACAGACTAGACAAAAGGCTTTTAAAAGTCTA\nATCTGAGATTCCTGACCAAATGT\n+\nCCCFFFFFHHHHHJJJJJJJJJJJJHIJJJJJJJJJIJJJJJJJJJJJJJJJJJJJHIJGHJIJJIJJJJJHHHHHHH\nFFFFFFFEDDEEEEDDDDDDDDD\nHere the first line is informative of the sequence, the second is the sequence itself and then you have an empty line (symbol +), followed by the quality scores (encoded by letters according to this table).\nTry to scroll in all directions (with the arrow keys) to explore some lines in the file. If you want to exit from the text viewer, press q.\n\nTry to search online how to look for a specific word in a file with less. Then visualize the data with less, and try to find if there is any sequence ten adjacent Ns (which is, ten missing nucleotides). Then, answer the question below\nHow long is the shortest sequence of missing nucleotides not found anywhere in the file data.fastq?\n\n\n  30     25     19   Submit\n\n\n\n\n\n\n\n\n\n\nTip\n\n\n\nUsually, a bash shell command can be found by searching for the command + man, for example less man. The manual of less lists all the many (many many) functionalities that can be useful to explore text files, which is always a good activity to do for double checking if things are in order.\nIn general: always check the manuals or write on the prompt the option --help (such as less --help). Usually you will understand a lot of what you can do and how from that.\n\n\n\n\nFile properties\nHow big is a file? How many lines does it have? When has it been created? You can use the good old ls with some extra options to list all files with some extra info:\nls -lah \nYou should get something like this depending on your computer:\ntotalt 6,3M\ndrwxr-xr-x+ 1 au612681 UsersGrp    0 28 aug 11:38 .\ndrwx------+ 1 au612681 UsersGrp    0 28 aug 10:38 ..\n-rw-r--r--+ 1 au612681 UsersGrp 6,3M 28 aug 11:38 data.fastq\nthe last line is clearly the data file, with creation date and size. Other infos about the file are group and user ownership and which rights we have on the file (we will not talk about these in this tutorial).\n\n\n\n\n\n\nNote\n\n\n\nLook also at the other two elements: . and .., which represents the current directory and the one above in the directory structure. Those link you to the directories, so one can always change to the directory above by using cd ..\nYou can combine multiple times .. to change directories multiple levels above. Use the terminal and execute the command cd ../../. Which folder does it bring you to?\n\n\n  /home     /home/myFolder     /usr/bin     /home/username/   Submit\n\n\n\n\n\nOh damn, now we changed cwd, and we cannot remember the path to the previous one where we have the data. We can use -, which brings us to the previous cwd!\ncd -\nNow, how many lines are there in your file? The command wc can show that to you. It has many options, but we are going to use the one to count lines in a file. As always, look for the manual or examples to see how you can use it in other many ways.\nwc -l data.fastq\nwill tell you that the file has 100000 lines, so you have 25000 sequences (each sequence is defined by 4 lines).\n\n\nCopy and Move\nNow we learn a few useful commands because we want to work on more than one file. We will create multiple copies of our file. To make a copy of the data file and called the new one dataCopy.fastq, do\ncp data.fastq dataCopy.fastq\nThen we will move data.fastq. You could move it in any folder, even in the current directory. If you move it into the current directory, you can use the mv command to simply change its name:\nmv data.fastq dataOriginal.fastq\nIf you now use ls -lah, you will see that you have two files of identical size and different creation dates. But… are those files identical? diff can tell you if you provide two file names. It will print out differences (or nothing if files are identical)\ndiff dataOriginal.fastq dataCopy.fastq\n\n\nWriting on a file\nYou can write something on a file using &gt;. This writes any output from a command which would appear on the screen into a file. For example the following commands prints out the first four lines of the data, but they will end up inside the file fourLines.fastq\nhead -4 dataOriginal.fastq &gt; fourLines.fastq\nTry to use\n\ncat fourLines.fastq\nto see those four lines printed out directly on the screen from the file.\n\n\n\n\n\n\nWarning\n\n\n\nUsing again &gt; to write on the same file will not add text to the file, but will overwrite it with the new text.\n\n\nLet’s append the first four lines of the data to its copy without overwriting it. This can be done using &gt;&gt;:\n\nhead -4 dataOriginal.fastq &gt;&gt; dataCopy.fastq\nWe want to run again the diff command to compare the two sequence files. Do you need to rewrite it? Of course not! Your bash saves the command history.\nKeep CTRL (or CMD on Mac) pressed, and in the meanwhile press r, then start writing diff. The old command will show up and you can run it pressing Enter. Alternatively, press the arrow UP to see the history of commands backward.\nIf you run the diff command on the two files you will see an output. This shows quite a lot of information and not only the sequence which is different:\n--- dataOriginal.fastq\n+++ dataCopy.fastq\n@@ -99998,3 +99998,7 @@\n\nmeans that there are additional lines in the second file (+++), missing in dataOriginal.fastq (- - -), and their coordinates.\n\n\nPiping\nA last important concept is the pipe. You can create small pipelines directly on the shell with the symbol |. Every time you use the pipe symbol, you get the output of a command and send it to the next command. For example, the grep command can find a pattern in a file in this way\ngrep NNNNN dataOriginal.fastq\nNow, what if we want to find that pattern in the first hundred sequences? Easy! We use head, and then pipe it into grep! When doing this, you do not need to provide a file to grep, and in that way it will read the output of the pipe.\nhead -400 dataOriginal.fastq | grep NNNNN\nThat was cool! In this case we have a small output on screen, but the output can be really huge as well. Maybe it makes sense to count how many sequences grep can find. Well, can’t really do it by hand! Pipe the result once more using wc as we did earlier!\nhead -400 dataOriginal.fastq | grep NNNNN | wc -l\nWait a second! That sequence absolutely needs to be saved into a file. How do you do it!\n\n\n  head -400 dataOriginal.fastq | grep NNNNN | sequence.fastq     head -400 dataOriginal.fastq | grep NNNNN &lt; sequence.fastq     sequence.fastq &lt; head -400 dataOriginal.fastq | grep NNNNN\n    head -400 dataOriginal.fastq | grep NNNNN &gt; sequence.fastq   Submit\n\n\n\n\n\nShortcuts and useful keys combinations\nThis was all for this very introductory tutorial. You have already seen how the bash shell is flexible, though requiring a bit of a steep learning curve.\nWe want to recap here useful shortcuts and key combinations for your day-to-day use of the bash shell\nHere’s a list of useful shortcuts and key combinations that you can use in the Bash shell to improve your efficiency:\n\nNavigating the Command Line\n\nCtrl + A: Move the cursor to the beginning of the line.\nCtrl + E: Move the cursor to the end of the line.\nAlt + F: Move the cursor forward one word.\nAlt + B: Move the cursor backward one word.\nCtrl + L: Clear the terminal screen\n\n\n\nEditing Text\n\nCtrl + U: Delete the text from the cursor to the beginning of the line.\nCtrl + K: Delete the text from the cursor to the end of the line.\nCtrl + W: Delete the word before the cursor.\nAlt + D: Delete the word after the cursor.\n\n\n\nHistory Navigation\n\nCtrl + R: Search through command history interactively (reverse-i-search).\nCtrl + P: Previous command in history (equivalent to the up arrow key).\nCtrl + N: Next command in history (equivalent to the down arrow key).\n!!: Re-run the last command.\n\n\n\nCommand Completion and Expansion\n\nTab: Auto-complete file names, directory names, or commands.\nAlt + .: Use the last argument of the previous command in the current command line.\n\n\n\nOther Useful Shortcuts\n\nCtrl + C: Terminate the current command (useful if things are stuck).\nCtrl + D: Log out of the current shell (equivalent to exit).\nCtrl + T: Swap the last two characters before the cursor.\n\n\n\n\n\n\n\nwrap up\n\n\n\nNow you are able to navigate the directory tree and visualize text files with less. You can also perform some basic operations, including piping commands, which is useful when handling large outputs which might end up directly on your screen."
   },
   {
+    "objectID": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-solutions.html",
+    "href": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-solutions.html",
+    "title": "OMICS workshop I Exercise - Solutions",
+    "section": "",
+    "text": "library(tidyverse)\nset.seed(12345) # for reproducibility"
+  },
+  {
+    "objectID": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-solutions.html#setup",
+    "href": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-solutions.html#setup",
+    "title": "OMICS workshop I Exercise - Solutions",
+    "section": "",
+    "text": "library(tidyverse)\nset.seed(12345) # for reproducibility"
+  },
+  {
+    "objectID": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-solutions.html#data-generation",
+    "href": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-solutions.html#data-generation",
+    "title": "OMICS workshop I Exercise - Solutions",
+    "section": "Data generation",
+    "text": "Data generation\n# 1) Sample metadata\nsample_meta &lt;- tibble(\n  sample_id = str_c(\"S\", str_pad(1:30, width = 3, pad = \"0\")),\n  tissue = sample(c(\"tumor\", \"normal\"), 30, replace = TRUE, prob = c(0.55, 0.45)),\n  cohort = sample(c(\"A\", \"B\", \"C\"), 30, replace = TRUE),\n  batch = sample(c(\"B1\", \"B2\", \"B3\"), 30, replace = TRUE)\n)\n\n# 2) Clinical table (with intentional unmatched rows for join debugging)\nclinical &lt;- tibble(\n  sample_id = c(sample_meta$sample_id[1:26], \"S900\", \"S901\"),\n  patient_age = sample(35:85, 28, replace = TRUE),\n  response = sample(c(\"CR\", \"PR\", \"SD\", \"PD\"), 28, replace = TRUE)\n)\n\n# 3) Wide expression/count matrix (genes x samples)\ngenes &lt;- str_c(\"GENE_\", str_pad(1:120, 3, pad = \"0\"))\ncount_mat &lt;- matrix(\n  rnbinom(length(genes) * nrow(sample_meta), mu = 120, size = 1.3),\n  nrow = length(genes),\n  ncol = nrow(sample_meta),\n  dimnames = list(genes, sample_meta$sample_id)\n)\n\ncounts_wide &lt;- as_tibble(count_mat, rownames = \"gene_id\")\n\nsample_meta\nclinical\ncounts_wide"
+  },
+  {
+    "objectID": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-solutions.html#part-1-join-diagnostics-and-clean-analysis-table",
+    "href": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-solutions.html#part-1-join-diagnostics-and-clean-analysis-table",
+    "title": "OMICS workshop I Exercise - Solutions",
+    "section": "Part 1 — Join diagnostics and clean analysis table",
+    "text": "Part 1 — Join diagnostics and clean analysis table\n# IDs in metadata that do not exist in clinical\nmissing_in_clinical &lt;- sample_meta %&gt;%\n  anti_join(clinical, by = \"sample_id\")\n\n# IDs in clinical that do not exist in metadata\nextra_in_clinical &lt;- clinical %&gt;%\n  anti_join(sample_meta, by = \"sample_id\")\n\n# Keep only clinical rows that can match metadata\nclinical_clean &lt;- clinical %&gt;%\n  semi_join(sample_meta, by = \"sample_id\")\n\n# Annotated sample table\nsample_annot &lt;- sample_meta %&gt;%\n  left_join(clinical_clean, by = \"sample_id\") %&gt;%\n  mutate(\n    age_group = case_when(\n      is.na(patient_age) ~ NA_character_,\n      patient_age &lt; 50 ~ \"young\",\n      patient_age &lt; 70 ~ \"middle\",\n      TRUE ~ \"older\"\n    )\n  )\n\nmissing_in_clinical\nextra_in_clinical\nsample_annot"
+  },
+  {
+    "objectID": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-solutions.html#part-2-reshape-wide-counts-and-annotate-samples",
+    "href": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-solutions.html#part-2-reshape-wide-counts-and-annotate-samples",
+    "title": "OMICS workshop I Exercise - Solutions",
+    "section": "Part 2 — Reshape wide counts and annotate samples",
+    "text": "Part 2 — Reshape wide counts and annotate samples\ncounts_long &lt;- counts_wide %&gt;%\n  pivot_longer(\n    cols = -gene_id,\n    names_to = \"sample_id\",\n    values_to = \"count\"\n  )\n\ncounts_annot &lt;- counts_long %&gt;%\n  left_join(sample_annot, by = \"sample_id\") %&gt;%\n  mutate(log_count = log2(count + 1))\n\ncounts_long\ncounts_annot"
+  },
+  {
+    "objectID": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-solutions.html#part-3-multi-level-summaries",
+    "href": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-solutions.html#part-3-multi-level-summaries",
+    "title": "OMICS workshop I Exercise - Solutions",
+    "section": "Part 3 — Multi-level summaries",
+    "text": "Part 3 — Multi-level summaries\ngene_tissue_summary &lt;- counts_annot %&gt;%\n  group_by(gene_id, tissue) %&gt;%\n  summarise(\n    mean_count = mean(count, na.rm = TRUE),\n    sd_count = sd(count, na.rm = TRUE),\n    mean_log_count = mean(log_count, na.rm = TRUE),\n    n_samples = n(),\n    .groups = \"drop\"\n  )\n\ncohort_summary &lt;- counts_annot %&gt;%\n  group_by(cohort, tissue) %&gt;%\n  summarise(\n    n_rows = n(),\n    across(\n      where(is.numeric),\n      list(\n        mean = ~ mean(.x, na.rm = TRUE),\n        median = ~ median(.x, na.rm = TRUE)\n      ),\n      .names = \"{.col}_{.fn}\"\n    ),\n    .groups = \"drop\"\n  )\n\ngene_tissue_summary\ncohort_summary"
+  },
+  {
+    "objectID": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-solutions.html#part-4-wide-result-table-and-differential-signal",
+    "href": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-solutions.html#part-4-wide-result-table-and-differential-signal",
+    "title": "OMICS workshop I Exercise - Solutions",
+    "section": "Part 4 — Wide result table and differential signal",
+    "text": "Part 4 — Wide result table and differential signal\ntop_genes_delta &lt;- gene_tissue_summary %&gt;%\n  select(gene_id, tissue, mean_count) %&gt;%\n  pivot_wider(\n    names_from = tissue,\n    values_from = mean_count,\n    names_prefix = \"mean_count_\"\n  ) %&gt;%\n  mutate(\n    delta = mean_count_tumor - mean_count_normal,\n    abs_delta = abs(delta)\n  ) %&gt;%\n  arrange(desc(abs_delta)) %&gt;%\n  slice_head(n = 15)\n\ntop_genes_delta"
+  },
+  {
+    "objectID": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-solutions.html#deliverables",
+    "href": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-solutions.html#deliverables",
+    "title": "OMICS workshop I Exercise - Solutions",
+    "section": "Deliverables",
+    "text": "Deliverables\nsample_annot\ncounts_annot\ngene_tissue_summary\ncohort_summary\ntop_genes_delta"
+  },
+  {
+    "objectID": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-solutions.html#stretch-challenge-optional",
+    "href": "documentation/2026-02-26-tidyR-omicsws1/2026-02-26-tidyR-omics1-solutions.html#stretch-challenge-optional",
+    "title": "OMICS workshop I Exercise - Solutions",
+    "section": "Stretch challenge (optional)",
+    "text": "Stretch challenge (optional)\n# Cohort-wise gene delta\ngene_tissue_cohort &lt;- counts_annot %&gt;%\n  group_by(cohort, gene_id, tissue) %&gt;%\n  summarise(mean_count = mean(count, na.rm = TRUE), .groups = \"drop\")\n\ncohort_gene_delta &lt;- gene_tissue_cohort %&gt;%\n  pivot_wider(\n    names_from = tissue,\n    values_from = mean_count,\n    names_prefix = \"mean_count_\"\n  ) %&gt;%\n  mutate(\n    delta = mean_count_tumor - mean_count_normal,\n    abs_delta = abs(delta)\n  )\n\n# Top 3 genes by cohort\ntop3_by_cohort &lt;- cohort_gene_delta %&gt;%\n  group_by(cohort) %&gt;%\n  slice_max(order_by = abs_delta, n = 3, with_ties = FALSE) %&gt;%\n  summarise(top3_genes = str_c(gene_id, collapse = \", \"), .groups = \"drop\")\n\n# Cohort-level clinical summaries\ncohort_sample_stats &lt;- sample_annot %&gt;%\n  group_by(cohort) %&gt;%\n  summarise(\n    mean_age = mean(patient_age, na.rm = TRUE),\n    cr_fraction = mean(response == \"CR\", na.rm = TRUE),\n    .groups = \"drop\"\n  )\n\nstretch_report &lt;- top3_by_cohort %&gt;%\n  left_join(cohort_sample_stats, by = \"cohort\")\n\nstretch_report"
+  },
+  {
     "objectID": "documentation/2024-09-19-ABC6.html",
     "href": "documentation/2024-09-19-ABC6.html",
     "title": "Download from online databases, open coding session",
@@ -1286,69 +1349,6 @@
     "title": "Download from online databases, open coding session",
     "section": "fasterq-dump command",
     "text": "fasterq-dump command\nfasterq-dump is a tool for downloading sequencing reads from NCBI’s Sequence Read Archive (SRA). These sequence reads will be downloaded as fastq files. fasterq-dump is a newer, streamlined alternative to fastq-dump; both of these programs are a part of sra-tools.\n\nfasterq-dump vs fastq-dump\nHere are a few of the differences between fastq-dump and fasterq-dump:\n\nIn fastq-dump, the flag --split-3 is required to separate paired reads into left and right ends. This is the default setting in fasterq-dump.\nThe fastq-dump flag --skip-technical is no longer required to skip technical reads in fasterq-dump. Instead, the flag --include-technical is required to include technical reads when using fasterq-dump.\nThere is no --gzip or --bzip2 flag in fasterq-dump to download compressed reads with fasterq-dump. However, FASTQ files downloaded using fasterq-dump can still be subsequently compressed.\n\nThe following commands are equivalent, but will be executed faster using fasterq-dump:\nfastq-dump SRR_ID --split-3 --skip-technical\nfasterq-dump SRR_ID\n\n\nDownloading reads from the SRA using fasterq-dump\nIn this example, we want to download FASTQ reads for a mate-pair library.\nfastq-dump --threads n --progress SRR_ID\nIn this command…\n\n--threads specifies the number (n) processors/threads to be used.\n--progress is an optional argument that displays a progress bar when the reads are being downloaded.\nSRR_ID is the ID of the run from the SRA to be downloaded. This ID begins with “SRR” and is followed by around seven digits (e.g. SRR1234567)."
-  },
-  {
-    "objectID": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-solutions.html",
-    "href": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-solutions.html",
-    "title": "OMICS workshop I Exercise - Solutions",
-    "section": "",
-    "text": "library(tidyverse)\nset.seed(12345) # for reproducibility"
-  },
-  {
-    "objectID": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-solutions.html#setup",
-    "href": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-solutions.html#setup",
-    "title": "OMICS workshop I Exercise - Solutions",
-    "section": "",
-    "text": "library(tidyverse)\nset.seed(12345) # for reproducibility"
-  },
-  {
-    "objectID": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-solutions.html#data-generation",
-    "href": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-solutions.html#data-generation",
-    "title": "OMICS workshop I Exercise - Solutions",
-    "section": "Data generation",
-    "text": "Data generation\n# 1) Sample metadata\nsample_meta &lt;- tibble(\n  sample_id = str_c(\"S\", str_pad(1:30, width = 3, pad = \"0\")),\n  tissue = sample(c(\"tumor\", \"normal\"), 30, replace = TRUE, prob = c(0.55, 0.45)),\n  cohort = sample(c(\"A\", \"B\", \"C\"), 30, replace = TRUE),\n  batch = sample(c(\"B1\", \"B2\", \"B3\"), 30, replace = TRUE)\n)\n\n# 2) Clinical table (with intentional unmatched rows for join debugging)\nclinical &lt;- tibble(\n  sample_id = c(sample_meta$sample_id[1:26], \"S900\", \"S901\"),\n  patient_age = sample(35:85, 28, replace = TRUE),\n  response = sample(c(\"CR\", \"PR\", \"SD\", \"PD\"), 28, replace = TRUE)\n)\n\n# 3) Wide expression/count matrix (genes x samples)\ngenes &lt;- str_c(\"GENE_\", str_pad(1:120, 3, pad = \"0\"))\ncount_mat &lt;- matrix(\n  rnbinom(length(genes) * nrow(sample_meta), mu = 120, size = 1.3),\n  nrow = length(genes),\n  ncol = nrow(sample_meta),\n  dimnames = list(genes, sample_meta$sample_id)\n)\n\ncounts_wide &lt;- as_tibble(count_mat, rownames = \"gene_id\")\n\nsample_meta\nclinical\ncounts_wide"
-  },
-  {
-    "objectID": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-solutions.html#part-1-join-diagnostics-and-clean-analysis-table",
-    "href": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-solutions.html#part-1-join-diagnostics-and-clean-analysis-table",
-    "title": "OMICS workshop I Exercise - Solutions",
-    "section": "Part 1 — Join diagnostics and clean analysis table",
-    "text": "Part 1 — Join diagnostics and clean analysis table\n# IDs in metadata that do not exist in clinical\nmissing_in_clinical &lt;- sample_meta %&gt;%\n  anti_join(clinical, by = \"sample_id\")\n\n# IDs in clinical that do not exist in metadata\nextra_in_clinical &lt;- clinical %&gt;%\n  anti_join(sample_meta, by = \"sample_id\")\n\n# Keep only clinical rows that can match metadata\nclinical_clean &lt;- clinical %&gt;%\n  semi_join(sample_meta, by = \"sample_id\")\n\n# Annotated sample table\nsample_annot &lt;- sample_meta %&gt;%\n  left_join(clinical_clean, by = \"sample_id\") %&gt;%\n  mutate(\n    age_group = case_when(\n      is.na(patient_age) ~ NA_character_,\n      patient_age &lt; 50 ~ \"young\",\n      patient_age &lt; 70 ~ \"middle\",\n      TRUE ~ \"older\"\n    )\n  )\n\nmissing_in_clinical\nextra_in_clinical\nsample_annot"
-  },
-  {
-    "objectID": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-solutions.html#part-2-reshape-wide-counts-and-annotate-samples",
-    "href": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-solutions.html#part-2-reshape-wide-counts-and-annotate-samples",
-    "title": "OMICS workshop I Exercise - Solutions",
-    "section": "Part 2 — Reshape wide counts and annotate samples",
-    "text": "Part 2 — Reshape wide counts and annotate samples\ncounts_long &lt;- counts_wide %&gt;%\n  pivot_longer(\n    cols = -gene_id,\n    names_to = \"sample_id\",\n    values_to = \"count\"\n  )\n\ncounts_annot &lt;- counts_long %&gt;%\n  left_join(sample_annot, by = \"sample_id\") %&gt;%\n  mutate(log_count = log2(count + 1))\n\ncounts_long\ncounts_annot"
-  },
-  {
-    "objectID": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-solutions.html#part-3-multi-level-summaries",
-    "href": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-solutions.html#part-3-multi-level-summaries",
-    "title": "OMICS workshop I Exercise - Solutions",
-    "section": "Part 3 — Multi-level summaries",
-    "text": "Part 3 — Multi-level summaries\ngene_tissue_summary &lt;- counts_annot %&gt;%\n  group_by(gene_id, tissue) %&gt;%\n  summarise(\n    mean_count = mean(count, na.rm = TRUE),\n    sd_count = sd(count, na.rm = TRUE),\n    mean_log_count = mean(log_count, na.rm = TRUE),\n    n_samples = n(),\n    .groups = \"drop\"\n  )\n\ncohort_summary &lt;- counts_annot %&gt;%\n  group_by(cohort, tissue) %&gt;%\n  summarise(\n    n_rows = n(),\n    across(\n      where(is.numeric),\n      list(\n        mean = ~ mean(.x, na.rm = TRUE),\n        median = ~ median(.x, na.rm = TRUE)\n      ),\n      .names = \"{.col}_{.fn}\"\n    ),\n    .groups = \"drop\"\n  )\n\ngene_tissue_summary\ncohort_summary"
-  },
-  {
-    "objectID": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-solutions.html#part-4-wide-result-table-and-differential-signal",
-    "href": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-solutions.html#part-4-wide-result-table-and-differential-signal",
-    "title": "OMICS workshop I Exercise - Solutions",
-    "section": "Part 4 — Wide result table and differential signal",
-    "text": "Part 4 — Wide result table and differential signal\ntop_genes_delta &lt;- gene_tissue_summary %&gt;%\n  select(gene_id, tissue, mean_count) %&gt;%\n  pivot_wider(\n    names_from = tissue,\n    values_from = mean_count,\n    names_prefix = \"mean_count_\"\n  ) %&gt;%\n  mutate(\n    delta = mean_count_tumor - mean_count_normal,\n    abs_delta = abs(delta)\n  ) %&gt;%\n  arrange(desc(abs_delta)) %&gt;%\n  slice_head(n = 15)\n\ntop_genes_delta"
-  },
-  {
-    "objectID": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-solutions.html#deliverables",
-    "href": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-solutions.html#deliverables",
-    "title": "OMICS workshop I Exercise - Solutions",
-    "section": "Deliverables",
-    "text": "Deliverables\nsample_annot\ncounts_annot\ngene_tissue_summary\ncohort_summary\ntop_genes_delta"
-  },
-  {
-    "objectID": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-solutions.html#stretch-challenge-optional",
-    "href": "documentation/2026-02-26-tidyR-omics1/2026-02-26-tidyR-omics1-solutions.html#stretch-challenge-optional",
-    "title": "OMICS workshop I Exercise - Solutions",
-    "section": "Stretch challenge (optional)",
-    "text": "Stretch challenge (optional)\n# Cohort-wise gene delta\ngene_tissue_cohort &lt;- counts_annot %&gt;%\n  group_by(cohort, gene_id, tissue) %&gt;%\n  summarise(mean_count = mean(count, na.rm = TRUE), .groups = \"drop\")\n\ncohort_gene_delta &lt;- gene_tissue_cohort %&gt;%\n  pivot_wider(\n    names_from = tissue,\n    values_from = mean_count,\n    names_prefix = \"mean_count_\"\n  ) %&gt;%\n  mutate(\n    delta = mean_count_tumor - mean_count_normal,\n    abs_delta = abs(delta)\n  )\n\n# Top 3 genes by cohort\ntop3_by_cohort &lt;- cohort_gene_delta %&gt;%\n  group_by(cohort) %&gt;%\n  slice_max(order_by = abs_delta, n = 3, with_ties = FALSE) %&gt;%\n  summarise(top3_genes = str_c(gene_id, collapse = \", \"), .groups = \"drop\")\n\n# Cohort-level clinical summaries\ncohort_sample_stats &lt;- sample_annot %&gt;%\n  group_by(cohort) %&gt;%\n  summarise(\n    mean_age = mean(patient_age, na.rm = TRUE),\n    cr_fraction = mean(response == \"CR\", na.rm = TRUE),\n    .groups = \"drop\"\n  )\n\nstretch_report &lt;- top3_by_cohort %&gt;%\n  left_join(cohort_sample_stats, by = \"cohort\")\n\nstretch_report"
   },
   {
     "objectID": "documentation/2025-01-16-ABC11.html",
