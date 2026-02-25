@@ -1,0 +1,160 @@
+---
+format: html
+editor: visual
+title: "OMICS workshop I Exercise"
+authors: 
+  - name: "Mohammed N Hassan"
+    role: "Teaching and material creation"
+  - name: "Samuele Soraggi"
+    role: "Organization and assistance"
+image: ../img/Rlogo.png
+date: 2026-02-26
+categories: [R, tidyverse, omics, workshop]
+description: "Advanced Exercise: Integrative Tidy Omics data Wrangling"
+eval: false
+---
+
+## Goal
+
+In this exercise you will combine core tidy tools from the tutorial in one end-to-end analysis:
+
+- `left_join()` and `anti_join()`
+- `pivot_longer()` and `pivot_wider()`
+- `mutate()` + `case_when()`
+- `group_by()` + `summarise()`
+- `across()`
+
+You will work on a synthetic RNA-like count dataset and produce a compact analysis report.
+
+## Setup
+
+```{r}
+library(tidyverse)
+set.seed(12345) # for reproducibility
+```
+
+## Data generation
+
+```{r}
+# 1) Sample metadata
+sample_meta <- tibble(
+  sample_id = str_c("S", str_pad(1:30, width = 3, pad = "0")),
+  tissue = sample(c("tumor", "normal"), 30, replace = TRUE, prob = c(0.55, 0.45)),
+  cohort = sample(c("A", "B", "C"), 30, replace = TRUE),
+  batch = sample(c("B1", "B2", "B3"), 30, replace = TRUE)
+)
+
+# 2) Clinical table (with intentional unmatched rows for join debugging)
+clinical <- tibble(
+  sample_id = c(sample_meta$sample_id[1:26], "S900", "S901"),
+  patient_age = sample(35:85, 28, replace = TRUE),
+  response = sample(c("CR", "PR", "SD", "PD"), 28, replace = TRUE)
+)
+
+# 3) Wide expression/count matrix (genes x samples)
+genes <- str_c("GENE_", str_pad(1:120, 3, pad = "0"))
+count_mat <- matrix(
+  rnbinom(length(genes) * nrow(sample_meta), mu = 120, size = 1.3),
+  nrow = length(genes),
+  ncol = nrow(sample_meta),
+  dimnames = list(genes, sample_meta$sample_id)
+)
+
+counts_wide <- as_tibble(count_mat, rownames = "gene_id")
+
+sample_meta
+clinical
+counts_wide
+```
+
+## Exercise tasks
+
+### Part 1 — Join diagnostics and clean analysis table
+
+1. Use `anti_join()` to identify:
+   - sample IDs in `sample_meta` that do not exist in `clinical`
+   - sample IDs in `clinical` that do not exist in `sample_meta`
+2. Create `clinical_clean` by keeping only rows that can match `sample_meta`.
+3. Build `sample_annot` using `left_join(sample_meta, clinical_clean, by = "sample_id")`.
+4. Add a new age group variable with `case_when()`:
+   - `< 50` = `"young"`
+   - `50-69` = `"middle"`
+   - `>= 70` = `"older"`
+
+```{r}
+# TODO: write your Part 1 solution here
+```
+
+### Part 2 — Reshape wide counts and annotate samples
+
+1. Convert `counts_wide` to long format as `counts_long` with columns:
+   `gene_id`, `sample_id`, `count`.
+2. Join `counts_long` with `sample_annot` to create `counts_annot`.
+3. Create a log-transformed value: `log_count = log2(count + 1)`.
+
+```{r}
+# TODO: write your Part 2 solution here
+```
+
+### Part 3 — Multi-level summaries using `group_by()`, `summarise()`, and `across()`
+
+1. Compute per-gene/per-tissue summary as `gene_tissue_summary`:
+   - `mean_count`
+   - `sd_count`
+   - `mean_log_count`
+   - `n_samples`
+2. Compute a second table `cohort_summary` with one row per `cohort` and `tissue`:
+   - mean and median for all numeric columns in `counts_annot` using `across(where(is.numeric), ...)`
+   - include `n()` as `n_rows`
+
+```{r}
+# TODO: write your Part 3 solution here
+```
+
+### Part 4 — Wide result table and differential signal
+
+1. Pivot `gene_tissue_summary` wider to get one row per gene with separate tumor/normal means:
+   - columns like `mean_count_tumor`, `mean_count_normal`
+2. Create:
+   - `delta = mean_count_tumor - mean_count_normal`
+   - `abs_delta = abs(delta)`
+3. Return top 15 genes by `abs_delta`.
+
+```{r}
+# TODO: write your Part 4 solution here
+```
+
+## Deliverables
+
+Create and print these objects:
+
+- `sample_annot`
+- `counts_annot`
+- `gene_tissue_summary`
+- `cohort_summary`
+- `top_genes_delta`
+
+```{r}
+# TODO: print your final deliverables
+```
+
+## Self-check questions
+
+- Do your unmatched IDs from `anti_join()` make sense given the generated data?
+- Does `counts_annot` have exactly `n_genes * n_samples` rows for matched samples?
+- Are `delta` values positive for genes higher in tumor and negative for genes higher in normal?
+- Can you explain why `log2(count + 1)` is often used before summarizing count-like data?
+
+## Stretch challenge (optional)
+
+Create a compact report table with one row per `cohort` containing:
+
+- top 3 genes by absolute tumor-normal delta **within that cohort**
+- mean age of included samples
+- fraction of `response == "CR"`
+
+Tips: use grouped summaries, ranking, and string aggregation (`str_c()` with `collapse = ", "`).
+
+```{r}
+# TODO: stretch solution
+```
