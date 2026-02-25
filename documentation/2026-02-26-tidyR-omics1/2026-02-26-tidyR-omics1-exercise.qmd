@@ -28,14 +28,14 @@ You will work on a synthetic RNA-like count dataset and produce a compact analys
 
 ## Setup
 
-```{r}
+```{.r}
 library(tidyverse)
 set.seed(12345) # for reproducibility
 ```
 
 ## Data generation
 
-```{r}
+```{.r}
 # 1) Sample metadata
 sample_meta <- tibble(
   sample_id = str_c("S", str_pad(1:30, width = 3, pad = "0")),
@@ -81,7 +81,7 @@ counts_wide
    - `50-69` = `"middle"`
    - `>= 70` = `"older"`
 
-```{r}
+```{.r}
 # TODO: write your Part 1 solution here
 ```
 
@@ -92,7 +92,7 @@ counts_wide
 2. Join `counts_long` with `sample_annot` to create `counts_annot`.
 3. Create a log-transformed value: `log_count = log2(count + 1)`.
 
-```{r}
+```{.r}
 # TODO: write your Part 2 solution here
 ```
 
@@ -107,7 +107,7 @@ counts_wide
    - mean and median for all numeric columns in `counts_annot` using `across(where(is.numeric), ...)`
    - include `n()` as `n_rows`
 
-```{r}
+```{.r}
 # TODO: write your Part 3 solution here
 ```
 
@@ -120,7 +120,7 @@ counts_wide
    - `abs_delta = abs(delta)`
 3. Return top 15 genes by `abs_delta`.
 
-```{r}
+```{.r}
 # TODO: write your Part 4 solution here
 ```
 
@@ -134,7 +134,7 @@ Create and print these objects:
 - `cohort_summary`
 - `top_genes_delta`
 
-```{r}
+```{.r}
 # TODO: print your final deliverables
 ```
 
@@ -155,6 +155,6 @@ Create a compact report table with one row per `cohort` containing:
 
 Tips: use grouped summaries, ranking, and string aggregation (`str_c()` with `collapse = ", "`).
 
-```{r}
+```{.r}
 # TODO: stretch solution
 ```
