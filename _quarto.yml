@@ -4,6 +4,8 @@ project:
 resources:
   - CNAME
   - documentation/slides/*.zip
+  - documentation/2026-02-26-tidyR-omicsws1/*.zip
+  - documentation/2026-02-26-tidyR-omicsws1/*.html
 
 website:
   title: 'ABC - Accessible Bioinformatics Cafe'
