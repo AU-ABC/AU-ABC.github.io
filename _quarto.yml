@@ -6,6 +6,10 @@ resources:
   - documentation/slides/*.zip
   - documentation/2026-02-26-tidyR-omicsws1/*.zip
   - documentation/2026-02-26-tidyR-omicsws1/*.html
+  - documentation/2026-03-26-bulk-omicsws2/ABC_OMICSII_bulkRNA.*
+
+render:
+  - "!documentation/2026-03-26-bulk-omicsws2/ABC_OMICSII_bulkRNA.Rmd"
 
 website:
   title: 'ABC - Accessible Bioinformatics Cafe'
