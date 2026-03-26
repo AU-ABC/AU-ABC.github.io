@@ -1,0 +1,565 @@
+---
+title: "Bulk RNAseq analysis"
+date: "`r format(Sys.time(),  '%d %B %Y')`"
+author: "Mohamed Hassan"
+output:
+  html_notebook:
+    theme: cerulean
+    toc: true
+    toc_depth: 3
+editor_options:
+  markdown:
+    wrap: 72
+---
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = T, results = "hide")
+require("knitr")
+# opts_knit$set(root.dir = "/")
+```
+
+```{r}
+# CRAN first
+pcks <- list(c("pacman",
+  "tidyverse",
+  "pheatmap",
+  "RColorBrewer",
+  "styler",
+  "remotes"
+)
+)
+lapply(pcks, install.packages)
+
+# Bioconductor installer
+if (!requireNamespace("BiocManager", quietly = TRUE)) {
+  install.packages("BiocManager")
+}
+
+# Bioconductor packages
+BiocManager::install(c(
+  "airway",
+  "SummarizedExperiment",
+  "DESeq2",
+  "org.Hs.eg.db",
+  "AnnotationDbi",
+  "EnhancedVolcano",
+  "clusterProfiler",
+  "enrichplot"
+))
+```
+
+
+
+```{r random-seed-setting}
+set.seed(12345)
+```
+
+```{r loading-libraries, results='hide'}
+pacman::p_load(tidyverse, SummarizedExperiment, airway, org.Hs.eg.db,
+               RColorBrewer,EnhancedVolcano, pheatmap, AnnotationDbi, DESeq2, styler, clusterProfiler, remotes)
+```
+
+## Installing airway
+
+```{r, eval=FALSE}
+if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
+BiocManager::install("airway")
+```
+
+```{r}
+data(airway)
+```
+
+
+```{r}
+class(airway)
+```
+
+```{r}
+str(airway)
+```
+
+
+```{r}
+## Access metadata
+meta <- airway %>% 
+  colData() %>% ## To access metadata information
+  as.data.frame()
+head(meta)
+```
+
+```{r}
+meta <- meta[,c(2,3)]
+## Suggest a different approach
+
+meta$dex <- gsub('trt', 'treated', meta$dex)
+## Suggest a different approach
+
+meta$dex <- gsub('untrt', 'untreated', meta$dex)
+
+## Suggest a different approach
+names(meta) <- c('cellLine', 'dexamethasone')
+
+write.table(meta, file = "meta.csv", sep = ',', 
+            col.names = T, row.names = T, 
+            quote = F)
+
+counts <- assay(airway)
+write.table(counts, file = "counts_data.csv", sep = ',', col.names = T, row.names = T, quote = F)
+```
+
+
+```{r}
+counts <- read.csv("counts_data.csv")
+```
+
+
+```{r}
+counts[1:6, 1:6]
+```
+
+
+```{r}
+meta$dexamethasone <- relevel(factor(meta$dexamethasone), ref = "untreated")
+```
+
+```{r}
+x <- SummarizedExperiment(list(counts=as.matrix(counts)), 
+                                colData = meta)
+x
+```
+
+
+```{r}
+symbols <- mapIds(
+    org.Hs.eg.db,
+    keys = rownames(x),
+    column = "SYMBOL",
+    keytype = "ENSEMBL",
+    multiVals = "first"
+)
+rowData(x)$symbol <- symbols
+```
+
+
+```{r}
+x
+```
+
+
+```{r}
+ens_ids <- rownames(x)
+ens_ids_clean <- sub("\\..*$", "", ens_ids)
+
+gene_symbols <- mapIds(
+  org.Hs.eg.db,
+  keys = ens_ids_clean,
+  keytype = "ENSEMBL",
+  column = "SYMBOL",
+  multiVals = "first"
+)
+
+gene_names <- mapIds(
+  org.Hs.eg.db,
+  keys = ens_ids_clean,
+  keytype = "ENSEMBL",
+  column = "GENENAME",
+  multiVals = "first"
+)
+
+rowData(x)$ensembl_id <- ens_ids_clean
+rowData(x)$symbol <- gene_symbols
+rowData(x)$gene_name <- gene_names
+```
+
+```{r}
+x
+```
+
+
+```{r}
+# making sure the row names in colData matches to column names in counts_data
+all(colnames(counts) %in% rownames(meta))
+
+# are they in the same order?
+all(colnames(counts) == rownames(meta))
+
+```
+
+
+
+```{r}
+# Step 2: construct a DESeqDataSet object ----------
+dds <- DESeqDataSetFromMatrix(countData = counts,
+                       colData = meta,
+                       design = ~ dexamethasone)
+dds
+# pre-filtering: removing rows with low gene counts, keeping rows that have at least 10 reads total
+keep <- rowSums(counts(dds)) >= 10
+dds <- dds[keep,]
+
+dds
+
+# set the factor level
+dds$dexamethasone <- relevel(dds$dexamethasone, ref = "untreated")
+```
+
+
+```{r}
+# Step 3: Run DESeq ----------------------
+dds <- DESeq(dds)
+res <- results(dds)
+```
+
+```{r}
+str(res)
+```
+
+```{r}
+summary(res)
+```
+
+
+
+
+
+```{r}
+# contrasts
+resultsNames(dds)
+
+# e.g.: treated_4hrs, treated_8hrs, untreated
+
+results(dds, contrast = c("dexamethasone", "treated", "untreated"))
+
+# MA plot
+plotMA(res)
+
+```
+
+
+```{r}
+vsd <- vst(dds, blind = FALSE)
+mat <- assay(vsd)
+```
+
+```{r}
+plotPCA(vsd, intgroup = "dexamethasone")
+```
+
+
+```{r}
+pca_data <- plotPCA(vsd, intgroup = "dexamethasone", returnData = TRUE)
+percent_var <- round(100 * attr(pca_data, "percentVar"))
+ggplot(pca_data, aes(PC1, PC2, color = dexamethasone, label = name)) +
+geom_point(size = 4) +
+geom_text(vjust = -1) +
+xlab(paste0("PC1: ", percent_var[1], "% variance")) +
+ylab(paste0("PC2: ", percent_var[2], "% variance")) +
+theme_minimal()
+```
+
+
+
+```{r}
+annot <- data.frame(ensembl_id = rowData(x)$ensembl_id,
+                    symbol = rowData(x)$symbol,
+                    gene_name = rowData(x)$gene_name)
+
+head(annot)
+```
+
+```{r}
+head(res, 4)
+```
+
+
+```{r}
+res_df <- res %>% 
+  as.data.frame() %>%
+  rownames_to_column("ensembl_id") %>%
+  mutate(ensembl_id = sub("\\..*$", "", ensembl_id)) %>%
+  left_join(annot, by = "ensembl_id")
+```
+
+
+
+
+```{r}
+VOLCANO_Plot <- function(df, units = "in", height = 16, width = 16,
+filename, dpi = 600,
+cols = c("UP" = "firebrick3", "DOWN" = "steelblue", "ns" = "grey"),
+ylim = c("",""),
+xlim = c(-2.5,2.5)){
+vp1 <- EnhancedVolcano(df,
+lab = df$symbol,
+x = 'log2FoldChange',
+y = 'padj', pCutoff = 0.05, FCcutoff = 0.5)
+print(vp1)
+# ggsave(filename, units = units, height = height, width = width, dpi = dpi)
+return(vp1)
+}
+```
+
+
+```{r, fig.height=9, fig.width=10}
+VOLCANO_Plot(df = res_df)
+```
+
+
+
+```{r}
+sig_res <- subset(res_df, 
+                  padj < 0.05 & 
+                    abs(log2FoldChange) > 1)
+head(sig_res)
+```
+
+
+
+```{r}
+nrow(sig_res)
+```
+
+
+
+```{r}
+head(sig_res[order(-sig_res$log2FoldChange), ])
+```
+
+
+```{r}
+head(sig_res[order(sig_res$log2FoldChange), ])
+```
+
+
+
+```{r}
+res_df$significant <- ifelse(res_df$padj < 0.05 & 
+                               abs(res_df$log2FoldChange) > 1, "yes", "no")
+
+ggplot(res_df, aes(x = log2FoldChange, y = -log10(padj), color = significant)) +
+geom_point(alpha = 0.7) +
+theme_minimal() +
+xlab("log2 fold change") +
+ylab("-log10 adjusted p-value")
+```
+
+```{r}
+res_df <- res %>% 
+  as.data.frame() %>% 
+  tibble::rownames_to_column("ensembl_id") %>% 
+  mutate(ensembl_id = sub("\\..*$", "", ensembl_id)) %>% 
+  left_join(annot, by = "ensembl_id") %>% 
+  filter(padj < 0.05, 
+         abs(log2FoldChange) > 1) %>% 
+  mutate(
+    DE = case_when(
+      log2FoldChange > 1 ~ "UP",
+      log2FoldChange < -1 ~ "DOWN"
+    )
+  )
+
+head(res_df)
+```
+
+```{r}
+symbol_to_ens <- setNames(
+  rowData(x)$ensembl_id,
+  rowData(x)$symbol
+)
+```
+
+
+```{r, eval=FALSE}
+plotCounts(dds, gene = "PDK4", intgroup = "dexamethasone", main = "PDK4")
+```
+
+
+```{r}
+plotCounts(dds, gene = symbol_to_ens["PDK4"], intgroup = "dexamethasone", main = "PDK4")
+```
+
+
+```{r}
+plotCounts(dds, gene = symbol_to_ens["TP53"], intgroup = "dexamethasone", main = "TP53")
+```
+
+## Construct a loop to plot 10 genes
+```{r}
+
+```
+
+
+
+```{r}
+library(dplyr)
+
+top_up <- res_df %>%
+  filter(DE == "UP") %>%
+  arrange(padj) %>%
+  slice_head(n = 20)
+
+top_down <- res_df %>%
+  filter(DE == "DOWN") %>%
+  arrange(padj) %>%
+  slice_head(n = 20)
+
+heatmap_df <- bind_rows(top_up, top_down)
+```
+
+```{r}
+mat_sub <- mat[heatmap_df$ensembl_id, , drop = FALSE]
+```
+
+```{r}
+gene_labels <- heatmap_df$symbol
+gene_labels[is.na(gene_labels) | gene_labels == ""] <- heatmap_df$ensembl_id[is.na(gene_labels) | gene_labels == ""]
+gene_labels <- make.unique(gene_labels)
+
+rownames(mat_sub) <- gene_labels
+```
+
+```{r}
+mat_scaled <- t(scale(t(mat_sub)))
+mat_scaled[is.na(mat_scaled)] <- 0
+```
+
+
+```{r}
+annotation_col <- data.frame(
+  dexamethasone = colData(dds)$dexamethasone
+)
+
+rownames(annotation_col) <- colnames(mat_scaled)
+```
+
+
+```{r, fig.height=7, fig.width=7}
+pheatmap(
+  mat_scaled,
+  annotation_col = annotation_col,
+  cluster_rows = TRUE,
+  cluster_cols = TRUE,
+  show_rownames = TRUE,
+  show_colnames = TRUE,
+  fontsize_row = 8,
+  fontsize_col = 10,
+  border_color = NA,
+  color = colorRampPalette(rev(brewer.pal(n = 11, name = "RdBu")))(100),
+  main = "Top differentially expressed genes"
+)
+```
+
+# GO terms
+
+```{r}
+GO_res <- enrichGO(
+  gene = res_df$symbol,
+  OrgDb = "org.Hs.eg.db",
+  keyType = "SYMBOL",
+  ont = "ALL",
+  pAdjustMethod = "BH",
+  qvalueCutoff = 0.05,
+  pvalueCutoff = 0.05,
+  readable = TRUE
+)
+
+```
+
+
+```{r}
+str(GO_res)
+```
+
+
+```{r}
+dotplot(GO_res)
+```
+
+
+```{r}
+Up_reg <- res_df %>% filter(DE == "UP")
+Down_reg <- res_df %>% filter(DE == "DOWN")
+```
+
+
+```{r}
+GO_res_up <- enrichGO(
+  gene = Up_reg$symbol,
+  OrgDb = "org.Hs.eg.db",
+  keyType = "SYMBOL",
+  ont = "ALL",
+  pAdjustMethod = "BH",
+  qvalueCutoff = 0.05,
+  pvalueCutoff = 0.05,
+  readable = TRUE
+)
+
+dotplot(GO_res_up)
+
+```
+
+
+
+```{r}
+GO_res_down <- enrichGO(
+  gene = Down_reg$symbol,
+  OrgDb = "org.Hs.eg.db",
+  keyType = "SYMBOL",
+  ont = "ALL",
+  pAdjustMethod = "BH",
+  qvalueCutoff = 0.05,
+  pvalueCutoff = 0.05,
+  readable = TRUE
+)
+
+dotplot(GO_res_down)
+```
+
+
+
+
+
+## More visualization tools
+```{r, fig.width=10, fig.height=10}
+enrichplot::cnetplot(GO_res_up)
+```
+
+
+```{r, fig.height=20, fig.width=20}
+GO_res_up <- enrichplot::pairwise_termsim(GO_res_up)
+enrichplot::emapplot(GO_res_up)
+```
+
+
+```{r, fig.width=10, fig.height=10}
+enrichplot::emapplot_cluster(GO_res_up)
+```
+
+```{r}
+enrichplot::upsetplot(GO_res_up)
+```
+
+
+```{r, fig.width=20, fig.height=20}
+enrichplot::ssplot(GO_res_up)
+```
+
+
+```{r, fig.height=20, fig.width=7}
+enrichplot::treeplot(GO_res_up, showCategory = 10)
+```
+
+
+
+
+```{r}
+## To explore
+?enrichKEGG()
+```
+
+```{r}
+?enrichDAVID
+```
+
+
+
