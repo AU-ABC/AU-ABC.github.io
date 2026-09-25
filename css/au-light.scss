@@ -1,0 +1,195 @@
+/*-- scss:defaults --*/
+
+// Aarhus University light theme.
+// Colours are taken from the AU design system (Delphinus), "blue / normal" theme:
+// https://cdn.jsdelivr.net/npm/@aarhus-university/au-designsystem-delphinus
+
+// Don't load the Bootswatch web font, AU Passata is loaded in the rules below
+$web-font-path: false;
+
+// AU palette
+$au-blue:        #003d73;
+$au-blue-dark:   #002546;
+$au-blue-hover:  #00315c;
+$au-blue-light:  #8ba6bf;
+$au-cyan:        #37a0cb;
+$au-turquoise:   #00aba4;
+$au-green:       #8bad3f;
+$au-yellow:      #fabb00;
+$au-orange:      #ee7f00;
+$au-red:         #e2001a;
+$au-magenta:     #e2007a;
+$au-purple:      #655a9f;
+$au-gray:        #878787;
+
+$au-white:       #fefefe;
+$au-black:       #0a0a0a;
+$au-bg-secondary:#eaeaea;
+$au-bg-hover:    #f6f6f6;
+$au-text-muted:  #696969;
+$au-border:      #9e9e9e;
+$au-link-line:   #376791;
+
+// Fonts
+$font-family-sans-serif: "AU Passata", "Helvetica Neue", Arial, sans-serif;
+$headings-font-family:   "AU Passata", "Helvetica Neue", Arial, sans-serif;
+$font-family-monospace:  SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+$headings-font-weight:   700;
+$font-size-root:         17px;
+
+// Base document colours
+$body-bg:        $au-white;
+$body-color:     $au-black;
+$text-muted:     $au-text-muted;
+$headings-color: $au-blue;
+$border-color:   $au-border;
+
+$primary:   $au-blue;
+$secondary: $au-gray;
+$info:      $au-cyan;
+$success:   $au-green;
+$warning:   $au-yellow;
+$danger:    $au-red;
+$light:     $au-bg-secondary;
+$dark:      $au-blue-dark;
+
+$link-color:            $au-blue;
+$link-hover-color:      $au-cyan;
+$link-decoration:       underline;
+
+// Navbar, sidebar, footer
+$navbar-bg:  $au-blue;
+$navbar-fg:  $au-white;
+$navbar-hl:  $au-blue-light;
+$sidebar-bg: $au-white;
+$sidebar-fg: $au-black;
+$sidebar-hl: $au-blue;
+$footer-bg:  $au-blue-dark;
+$footer-fg:  $au-white;
+
+// Table of contents
+$toc-color:         $au-blue;
+$toc-active-border: $au-blue;
+
+// Code
+$code-color:          $au-blue;
+$code-bg:             $au-bg-hover;
+$code-block-bg:       $au-bg-hover;
+$code-block-border-color: $au-bg-secondary;
+
+// Callouts
+$callout-color-note:      $au-blue;
+$callout-color-tip:       $au-green;
+$callout-color-important: $au-red;
+$callout-color-caution:   $au-orange;
+$callout-color-warning:   $au-yellow;
+
+// Flat corners, like au.dk
+$border-radius:    0;
+$border-radius-sm: 0;
+$border-radius-lg: 0;
+
+/*-- scss:rules --*/
+
+@font-face {
+  font-family: "AU Passata";
+  font-display: swap;
+  src: url("https://fonts.au.dk/fonts/autohinting/aupassata_light-webfont.woff2") format("woff2"),
+       url("https://fonts.au.dk/fonts/autohinting/aupassata_light-webfont.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AU Passata";
+  font-display: swap;
+  src: url("https://fonts.au.dk/fonts/autohinting/aupassata_rg-webfont.woff2") format("woff2"),
+       url("https://fonts.au.dk/fonts/autohinting/aupassata_rg-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "AU Passata";
+  font-display: swap;
+  src: url("https://fonts.au.dk/fonts/autohinting/aupassata_bold-webfont.woff2") format("woff2"),
+       url("https://fonts.au.dk/fonts/autohinting/aupassata_bold-webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+// Headings
+h1, .h1, .title {
+  color: $au-blue;
+  font-weight: 700;
+}
+h2, .h2 {
+  color: $au-blue;
+  border-bottom: 1px solid $au-bg-secondary;
+  padding-bottom: 0.25rem;
+}
+h3, h4, h5, h6 {
+  color: $au-blue;
+}
+
+// Links: AU-style underline in a lighter shade
+a {
+  text-decoration-color: $au-link-line;
+  text-underline-offset: 0.2em;
+}
+a:hover {
+  text-decoration-color: $au-cyan;
+}
+
+// Navbar
+.navbar {
+  border-bottom: 4px solid $au-blue-dark;
+  .navbar-title {
+    font-weight: 700;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    color: $au-blue-light !important;
+  }
+}
+
+// Footer
+.nav-footer a {
+  color: $au-white;
+}
+
+// Buttons
+.btn {
+  font-weight: 700;
+}
+.btn-primary:hover {
+  background-color: $au-blue-hover;
+  border-color: $au-blue-hover;
+}
+
+// Tables
+.table > thead {
+  border-bottom: 2px solid $au-blue;
+}
+
+// Blockquotes
+blockquote {
+  border-left: 4px solid $au-cyan;
+  color: $au-text-muted;
+}
+
+// Cards / grid listings
+.card {
+  border-color: $au-bg-secondary;
+  &:hover {
+    background-color: $au-bg-hover;
+  }
+}
+
+// Center h1 titles
+.centered h1 {
+  text-align: center;
+}
+
+// Frames for images
+.black-box {
+  border: 1px solid $au-border;
+}

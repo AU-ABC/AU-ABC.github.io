@@ -19,20 +19,19 @@ website:
     locale: en_US
     site-name: ABC - Accessible Bioinformatics Cafe
   navbar:
-    logo: /img/ABClogo.png
+    logo: /img/focusgroup_logo.svg
     left:
       - href: index.qmd
         text: Home
-      - href: news.qmd
-        text: Calendar
-      - href: Documentation.qmd
-        text: Documentation
-      - text: Resources
+
+      #- href: Documentation.qmd
+      #  text: Documentation
+      - text: Legacy
         menu:
-          #- href: binfResources/Databases.ipynb
-          #  text: Databases
-          - href: binfResources/bash.qmd
-            text: Bash tips
+          - href: Documentation.qmd
+            text: Documentation
+          - href: news.qmd
+            text: Calendar
           #- href: binfResources/R.qmd
           #  text: R
           #- href: binfResources/python.qmd
@@ -48,8 +47,8 @@ website:
 format:
   html:
     theme: 
-      light: [materia, css/materialight.scss]
-      dark: darkly
+      light: [cosmo, css/au-light.scss]
+      dark: [darkly, css/au-dark.scss]
     toc: true
     include-in-header:
       - file: "resources/mailerlite.html"
