@@ -1,14 +1,17 @@
 project:
   type: website
+  pre-render: resources/build_ics.py
 
 resources:
   - CNAME
+  - events/events.json
+  - events/abc-events.ics
   - documentation/slides/*.zip
-  - documentation/2026-02-26-tidyR-omicsws1/*.zip
-  - documentation/2026-02-26-tidyR-omicsws1/*.html
-  - documentation/2026-03-26-bulk-omicsws2/*
-  - documentation/2026-04-13-yoda-R/*
-  - documentation/2026-04-23-omicsws3/scRNA_workshop.zip
+  - legacy/documentation/2026-02-26-tidyR-omicsws1/*.zip
+  - legacy/documentation/2026-02-26-tidyR-omicsws1/*.html
+  - legacy/documentation/2026-03-26-bulk-omicsws2/*
+  - legacy/documentation/2026-04-13-yoda-R/*
+  - legacy/documentation/2026-04-23-omicsws3/scRNA_workshop.zip
 
 website:
   title: 'ABC - Accessible Bioinformatics Cafe'
@@ -23,21 +26,16 @@ website:
     left:
       - href: index.qmd
         text: Home
-
-      #- href: Documentation.qmd
-      #  text: Documentation
+      - href: calendar.qmd
+        text: Calendar
       - text: Legacy
         menu:
-          - href: Documentation.qmd
-            text: Documentation
-          - href: news.qmd
-            text: Calendar
-          #- href: binfResources/R.qmd
-          #  text: R
-          #- href: binfResources/python.qmd
-          #  text: Python
-      - href: gethelp.qmd
-        text: People&Help
+          - href: legacy/Documentation.qmd
+            text: Old cafe tutorials
+          - href: legacy/news.qmd
+            text: Old cafe events
+      - href: contact.qmd
+        text: Contact
     right: 
       - icon: github
         href: https://github.com/AU-ABC

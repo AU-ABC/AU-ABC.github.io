@@ -1,0 +1,257 @@
+---
+title: "Events calendar"
+toc: false
+page-layout: full
+include-in-header:
+  - text: |
+      <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+---
+
+Click on an event to see its details, sign up, and add it to your own calendar.
+
+```{=html}
+<div class="subscribe-box">
+  <div>
+    <strong>Subscribe to all ABC events</strong><br>
+    <span class="text-muted small">Your calendar app will add new events and updates automatically.</span>
+  </div>
+  <div class="d-flex flex-wrap gap-2">
+    <a class="btn btn-sm btn-primary" id="subApple">Apple / Outlook desktop</a>
+    <a class="btn btn-sm btn-outline-primary" id="subGoogle" target="_blank" rel="noopener">Google</a>
+    <a class="btn btn-sm btn-outline-primary" id="subOutlook" target="_blank" rel="noopener">Outlook web</a>
+    <button type="button" class="btn btn-sm btn-outline-secondary" id="subCopy">Copy link</button>
+  </div>
+</div>
+<div id="tagFilter" class="tag-filter"></div>
+<div id="calendar"></div>
+
+<div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="eventTitle"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="eventTags" class="mb-2"></div>
+        <p><strong>When:</strong> <span id="eventWhen"></span></p>
+        <p id="eventWhereRow"><strong>Where:</strong> <span id="eventWhere"></span></p>
+        <div id="eventDescription"></div>
+        <div class="text-center mt-4">
+          <a class="btn btn-lg btn-primary" id="signupButton" target="_blank" rel="noopener">Sign up</a>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-start">
+        <span class="me-2">Add to calendar:</span>
+        <button type="button" class="btn btn-sm btn-primary" id="icsButton">Download .ics</button>
+        <a class="btn btn-sm btn-outline-primary" id="googleLink" target="_blank" rel="noopener">Google</a>
+        <a class="btn btn-sm btn-outline-primary" id="outlookLink" target="_blank" rel="noopener">Outlook</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+#calendar {
+  --fc-border-color: var(--bs-border-color);
+  --fc-event-bg-color: var(--bs-primary);
+  --fc-event-border-color: var(--bs-primary);
+  --fc-today-bg-color: rgba(55, 160, 203, 0.15);
+  --fc-button-bg-color: var(--bs-primary);
+  --fc-button-border-color: var(--bs-primary);
+  --fc-button-active-bg-color: var(--bs-dark);
+  --fc-button-active-border-color: var(--bs-dark);
+  --fc-page-bg-color: var(--bs-body-bg);
+  --fc-neutral-bg-color: var(--bs-tertiary-bg);
+  --fc-list-event-hover-bg-color: var(--bs-tertiary-bg);
+  max-width: 1100px;
+  margin: 0 auto 1rem;
+}
+#calendar .fc-event { cursor: pointer; }
+.subscribe-box {
+  max-width: 1100px; margin: 1rem auto; padding: .75rem 1rem;
+  display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; justify-content: space-between;
+  border: 1px solid var(--bs-border-color); border-radius: .5rem;
+}
+.list-signup { margin-left: .75rem; padding: 0 .5rem; font-size: .8rem; }
+#calendar a { text-decoration: none; }
+.tag-filter { max-width: 1100px; margin: 1rem auto; display: flex; flex-wrap: wrap; gap: .4rem; }
+.tag-filter .btn { border-radius: 1rem; }
+.event-tag { font-weight: normal; margin-right: .3rem; }
+.fc-list-event-title .event-tag { margin-left: .5rem; }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const $ = id => document.getElementById(id);
+  // move the modal out of Quarto's content container so it sits above the backdrop
+  document.body.appendChild($('eventModal'));
+  const modal = new bootstrap.Modal($('eventModal'));
+  const dateFmt = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+  const timeFmt = { hour: '2-digit', minute: '2-digit', hour12: false };
+  const activeTags = new Set();
+  let current = null;
+
+  // --- signup ---
+  const CONTACT = 'abc.focus@au.dk';
+  const signupHref = ev => ev.extendedProps.signup ||
+    'mailto:' + CONTACT + '?subject=' + encodeURIComponent('Sign up: ' + ev.title);
+  const isPast = ev => (ev.end || ev.start) < new Date();
+
+  // --- subscription feed ---
+  const feed = new URL('events/abc-events.ics', window.location.href);
+  const feedHttps = feed.href.replace(/^http:/, 'https:');
+  const feedWebcal = feedHttps.replace(/^https:/, 'webcal:');
+  $('subApple').href = feedWebcal;
+  $('subGoogle').href = 'https://calendar.google.com/calendar/r?cid=' + encodeURIComponent(feedWebcal);
+  $('subOutlook').href = 'https://outlook.office.com/calendar/addfromweb?' +
+    new URLSearchParams({ url: feedHttps, name: 'ABC events' });
+  $('subCopy').addEventListener('click', function () {
+    navigator.clipboard.writeText(feedHttps).then(() => {
+      this.textContent = 'Copied!';
+      setTimeout(() => { this.textContent = 'Copy link'; }, 2000);
+    });
+  });
+
+  // --- helpers for exporting events ---
+  const toUTC = d => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  const plain = html => {
+    const div = document.createElement('div');
+    div.innerHTML = (html || '').replace(/<br\s*\/?>/gi, '\n');
+    return div.textContent;
+  };
+  const icsEscape = s => s.replace(/\\/g, '\\\\').replace(/;/g, '\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+  const eventEnd = ev => ev.end || new Date(ev.start.getTime() + 60 * 60 * 1000);
+
+  function buildICS(ev) {
+    const p = ev.extendedProps;
+    const lines = [
+      'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//AU-ABC//Events calendar//EN', 'CALSCALE:GREGORIAN',
+      'BEGIN:VEVENT',
+      'UID:' + (ev.id || toUTC(ev.start)) + '@abc.au.dk',
+      'DTSTAMP:' + toUTC(new Date()),
+      'DTSTART:' + toUTC(ev.start),
+      'DTEND:' + toUTC(eventEnd(ev)),
+      'SUMMARY:' + icsEscape(ev.title),
+      'DESCRIPTION:' + icsEscape(plain(p.description) + (p.signup ? '\n\nSign up: ' + p.signup : '')),
+      'LOCATION:' + icsEscape(p.location || ''),
+      'CATEGORIES:' + (p.tags || []).map(icsEscape).join(','),
+      'END:VEVENT', 'END:VCALENDAR'
+    ];
+    return lines.join('\r\n');
+  }
+
+  function tagBadges(tags) {
+    return (tags || []).map(t => {
+      const s = document.createElement('span');
+      s.className = 'badge text-bg-secondary event-tag';
+      s.textContent = t;
+      return s;
+    });
+  }
+
+  // --- calendar ---
+  const calendar = new FullCalendar.Calendar($('calendar'), {
+    initialView: 'listUpcoming',
+    views: {
+      listUpcoming: { type: 'list', duration: { months: 6 }, buttonText: 'List' }
+    },
+    firstDay: 1,
+    locale: 'en-GB',
+    height: 'auto',
+    headerToolbar: { left: 'prev,next today', center: 'title', right: 'listUpcoming,dayGridMonth' },
+    buttonText: { today: 'Today', month: 'Calendar' },
+    eventTimeFormat: timeFmt,
+    noEventsContent: 'No events in this period',
+    events: 'events/events.json',
+    eventDidMount: function (info) {
+      const title = info.el.querySelector('.fc-list-event-title');
+      if (title) {
+        tagBadges(info.event.extendedProps.tags).forEach(b => title.appendChild(b));
+        if (!isPast(info.event)) {
+          const a = document.createElement('a');
+          a.className = 'btn btn-sm btn-outline-primary list-signup';
+          a.textContent = 'Sign up';
+          a.href = signupHref(info.event);
+          a.target = '_blank';
+          a.rel = 'noopener';
+          a.addEventListener('click', e => e.stopPropagation());
+          title.appendChild(a);
+        }
+      }
+    },
+    eventsSet: function (events) {
+      const all = [...new Set(events.flatMap(e => e.extendedProps.tags || []))].sort();
+      const box = $('tagFilter');
+      if (box.dataset.tags === all.join('|')) return;
+      box.dataset.tags = all.join('|');
+      box.replaceChildren();
+      all.forEach(t => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'btn btn-sm btn-outline-secondary';
+        b.textContent = t;
+        b.addEventListener('click', () => {
+          activeTags.has(t) ? activeTags.delete(t) : activeTags.add(t);
+          b.classList.toggle('active');
+          calendar.getEvents().forEach(e => {
+            const match = !activeTags.size || (e.extendedProps.tags || []).some(x => activeTags.has(x));
+            e.setProp('display', match ? 'auto' : 'none');
+          });
+        });
+        box.appendChild(b);
+      });
+    },
+    eventClick: function (info) {
+      info.jsEvent.preventDefault();
+      const ev = current = info.event, p = ev.extendedProps;
+      $('eventTitle').textContent = ev.title;
+      $('eventTags').replaceChildren(...tagBadges(p.tags));
+      $('eventWhen').textContent = ev.start.toLocaleDateString('en-GB', dateFmt) + ', ' +
+        ev.start.toLocaleTimeString('en-GB', timeFmt) +
+        (ev.end ? '–' + ev.end.toLocaleTimeString('en-GB', timeFmt) : '');
+      $('eventWhere').textContent = p.location || '';
+      $('eventWhereRow').hidden = !p.location;
+      $('eventDescription').innerHTML = p.description || '';
+
+      const signup = $('signupButton');
+      if (isPast(ev)) {
+        signup.removeAttribute('href');
+        signup.classList.add('disabled');
+        signup.textContent = 'This event has passed';
+      } else {
+        signup.href = signupHref(ev);
+        signup.classList.remove('disabled');
+        signup.textContent = 'Sign up';
+      }
+
+      const details = plain(p.description) + (p.signup ? '\n\nSign up: ' + p.signup : '');
+      $('googleLink').href = 'https://calendar.google.com/calendar/render?' + new URLSearchParams({
+        action: 'TEMPLATE', text: ev.title, dates: toUTC(ev.start) + '/' + toUTC(eventEnd(ev)),
+        details: details, location: p.location || ''
+      });
+      $('outlookLink').href = 'https://outlook.office.com/calendar/deeplink/compose?' + new URLSearchParams({
+        path: '/calendar/action/compose', rru: 'addevent', subject: ev.title,
+        startdt: ev.start.toISOString(), enddt: eventEnd(ev).toISOString(),
+        body: details, location: p.location || ''
+      });
+      modal.show();
+    }
+  });
+
+  $('icsButton').addEventListener('click', function () {
+    if (!current) return;
+    const blob = new Blob([buildICS(current)], { type: 'text/calendar;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = (current.id || 'event') + '.ics';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+
+  calendar.render();
+});
+</script>
+```
