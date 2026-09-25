@@ -6,7 +6,7 @@ resources:
   - CNAME
   - events/events.json
   - events/abc-events.ics
-  - documentation/slides/*.zip
+  - legacy/documentation/slides/*.zip
   - legacy/documentation/2026-02-26-tidyR-omicsws1/*.zip
   - legacy/documentation/2026-02-26-tidyR-omicsws1/*.html
   - legacy/documentation/2026-03-26-bulk-omicsws2/*

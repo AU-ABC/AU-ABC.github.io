@@ -16,7 +16,7 @@ Today's slides
 
 <p align="center">
 
-<a href="https://abc.au.dk/documentation/slides/20241128-ABC9.zip" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Download Slides </a>
+<a href="https://abc.au.dk/legacy/documentation/slides/20241128-ABC9.zip" style="background-color: #4266A1; color: #FFFFFF; padding: 30px 20px; text-decoration: none; border-radius: 5px;"> Download Slides </a>
 
 </p>
 
@@ -109,7 +109,7 @@ The most practical way to launch Rstudio is through a web application with Rstud
 2. Create a conda environment with some R packages. I have made one for you with `R v4.4.2`, `renv`, `ggplot` and `tidyverse`.
 
    ```{.bash}
-   wget https://raw.githubusercontent.com/AU-ABC/AU-ABC.github.io/refs/heads/main/documentation/2024-11-28-ABC9/ABC9rstudio.yml 
+   wget https://raw.githubusercontent.com/AU-ABC/AU-ABC.github.io/refs/heads/main/legacy/documentation/2024-11-28-ABC9/ABC9rstudio.yml 
    conda env create -f ABC9rstudio.yml 
    ```
 
@@ -191,7 +191,7 @@ The `tmux` software has kept your terminal running without interruption, so now 
 2. Create a conda environment with some R packages, python, jupyterlab. I have made one for you with `R>v4.4.0`, `python v3.10`, the AI plugin for jupyterlab and some R packages.
 
    ```{.bash}
-   wget https://raw.githubusercontent.com/AU-ABC/AU-ABC.github.io/refs/heads/main/documentation/2024-11-28-ABC9/ABC9jupyter.yml 
+   wget https://raw.githubusercontent.com/AU-ABC/AU-ABC.github.io/refs/heads/main/legacy/documentation/2024-11-28-ABC9/ABC9jupyter.yml 
    conda env create -f ABC9jupyter.yml 
    ```
 
