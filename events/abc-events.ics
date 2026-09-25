@@ -1,0 +1,26 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//AU-ABC//Events calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:ABC - AI\, Bioinformatics and Computing
+X-WR-CALDESC:Events of the ABC focus group (abc.focus@au.dk)
+X-WR-TIMEZONE:Europe/Copenhagen
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VEVENT
+UID:2026-10-05@abc.au.dk
+DTSTAMP:20260925T112711Z
+DTSTART:20261005T110000Z
+DTEND:20261005T130000Z
+SUMMARY:GitHub automation & AI repo management
+DESCRIPTION:Workshop on GitHub automation and AI management of repositories
+ \, followed by coding time with discussion.\nExample on how to do version 
+ control on an entire project on the GenomeDK computing cluster.\nCake and 
+ drinks provided! Share the invitation with your colleagues - please sign u
+ p only if you intend to actually participate 😊\n\nSign up: TOBEDONE
+LOCATION:Room 1632-212\, AIAS\, main campus
+CATEGORIES:Workshop,GitHub,Github agent,GenomeDK
+URL:TOBEDONE
+END:VEVENT
+END:VCALENDAR
