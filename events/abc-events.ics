@@ -10,7 +10,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:2026-10-05@abc.au.dk
-DTSTAMP:20260929T041316Z
+DTSTAMP:20260929T083425Z
 DTSTART:20261005T110000Z
 DTEND:20261005T130000Z
 SUMMARY:GitHub automation & AI repo management
@@ -18,9 +18,12 @@ DESCRIPTION:Workshop on GitHub automation and AI management of repositories
  \, followed by coding time with discussion.\nExample on how to do version 
  control on an entire project on the GenomeDK computing cluster.\nCake and 
  drinks provided! Share the invitation with your colleagues - please sign u
- p only if you intend to actually participate 😊\n\nSign up: TOBEDONE
+ p only if you intend to actually participate 😊\n\nSign up: https://docs
+ .google.com/forms/d/e/1FAIpQLSfwMmIgA0U-KWAzhZ-LRosjbSQnW76yjjAChGCgaL7HVR
+ oOxg/viewform?usp=header
 LOCATION:Room 1632-212\, AIAS\, main campus
-CATEGORIES:Workshop,GitHub,Github agent,GenomeDK
-URL:TOBEDONE
+CATEGORIES:Workshop,GitHub,Copilot,GenomeDK
+URL:https://docs.google.com/forms/d/e/1FAIpQLSfwMmIgA0U-KWAzhZ-LRosjbSQnW76
+ yjjAChGCgaL7HVRoOxg/viewform?usp=header
 END:VEVENT
 END:VCALENDAR
