@@ -14,13 +14,13 @@ resources:
   - legacy/documentation/2026-04-23-omicsws3/scRNA_workshop.zip
 
 website:
-  title: 'ABC - Accessible Bioinformatics Cafe'
+  title: 'ABC - AI, Bioinformatics and Coding focus group'
   google-analytics: 
     tracking-id: "G-WG01Z2LJ1J"
     anonymize-ip: true
   open-graph:
     locale: en_US
-    site-name: ABC - Accessible Bioinformatics Cafe
+    site-name: ABC - AI, Bioinformatics and Coding focus group
   navbar:
     logo: /img/focusgroup_logo.svg
     left:
