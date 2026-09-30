@@ -10,7 +10,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:2026-10-05@abc.au.dk
-DTSTAMP:20260930T035821Z
+DTSTAMP:20260930T120548Z
 DTSTART:20261005T110000Z
 DTEND:20261005T130000Z
 SUMMARY:GitHub automation & AI repo management
@@ -29,5 +29,28 @@ LOCATION:Room 1632-212\, AIAS\, main campus
 CATEGORIES:Workshop,GitHub,Copilot,GenomeDK
 URL:https://docs.google.com/forms/d/e/1FAIpQLSfwMmIgA0U-KWAzhZ-LRosjbSQnW76
  yjjAChGCgaL7HVRoOxg/viewform?usp=header
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-16@abc.au.dk
+DTSTAMP:20260930T120548Z
+DTSTART:20261116T120000Z
+DTEND:20261116T140000Z
+SUMMARY:AI tools and frameworks in bioinformatics
+DESCRIPTION:Diana Sharysh\, postdoc at DREAM Lab at AU Biomedicine\, will t
+ alk about AI tools and frameworks after having extensive experience speedi
+ ng up development and coding.\nShe will touch topics such as\n  - Setting 
+ up Claude code\, when and how to use it\n  -Knowledge databases and scalin
+ g up research\n  - "Hygiene" practices for genomedk\n  - Tools like biomni
+  for non-coders\n  - Making the framework more comprehensive\, creating "b
+ locks of work"\n  - AI scientist: hyped but interesting\n\nAll of this fol
+ lowed by discussion and your own suggestions and experiences! \n\nCake and
+  drinks provided! Share the invitation with your colleagues - please sign 
+ up only if you intend to actually participate 😊\n\nSign up: https://doc
+ s.google.com/forms/d/e/1FAIpQLSfYF5_SfHh12aXNslJDm65X4jIfpF6tykVJiWDS5TYCg
+ iTDng/viewform?usp=publish-editor
+LOCATION:Room 1630-301\, AIAS\, main campus
+CATEGORIES:Talk,Agents,Non-coders,GenomeDK
+URL:https://docs.google.com/forms/d/e/1FAIpQLSfYF5_SfHh12aXNslJDm65X4jIfpF6
+ tykVJiWDS5TYCgiTDng/viewform?usp=publish-editor
 END:VEVENT
 END:VCALENDAR
