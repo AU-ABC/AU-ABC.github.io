@@ -8,12 +8,32 @@ import json
 import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 EVENTS = ROOT / "events" / "events.json"
 FEED = ROOT / "events" / "abc-events.ics"
 SITE = "https://abc.au.dk"
 CONTACT = "abc.focus@au.dk"
+
+
+LOCAL = ZoneInfo("Europe/Copenhagen")
+
+
+def check_offset(event, key):
+    """Fail if the UTC offset doesn't match Danish time on that date (+02:00 summer, +01:00 winter)."""
+    value = event.get(key)
+    if not value:
+        return
+    dt = datetime.fromisoformat(value)
+    expected = dt.replace(tzinfo=LOCAL).utcoffset()
+    if dt.utcoffset() != expected:
+        hours = int(expected.total_seconds() // 3600)
+        fixed = value[:19] + f"+{hours:02d}:00"
+        raise SystemExit(
+            f"events.json: event '{event['id']}' has {key}={value}, but Denmark is at UTC+{hours} "
+            f"on that date (summer/winter time). Use {fixed} instead."
+        )
 
 
 def utc(value):
@@ -83,6 +103,8 @@ def main():
         "X-PUBLISHED-TTL:PT12H",
     ]
     for event in events:
+        check_offset(event, "start")
+        check_offset(event, "end")
         lines += vevent(event, stamp)
     lines.append("END:VCALENDAR")
     FEED.write_bytes(("\r\n".join(fold(l) for l in lines) + "\r\n").encode("utf-8"))
