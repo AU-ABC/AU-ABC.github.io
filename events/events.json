@@ -10,7 +10,7 @@
     "description": "Using github and copilot AI to manage, automate and publish your repository. We will show a demo where we create a Github repository with:<br><br>  - automated test of the code<br>  - automated workflow for publishing as a webpage<br>  - version upgrade for packages<br>  - container publication<br>  - secret variables.<br><br>All this also through the help of Github copilot, which can create automations in the repositories very effectively. Finally, we will show how to manage version control in a project on genomeDK computing cluster.<br><br>Cake and drinks provided! Share the invitation with your colleagues - please sign up only if you intend to actually participate 😊"
   },
   {
-    "id": "2026-11-16",
+    "id": "2026-11-24",
     "title": "AI tools and frameworks in bioinformatics",
     "start": "2026-11-16T13:00:00+01:00",
     "end": "2026-11-16T15:00:00+01:00",
