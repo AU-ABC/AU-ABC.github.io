@@ -19,7 +19,7 @@ website:
     tracking-id: "G-WG01Z2LJ1J"
     anonymize-ip: true
   open-graph:
-    locale: en_US
+    locale: en_GB
     site-name: ABC - AI, Bioinformatics and Coding focus group
   navbar:
     logo: /img/focusgroup_logo.svg

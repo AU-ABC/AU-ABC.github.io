@@ -5,9 +5,9 @@ format:
         page-layout: full
 ---
 
-We organize the cafe as a collaboration between the [Bioinformatics Research Center](https://birc.au.dk) and the [Core Bioinformatics Facility](https://biomed.au.dk/bioinformatics-core-facility).
+We organise the cafe as a collaboration between the [Bioinformatics Research Center](https://birc.au.dk) and the [Core Bioinformatics Facility](https://biomed.au.dk/bioinformatics-core-facility).
 
-Our shared email address for general enquiries about the cafe is `abc.focus at au.dk`.
+Our shared email address for general enquiries about the cafe is [abc.focus@au.dk](mailto:abc.focus@au.dk).
 
 # Behind the ABC - Who we are
 

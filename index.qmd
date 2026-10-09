@@ -13,7 +13,7 @@ bibliography: resources/references.bib
 
 
 <div style="text-align: center;">
-A focus group of the HealthAI and Personalized medicine networks at Aarhus university, Faculty of Health
+A focus group of The Health-AI Network and The Personalised Medicine Network at Aarhus University, Faculty of Health
 </div>
 :::
 
@@ -28,13 +28,13 @@ All of this requires an increased focus on new skills, both technical and concep
 
 ## What is the ABC?
 
-The ABC is a focus group part of the HealthAI and Personalized medicine networks at Aarhus University. The scope is to introduce, facilitate and upskill the use of AI, bioinformatics, and computing for all users, being them students, researchers, or staff. 
+The ABC is a focus group part of The Health-AI Network and The Personalised Medicine Network at Aarhus University. The scope is to introduce, facilitate and upskill the use of AI, bioinformatics, and computing for all users, being them students, researchers, or staff. 
 
 We propose a relaxed environment with a wide range of talks, workshops, and open floor sessions where you can get help with coding and bioinformatics issues, learn new things, and meet other people with similar interests.
 
 ## Event tracks
 
-Events are organized in three distinct tracks:
+Events are organised in three distinct tracks:
 
 1. **Topical research talks** - where are we heading? Inspiring presentations from local or external researchers and professionals to present their line of work, share their experiences, and discuss the use of AI, bioinformatics, and computing in their research.
 2. **Workshops** - Demos and/or hands-on workshops covering the ABC topics, where you can learn new skills and get hands-on experience with AI, bioinformatics, and computing.
