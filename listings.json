@@ -1,9 +1,5 @@
 [
   {
-    "listing": "/legacy/news.html",
-    "items": []
-  },
-  {
     "listing": "/legacy/Documentation.html",
     "items": [
       "/legacy/documentation/2024-06-13-ABC1.html",
@@ -26,5 +22,9 @@
       "/legacy/documentation/2026-04-23-scRNA-omics3.html",
       "/legacy/documentation/2024-10-10-usegdk.html"
     ]
+  },
+  {
+    "listing": "/legacy/news.html",
+    "items": []
   }
 ]
