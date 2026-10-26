@@ -18,5 +18,25 @@
     "signup": "https://docs.google.com/forms/d/e/1FAIpQLSfYF5_SfHh12aXNslJDm65X4jIfpF6tykVJiWDS5TYCgiTDng/viewform?usp=publish-editor",
     "tags": ["Talk", "Agents", "Non-coders", "GenomeDK"],
     "description": "Diana Sharysh, postdoc at DREAM Lab at AU Biomedicine, will talk about AI tools and frameworks after having extensive experience speeding up development and coding.<br>She will touch topics such as<br>  - Setting up Claude code, when and how to use it<br>  -Knowledge databases and scaling up research<br>  - \"Hygiene\" practices for genomedk<br>  - Tools like biomni for non-coders<br>  - Making the framework more comprehensive, creating \"blocks of work\"<br>  - AI scientist: hyped but interesting<br><br>All of this followed by discussion and your own suggestions and experiences! <br><br>Cake and drinks provided! Share the invitation with your colleagues - please sign up only if you intend to actually participate 😊"
+  },
+  {
+    "id": "2026-12-12",
+    "title": "The role of knowledge in high level cognition: perspectives from humans and AI",
+    "start": "2026-12-12T13:00:00+01:00",
+    "end": "2026-12-12T15:00:00+01:00",
+    "location": "Room TBA, AIAS, main campus",
+    "signup": "https://forms.gle/AySHTX5M46LBp2VK9",
+    "tags": ["Talk", "network science", "natural language processing", "machine learning"],
+    "description": "Abstract coming soon<br><br><br>Dr. Yoed Kenett is an Associate Professor at the Faculty of Data and Decision Sciences at the Technion – Israel Institute of Technology.<br><br>During the academic year of 2026-2027 he is on Sabbatical at the Department of Management and AIAS at Aarhus University. His research computationally and empirically investigates the role of knowledge in high-level cognition, focusing on creativity, associative thinking, memory search, and question asking, in typical and atypical populations.<br><br>To investigate these issues, he applies computational tools from network science, natural language processing, and machine learning, coupled with empirical cognitive and neural research. Prof. Kenett is the Research Director in the Executive Committee of the Society for the Neuroscience of Creativity, has won the 2021 Berlyne award for excellent research by a junior scientist, and in 2025 was recognized as a rising star in creativity research by the European ISSCI."
+  },
+  {
+    "id": "2027-01-19",
+    "title": "Scientific talk from Beck Strohmer",
+    "start": "2027-01-19T13:00:00+01:00",
+    "end": "2027-01-19T15:00:00+01:00",
+    "location": "Room TBA, AIAS, main campus",
+    "signup": "https://forms.gle/BA73MtNZKMz8iA9J8",
+    "tags": ["Talk", "computational neuroscience"],
+    "description": "Abstract and title coming soon<br><br><br>Beck Strohmer, PhD is a computational neuroscientist building spiking neural networks to study the breakdown in locomotion during neurodegenerative disease.<br><br>Beck holds an MSc in Electrical Engineering and a PhD in Neuromorphic Engineering and has developed their research direction exploring the underlying mechanisms of locomotor deficits over their postdoctoral positions."
   }
 ]

@@ -10,7 +10,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:2026-10-05@abc.au.dk
-DTSTAMP:20261026T031201Z
+DTSTAMP:20261026T071050Z
 DTSTART:20261005T110000Z
 DTEND:20261005T130000Z
 SUMMARY:GitHub automation & AI repo management
@@ -32,7 +32,7 @@ URL:https://docs.google.com/forms/d/e/1FAIpQLSfwMmIgA0U-KWAzhZ-LRosjbSQnW76
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-24@abc.au.dk
-DTSTAMP:20261026T031201Z
+DTSTAMP:20261026T071050Z
 DTSTART:20261124T120000Z
 DTEND:20261124T140000Z
 SUMMARY:AI tools and frameworks in bioinformatics
@@ -52,5 +52,49 @@ LOCATION:Room 1630-301\, AIAS\, main campus
 CATEGORIES:Talk,Agents,Non-coders,GenomeDK
 URL:https://docs.google.com/forms/d/e/1FAIpQLSfYF5_SfHh12aXNslJDm65X4jIfpF6
  tykVJiWDS5TYCgiTDng/viewform?usp=publish-editor
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-12@abc.au.dk
+DTSTAMP:20261026T071050Z
+DTSTART:20261212T120000Z
+DTEND:20261212T140000Z
+SUMMARY:The role of knowledge in high level cognition: perspectives from hu
+ mans and AI
+DESCRIPTION:Abstract coming soon\n\n\nDr. Yoed Kenett is an Associate Profe
+ ssor at the Faculty of Data and Decision Sciences at the Technion – Isra
+ el Institute of Technology.\n\nDuring the academic year of 2026-2027 he is
+  on Sabbatical at the Department of Management and AIAS at Aarhus Universi
+ ty. His research computationally and empirically investigates the role of 
+ knowledge in high-level cognition\, focusing on creativity\, associative t
+ hinking\, memory search\, and question asking\, in typical and atypical po
+ pulations.\n\nTo investigate these issues\, he applies computational tools
+  from network science\, natural language processing\, and machine learning
+ \, coupled with empirical cognitive and neural research. Prof. Kenett is t
+ he Research Director in the Executive Committee of the Society for the Neu
+ roscience of Creativity\, has won the 2021 Berlyne award for excellent res
+ earch by a junior scientist\, and in 2025 was recognized as a rising star 
+ in creativity research by the European ISSCI.\n\nSign up: https://forms.gl
+ e/AySHTX5M46LBp2VK9
+LOCATION:Room TBA\, AIAS\, main campus
+CATEGORIES:Talk,network science,natural language processing,machine learnin
+ g
+URL:https://forms.gle/AySHTX5M46LBp2VK9
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-19@abc.au.dk
+DTSTAMP:20261026T071050Z
+DTSTART:20270119T120000Z
+DTEND:20270119T140000Z
+SUMMARY:Scientific talk from Beck Strohmer
+DESCRIPTION:Abstract and title coming soon\n\n\nBeck Strohmer\, PhD is a co
+ mputational neuroscientist building spiking neural networks to study the b
+ reakdown in locomotion during neurodegenerative disease.\n\nBeck holds an 
+ MSc in Electrical Engineering and a PhD in Neuromorphic Engineering and ha
+ s developed their research direction exploring the underlying mechanisms o
+ f locomotor deficits over their postdoctoral positions.\n\nSign up: https:
+ //forms.gle/BA73MtNZKMz8iA9J8
+LOCATION:Room TBA\, AIAS\, main campus
+CATEGORIES:Talk,computational neuroscience
+URL:https://forms.gle/BA73MtNZKMz8iA9J8
 END:VEVENT
 END:VCALENDAR
