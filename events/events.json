@@ -31,12 +31,32 @@
   },
   {
     "id": "2027-01-19",
-    "title": "Scientific talk from Beck Strohmer",
+    "title": "Scientific talk by Beck Strohmer",
     "start": "2027-01-19T13:00:00+01:00",
     "end": "2027-01-19T15:00:00+01:00",
     "location": "Room TBA, AIAS, main campus",
     "signup": "https://forms.gle/BA73MtNZKMz8iA9J8",
     "tags": ["Talk", "computational neuroscience"],
     "description": "Abstract and title coming soon<br><br><br>Beck Strohmer, PhD is a computational neuroscientist building spiking neural networks to study the breakdown in locomotion during neurodegenerative disease.<br><br>Beck holds an MSc in Electrical Engineering and a PhD in Neuromorphic Engineering and has developed their research direction exploring the underlying mechanisms of locomotor deficits over their postdoctoral positions."
+  },
+  {
+    "id": "2027-02-01",
+    "title": "Movie night",
+    "start": "2027-02-01T16:00:00+01:00",
+    "end": "2027-02-01T19:00:00+01:00",
+    "location": "1632-201, AIAS, main campus",
+    "signup": "https://forms.gle/UF6u41mCwhhqEjGVA",
+    "tags": ["Event", "Movie night", "Talk"],
+    "description": "Movie night at AIAS!<br><br>with popcorn machine (!) and subsequent reception and talk by Michael Westberg (Tenure track Assistant Professor at the Dept of chemistry) in the AIAS Hall"
+  },
+  {
+    "id": "2027-03-18",
+    "title": "Learning from Neural Signals: Signal Decomposition and Self-Supervised Learning",
+    "start": "2027-03-18T13:00:00+01:00",
+    "end": "2027-03-18T15:00:00+01:00",
+    "location": "1632-201, AIAS, main campus",
+    "signup": "https://forms.gle/Y14MPHDYcNBXTxbJ9",
+    "tags": ["Talk", "neural signals"],
+    "description": "Abstract and title coming soon<br><br><br>Naveed ur Rehman is associate professor at Aarhus University, where their research focuses on signal processing and graph signal processing. Their related work includes Multivariate Variational Mode Decomposition and research on adaptive time-frequency analysis of multivariate signals. Before their current role, they were an assistant professor at Aarhus University and COMSATS Institute of Information Technology. They pursued a PhD in electrical engineering at Imperial College London."
   }
 ]
