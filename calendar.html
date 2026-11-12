@@ -425,6 +425,8 @@ gtag('config', 'G-WG01Z2LJ1J', { 'anonymize_ip': true});
   margin: 0 auto 1rem;
 }
 #calendar .fc-event { cursor: pointer; }
+/* show "\n" in event titles as line breaks (month view stays one line) */
+.fc-list-event-title a, #eventTitle { white-space: pre-line; }
 .subscribe-box {
   max-width: 1100px; margin: 1rem auto; padding: .75rem 1rem;
   display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; justify-content: space-between;
@@ -451,8 +453,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // --- signup ---
   const CONTACT = 'abc.focus@au.dk';
+  const oneLine = s => s.replace(/\n/g, ' – ');  // calendar apps and email subjects want single-line titles
   const signupHref = ev => ev.extendedProps.signup ||
-    'mailto:' + CONTACT + '?subject=' + encodeURIComponent('Sign up: ' + ev.title);
+    'mailto:' + CONTACT + '?subject=' + encodeURIComponent('Sign up: ' + oneLine(ev.title));
   const isPast = ev => (ev.end || ev.start) < new Date();
 
   // --- subscription feed ---
@@ -489,7 +492,7 @@ document.addEventListener('DOMContentLoaded', function () {
       'DTSTAMP:' + toUTC(new Date()),
       'DTSTART:' + toUTC(ev.start),
       'DTEND:' + toUTC(eventEnd(ev)),
-      'SUMMARY:' + icsEscape(ev.title),
+      'SUMMARY:' + icsEscape(oneLine(ev.title)),
       'DESCRIPTION:' + icsEscape(plain(p.description) + (p.signup ? '\n\nSign up: ' + p.signup : '')),
       'LOCATION:' + icsEscape(p.location || ''),
       'CATEGORIES:' + (p.tags || []).map(icsEscape).join(','),
@@ -584,11 +587,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const details = plain(p.description) + (p.signup ? '\n\nSign up: ' + p.signup : '');
       $('googleLink').href = 'https://calendar.google.com/calendar/render?' + new URLSearchParams({
-        action: 'TEMPLATE', text: ev.title, dates: toUTC(ev.start) + '/' + toUTC(eventEnd(ev)),
+        action: 'TEMPLATE', text: oneLine(ev.title), dates: toUTC(ev.start) + '/' + toUTC(eventEnd(ev)),
         details: details, location: p.location || ''
       });
       $('outlookLink').href = 'https://outlook.office.com/calendar/deeplink/compose?' + new URLSearchParams({
-        path: '/calendar/action/compose', rru: 'addevent', subject: ev.title,
+        path: '/calendar/action/compose', rru: 'addevent', subject: oneLine(ev.title),
         startdt: ev.start.toISOString(), enddt: eventEnd(ev).toISOString(),
         body: details, location: p.location || ''
       });
