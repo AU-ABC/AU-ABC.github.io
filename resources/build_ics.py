@@ -75,7 +75,7 @@ def vevent(event, stamp):
         f"DTSTAMP:{stamp}",
         f"DTSTART:{utc(start)}",
         f"DTEND:{utc(end)}",
-        f"SUMMARY:{escape(event['title'])}",
+        f"SUMMARY:{escape(event['title'].replace(chr(10), ' – '))}",
         f"DESCRIPTION:{escape(description)}",
     ]
     if event.get("location"):
