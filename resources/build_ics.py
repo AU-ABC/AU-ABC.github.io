@@ -69,6 +69,8 @@ def vevent(event, stamp):
     description = plain(event.get("description"))
     if signup:
         description += f"\n\nSign up: {signup}"
+    if event.get("zoom"):
+        description += f"\n\nJoin online: {event['zoom']}"
     lines = [
         "BEGIN:VEVENT",
         f"UID:{event['id']}@abc.au.dk",
