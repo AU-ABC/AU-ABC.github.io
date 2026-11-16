@@ -396,6 +396,7 @@ gtag('config', 'G-WG01Z2LJ1J', { 'anonymize_ip': true});
         <div id="eventDescription"></div>
         <div class="text-center mt-4">
           <a class="btn btn-lg btn-primary" id="signupButton" target="_blank" rel="noopener">Sign up</a>
+          <a class="btn btn-lg btn-outline-primary" id="zoomButton" target="_blank" rel="noopener">Join on Zoom</a>
         </div>
       </div>
       <div class="modal-footer justify-content-start">
@@ -456,6 +457,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const oneLine = s => s.replace(/\n/g, ' – ');  // calendar apps and email subjects want single-line titles
   const signupHref = ev => ev.extendedProps.signup ||
     'mailto:' + CONTACT + '?subject=' + encodeURIComponent('Sign up: ' + oneLine(ev.title));
+  // extra text for calendar exports: signup and online links
+  const links = p => (p.signup ? '\n\nSign up: ' + p.signup : '') + (p.zoom ? '\n\nJoin online: ' + p.zoom : '');
   const isPast = ev => (ev.end || ev.start) < new Date();
 
   // --- subscription feed ---
@@ -493,7 +496,7 @@ document.addEventListener('DOMContentLoaded', function () {
       'DTSTART:' + toUTC(ev.start),
       'DTEND:' + toUTC(eventEnd(ev)),
       'SUMMARY:' + icsEscape(oneLine(ev.title)),
-      'DESCRIPTION:' + icsEscape(plain(p.description) + (p.signup ? '\n\nSign up: ' + p.signup : '')),
+      'DESCRIPTION:' + icsEscape(plain(p.description) + links(p)),
       'LOCATION:' + icsEscape(p.location || ''),
       'CATEGORIES:' + (p.tags || []).map(icsEscape).join(','),
       'END:VEVENT', 'END:VCALENDAR'
@@ -537,6 +540,13 @@ document.addEventListener('DOMContentLoaded', function () {
           a.rel = 'noopener';
           a.addEventListener('click', e => e.stopPropagation());
           title.appendChild(a);
+          if (info.event.extendedProps.zoom) {
+            const z = a.cloneNode();
+            z.textContent = 'Zoom';
+            z.href = info.event.extendedProps.zoom;
+            z.addEventListener('click', e => e.stopPropagation());
+            title.appendChild(z);
+          }
         }
       }
     },
@@ -584,8 +594,11 @@ document.addEventListener('DOMContentLoaded', function () {
         signup.classList.remove('disabled');
         signup.textContent = 'Sign up';
       }
+      const zoom = $('zoomButton');
+      zoom.hidden = !p.zoom || isPast(ev);
+      zoom.href = p.zoom || '#';
 
-      const details = plain(p.description) + (p.signup ? '\n\nSign up: ' + p.signup : '');
+      const details = plain(p.description) + links(p);
       $('googleLink').href = 'https://calendar.google.com/calendar/render?' + new URLSearchParams({
         action: 'TEMPLATE', text: oneLine(ev.title), dates: toUTC(ev.start) + '/' + toUTC(eventEnd(ev)),
         details: details, location: p.location || ''
