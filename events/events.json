@@ -17,7 +17,7 @@
     "location": "Room 1630-301, AIAS, main campus",
     "signup": "https://docs.google.com/forms/d/e/1FAIpQLSfYF5_SfHh12aXNslJDm65X4jIfpF6tykVJiWDS5TYCgiTDng/viewform?usp=publish-editor",
     "tags": ["Talk", "Agents", "Non-coders", "GenomeDK"],
-    "zoom": "https://aarhusuniversity.zoom.us/j/68003422750",
+    "zoom": "https://aarhusuniversity.zoom.us/my/abcfocus",
     "description": "Diana Sharysh, postdoc at DREAM Lab at AU Biomedicine, will talk about AI tools and frameworks after having extensive experience speeding up development and coding.<br>She will touch topics such as<br>  - Setting up Claude code, when and how to use it<br>  -Knowledge databases and scaling up research<br>  - \"Hygiene\" practices for genomedk<br>  - Tools like biomni for non-coders<br>  - Making the framework more comprehensive, creating \"blocks of work\"<br>  - AI scientist: hyped but interesting<br><br>All of this followed by discussion and your own suggestions and experiences! <br><br>Cake and drinks provided! Share the invitation with your colleagues - please sign up only if you intend to actually participate 😊"
   },
   {
@@ -49,6 +49,20 @@
     "signup": "https://forms.gle/UF6u41mCwhhqEjGVA",
     "tags": ["Event", "Movie night", "Talk"],
     "description": "Movie night at AIAS - where we project The Thinking Game (2024)!<br><br>with popcorn machine (!) and subsequent reception and talk by Michael Westberg (Tenure track Assistant Professor at the Dept of chemistry) in the AIAS Hall"
+  },
+  {
+    "id": "2027-03-18",
+    "title": "Path2Space, AI Approach for Cancer Biomarker Discovery\nDimitrios Pediotidis-Maniatis\nAU Bioinformatics Core Facility",
+    "start": "2027-02-25T13:00:00+01:00",
+    "end": "2027-02-25T15:00:00+01:00",
+    "location": "1630-301, AIAS, main campus",
+    "signup": "https://forms.gle/R8zT253pWV5Ciqsr6",
+    "tags": ["Talk", "spatial transcriptomics", "cancer", "biomarker", "deep learning"],
+    "zoom": "https://aarhusuniversity.zoom.us/my/abcfocus",
+    "description": "Dimitrios Pediotidis-Maniatis is bioinformatician at the Aarhus University Bioinformatics Core Facility.<br><br>Lately, Dimitrios has been working on the tool Path2Space for processing of spatial transcriptomics data coming as a high throughput, for example in hospital diagnostics.<br><br>It is expensive to run on thousands of patients if you’d need to find reliable cancer biomarkers. Path2Space gets around this by training a deep learning model to predict spatial gene expression from ordinary H&E slides, which hospitals already collect in huge numbers.<br><br>In breast cancer, it predicts around 4,500 genes reliably across three independent cohorts. From those predictions it can estimate which cell types are present in the tumour, find patient groups with different survival, and predict who will respond to trastuzumab. On that last task it beats models built on measured bulk multi-omics data!<br><br>In this informal talk Dimitrios will go through how Path2Space works, what it gets right and where it might break. There will be plenty of room for discussion, networking and sharing of own experiences! 
+
+
+Cake and drinks provided! Share the invitation with your colleagues 😊"
   },
   {
     "id": "2027-03-18",
