@@ -10,7 +10,7 @@ REFRESH-INTERVAL;VALUE=DURATION:PT12H
 X-PUBLISHED-TTL:PT12H
 BEGIN:VEVENT
 UID:2026-10-05@abc.au.dk
-DTSTAMP:20261117T063101Z
+DTSTAMP:20261118T091927Z
 DTSTART:20261005T110000Z
 DTEND:20261005T130000Z
 SUMMARY:GitHub automation & AI repo management – Samuele Soraggi\, Specia
@@ -33,7 +33,7 @@ URL:https://docs.google.com/forms/d/e/1FAIpQLSfwMmIgA0U-KWAzhZ-LRosjbSQnW76
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-24@abc.au.dk
-DTSTAMP:20261117T063101Z
+DTSTAMP:20261118T091927Z
 DTSTART:20261124T120000Z
 DTEND:20261124T140000Z
 SUMMARY:AI tools and frameworks in research – Diana Sharysh\, Postdoc –
@@ -50,7 +50,7 @@ DESCRIPTION:Diana Sharysh\, postdoc at DREAM Lab at AU Biomedicine\, will t
  up only if you intend to actually participate 😊\n\nSign up: https://doc
  s.google.com/forms/d/e/1FAIpQLSfYF5_SfHh12aXNslJDm65X4jIfpF6tykVJiWDS5TYCg
  iTDng/viewform?usp=publish-editor\n\nJoin online: https://aarhusuniversity
- .zoom.us/j/68003422750
+ .zoom.us/my/abcfocus
 LOCATION:Room 1630-301\, AIAS\, main campus
 CATEGORIES:Talk,Agents,Non-coders,GenomeDK
 URL:https://docs.google.com/forms/d/e/1FAIpQLSfYF5_SfHh12aXNslJDm65X4jIfpF6
@@ -58,7 +58,7 @@ URL:https://docs.google.com/forms/d/e/1FAIpQLSfYF5_SfHh12aXNslJDm65X4jIfpF6
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-12-10@abc.au.dk
-DTSTAMP:20261117T063101Z
+DTSTAMP:20261118T091927Z
 DTSTART:20261210T120000Z
 DTEND:20261210T140000Z
 SUMMARY:The role of knowledge in high level cognition: perspectives from hu
@@ -85,7 +85,7 @@ URL:https://forms.gle/AySHTX5M46LBp2VK9
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-01-19@abc.au.dk
-DTSTAMP:20261117T063101Z
+DTSTAMP:20261118T091927Z
 DTSTART:20270119T120000Z
 DTEND:20270119T140000Z
 SUMMARY:Building Biology In Silico: Spiking Neural Networks as Windows into
@@ -103,7 +103,7 @@ URL:https://forms.gle/BA73MtNZKMz8iA9J8
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-02-01@abc.au.dk
-DTSTAMP:20261117T063101Z
+DTSTAMP:20261118T091927Z
 DTSTART:20270201T150000Z
 DTEND:20270201T180000Z
 SUMMARY:AlphaFold movie night and talk by Associate Professor Michael Westb
@@ -118,7 +118,36 @@ URL:https://forms.gle/UF6u41mCwhhqEjGVA
 END:VEVENT
 BEGIN:VEVENT
 UID:2027-03-18@abc.au.dk
-DTSTAMP:20261117T063101Z
+DTSTAMP:20261118T091927Z
+DTSTART:20270225T120000Z
+DTEND:20270225T140000Z
+SUMMARY:Path2Space\, AI Approach for Cancer Biomarker Discovery – Dimitri
+ os Pediotidis-Maniatis – AU Bioinformatics Core Facility
+DESCRIPTION:Dimitrios Pediotidis-Maniatis is bioinformatician at the Aarhus
+  University Bioinformatics Core Facility.\n\nLately\, Dimitrios has been w
+ orking on the tool Path2Space for processing of spatial transcriptomics da
+ ta coming as a high throughput\, for example in hospital diagnostics.\n\nI
+ t is expensive to run on thousands of patients if you’d need to find rel
+ iable cancer biomarkers. Path2Space gets around this by training a deep le
+ arning model to predict spatial gene expression from ordinary H&E slides\,
+  which hospitals already collect in huge numbers.\n\nIn breast cancer\, it
+  predicts around 4\,500 genes reliably across three independent cohorts. F
+ rom those predictions it can estimate which cell types are present in the 
+ tumour\, find patient groups with different survival\, and predict who wil
+ l respond to trastuzumab. On that last task it beats models built on measu
+ red bulk multi-omics data!\n\nIn this informal talk Dimitrios will go thro
+ ugh how Path2Space works\, what it gets right and where it might break. Th
+ ere will be plenty of room for discussion\, networking and sharing of own 
+ experiences!\nCake and drinks provided! Share the invitation with your col
+ leagues 😊\n\nSign up: https://forms.gle/R8zT253pWV5Ciqsr6\n\nJoin onlin
+ e: https://aarhusuniversity.zoom.us/my/abcfocus
+LOCATION:1630-301\, AIAS\, main campus
+CATEGORIES:Talk,spatial transcriptomics,cancer,biomarker,deep learning
+URL:https://forms.gle/R8zT253pWV5Ciqsr6
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-03-18@abc.au.dk
+DTSTAMP:20261118T091927Z
 DTSTART:20270318T120000Z
 DTEND:20270318T140000Z
 SUMMARY:Learning from Neural Signals: Signal Decomposition and Self-Supervi
