@@ -1,0 +1,46 @@
+/*-- scss:defaults --*/
+// AU palette, same values as css/au-light.scss
+$au-blue: #003d73;
+$au-blue-dark: #002546;
+$au-cyan: #37a0cb;
+
+$font-family-sans-serif: "AU Passata", "Helvetica Neue", Arial, sans-serif;
+$presentation-heading-font: "AU Passata", "Helvetica Neue", Arial, sans-serif;
+$presentation-heading-color: $au-blue;
+$presentation-heading-font-weight: 700;
+$body-color: #0a0a0a;
+$link-color: $au-blue;
+
+/*-- scss:rules --*/
+@font-face { font-family: "AU Passata"; font-weight: 300; src: url("https://fonts.au.dk/fonts/autohinting/aupassata_light-webfont.woff2") format("woff2"); }
+@font-face { font-family: "AU Passata"; font-weight: 400; src: url("https://fonts.au.dk/fonts/autohinting/aupassata_rg-webfont.woff2") format("woff2"); }
+@font-face { font-family: "AU Passata"; font-weight: 700; src: url("https://fonts.au.dk/fonts/autohinting/aupassata_bold-webfont.woff2") format("woff2"); }
+
+// AU navbar-style band on top of every slide
+.reveal .slides > section::before {
+  content: ""; position: absolute; top: -40px; left: -100px; right: -100px;
+  height: 12px; background: $au-blue; border-bottom: 4px solid $au-blue-dark;
+}
+.reveal h2 { border-bottom: 2px solid #eaeaea; padding-bottom: .2em; }
+
+// Welcome slide: AU blue, like the navbar
+#welcome h2 { display: none; }
+#welcome { color: #fefefe; text-align: center; }
+#welcome h1 { color: #fefefe; font-size: 2.6em; margin-top: .3em; }
+#welcome h1 span { color: #FFD100; }
+#welcome .sub { font-size: .7em; opacity: .85; }
+#welcome img { width: 300px; background: #fefefe; border-radius: 50%; padding: 20px; }
+
+.people { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 120px; }
+.people figure { margin: 0; width: 210px; text-align: center; font-size: .6em; }
+.people img { width: 200px; height: 200px; object-fit: cover; border-radius: 50%; border: 5px solid $au-cyan; margin: 0 !important; }
+
+#events-list { list-style: none; margin: 0; font-size: .62em; }
+#events-list li { border-left: 6px solid $au-cyan; padding: .3em .8em; margin: .45em 0; }
+#events-list .when { color: $au-blue; font-weight: 700; }
+#events-list .who { color: #696969; }
+
+#today { text-align: center; }
+#today .topic { font-size: 1.5em; color: $au-blue; font-weight: 700; line-height: 1.2; margin: 1em 0 .6em; }
+#today .who { font-size: 1.1em; }
+#today .aff, #today .where { color: #696969; font-size: .8em; }
