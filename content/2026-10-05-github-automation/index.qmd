@@ -1,0 +1,27 @@
+---
+title: "GitHub automation & AI repo management"
+subtitle: "Samuele Soraggi, Special Consultant, Bioinformatics and Comp. Biology, AU"
+description: "Automated tests, web publishing, package upgrades, containers and secrets with GitHub and Copilot."
+date: 2026-10-05
+categories: [Workshop, GitHub, Copilot, GenomeDK]
+# image: thumbnail.png   # add the thumbnail file in this folder and uncomment
+---
+
+**When:** 5 October 2026, 13:00–15:00
+**Where:** Room 1632-212, AIAS, main campus
+
+## Recording
+
+{{< video https://www.youtube.com/watch?v=HtEykAfPFuo >}}
+
+## Topics
+
+Using GitHub and Copilot AI to manage, automate and publish your repository. A demo where we create a GitHub repository with:
+
+- Automated tests of the code
+- An automated workflow for publishing as a webpage
+- Version upgrades for packages
+- Container publication
+- Secret variables
+
+All this with the help of GitHub Copilot, which can create automations in repositories very effectively. 
