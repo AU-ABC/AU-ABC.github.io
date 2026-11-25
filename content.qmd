@@ -1,0 +1,12 @@
+---
+title: "Content"
+listing:
+  contents: content/*/index.qmd
+  type: grid
+  grid-columns: 3
+  sort: "date desc"
+  fields: [image, date, title, description, categories]
+  image-placeholder: img/focusgroup_logo.svg
+---
+
+Documentation, slides and recordings from past ABC events.

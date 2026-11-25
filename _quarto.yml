@@ -28,6 +28,8 @@ website:
         text: Home
       - href: calendar.qmd
         text: Calendar
+      - href: content.qmd
+        text: Content
       - text: Legacy
         menu:
           - href: legacy/Documentation.qmd
