@@ -4,7 +4,7 @@ subtitle: "Samuele Soraggi, Special Consultant, Bioinformatics and Comp. Biology
 description: "Automated tests, web publishing, package upgrades, containers and secrets with GitHub and Copilot."
 date: 2026-10-05
 categories: [Workshop, GitHub, Copilot, GenomeDK]
-# image: thumbnail.png   # add the thumbnail file in this folder and uncomment
+image: ai-tools-in-research-thumbnail-actions.png   
 ---
 
 **When:** 5 October 2026, 13:00–15:00
